@@ -1,0 +1,12 @@
+# Sublime Test files
+*.sublime-*
+
+# SASS cache and CSS output
+*.css
+.sass-cache/
+
+# Fatfree
+lib-fatfree/
+
+# Local app configuration
+app/config.ini
