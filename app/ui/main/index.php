@@ -135,7 +135,7 @@
         <div class="form-group">
           <label for="comments">Additional comments</label>
           <p class="help-block">Anything else you'd like to communicate or ask?</p>
-          <textarea name="comments" id="comments" cols="30" rows="10" class="form-control"></textarea>
+          <textarea name="comments" id="comments" rows="6" class="form-control"></textarea>
         </div>
 
         <button type="submit" class="btn btn-lg btn-success">Submit</button>
