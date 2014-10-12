@@ -15,7 +15,7 @@
     <div class="container">
       <h1>Register for TLI 2015</h1>
 
-      <form action="/" method="POST">
+      <form action="/process" method="POST">
         <h2>Personal information</h2>
 
         <div class="form-group">
