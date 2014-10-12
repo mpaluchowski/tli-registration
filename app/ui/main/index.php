@@ -20,7 +20,7 @@
 
         <div class="form-group">
           <label for="full-name">Full name</label>
-          <input type="text" id="full-name" placeholder="John Doe" required maxlength="100" class="form-control">
+          <input type="text" id="full-name" placeholder="John Doe" autofocus required maxlength="100" class="form-control">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
