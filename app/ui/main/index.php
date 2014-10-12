@@ -20,15 +20,15 @@
 
         <div class="form-group">
           <label for="full-name">Full name</label>
-          <input type="text" id="full-name" placeholder="John Doe" autofocus required maxlength="100" class="form-control">
+          <input type="text" id="full-name" name="full-name" placeholder="John Doe" autofocus required maxlength="100" class="form-control">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="john@example.com" required class="form-control">
+          <input type="email" id="email" name="email" placeholder="john@example.com" required class="form-control">
         </div>
         <div class="form-group">
-          <label for="cell-phone">Cell phone</label>
-          <input type="tel" id="cell-phone" placeholder="+48 555 123 456" required pattern="^\+?[0-9 \-]{9,}$" class="form-control">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="+48 555 123 456" required pattern="^\+?[0-9 \-]{9,}$" class="form-control">
         </div>
 
         <div class="form-group">
@@ -54,7 +54,7 @@
 
         <div class="form-group">
           <label for="educational-awards">Educational awards</label>
-          <input type="text" id="educational-awards" placeholder="CC, ALB" pattern="^[(CC|ACB|ACS|ACG|CL|ALB|ALS|DTM), ]*$" class="form-control" title="Choose from: CC, ACB, ACS, ACG, CL, ALB, ALS, DTM">
+          <input type="text" id="educational-awards" name="educational-awards" placeholder="CC, ALB" pattern="^[(CC|ACB|ACS|ACG|CL|ALB|ALS|DTM), ]*$" class="form-control" title="Choose from: CC, ACB, ACS, ACG, CL, ALB, ALS, DTM">
         </div>
 
         <h2>Accommodation</h2>
@@ -63,7 +63,7 @@
           <label>Accommodation with Toastmasters</label>
           <p class="help-block">You can choose to sleep over with a member of Toastmasters or hose an incoming guest.</p>
           <div class="radio">
-            <label><input type="radio" name="accommodation-with-toastmasters" required>I'd like to <strong>stay with</strong> a member of Toastmasters</label>
+            <label><input type="radio" name="accommodation-with-toastmasters" value="stay" required>I'd like to <strong>stay with</strong> a member of Toastmasters</label>
           </div>
 
           <div class="container-fluid">
@@ -79,25 +79,25 @@
             <div class="form-group col-xs-11 col-xs-offset-1">
               <label>I can sleep on...</label>
               <div class="radio">
-                <label><input name="sleep-on" type="radio">Bed</label>
+                <label><input name="sleep-on" type="radio" value="bed">Bed</label>
               </div>
               <div class="radio">
-                <label><input name="sleep-on" type="radio">Mattress</label>
+                <label><input name="sleep-on" type="radio" value="mattress">Mattress</label>
               </div>
               <div class="radio">
-                <label><input name="sleep-on" type="radio">Foam pad</label>
+                <label><input name="sleep-on" type="radio" value="foam-pad">Foam pad</label>
               </div>
               <div class="radio">
-                <label><input name="sleep-on" type="radio">Honestly don't care as long as it's safe and warm</label>
+                <label><input name="sleep-on" type="radio" value="dont-care">Honestly don't care as long as it's safe and warm</label>
               </div>
             </div>
           </div>
 
           <div class="radio">
-            <label><input type="radio" name="accommodation-with-toastmasters">I'd like to <strong>host</strong> an attendee</label>
+            <label><input type="radio" name="accommodation-with-toastmasters" value="host">I'd like to <strong>host</strong> an attendee</label>
           </div>
           <div class="radio">
-            <label><input type="radio" name="accommodation-with-toastmasters">I'll arrange accomodation <strong>on my own</strong></label>
+            <label><input type="radio" name="accommodation-with-toastmasters" value="independent">I'll arrange accomodation <strong>on my own</strong></label>
           </div>
         </div>
 
@@ -109,10 +109,10 @@
           <div class="container-fluid">
             <div class="form-group col-xs-11 col-xs-offset-1">
               <div class="radio">
-                <label><input type="radio" name="saturday-dinner-meal">I'll have a <strong>meat</strong> meal</label>
+                <label><input type="radio" name="saturday-dinner-meal" value="meat">I'll have a <strong>meat</strong> meal</label>
               </div>
               <div class="radio">
-                <label><input type="radio" name="saturday-dinner-meal">I'll have a <strong>vegetarian</strong> meal</label>
+                <label><input type="radio" name="saturday-dinner-meal" value="vegetarian">I'll have a <strong>vegetarian</strong> meal</label>
               </div>
             </div>
           </div>
