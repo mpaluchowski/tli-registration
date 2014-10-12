@@ -63,7 +63,7 @@
           <label>Accommodation with Toastmasters</label>
           <p class="help-block">You can choose to sleep over with a member of Toastmasters or hose an incoming guest.</p>
           <div class="radio">
-            <label><input type="radio" name="accommodation-with-toastmasters">I'd like to <strong>stay with</strong> a member of Toastmasters</label>
+            <label><input type="radio" name="accommodation-with-toastmasters" required>I'd like to <strong>stay with</strong> a member of Toastmasters</label>
           </div>
 
           <div class="container-fluid">
