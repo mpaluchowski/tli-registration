@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
           <label for="cell-phone">Cell phone</label>
-          <input type="tel" id="cell-phone" placeholder="+48 555 123 456" required pattern="\+?[0-9 ]{9,}" class="form-control">
+          <input type="tel" id="cell-phone" placeholder="+48 555 123 456" required pattern="\+?[0-9 \-]{9,}" class="form-control">
         </div>
 
         <div class="form-group">
