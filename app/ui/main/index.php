@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
           <label for="cell-phone">Cell phone</label>
-          <input type="tel" id="cell-phone" placeholder="+48 555 123 456" required pattern="\+?[0-9 \-]{9,}" class="form-control">
+          <input type="tel" id="cell-phone" placeholder="+48 555 123 456" required pattern="^\+?[0-9 \-]{9,}$" class="form-control">
         </div>
 
         <div class="form-group">
@@ -54,7 +54,7 @@
 
         <div class="form-group">
           <label for="educational-awards">Educational awards</label>
-          <input type="text" id="educational-awards" placeholder="CC, ALB" pattern="[(CC|ACB|ACS|ACG|CL|ALB|ALS|DTM), ]*" class="form-control" title="Choose from: CC, ACB, ACS, ACG, CL, ALB, ALS, DTM">
+          <input type="text" id="educational-awards" placeholder="CC, ALB" pattern="^[(CC|ACB|ACS|ACG|CL|ALB|ALS|DTM), ]*$" class="form-control" title="Choose from: CC, ACB, ACS, ACG, CL, ALB, ALS, DTM">
         </div>
 
         <h2>Accommodation</h2>
