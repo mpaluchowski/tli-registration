@@ -133,7 +133,7 @@
         <h2>Comments</h2>
 
         <div class="form-group">
-          <label for="comments">Additional comments</label>
+          <label for="comments" class="sr-only">Additional comments</label>
           <p class="help-block">Anything else you'd like to communicate or ask?</p>
           <textarea name="comments" id="comments" rows="6" class="form-control"></textarea>
         </div>
