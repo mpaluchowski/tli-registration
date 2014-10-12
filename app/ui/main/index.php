@@ -54,7 +54,7 @@
 
         <div class="form-group">
           <label for="educational-awards">Educational awards</label>
-          <input type="text" id="educational-awards" placeholder="CC, ALB" pattern="[(CC|ACB|ACS|ACG|CL|ALB|ALS|DTM), ]*" class="form-control">
+          <input type="text" id="educational-awards" placeholder="CC, ALB" pattern="[(CC|ACB|ACS|ACG|CL|ALB|ALS|DTM), ]*" class="form-control" title="Choose from: CC, ACB, ACS, ACG, CL, ALB, ALS, DTM">
         </div>
 
         <h2>Accommodation</h2>
