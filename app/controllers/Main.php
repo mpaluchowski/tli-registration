@@ -13,12 +13,11 @@ class Main {
 	}
 
 	function process_registration($f3) {
-		print_r($f3->get('POST'));
-		print_r($f3->serialize($f3->get('POST')));
+		$f3->reroute('/review/' . base64_encode($f3->serialize($f3->get('POST'))));
 	}
 
-	function registration_review($f3) {
-
+	function registration_review($f3, $args) {
+		print_r($f3->unserialize(base64_decode($args['data'])));
 	}
 
 }
