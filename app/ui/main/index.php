@@ -73,26 +73,26 @@
           <div class="container-fluid">
             <div class="form-group col-xs-11 col-xs-offset-1">
               <label>I need accommodation on...</label>
-              <div class="radio">
-                <label><input name="accommodation-on" type="radio"> Friday/Saturday and Saturday/Sunday</label>
+              <div class="checkbox">
+                <label><input name="accommodation-on[]" type="checkbox" value="friday/saturday"> Friday/Saturday</label>
               </div>
-              <div class="radio">
-                <label><input name="accommodation-on" type="radio"> Only Saturday/Sunday</label>
+              <div class="checkbox">
+                <label><input name="accommodation-on[]" type="checkbox" value="saturday/sunday"> Saturday/Sunday</label>
               </div>
             </div>
             <div class="form-group col-xs-11 col-xs-offset-1">
               <label>I can sleep on...</label>
-              <div class="radio">
-                <label><input name="sleep-on" type="radio" value="bed">Bed</label>
+              <div class="checkbox">
+                <label><input name="sleep-on[]" type="checkbox" value="bed">Bed</label>
               </div>
-              <div class="radio">
-                <label><input name="sleep-on" type="radio" value="mattress">Mattress</label>
+              <div class="checkbox">
+                <label><input name="sleep-on[]" type="checkbox" value="mattress">Mattress</label>
               </div>
-              <div class="radio">
-                <label><input name="sleep-on" type="radio" value="foam-pad">Foam pad</label>
+              <div class="checkbox">
+                <label><input name="sleep-on[]" type="checkbox" value="foam-pad">Foam pad</label>
               </div>
-              <div class="radio">
-                <label><input name="sleep-on" type="radio" value="dont-care">Honestly don't care as long as it's safe and warm</label>
+              <div class="checkbox">
+                <label><input name="sleep-on[]" type="checkbox" value="dont-care">Honestly don't care as long as it's safe and warm</label>
               </div>
             </div>
           </div>
