@@ -13,7 +13,11 @@ class Main {
 	}
 
 	function process_registration($f3) {
-		$f3->reroute('/review/' . base64_encode($f3->serialize($f3->get('POST'))));
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->parseRequestToForm($f3->get('POST'));
+
+		$registrationId = $registrationDao->saveRegistrationForm($form);
 	}
 
 	function registration_review($f3, $args) {
