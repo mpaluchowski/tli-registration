@@ -45,10 +45,14 @@
         <div class="form-group">
           <label for="exec-position">Executive Committee position</label>
           <select name="exec-position" id="exec-position" class="form-control">
-            <option value="">I'm a regular member</option>
-            <option value="">President</option>
-            <option value="">Vice President Education</option>
-            <option value="">Vice President Membership</option>
+            <option value="None">I hold no position</option>
+            <option value="President">President</option>
+            <option value="VPE">Vice President Education</option>
+            <option value="VPM">Vice President Membership</option>
+            <option value="VPPR">Vice President Public Relations</option>
+            <option value="Treasurer">Treasurer</option>
+            <option value="Secretary">Secretary</option>
+            <option value="SAA">Sergeant at Arms</option>
           </select>
         </div>
 
