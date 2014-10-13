@@ -74,10 +74,10 @@
             <div class="form-group col-xs-11 col-xs-offset-1">
               <label>I need accommodation on...</label>
               <div class="checkbox">
-                <label><input name="accommodation-on[]" type="checkbox" value="friday/saturday"> Friday/Saturday</label>
+                <label><input name="accommodation-on[]" type="checkbox" value="friday/saturday">Friday/Saturday</label>
               </div>
               <div class="checkbox">
-                <label><input name="accommodation-on[]" type="checkbox" value="saturday/sunday"> Saturday/Sunday</label>
+                <label><input name="accommodation-on[]" type="checkbox" value="saturday/sunday">Saturday/Sunday</label>
               </div>
             </div>
             <div class="form-group col-xs-11 col-xs-offset-1">
