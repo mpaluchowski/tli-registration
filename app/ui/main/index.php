@@ -34,11 +34,11 @@
         <div class="form-group">
           <label for="home-club">Home club</label>
           <select name="home-club" id="home-club" class="form-control">
-            <option value="">I'm not a member of Toastmasters</option>
-            <option value="">Speaking Elephants</option>
-            <option value="">Toastmasters Polska SA</option>
-            <option value="">Top Careers Toastmasters</option>
-            <option value="">My club is not on this list</option>
+            <option value="None">I'm not a member of Toastmasters</option>
+          <?php foreach ($clubs as $club): ?>
+            <option value="<?php echo $club->name ?>"><?php echo $club->name ?></option>
+          <?php endforeach; ?>
+            <option value="Other">My club is not on this list</option>
           </select>
         </div>
 
