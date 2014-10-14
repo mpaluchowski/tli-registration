@@ -2,6 +2,9 @@
 
 namespace models;
 
+/**
+ * Operations related to dictionary data.
+ */
 class DictionaryDao {
 
 	function __construct() {
@@ -12,6 +15,11 @@ class DictionaryDao {
 			));
 	}
 
+	/**
+	 * Retrieves all clubs from the database dictionary, ordered by name.
+	 *
+	 * @return Array of objects representing clubs, with their ID and name.
+	 */
 	function readAllClubs() {
 		$query = 'SELECT c.id_club,
 						 c.name
