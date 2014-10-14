@@ -26,6 +26,10 @@ class RegistrationForm {
 		$this->email = $email;
 	}
 
+	function getFields() {
+		return $this->fields;
+	}
+
 	function getField($key) {
 		return $this->fields[$key];
 	}

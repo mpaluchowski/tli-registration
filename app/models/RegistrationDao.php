@@ -33,24 +33,49 @@ class RegistrationDao {
 	function saveRegistrationForm($form) {
 		\F3::get('db')->begin();
 
-		$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'registration (
-					email,
-					hash,
-					date_entered
-				)
-				VALUES (
-					:email,
-					:hash,
-					NOW()
-					)';
-		\F3::get('db')->exec($query, [
-				'email' => $form->getEmail(),
-				'hash' => $form->getHash(),
-			]);
+		try {
+			$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'registrations (
+						email,
+						hash,
+						date_entered
+					)
+					VALUES (
+						:email,
+						:hash,
+						NOW()
+						)';
+			\F3::get('db')->exec($query, [
+					'email' => $form->getEmail(),
+					'hash' => $form->getHash(),
+				]);
 
-		$registrationId = \F3::get('db')->lastInsertID();
+			$registrationId = \F3::get('db')->lastInsertID();
 
-		\F3::get('db')->commit();
+			$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'registration_fields (
+						fk_registration,
+						name,
+						value
+						)
+					VALUES (
+						:registrationId,
+						:name,
+						:value
+						)';
+			$st = \F3::get('db')->prepare($query);
+
+			foreach ($form->getFields() as $name => $value) {
+				$st->execute(array(
+					'registrationId' => $registrationId,
+					'name' => $name,
+					'value' => $value,
+					));
+			}
+
+			\F3::get('db')->commit();
+
+		} catch (Exception $e) {
+			\F3::get('db')->rollback();
+		}
 
 		return $registrationId;
 	}
