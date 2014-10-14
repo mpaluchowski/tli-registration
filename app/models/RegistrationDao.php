@@ -16,14 +16,14 @@ class RegistrationDao {
 	function parseRequestToForm(array $postValues) {
 		$form = new \models\RegistrationForm();
 
-		foreach ($postValues as $key => $value) {
+		foreach ($postValues as $name => $value) {
 			if (empty($value))
 				continue;
 
-			if (method_exists($form, 'set' . \F3::instance()->camelcase($key))) {
-				$form->{'set' . \F3::instance()->camelcase($key)}(\F3::instance()->clean($value));
+			if (method_exists($form, 'set' . \F3::instance()->camelcase($name))) {
+				$form->{'set' . \F3::instance()->camelcase($name)}(\F3::instance()->clean($value));
 			} else {
-				$form->setField($key, \F3::instance()->clean($value));
+				$form->setField($name, \F3::instance()->clean($value));
 			}
 		}
 
