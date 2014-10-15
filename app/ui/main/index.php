@@ -138,7 +138,8 @@
           <textarea name="comments" id="comments" rows="6" class="form-control"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-lg btn-success"><?php echo \F3::get('lang.SubmitButton') ?></button>
+        <button type="submit" class="btn btn-lg btn-success"><?php echo \F3::get('lang.SubmitAndReviewButton') ?></button>
+        <p class="help-block"><?php echo \F3::get('lang.SubmitAndReviewButtonHelp') ?></p>
       </form>
     </div>
 

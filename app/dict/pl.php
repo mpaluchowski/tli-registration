@@ -53,5 +53,6 @@ return ['lang' => [
 	'Comments' => "Dodatkowe komentarze",
 	'CommentsHelp' => "Czy coś jeszcze chcesz przekazać lub o coś spytać?",
 
-	'SubmitButton' => "Wyślij",
+	'SubmitAndReviewButton' => "Wyślij i potwierdź",
+	'SubmitAndReviewButtonHelp' => "Możesz jeszcze raz sprawdzić swoje zgłoszenie zanim przejdziesz do płatności.",
 ]];

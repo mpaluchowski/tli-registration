@@ -53,5 +53,6 @@ return ['lang' => [
 	'Comments' => "Additional comments",
 	'CommentsHelp' => "Anything else you'd like to communicate or ask?",
 
-	'SubmitButton' => "Submit",
+	'SubmitAndReviewButton' => "Submit and Review",
+	'SubmitAndReviewButtonHelp' => "You will have a chance to review your registration before proceeding to payment.",
 ]];
