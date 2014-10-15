@@ -80,4 +80,8 @@ class RegistrationDao {
 		return $registrationId;
 	}
 
+	function readRegistrationForm($registrationId) {
+		return new \models\RegistrationForm();
+	}
+
 }
