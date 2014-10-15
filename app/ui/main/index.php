@@ -20,15 +20,15 @@
 
         <div class="form-group">
           <label for="full-name"><?php echo \F3::get('lang.FullName') ?></label>
-          <input type="text" id="full-name" name="full-name" placeholder="<?php echo \F3::get('lang.FullNamePlaceholder') ?>" autofocus required maxlength="100" class="form-control">
+          <input type="text" id="full-name" name="full-name" placeholder="<?php echo \F3::get('lang.FullNamePlaceholder') ?>" autocomplete="name" autofocus required maxlength="100" class="form-control">
         </div>
         <div class="form-group">
           <label for="email"><?php echo \F3::get('lang.Email') ?></label>
-          <input type="email" id="email" name="email" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" required class="form-control">
+          <input type="email" id="email" name="email" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" autocomplete="email" required class="form-control">
         </div>
         <div class="form-group">
           <label for="phone"><?php echo \F3::get('lang.Phone') ?></label>
-          <input type="tel" id="phone" name="phone" placeholder="<?php echo \F3::get('lang.PhonePlaceholder') ?>" required pattern="^\+?[0-9 \-]{9,}$" class="form-control">
+          <input type="tel" id="phone" name="phone" placeholder="<?php echo \F3::get('lang.PhonePlaceholder') ?>" autocomplete="tel" required pattern="^\+?[0-9 \-]{9,}$" class="form-control">
         </div>
 
         <div class="form-group">
