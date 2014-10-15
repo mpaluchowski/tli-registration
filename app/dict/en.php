@@ -55,4 +55,6 @@ return ['lang' => [
 
 	'SubmitAndReviewButton' => "Submit and Review",
 	'SubmitAndReviewButtonHelp' => "You will have a chance to review your registration before proceeding to payment.",
+
+	"RegistrationReviewHeader" => "Review registration for {0}",
 ]];
