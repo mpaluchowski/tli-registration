@@ -30,6 +30,22 @@ class RegistrationDao {
 		return $form;
 	}
 
+	function parseQueryToForm($registration, $registrationFields) {
+		$form = new \models\RegistrationForm();
+
+		$form->setId($registration['id_registration']);
+		$form->setEmail($registration['email']);
+
+		foreach ($registrationFields as $field) {
+			$form->setField(
+				$field['name'],
+				json_decode($field['value'])
+				);
+		}
+
+		return $form;
+	}
+
 	function saveRegistrationForm($form) {
 		\F3::get('db')->begin();
 
@@ -81,7 +97,27 @@ class RegistrationDao {
 	}
 
 	function readRegistrationForm($registrationId) {
-		return new \models\RegistrationForm();
+		$query = 'SELECT r.id_registration,
+						 r.email
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  WHERE r.id_registration = :registrationId';
+		$registrationResult = \F3::get('db')->exec($query, [
+					'registrationId' => $registrationId,
+				]);
+
+		if (!$registrationResult)
+			return null;
+
+		$query = 'SELECT rf.name,
+						 rf.value
+				  FROM ' . \F3::get('db_table_prefix') . 'registration_fields rf
+				  WHERE rf.fk_registration = :registrationId';
+
+		$fieldsResult = \F3::get('db')->exec($query, [
+					'registrationId' => $registrationId,
+				]);
+
+		return $this->parseQueryToForm($registrationResult[0], $fieldsResult);
 	}
 
 }
