@@ -67,7 +67,7 @@ class RegistrationDao {
 				$st->execute(array(
 					'registrationId' => $registrationId,
 					'name' => $name,
-					'value' => $value,
+					'value' => is_array($value) ? implode('|', $value) : $value,
 					));
 			}
 
