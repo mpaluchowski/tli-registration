@@ -3,12 +3,12 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping database structure for tli_registration
-CREATE DATABASE IF NOT EXISTS `tli_registration` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `tli_registration`;
+-- Dumping database structure for tli_registrations
+CREATE DATABASE IF NOT EXISTS `tli_registrations` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `tli_registrations`;
 
 
--- Dumping structure for table tli_registration.tli_clubs
+-- Dumping structure for table tli_registrations.tli_clubs
 CREATE TABLE IF NOT EXISTS `tli_clubs` (
   `id_club` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
