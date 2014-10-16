@@ -15,7 +15,7 @@ class Main {
 	function process_registration($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
-		$form = $registrationDao->parseRequestToForm($f3->get('POST'));
+		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
 
 		$registrationId = $registrationDao->saveRegistrationForm($form);
 
