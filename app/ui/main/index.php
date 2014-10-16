@@ -33,14 +33,14 @@
     <div class="form-group">
       <label for="exec-position"><?php echo \F3::get('lang.ExecCommmitteePosition') ?></label>
       <select name="exec-position" id="exec-position" class="form-control">
-        <option value="None"><?php echo \F3::get('lang.ExecCommmitteePositionNone') ?></option>
-        <option value="President"><?php echo \F3::get('lang.ExecCommmitteePositionPresident') ?></option>
-        <option value="VPE"><?php echo \F3::get('lang.ExecCommmitteePositionVpe') ?></option>
-        <option value="VPM"><?php echo \F3::get('lang.ExecCommmitteePositionVpm') ?></option>
-        <option value="VPPR"><?php echo \F3::get('lang.ExecCommmitteePositionVppr') ?></option>
-        <option value="Treasurer"><?php echo \F3::get('lang.ExecCommmitteePositionTreasurer') ?></option>
-        <option value="Secretary"><?php echo \F3::get('lang.ExecCommmitteePositionSecretary') ?></option>
-        <option value="SAA"><?php echo \F3::get('lang.ExecCommmitteePositionSaa') ?></option>
+        <option value="none"><?php echo \F3::get('lang.ExecCommmitteePosition-none') ?></option>
+        <option value="president"><?php echo \F3::get('lang.ExecCommmitteePosition-president') ?></option>
+        <option value="vpe"><?php echo \F3::get('lang.ExecCommmitteePosition-vpe') ?></option>
+        <option value="wpm"><?php echo \F3::get('lang.ExecCommmitteePosition-vpm') ?></option>
+        <option value="wppr"><?php echo \F3::get('lang.ExecCommmitteePosition-vppr') ?></option>
+        <option value="treasurer"><?php echo \F3::get('lang.ExecCommmitteePosition-treasurer') ?></option>
+        <option value="secretary"><?php echo \F3::get('lang.ExecCommmitteePosition-secretary') ?></option>
+        <option value="saa"><?php echo \F3::get('lang.ExecCommmitteePosition-saa') ?></option>
       </select>
     </div>
 
@@ -55,41 +55,41 @@
       <label><?php echo \F3::get('lang.AccommodationWithToastmasters') ?></label>
       <p class="help-block"><?php echo \F3::get('lang.AccommodationWithToastmastersHelp') ?></p>
       <div class="radio">
-        <label><input type="radio" name="accommodation-with-toastmasters" value="stay" required><?php echo \F3::get('lang.AccommodationWithToastmastersStay') ?></label>
+        <label><input type="radio" name="accommodation-with-toastmasters" value="stay" required><?php echo \F3::get('lang.AccommodationWithToastmastersStayAnswer') ?></label>
       </div>
 
       <div class="container-fluid">
         <div class="form-group col-xs-11 col-xs-offset-1">
           <label><?php echo \F3::get('lang.AccommodationWithToastmastersNeededOn') ?></label>
           <div class="checkbox">
-            <label><input name="accommodation-on[]" type="checkbox" value="friday/saturday"><?php echo \F3::get('lang.AccommodationWithToastmastersFriSat') ?></label>
+            <label><input name="accommodation-on[]" type="checkbox" value="fri-sat"><?php echo \F3::get('lang.AccommodationWithToastmastersFriSat') ?></label>
           </div>
           <div class="checkbox">
-            <label><input name="accommodation-on[]" type="checkbox" value="saturday/sunday"><?php echo \F3::get('lang.AccommodationWithToastmastersSatSun') ?></label>
+            <label><input name="accommodation-on[]" type="checkbox" value="sat-sun"><?php echo \F3::get('lang.AccommodationWithToastmastersSatSun') ?></label>
           </div>
         </div>
         <div class="form-group col-xs-11 col-xs-offset-1">
           <label><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn') ?></label>
           <div class="checkbox">
-            <label><input name="sleep-on[]" type="checkbox" value="bed"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOnBed') ?></label>
+            <label><input name="sleep-on[]" type="checkbox" value="bed"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn-bed') ?></label>
           </div>
           <div class="checkbox">
-            <label><input name="sleep-on[]" type="checkbox" value="mattress"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOnMattress') ?></label>
+            <label><input name="sleep-on[]" type="checkbox" value="mattress"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn-mattress') ?></label>
           </div>
           <div class="checkbox">
-            <label><input name="sleep-on[]" type="checkbox" value="foam-pad"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOnFoamPad') ?></label>
+            <label><input name="sleep-on[]" type="checkbox" value="foam-pad"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn-foam-pad') ?></label>
           </div>
           <div class="checkbox">
-            <label><input name="sleep-on[]" type="checkbox" value="dont-care"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOnAnything') ?></label>
+            <label><input name="sleep-on[]" type="checkbox" value="anything"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOnAnything') ?></label>
           </div>
         </div>
       </div>
 
       <div class="radio">
-        <label><input type="radio" name="accommodation-with-toastmasters" value="host"><?php echo \F3::get('lang.AccommodationWithToastmastersHost') ?></label>
+        <label><input type="radio" name="accommodation-with-toastmasters" value="host"><?php echo \F3::get('lang.AccommodationWithToastmastersHostAnswer') ?></label>
       </div>
       <div class="radio">
-        <label><input type="radio" name="accommodation-with-toastmasters" value="independent"><?php echo \F3::get('lang.AccommodationWithToastmastersOnMyOwn') ?></label>
+        <label><input type="radio" name="accommodation-with-toastmasters" value="independent"><?php echo \F3::get('lang.AccommodationWithToastmastersIndependentAnswer') ?></label>
       </div>
     </div>
 
@@ -108,7 +108,7 @@
             <label><input type="radio" name="saturday-dinner-meal" value="meat"><?php echo \F3::get('lang.EventsSaturdayDinnerMeat') ?></label>
           </div>
           <div class="radio">
-            <label><input type="radio" name="saturday-dinner-meal" value="vegetarian"><?php echo \F3::get('lang.EventsSaturdayDinnerVege') ?></label>
+            <label><input type="radio" name="saturday-dinner-meal" value="vegetarian"><?php echo \F3::get('lang.EventsSaturdayDinnerVegetarian') ?></label>
           </div>
         </div>
       </div>

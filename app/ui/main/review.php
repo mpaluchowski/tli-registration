@@ -35,7 +35,7 @@
 		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.ExecCommmitteePosition') ?></label>
 			<div class="col-sm-9">
-				<p class="form-control-static"><?php echo $form->getField('exec-position') ?></p>
+				<p class="form-control-static"><?php echo \F3::get('lang.ExecCommmitteePosition-' . $form->getField('exec-position')) ?></p>
 			</div>
 		</div>
 		<div class="form-group">
@@ -50,22 +50,26 @@
 		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.AccommodationWithToastmasters') ?></label>
 			<div class="col-sm-9">
-				<p class="form-control-static"><?php echo $form->getField('accommodation-with-toastmasters') ?></p>
+				<p class="form-control-static"><?php echo \F3::get('lang.AccommodationWithToastmasters-' . $form->getField('accommodation-with-toastmasters')) ?></p>
 			</div>
 		</div>
-	<?php if ($form->hasField('accommodation-on')): ?>
+	<?php if ($form->hasField('accommodation-on')):
+		$accommodationOnOptions = array_map(function ($item) { return \F3::get('lang.AccommodationWithToastmasters-' . $item); }, $form->getField('accommodation-on'));
+	?>
 		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersNeededOn') ?></label>
 			<div class="col-sm-9">
-				<p class="form-control-static"><?php echo implode(", ", $form->getField('accommodation-on')) ?></p>
+				<p class="form-control-static"><?php echo implode(", ", $accommodationOnOptions) ?></p>
 			</div>
 		</div>
 	<?php endif;
-	if ($form->hasField('sleep-on')): ?>
+	if ($form->hasField('sleep-on')):
+		$sleepOnOptions = array_map(function ($item) { return \F3::get('lang.AccommodationWithToastmastersSleepOn-' . $item); }, $form->getField('sleep-on'));
+	?>
 		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn') ?></label>
 			<div class="col-sm-9">
-				<p class="form-control-static"><?php echo implode(", ", $form->getField('sleep-on')) ?></p>
+				<p class="form-control-static"><?php echo implode(", ", $sleepOnOptions) ?></p>
 			</div>
 		</div>
 	<?php endif; ?>
@@ -129,7 +133,7 @@
 			if ($form->hasField('saturday-dinner-participate') && "on" === $form->getField('saturday-dinner-participate')): ?>
 				<tr>
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner') ?></td>
-					<td><?php echo $form->getField('saturday-dinner-meal') ?></td>
+					<td><?php echo \F3::get('lang.EventsSaturdayDinner-' . $form->getField('saturday-dinner-meal')) ?></td>
 					<td>50zł</td>
 				</tr>
 			<?php endif;
