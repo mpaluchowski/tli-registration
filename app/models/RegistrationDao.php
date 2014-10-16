@@ -96,13 +96,13 @@ class RegistrationDao {
 		return $registrationId;
 	}
 
-	function readRegistrationForm($registrationId) {
+	function readRegistrationForm($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
-				  WHERE r.id_registration = :registrationId';
+				  WHERE r.hash = :registrationHash';
 		$registrationResult = \F3::get('db')->exec($query, [
-					'registrationId' => $registrationId,
+					'registrationHash' => $registrationHash,
 				]);
 
 		if (!$registrationResult)
@@ -114,7 +114,7 @@ class RegistrationDao {
 				  WHERE rf.fk_registration = :registrationId';
 
 		$fieldsResult = \F3::get('db')->exec($query, [
-					'registrationId' => $registrationId,
+					'registrationId' => $registrationResult[0]['id_registration'],
 				]);
 
 		return $this->parseQueryToForm($registrationResult[0], $fieldsResult);
