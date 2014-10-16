@@ -30,6 +30,10 @@ class RegistrationForm {
 		return $this->fields;
 	}
 
+	function hasField($key) {
+		return array_key_exists($key, $this->fields);
+	}
+
 	function getField($key) {
 		return $this->fields[$key];
 	}
