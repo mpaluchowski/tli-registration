@@ -1,6 +1,9 @@
 <?php
 
 return ['lang' => [
+	"Yes" => "Tak",
+	"No" => "Nie",
+
 	'RegistrationFormPageTitle' => 'Formularz rejestracyjny',
 	'RegistrationFormHeader' => 'Rejestracja na TLI 2015',
 
@@ -24,6 +27,7 @@ return ['lang' => [
 	'ExecCommmitteePositionSecretary' => "Sekretarz",
 	'ExecCommmitteePositionSaa' => "Dyrektor Administracyjny",
 	'EducationalAwards' => "Osiągnięcia edukacyjne",
+	'EducationalAwardsNone' => "Brak",
 	'EducationalAwardsPlaceholder' => "CC, ALB",
 	'EducationalAwardsTitle' => "Wpisz spośród: CC, ACB, ACS, ACG, CL, ALB, ALS, DTM",
 
@@ -44,15 +48,26 @@ return ['lang' => [
 
 	'EventsHeader' => "Wydarzenia",
 	'EventsFridaySocialYes' => "Tak, chętnie wezmę udział w piątkowym wydarzeniu",
+	'EventsFridaySocial' => "Piątkowe wydarzenie",
+	'EventsSaturdayDinner' => "Sobotnia kolacja",
 	'EventsSaturdayDinnerYes' => "Tak, wezmę udział w sobotniej kolacji",
 	'EventsSaturdayDinnerMeat' => "Poproszę o <strong>mięsne</strong> danie",
 	'EventsSaturdayDinnerVege' => "Poproszę o <strong>wegetariańskie</strong> danie",
+	'EventsSaturdayParty' => "Sobotnia impreza",
 	'EventsSaturdayPartyYes' => "Tak, wezmę udział w sobotniej imprezie",
 
 	'CommentsHeader' => "Komentarze",
 	'Comments' => "Dodatkowe komentarze",
+	'CommentsNone' => "Brak",
 	'CommentsHelp' => "Czy coś jeszcze chcesz przekazać lub o coś spytać?",
 
 	'SubmitAndReviewButton' => "Wyślij i potwierdź",
 	'SubmitAndReviewButtonHelp' => "Możesz jeszcze raz sprawdzić swoje zgłoszenie zanim przejdziesz do płatności.",
+
+	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",
+	"RegistrationReviewIntro" => "Sprawdź informacje, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby przejść do płatności.",
+
+	"PaymentBreakdownHeader" => "Podsmowanie płatności",
+
+	"SelectPaymentOptionButton" => "Wybierz sposób płatności",
 ]];

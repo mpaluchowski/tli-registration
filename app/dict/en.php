@@ -1,6 +1,9 @@
 <?php
 
 return ['lang' => [
+	"Yes" => "Yes",
+	"No" => "No",
+
 	'RegistrationFormPageTitle' => 'Registration Form',
 	'RegistrationFormHeader' => 'Register for TLI 2015',
 
@@ -24,6 +27,7 @@ return ['lang' => [
 	'ExecCommmitteePositionSecretary' => "Secretary",
 	'ExecCommmitteePositionSaa' => "Sergeant at Arms",
 	'EducationalAwards' => "Educational awards",
+	'EducationalAwardsNone' => "None",
 	'EducationalAwardsPlaceholder' => "CC, ALB",
 	'EducationalAwardsTitle' => "Choose from: CC, ACB, ACS, ACG, CL, ALB, ALS, DTM",
 
@@ -43,14 +47,18 @@ return ['lang' => [
 	'AccommodationWithToastmastersOnMyOwn' => "I'll arrange accomodation <strong>on my own</strong>",
 
 	'EventsHeader' => "Events",
+	'EventsFridaySocial' => "Friday's social event",
 	'EventsFridaySocialYes' => "Yes, I'd love to join Friday's social event",
+	'EventsSaturdayDinner' => "Saturday's dinner",
 	'EventsSaturdayDinnerYes' => "Yes, I will participate in Saturday's dinner",
 	'EventsSaturdayDinnerMeat' => "I'll have a <strong>meat</strong> meal",
 	'EventsSaturdayDinnerVege' => "I'll have a <strong>vegetarian</strong> meal",
+	'EventsSaturdayParty' => "Saturday's party",
 	'EventsSaturdayPartyYes' => "Yes, I will take part in Saturday's party",
 
 	'CommentsHeader' => "Comments",
 	'Comments' => "Additional comments",
+	'CommentsNone' => "None",
 	'CommentsHelp' => "Anything else you'd like to communicate or ask?",
 
 	'SubmitAndReviewButton' => "Submit and Review",
@@ -58,5 +66,8 @@ return ['lang' => [
 
 	"RegistrationReviewHeader" => "Review registration for {0}",
 	"RegistrationReviewIntro" => "Please review the contents of the registration form you have just submitted, the resulting participation cost calculation and final price. If everything is correct, click the button at the bottom of the page to proceed to payment.",
+
+	"PaymentBreakdownHeader" => "Payment breakdown",
+
 	"SelectPaymentOptionButton" => "Select payment option",
 ]];
