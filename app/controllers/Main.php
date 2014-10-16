@@ -30,6 +30,9 @@ class Main {
 
 		$form = $registrationDao->readRegistrationForm($args['registrationId']);
 
+		if (!$form)
+			$f3->error(404);
+
 		$f3->set('form', $form);
 
 		echo \View::instance()->render('main/review.php');
