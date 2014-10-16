@@ -17,18 +17,18 @@ class Main {
 
 		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
 
-		$registrationId = $registrationDao->saveRegistrationForm($form);
+		$registrationDao->saveRegistrationForm($form);
 
-		$f3->reroute('/review/' . $registrationId);
+		$f3->reroute('/review/' . $form->getHash());
 	}
 
 	function registration_review($f3, $args) {
-		if (!is_numeric($args['registrationId']) && !is_int($args['registrationId'] + 0))
+		if (!is_string($args['registrationHash']) && 40 != strlen($args['registrationHash'] + 0))
 			$f3->error(404);
 
 		$registrationDao = new \models\RegistrationDao();
 
-		$form = $registrationDao->readRegistrationForm($args['registrationId']);
+		$form = $registrationDao->readRegistrationForm($args['registrationHash']);
 
 		if (!$form)
 			$f3->error(404);
