@@ -13,12 +13,29 @@ class Main {
 	}
 
 	function process_registration($f3) {
-		print_r($f3->get('POST'));
-		print_r($f3->serialize($f3->get('POST')));
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
+
+		$registrationId = $registrationDao->saveRegistrationForm($form);
+
+		$f3->reroute('/review/' . $registrationId);
 	}
 
-	function registration_review($f3) {
+	function registration_review($f3, $args) {
+		if (!is_numeric($args['registrationId']) && !is_int($args['registrationId'] + 0))
+			$f3->error(404);
 
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationForm($args['registrationId']);
+
+		if (!$form)
+			$f3->error(404);
+
+		$f3->set('form', $form);
+
+		echo \View::instance()->render('main/review.php');
 	}
 
 }
