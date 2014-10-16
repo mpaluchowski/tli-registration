@@ -120,4 +120,15 @@ class RegistrationDao {
 		return $this->parseQueryToForm($registrationResult[0], $fieldsResult);
 	}
 
+	function emailExists($email) {
+		$query = 'SELECT 1
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  WHERE r.email = :email';
+		$rows = \F3::get('db')->exec($query, [
+					'email' => $email,
+				]);
+
+		return (bool)count($rows);
+	}
+
 }

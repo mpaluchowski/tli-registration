@@ -38,4 +38,15 @@ class Main {
 		echo \View::instance()->render('main/review.php');
 	}
 
+	function check_email_exists($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$emailExists = $registrationDao->emailExists($args['email']);
+
+		echo $emailExists === true;
+	}
+
 }
