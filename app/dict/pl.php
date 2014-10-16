@@ -68,6 +68,14 @@ return ['lang' => [
 	"RegistrationReviewIntro" => "Sprawdź informacje, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby przejść do płatności.",
 
 	"PaymentBreakdownHeader" => "Podsmowanie płatności",
+	"Participation" => "Uczestnictwo",
+	"TicketEarly" => "Wczesny",
+	"TicletRegular" => "Normalny",
+	"TicketLate" => "Późny",
+	"PaymentItemHead" => "Pozycja",
+	"PaymentTypeHead" => "Typ",
+	"PaymentPriceHead" => "Cena",
+	"PaymentTotal" => "Suma",
 
 	"SelectPaymentOptionButton" => "Wybierz sposób płatności",
 ]];

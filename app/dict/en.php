@@ -68,6 +68,14 @@ return ['lang' => [
 	"RegistrationReviewIntro" => "Please review the contents of the registration form you have just submitted, the resulting participation cost calculation and final price. If everything is correct, click the button at the bottom of the page to proceed to payment.",
 
 	"PaymentBreakdownHeader" => "Payment breakdown",
+	"Participation" => "Participation",
+	"TicketEarly" => "Early bird",
+	"TicletRegular" => "Regular",
+	"TicketLate" => "Late",
+	"PaymentItemHead" => "Item",
+	"PaymentTypeHead" => "Type",
+	"PaymentPriceHead" => "Price",
+	"PaymentTotal" => "Grand total",
 
 	"SelectPaymentOptionButton" => "Select payment option",
 ]];

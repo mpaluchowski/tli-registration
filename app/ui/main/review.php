@@ -100,6 +100,56 @@
 		</div>
 	</div>
 
+	<h2><?php echo \F3::get('lang.PaymentBreakdownHeader') ?></h2>
+
+	<p>Based on the options you selected, your total due payment breaks down as follows:</p>
+
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th><?php echo \F3::get('lang.PaymentItemHead') ?></th>
+					<th><?php echo \F3::get('lang.PaymentTypeHead') ?></th>
+					<th><?php echo \F3::get('lang.PaymentPriceHead') ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><?php echo \F3::get('lang.Participation') ?></td>
+					<td><?php echo \F3::get('lang.TicketEarly') ?></td>
+					<td>50zł</td>
+				</tr>
+			<?php if ($form->hasField('friday-social-event') && "on" === $form->getField('friday-social-event')): ?>
+				<tr>
+					<td><?php echo \F3::get('lang.EventsFridaySocial') ?></td>
+					<td>&mdash;</td>
+					<td>30zł</td>
+				</tr>
+			<?php endif;
+			if ($form->hasField('saturday-dinner-participate') && "on" === $form->getField('saturday-dinner-participate')): ?>
+				<tr>
+					<td><?php echo \F3::get('lang.EventsSaturdayDinner') ?></td>
+					<td><?php echo $form->getField('saturday-dinner-meal') ?></td>
+					<td>50zł</td>
+				</tr>
+			<?php endif;
+			if ($form->hasField('saturday-party-participate') && "on" === $form->getField('saturday-party-participate')): ?>
+				<tr>
+					<td><?php echo \F3::get('lang.EventsSaturdayParty') ?></td>
+					<td>&mdash;</td>
+					<td>30zł</td>
+				</tr>
+			<?php endif; ?>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2" class="text-right"><?php echo \F3::get('lang.PaymentTotal') ?></td>
+					<th>160zł</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
 	<a href="#" class="btn btn-lg btn-success"><?php echo \F3::get('lang.SelectPaymentOptionButton') ?></a>
 </div>
 
