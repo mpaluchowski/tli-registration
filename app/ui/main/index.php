@@ -1,7 +1,9 @@
 <?php echo \View::instance()->render('header.php') ?>
 
 <div class="container">
-  <h1><?php echo \F3::get('lang.RegistrationFormHeader') ?></h1>
+  <div class="page-header">
+    <h1><?php echo \F3::get('lang.RegistrationFormHeader') ?></h1>
+  </div>
 
   <form action="/process" method="POST">
     <h2><?php echo \F3::get('lang.PersonalInformationHeader') ?></h2>
