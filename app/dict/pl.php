@@ -12,6 +12,7 @@ return ['lang' => [
 	'FullNamePlaceholder' => 'Jan Kowalski',
 	'Email' => 'Email',
 	'EmailPlaceholder' => 'jan@example.com',
+	'EmailAlertRegisteredNoPayment' => "Wygląda na to, że mamy już zapisany twój adres e-mail, prawdopodobnie z wcześniej wypełnionej rejestracji. Czy chcesz <a href=\"{0}\">przejść teraz do płatności</a>?",
 	'Phone' => 'Telefon',
 	'PhonePlaceholder' => '+48 555 123 456',
 	'HomeClub' => 'Klub Toastmasters',

@@ -44,9 +44,12 @@ class Main {
 
 		$registrationDao = new \models\RegistrationDao();
 
-		$emailExists = $registrationDao->emailExists($args['email']);
+		$form = $registrationDao->readRegistrationByEmail($args['email']);
 
-		echo $emailExists === true;
+		if (null === $form->getDatePaid())
+			echo $f3->get('lang.EmailAlertRegisteredNoPayment', '/registration/proceed_payment_info');
+		else
+			echo "false";
 	}
 
 }

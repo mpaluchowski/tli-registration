@@ -12,6 +12,7 @@ return ['lang' => [
 	'FullNamePlaceholder' => 'John Doe',
 	'Email' => 'Email',
 	'EmailPlaceholder' => 'john@example.com',
+	'EmailAlertRegisteredNoPayment' => "We seem to already have your e-mail address on file, probably because you filled in this registration form earlier. Would you like to <a href=\"{0}\">proceed to payment</a> now?",
 	'Phone' => 'Phone',
 	'PhonePlaceholder' => '+48 555 123 456',
 	'HomeClub' => 'Home club',
