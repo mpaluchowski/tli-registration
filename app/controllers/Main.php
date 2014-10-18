@@ -50,7 +50,10 @@ class Main {
 			echo json_encode([]);
 		else if (null === $form->getDatePaid()) {
 			echo json_encode([
-				"message" => $f3->get('lang.EmailAlertRegisteredNoPayment', '/registration/proceed_payment_info')
+				"message" => $f3->get(
+					'lang.EmailAlertRegisteredNoPayment',
+					'/registration/proceed_payment_info'
+					)
 				]);
 		}
 	}
