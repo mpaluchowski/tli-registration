@@ -46,10 +46,13 @@ class Main {
 
 		$form = $registrationDao->readRegistrationByEmail($args['email']);
 
-		if (null === $form->getDatePaid())
-			echo $f3->get('lang.EmailAlertRegisteredNoPayment', '/registration/proceed_payment_info');
-		else
-			echo "false";
+		if (null === $form)
+			echo json_encode([]);
+		else if (null === $form->getDatePaid()) {
+			echo json_encode([
+				"message" => $f3->get('lang.EmailAlertRegisteredNoPayment', '/registration/proceed_payment_info')
+				]);
+		}
 	}
 
 }

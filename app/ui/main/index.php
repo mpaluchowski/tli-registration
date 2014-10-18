@@ -12,8 +12,8 @@
       <label for="full-name"><?php echo \F3::get('lang.FullName') ?></label>
       <input type="text" id="full-name" name="full-name" placeholder="<?php echo \F3::get('lang.FullNamePlaceholder') ?>" autocomplete="name" autofocus required maxlength="100" class="form-control">
     </div>
-    <div class="form-group">
-      <label for="email"><?php echo \F3::get('lang.Email') ?></label>
+    <div class="form-group" id="group-email">
+      <label for="email" class="control-label"><?php echo \F3::get('lang.Email') ?></label>
       <input type="email" id="email" name="email" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" autocomplete="email" required class="form-control">
     </div>
     <div class="form-group">
