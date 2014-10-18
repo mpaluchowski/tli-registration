@@ -87,4 +87,13 @@ return ['lang' => [
 	"PaymentTotal" => "Suma",
 
 	"SelectPaymentOptionButton" => "Wybierz sposób płatności",
+
+	"HowProceedToPaymentHeader" => "Jak przejść do płatności?",
+	"HowProceedToPaymentInfo" => "Mamy już zapisaną rejestrację dla adresu e-mail <strong>{0}</strong>, która nie została jeszcze opłacona. Aby umożliwić ci teraz dokonanie opłaty, musimy najpierw upewnić się, że podany adres e-mail należy do ciebie. Zaraz po wypełnieniu formularza wysłaliśmy ci e-mail z odnośnikiem, który pozwala otworzyć szczegóły rejestracji. Aby zapłacić teraz:",
+	"HowProceedToPaymentStep1" => "Znajdź wiadomość e-mail z odnośnikiem, i",
+	"HowProceedToPaymentStep2" => "Kliknij przycisk na dole strony z danymi rejestracji, aby dokonać płatności.",
+	"HowProceedToPaymentHavingTroubleHeader" => "Problemy?",
+	"HowProceedToPaymentHavingTroubleInfo1" => "Jeśli e-mail z odnośnikiem w ogóle do ciebie nie dotarł, najpierw <strong>sprawdź swój folder ze Spamem</strong>. Jeśli tam też go nie ma, chętnie prześlemy ci go ponownie. Kliknij przycisk poniżej, a e-mail powinien dotrzeć w ciągu kilku minut.",
+	"HowProceedToPaymentHavingTroubleResendEmail" => "Wyślij e-mail ponownie",
+	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
 ]];

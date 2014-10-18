@@ -87,4 +87,13 @@ return ['lang' => [
 	"PaymentTotal" => "Grand total",
 
 	"SelectPaymentOptionButton" => "Select payment option",
+
+	"HowProceedToPaymentHeader" => "How can I proceed to payment?",
+	"HowProceedToPaymentInfo" => "We have an existing registration for the e-mail address <strong>{0}</strong>, which hasn't been paid for yet. To let you proceed, we need to make sure it's really you, who owns the said e-mail address. Right after filling in your registration form, you received a message with a unique link that lets you access details of your registration. To proceed to payment now, please:",
+	"HowProceedToPaymentStep1" => "Find the email and click the link, then",
+	"HowProceedToPaymentStep2" => "Scroll down to the bottom of the page with your registration details and click the button to proceed to payment.",
+	"HowProceedToPaymentHavingTroubleHeader" => "Having trouble?",
+	"HowProceedToPaymentHavingTroubleInfo1" => "If you didn't receive the email with the link, please <strong>check your Spam folder</strong> first. If you still cannot find it there, we'll be happy to re-send it to you. Just click the button below and the e-mail should arrive within minutes.",
+	"HowProceedToPaymentHavingTroubleResendEmail" => "Re-send e-mail",
+	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
 ]];

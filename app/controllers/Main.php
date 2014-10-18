@@ -17,6 +17,14 @@ class Main {
 
 		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
 
+		$formCheck = $registrationDao->readRegistrationByEmail($form->getEmail());
+
+		if (null !== $formCheck
+				&& null === $formCheck->getDatePaid()) {
+			$f3->reroute('/registration/info_proceed_to_payment/' . $form->getEmail());
+			die;
+		}
+
 		$registrationDao->saveRegistrationForm($form);
 
 		$f3->reroute('/review/' . $form->getHash());
@@ -38,6 +46,22 @@ class Main {
 		echo \View::instance()->render('main/review.php');
 	}
 
+	function info_proceed_to_payment($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationByEmail($args['email']);
+
+		if (null === $form)
+			$f3->error(404);
+
+		$f3->set("email", $args['email']);
+
+		echo \View::instance()->render('main/info_proceed_to_payment.php');
+	}
+
 	function check_email_exists($f3, $args) {
 		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
 			$f3->error(404);
@@ -52,7 +76,7 @@ class Main {
 			echo json_encode([
 				"message" => $f3->get(
 					'lang.EmailAlertRegisteredNoPayment',
-					'/registration/proceed_payment_info'
+					'/registration/info_proceed_to_payment/' . $args['email']
 					)
 				]);
 		}
