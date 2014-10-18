@@ -8,6 +8,14 @@ tliRegister.registrationForm = function() {
 
 	initEmailExistingCheck = function() {
 		$('#email')
+			.keydown(
+				$.proxy(
+					cleanFieldWarning,
+					$("#email"),
+					"#group-email",
+					"#warning-email"
+					)
+				)
 			.blur(handleEmailExistingCheck);
 	},
 
@@ -41,6 +49,15 @@ tliRegister.registrationForm = function() {
 					.hide()
 				);
 		$("#warning-" + fieldName).slideDown();
+	},
+
+	cleanFieldWarning = function(fieldGroupSelector, fieldWarningSelector) {
+		if (!$(fieldGroupSelector).hasClass("has-warning"))
+			return;
+
+		$(fieldGroupSelector).removeClass("has-warning has-feedback");
+		$("span.glyphicon", $(fieldGroupSelector)).remove();
+		$(fieldWarningSelector).slideUp(function() { $(this).remove() });
 	}
 
 	return {
