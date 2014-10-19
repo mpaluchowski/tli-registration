@@ -15,7 +15,11 @@ class Mailer {
 
 		$smtp->set('From', $this->wrapEmail(\F3::get('email_from')));
 		$smtp->set('Reply-To', $this->wrapEmail(\F3::get('email_reply_to')));
-		$smtp->set('To', $this->wrapEmail($to));
+		$smtp->set('To', $this->wrapEmail($this->getRealToEmail($to)));
+		if ($this->inTestMode()) {
+			$smtp->set('X-Original-To', $this->wrapEmail($to));
+		}
+
 		$smtp->set('Subject', $subject);
 
 		$smtp->send($message);
@@ -45,6 +49,28 @@ class Mailer {
 	 */
 	function emailify($name, $email) {
 		return $name . " " . $this->wrapEmail($email);
+	}
+
+	/**
+	 * Checks if mailer is working in test mode.
+	 *
+	 * @return bool
+	 */
+	function inTestMode() {
+		return (bool)\F3::get('email_test_inbox');
+	}
+
+	/**
+	 * Substitutes provided email with the test destination inbox, if Mailer
+	 * set to work in test mode.
+	 *
+	 * @param email email provided as destination
+	 * @return actual email that should be used
+	 */
+	protected function getRealToEmail($email) {
+		return $this->inTestMode()
+			? \F3::get('email_test_inbox')
+			: $email;
 	}
 
 }
