@@ -17,6 +17,7 @@ class Administration {
 		$registrations = $registrationDao->readAllRegistrationForms();
 		usort($registrations, "\helpers\Sorters::sortRegistrationsByFullName");
 
+		$f3->set('stats', $registrationDao->readRegistrationStatistics());
 		$f3->set('fieldColumns', $registrationDao->readAllRegistrationFieldNames());
 		$f3->set('registrations', $registrations);
 

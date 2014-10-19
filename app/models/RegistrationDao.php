@@ -140,6 +140,20 @@ class RegistrationDao {
 				: $this->parseQueryToForm($result[0]);
 	}
 
+	function readRegistrationStatistics() {
+		$query = 'SELECT COUNT(r.id_registration) AS counted,
+						 COUNT(r.date_paid) AS paid,
+						 MAX(r.date_entered) AS last
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
+		$result = \F3::get('db')->exec($query);
+
+		return (object)[
+			'count' => $result[0]['counted'],
+			'paid' => $result[0]['paid'],
+			'last' => $result[0]['last'],
+		];
+	}
+
 	function readAllRegistrationForms() {
 		$query = 'SELECT r.id_registration,
 						 r.email,
