@@ -27,6 +27,20 @@ class Main {
 
 		$registrationDao->saveRegistrationForm($form);
 
+		$mailer = new \models\Mailer();
+
+		$mailer->sendEmail(
+			$form->getEmail(),
+			$f3->get('lang.EmailRegistrationConfirmationSubject', $form->getEmail()),
+			$f3->get(
+				'lang.EmailRegistrationConfirmationBody',
+				[
+					$form->getEmail(),
+					\helpers\View::getBaseUrl() . '/review/' . $form->getHash(),
+				]
+				)
+			);
+
 		$f3->reroute('/review/' . $form->getHash());
 	}
 
