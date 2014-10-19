@@ -6,7 +6,7 @@ class Administration {
 
 	function beforeroute($f3) {
 		if (!\models\AuthenticationDao::isLoggedIn()) {
-			$f3->reroute('/admin/login');
+			$f3->reroute('@admin_login');
 		}
 	}
 

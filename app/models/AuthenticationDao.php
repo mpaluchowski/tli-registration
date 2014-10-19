@@ -39,6 +39,10 @@ class AuthenticationDao {
 		\F3::set('SESSION.user', $user);
 	}
 
+	function logout() {
+		\F3::clear('SESSION');
+	}
+
 	static function isLoggedIn() {
 		return \F3::exists('SESSION.user');
 	}

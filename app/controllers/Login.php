@@ -5,7 +5,8 @@ namespace controllers;
 class Login {
 
 	function beforeroute($f3) {
-		if (\models\AuthenticationDao::isLoggedIn()) {
+		if (\models\AuthenticationDao::isLoggedIn()
+				&& $f3->get('PATTERN') === $f3->get('ALIASES.admin_login')) {
 			$f3->reroute('/admin');
 		}
 	}
@@ -23,11 +24,19 @@ class Login {
 			);
 
 		if (!$admin) {
-			$f3->reroute('/admin/login');
+			$f3->reroute('@admin_login');
 		} else {
 			$authDao->loginUser($admin);
 			$f3->reroute('/admin');
 		}
+	}
+
+	function logout($f3) {
+		$authDao = new \models\AuthenticationDao();
+
+		$authDao->logout();
+
+		$f3->reroute('@admin_login');
 	}
 
 }
