@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `tli_registrations` (
   `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
   `hash` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `date_entered` datetime NOT NULL,
+  `date_paid` datetime DEFAULT NULL,
   PRIMARY KEY (`id_registration`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -30,11 +30,15 @@ class RegistrationDao {
 		return $form;
 	}
 
-	function parseQueryToForm($registration, $registrationFields) {
+	function parseQueryToForm($registration, $registrationFields = []) {
 		$form = new \models\RegistrationForm();
 
 		$form->setId($registration['id_registration']);
 		$form->setEmail($registration['email']);
+		if (array_key_exists('date_entered', $registration))
+			$form->setDateEntered($registration['date_entered']);
+		if (array_key_exists('date_paid', $registration))
+			$form->setDatePaid($registration['date_paid']);
 
 		foreach ($registrationFields as $field) {
 			$form->setField(
@@ -118,6 +122,22 @@ class RegistrationDao {
 				]);
 
 		return $this->parseQueryToForm($registrationResult[0], $fieldsResult);
+	}
+
+	function readRegistrationByEmail($email) {
+		$query = 'SELECT r.id_registration,
+						 r.email,
+						 r.date_entered,
+						 r.date_paid
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  WHERE r.email = :email';
+		$result = \F3::get('db')->exec($query, [
+					'email' => $email,
+				]);
+
+		return !$result
+				? null
+				: $this->parseQueryToForm($result[0]);
 	}
 
 }

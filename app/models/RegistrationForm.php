@@ -7,7 +7,7 @@ class RegistrationForm {
 	private $id;
 	private $email;
 	private $dateEntered;
-	private $dateConfirmed;
+	private $datePaid;
 	private $fields = [];
 
 	function getId() {
@@ -24,6 +24,22 @@ class RegistrationForm {
 
 	function setEmail($email) {
 		$this->email = $email;
+	}
+
+	function getDateEntered() {
+		return $this->dateEntered;
+	}
+
+	function setDateEntered($dateEntered) {
+		$this->dateEntered = $dateEntered;
+	}
+
+	function getDatePaid() {
+		return $this->datePaid;
+	}
+
+	function setDatePaid($datePaid) {
+		$this->datePaid = $datePaid;
 	}
 
 	function getFields() {

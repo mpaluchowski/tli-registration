@@ -17,7 +17,31 @@ class Main {
 
 		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
 
+		// Check if e-mail already registered
+		$formCheck = $registrationDao->readRegistrationByEmail($form->getEmail());
+
+		if (null !== $formCheck
+				&& null === $formCheck->getDatePaid()) {
+			$f3->reroute('/registration/info_proceed_to_payment/' . $form->getEmail());
+			die;
+		}
+
 		$registrationDao->saveRegistrationForm($form);
+
+		// Send confirmation e-mail
+		$mailer = new \models\Mailer();
+
+		$mailer->sendEmail(
+			$form->getEmail(),
+			$f3->get('lang.EmailRegistrationConfirmationSubject', $form->getEmail()),
+			$f3->get(
+				'lang.EmailRegistrationConfirmationBody',
+				[
+					$form->getEmail(),
+					\helpers\View::getBaseUrl() . '/review/' . $form->getHash(),
+				]
+				)
+			);
 
 		$f3->reroute('/review/' . $form->getHash());
 	}
@@ -36,6 +60,79 @@ class Main {
 		$f3->set('form', $form);
 
 		echo \View::instance()->render('main/review.php');
+	}
+
+	function info_proceed_to_payment($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationByEmail($args['email']);
+
+		if (null === $form)
+			$f3->error(404);
+
+		$f3->set("email", $args['email']);
+
+		echo \View::instance()->render('main/info_proceed_to_payment.php');
+	}
+
+	function check_email_exists($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationByEmail($args['email']);
+
+		if (null === $form)
+			echo json_encode([]);
+		else if (null === $form->getDatePaid()) {
+			echo json_encode([
+				"message" => $f3->get(
+					'lang.EmailAlertRegisteredNoPayment',
+					'/registration/info_proceed_to_payment/' . $args['email']
+					)
+				]);
+		}
+	}
+
+	function resend_email($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationByEmail($args['email']);
+
+		if (null === $form)
+			$f3->error(404);
+
+		$mailer = new \models\Mailer();
+
+		$mailer->sendEmail(
+			$args['email'],
+			$f3->get('lang.EmailRegistrationConfirmationSubject', $args['email']),
+			$f3->get(
+				'lang.EmailRegistrationConfirmationBody',
+				[
+					$args['email'],
+					\helpers\View::getBaseUrl() . '/review/' . $form->getHash(),
+				]
+				)
+			);
+
+		$f3->reroute('/registration/resend_email_confirm/' . $args['email']);
+	}
+
+	function resend_email_confirm($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$f3->set("email", $args['email']);
+
+		echo \View::instance()->render('main/resend_email_confirm.php');
 	}
 
 }
