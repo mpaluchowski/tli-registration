@@ -9,7 +9,7 @@ class Registration {
 
 		$f3->set('clubs', $dictionaryDao->readAllClubs());
 
-		echo \View::instance()->render('main/index.php');
+		echo \View::instance()->render('registration/index.php');
 	}
 
 	function process_registration($f3) {
@@ -59,7 +59,7 @@ class Registration {
 
 		$f3->set('form', $form);
 
-		echo \View::instance()->render('main/review.php');
+		echo \View::instance()->render('registration/review.php');
 	}
 
 	function info_proceed_to_payment($f3, $args) {
@@ -75,7 +75,7 @@ class Registration {
 
 		$f3->set("email", $args['email']);
 
-		echo \View::instance()->render('main/info_proceed_to_payment.php');
+		echo \View::instance()->render('registration/info_proceed_to_payment.php');
 	}
 
 	function check_email_exists($f3, $args) {
@@ -132,7 +132,7 @@ class Registration {
 
 		$f3->set("email", $args['email']);
 
-		echo \View::instance()->render('main/resend_email_confirm.php');
+		echo \View::instance()->render('registration/resend_email_confirm.php');
 	}
 
 }
