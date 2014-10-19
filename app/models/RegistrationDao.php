@@ -140,4 +140,57 @@ class RegistrationDao {
 				: $this->parseQueryToForm($result[0]);
 	}
 
+	function readAllRegistrationForms() {
+		$query = 'SELECT r.id_registration,
+						 r.email,
+						 r.date_entered,
+						 r.date_paid
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  ORDER BY r.id_registration';
+		$resultRegistrations = \F3::get('db')->exec($query);
+
+		if (!$resultRegistrations)
+			return [];
+
+		$query = 'SELECT rf.fk_registration,
+						 rf.name,
+						 rf.value
+				  FROM ' . \F3::get('db_table_prefix') . 'registration_fields rf
+				  ORDER BY rf.fk_registration';
+		$resultFields = \F3::get('db')->exec($query);
+
+		$registrations = [];
+		$currentIndex = 0;
+		foreach ($resultRegistrations as $registration) {
+			$fields = [];
+
+			while ($currentIndex != count($resultFields)
+				&& $resultFields[$currentIndex]['fk_registration']
+					== $registration['id_registration']) {
+				$fields[] = $resultFields[$currentIndex];
+				$currentIndex++;
+			}
+
+			$registrations[] = $this->parseQueryToForm(
+				$registration,
+				$fields
+				);
+		}
+
+		return $registrations;
+	}
+
+	function readAllRegistrationFieldNames() {
+		$query = 'SELECT DISTINCT rf.name
+				  FROM ' . \F3::get('db_table_prefix') . 'registration_fields rf
+				  ORDER BY rf.name';
+		$result = \F3::get('db')->exec($query);
+
+		$fieldNames = [];
+		foreach ($result as $row) {
+			$fieldNames[] = $row['name'];
+		}
+		return $fieldNames;
+	}
+
 }

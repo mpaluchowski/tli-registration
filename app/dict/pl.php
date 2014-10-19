@@ -97,7 +97,18 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Wyślij e-mail ponownie",
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
 
-
 	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
 	"EmailRegistrationConfirmationBody" => "Przyjęliśmy twoją rejestrację dla adresu e-mail {0}. Możesz wrócić do niej w każdej chwili pod adresem: " . PHP_EOL . PHP_EOL . "{1}",
+
+	"RegistrationsListHeader" => "Lista rejestracji",
+	"RegistrationsListIntro" => "Mamy aktualnie {0} rejestracji.",
+
+	"DateEntered" => "Data wpisania",
+	"DatePaid" => "Data opłacenia",
+
+	"SignInHeader" => "Zaloguj się",
+	"Password" => "Hasło",
+	"SignInButton" => "Zaloguj",
+	"LogoutButton" => "Wyloguj",
+	"SignedInAs" => "Zalogowany jako {0}",
 ]];
