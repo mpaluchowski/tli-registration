@@ -4,7 +4,7 @@ namespace controllers;
 
 class Registration {
 
-	function index($f3) {
+	function form($f3) {
 		$dictionaryDao = new \models\DictionaryDao();
 
 		$f3->set('clubs', $dictionaryDao->readAllClubs());
@@ -12,7 +12,7 @@ class Registration {
 		echo \View::instance()->render('registration/index.php');
 	}
 
-	function process_registration($f3) {
+	function form_process($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
 		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
@@ -38,15 +38,15 @@ class Registration {
 				'lang.EmailRegistrationConfirmationBody',
 				[
 					$form->getEmail(),
-					\helpers\View::getBaseUrl() . '/review/' . $form->getHash(),
+					\helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash(),
 				]
 				)
 			);
 
-		$f3->reroute('/review/' . $form->getHash());
+		$f3->reroute('/registration/review/' . $form->getHash());
 	}
 
-	function registration_review($f3, $args) {
+	function review($f3, $args) {
 		if (!is_string($args['registrationHash']) && 40 != strlen($args['registrationHash'] + 0))
 			$f3->error(404);
 
@@ -118,7 +118,7 @@ class Registration {
 				'lang.EmailRegistrationConfirmationBody',
 				[
 					$args['email'],
-					\helpers\View::getBaseUrl() . '/review/' . $form->getHash(),
+					\helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash(),
 				]
 				)
 			);
