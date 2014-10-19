@@ -4,6 +4,14 @@ namespace models;
 
 class Mailer {
 
+	/**
+	 * Send an email.
+	 *
+	 * @param to recipient's email
+	 * @param subject subject of the email
+	 * @param message plaintext message to send as email
+	 * @return bool true when succeeded, false otherwise
+	 */
 	function sendEmail($to, $subject, $message) {
 		$smtp = new \SMTP(
 			\F3::get('smtp_host'),
@@ -22,7 +30,7 @@ class Mailer {
 
 		$smtp->set('Subject', $subject);
 
-		$smtp->send($message);
+		return $smtp->send($message);
 	}
 
 	/**
