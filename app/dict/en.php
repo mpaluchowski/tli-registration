@@ -100,6 +100,9 @@ return ['lang' => [
 	"EmailRegistrationConfirmationSubject" => "Registration confirmation for {0}",
 	"EmailRegistrationConfirmationBody" => "We received your registration for the e-mail address {0}. You can access and review your registration at any time at: " . PHP_EOL . PHP_EOL . "{1}",
 
+	"SendEmailSuccessHeader" => "Registration e-mail sent to {0}",
+	"SendEmailSuccessInfo" => "We successfully sent an e-mail to your address at <strong>{0}</strong>. Please allow a few minutes for it to arrive.",
+
 	"SendEmailProblemHeader" => "Problem sending email to {0}",
 	"SendEmailProblemInfo" => "Sorry about that. There's been some hiccup on the way and we couldn't get your e-mail out to <strong>{0}</strong>. This may be a one-time problem, so before calling the cavalry please do try this one more time by clicking the button below. If you get to this very same page, contact the person responsible for registration.",
 
