@@ -17,6 +17,7 @@ class Main {
 
 		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
 
+		// Check if e-mail already registered
 		$formCheck = $registrationDao->readRegistrationByEmail($form->getEmail());
 
 		if (null !== $formCheck
@@ -27,6 +28,7 @@ class Main {
 
 		$registrationDao->saveRegistrationForm($form);
 
+		// Send confirmation e-mail
 		$mailer = new \models\Mailer();
 
 		$mailer->sendEmail(
