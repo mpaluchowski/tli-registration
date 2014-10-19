@@ -106,6 +106,17 @@ class Main {
 				]
 				)
 			);
+
+		$f3->reroute('/registration/resend_email_confirm/' . $args['email']);
+	}
+
+	function resend_email_confirm($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$f3->set("email", $args['email']);
+
+		echo \View::instance()->render('main/resend_email_confirm.php');
 	}
 
 }
