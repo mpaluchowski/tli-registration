@@ -47,4 +47,8 @@ class AuthenticationDao {
 		return \F3::exists('SESSION.user');
 	}
 
+	static function getUser() {
+		return \F3::get('SESSION.user');
+	}
+
 }

@@ -109,4 +109,6 @@ return ['lang' => [
 	"SignInHeader" => "Zaloguj się",
 	"Password" => "Hasło",
 	"SignInButton" => "Zaloguj",
+	"LogoutButton" => "Wyloguj",
+	"SignedInAs" => "Zalogowany jako {0}",
 ]];

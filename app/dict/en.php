@@ -109,4 +109,6 @@ return ['lang' => [
 	"SignInHeader" => "Please sign in",
 	"Password" => "Password",
 	"SignInButton" => "Sign in",
+	"LogoutButton" => "Logout",
+	"SignedInAs" => "Signed in as {0}",
 ]];

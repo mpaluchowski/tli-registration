@@ -8,6 +8,7 @@ class Administration {
 		if (!\models\AuthenticationDao::isLoggedIn()) {
 			$f3->reroute('@admin_login');
 		}
+		$f3->set('user', \models\AuthenticationDao::getUser());
 	}
 
 	function list_registrations($f3) {
