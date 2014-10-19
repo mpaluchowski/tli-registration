@@ -96,4 +96,7 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo1" => "If you didn't receive the email with the link, please <strong>check your Spam folder</strong> first. If you still cannot find it there, we'll be happy to re-send it to you. Just click the button below and the e-mail should arrive within minutes.",
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Re-send e-mail",
 	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
+
+	"EmailRegistrationConfirmationSubject" => "Registration confirmation for {0}",
+	"EmailRegistrationConfirmationBody" => "We received your registration for the e-mail address {0}. You can access and review your registration at any time at: " . PHP_EOL . PHP_EOL . "{1}",
 ]];

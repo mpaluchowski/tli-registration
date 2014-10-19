@@ -20,7 +20,7 @@
 			<p><?php echo \F3::get('lang.HowProceedToPaymentHavingTroubleInfo1') ?></p>
 
 			<p>
-				<a href="#" class="btn btn-primary active" role="button"><?php echo \F3::get('lang.HowProceedToPaymentHavingTroubleResendEmail') ?></a>
+				<a href="/registration/resend_email/<?php echo $email ?>" class="btn btn-primary active" role="button"><?php echo \F3::get('lang.HowProceedToPaymentHavingTroubleResendEmail') ?></a>
 			</p>
 
 			<p><?php echo \F3::get('lang.HowProceedToPaymentHavingTroubleInfo2') ?></p>

@@ -82,4 +82,30 @@ class Main {
 		}
 	}
 
+	function resend_email($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationByEmail($args['email']);
+
+		if (null === $form)
+			$f3->error(404);
+
+		$mailer = new \models\Mailer();
+
+		$mailer->sendEmail(
+			$args['email'],
+			$f3->get('lang.EmailRegistrationConfirmationSubject', $args['email']),
+			$f3->get(
+				'lang.EmailRegistrationConfirmationBody',
+				[
+					$args['email'],
+					\helpers\View::getBaseUrl() . '/review/' . $form->getHash(),
+				]
+				)
+			);
+	}
+
 }

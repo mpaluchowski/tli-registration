@@ -96,4 +96,8 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo1" => "Jeśli e-mail z odnośnikiem w ogóle do ciebie nie dotarł, najpierw <strong>sprawdź swój folder ze Spamem</strong>. Jeśli tam też go nie ma, chętnie prześlemy ci go ponownie. Kliknij przycisk poniżej, a e-mail powinien dotrzeć w ciągu kilku minut.",
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Wyślij e-mail ponownie",
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
+
+
+	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
+	"EmailRegistrationConfirmationBody" => "Przyjęliśmy twoją rejestrację dla adresu e-mail {0}. Możesz wrócić do niej w każdej chwili pod adresem: " . PHP_EOL . PHP_EOL . "{1}",
 ]];
