@@ -2,7 +2,7 @@
 
 namespace controllers;
 
-class Main {
+class Registration {
 
 	function index($f3) {
 		$dictionaryDao = new \models\DictionaryDao();
