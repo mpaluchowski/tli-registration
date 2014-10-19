@@ -2,17 +2,17 @@
 
 namespace controllers;
 
-class Main {
+class Registration {
 
-	function index($f3) {
+	function form($f3) {
 		$dictionaryDao = new \models\DictionaryDao();
 
 		$f3->set('clubs', $dictionaryDao->readAllClubs());
 
-		echo \View::instance()->render('main/index.php');
+		echo \View::instance()->render('registration/index.php');
 	}
 
-	function process_registration($f3) {
+	function form_process($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
 		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
@@ -38,15 +38,15 @@ class Main {
 				'lang.EmailRegistrationConfirmationBody',
 				[
 					$form->getEmail(),
-					\helpers\View::getBaseUrl() . '/review/' . $form->getHash(),
+					\helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash(),
 				]
 				)
 			);
 
-		$f3->reroute('/review/' . $form->getHash());
+		$f3->reroute('/registration/review/' . $form->getHash());
 	}
 
-	function registration_review($f3, $args) {
+	function review($f3, $args) {
 		if (!is_string($args['registrationHash']) && 40 != strlen($args['registrationHash'] + 0))
 			$f3->error(404);
 
@@ -59,7 +59,7 @@ class Main {
 
 		$f3->set('form', $form);
 
-		echo \View::instance()->render('main/review.php');
+		echo \View::instance()->render('registration/review.php');
 	}
 
 	function info_proceed_to_payment($f3, $args) {
@@ -75,7 +75,7 @@ class Main {
 
 		$f3->set("email", $args['email']);
 
-		echo \View::instance()->render('main/info_proceed_to_payment.php');
+		echo \View::instance()->render('registration/info_proceed_to_payment.php');
 	}
 
 	function check_email_exists($f3, $args) {
@@ -118,7 +118,7 @@ class Main {
 				'lang.EmailRegistrationConfirmationBody',
 				[
 					$args['email'],
-					\helpers\View::getBaseUrl() . '/review/' . $form->getHash(),
+					\helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash(),
 				]
 				)
 			);
@@ -132,7 +132,7 @@ class Main {
 
 		$f3->set("email", $args['email']);
 
-		echo \View::instance()->render('main/resend_email_confirm.php');
+		echo \View::instance()->render('registration/resend_email_confirm.php');
 	}
 
 }

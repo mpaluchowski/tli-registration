@@ -24,7 +24,7 @@ tliRegister.registrationForm = function() {
 			return;
 
 		$.getJSON(
-			'/email_exists/' + $(this).val(),
+			'/registration/email_exists/' + $(this).val(),
 			function(data, textStatus) {
 				if (undefined !== data.message) {
 					displayFieldWarning("#group-email", "email", data.message);
