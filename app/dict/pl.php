@@ -100,6 +100,12 @@ return ['lang' => [
 	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
 	"EmailRegistrationConfirmationBody" => "Przyjęliśmy twoją rejestrację dla adresu e-mail {0}. Możesz wrócić do niej w każdej chwili pod adresem: " . PHP_EOL . PHP_EOL . "{1}",
 
+	"SendEmailSuccessHeader" => "Email wysłany do {0}",
+	"SendEmailSuccessInfo" => "Email z informacją o rejestracji został wysłany pod adres <strong>{0}</strong>. Powinien dotrzeć w przeciągu kilku minut.",
+
+	"SendEmailProblemHeader" => "Problem przy wysyłaniu maila do {0}",
+	"SendEmailProblemInfo" => "Przepraszamy serdecznie. Coś po drodze odbiło się czkawką i nie byliśmy w stanie wysłać maila pod twój adres <strong>{0}</strong>. To może być jednorazowy problem, więc zanim zadzwonisz po kawalerię, spróbuj jeszcze raz klikając na przycisk poniżej. Jeśli wrócisz na tą samą stronę, skontaktuj się z osobą odpowiedzialną za rejestrację",
+
 	"RegistrationsListHeader" => "Lista rejestracji",
 	"RegistrationsListIntro" => "Mamy aktualnie {0} rejestracji.",
 
