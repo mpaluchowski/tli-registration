@@ -3,6 +3,7 @@
 
 # SASS cache and CSS output
 *.css
+*.css.map
 .sass-cache/
 
 # Fatfree

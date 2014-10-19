@@ -4,6 +4,12 @@ namespace controllers;
 
 class Administration {
 
+	function beforeroute($f3) {
+		if (!\models\AuthenticationDao::isLoggedIn()) {
+			$f3->reroute('/admin/login');
+		}
+	}
+
 	function list_registrations($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
