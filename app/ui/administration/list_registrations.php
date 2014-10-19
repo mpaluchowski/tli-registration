@@ -26,6 +26,7 @@
 	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->paid, strftime("%c", strtotime($stats->last))]) ?></p>
 </div>
 
+<div class="container-fluid">
 <div class="table-responsive">
 	<table class="table table-striped">
 		<thead>
@@ -55,6 +56,7 @@
 	<?php endforeach; ?>
 		</tbody>
 	</table>
+</div>
 </div>
 
 <?php echo \View::instance()->render('footer.php') ?>
