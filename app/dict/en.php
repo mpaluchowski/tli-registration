@@ -99,4 +99,10 @@ return ['lang' => [
 
 	"EmailRegistrationConfirmationSubject" => "Registration confirmation for {0}",
 	"EmailRegistrationConfirmationBody" => "We received your registration for the e-mail address {0}. You can access and review your registration at any time at: " . PHP_EOL . PHP_EOL . "{1}",
+
+	"RegistrationsListHeader" => "Registrations list",
+	"RegistrationsListIntro" => "We currently have {0} registrations on file.",
+
+	"DateEntered" => "Date entered",
+	"DatePaid" => "Date paid",
 ]];
