@@ -111,7 +111,7 @@ class Registration {
 
 		$mailer = new \models\Mailer();
 
-		$mailer->sendEmail(
+		$result = $mailer->sendEmail(
 			$args['email'],
 			$f3->get('lang.EmailRegistrationConfirmationSubject', $args['email']),
 			$f3->get(
@@ -123,7 +123,10 @@ class Registration {
 				)
 			);
 
-		$f3->reroute('/registration/resend_email_confirm/' . $args['email']);
+		if ($result)
+			$f3->reroute('/registration/resend_email_confirm/' . $args['email']);
+		else
+			$f3->reroute('/registration/resend_email_failed/' . $args['email']);
 	}
 
 	function resend_email_confirm($f3, $args) {
@@ -133,6 +136,15 @@ class Registration {
 		$f3->set("email", $args['email']);
 
 		echo \View::instance()->render('registration/resend_email_confirm.php');
+	}
+
+	function resend_email_failed($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$f3->set('email', $args['email']);
+
+		echo \View::instance()->render('registration/resend_email_failed.php');
 	}
 
 }
