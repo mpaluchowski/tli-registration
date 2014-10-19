@@ -23,7 +23,7 @@
 			<tr>
 				<td><?php echo $registration->getEmail() ?></td>
 				<td><?php echo strftime("%c", strtotime($registration->getDateEntered())) ?></td>
-				<td><?php echo $registration->getDatePaid() ? strftime("%c", strtotime($registration->getDatePaid())) : "" ?></td>
+				<td><?php echo $registration->getDatePaid() ? strftime("%c", strtotime($registration->getDatePaid())) : "&mdash;" ?></td>
 	<?php foreach ($fieldColumns as $column): ?>
 				<td><?php echo $registration->hasField($column)
 					? (
@@ -31,7 +31,7 @@
 						? implode(', ', $registration->getField($column))
 						: $registration->getField($column)
 						)
-					: "" ?></td>
+					: "&mdash;" ?></td>
 	<?php endforeach; ?>
 			</tr>
 	<?php endforeach; ?>
