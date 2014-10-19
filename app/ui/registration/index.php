@@ -5,7 +5,7 @@
     <h1><?php echo \F3::get('lang.RegistrationFormHeader') ?></h1>
   </div>
 
-  <form action="/process" method="POST">
+  <form action="<?php echo \F3::get('ALIASES.registration_process') ?>" method="POST">
     <h2><?php echo \F3::get('lang.PersonalInformationHeader') ?></h2>
 
     <div class="form-group">
