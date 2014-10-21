@@ -18,6 +18,7 @@ return ['lang' => [
 	'HomeClub' => 'Klub Toastmasters',
 	'HomeClubNonMember' => "Nie jestem członkiem Toastmasters",
 	'HomeClubNotListed' => "Mojego klubu nie ma na liście",
+	'HomeClubClubs' => "Kluby",
 	'ExecCommmitteePosition' => "Pozycja w Zarządzie klubu",
 	'ExecCommmitteePosition-none' => "Nie jestem członkiem zarządu",
 	'ExecCommmitteePosition-president' => "Prezes",

@@ -18,6 +18,7 @@ return ['lang' => [
 	'HomeClub' => 'Home club',
 	'HomeClubNonMember' => "I'm not a member of Toastmasters",
 	'HomeClubNotListed' => "My club is not on this list",
+	'HomeClubClubs' => "Clubs",
 	'ExecCommmitteePosition' => "Executive Committee position",
 	'ExecCommmitteePosition-none' => "I hold no position",
 	'ExecCommmitteePosition-president' => "President",
