@@ -4,6 +4,7 @@ tliRegister.registrationForm = function() {
 
 	var init = function() {
 		initEmailExistingCheck();
+		initCustomClubEntry();
 	},
 
 	initEmailExistingCheck = function() {
@@ -58,6 +59,25 @@ tliRegister.registrationForm = function() {
 		$(fieldGroupSelector).removeClass("has-warning has-feedback");
 		$("span.glyphicon", $(fieldGroupSelector)).remove();
 		$(fieldWarningSelector).slideUp(function() { $(this).remove() });
+	},
+
+	initCustomClubEntry = function() {
+		$("#home-club-custom")
+			.hide();
+		$("#home-club-custom-help").hide();
+		$("#home-club").change(handleHomeClubSelection);
+	},
+
+	handleHomeClubSelection = function() {
+		if ($(this).val() === "Other") {
+			$("#home-club-custom-help:hidden").slideDown();
+			$("#home-club-custom:hidden").slideDown()
+				.prop("required", true);
+		} else {
+			$("#home-club-custom-help:visible").slideUp();
+			$("#home-club-custom:visible").slideUp()
+				.val("").prop("required", false);
+		}
 	}
 
 	return {
