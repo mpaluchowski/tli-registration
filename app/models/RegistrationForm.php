@@ -58,6 +58,10 @@ class RegistrationForm {
 		$this->fields[$key] = $value;
 	}
 
+	function clearField($key) {
+		unset($this->fields[$key]);
+	}
+
 	function getHash() {
 		return sha1($this->email);
 	}

@@ -32,6 +32,8 @@
         <?php endforeach; ?>
         </optgroup>
       </select>
+      <p id="home-club-custom-help" class="help-block"><?php echo \F3::get('lang.HomeClubCustomHelp', \F3::get('lang.HomeClubNotListed')) ?></p>
+      <input type="text" id="home-club-custom" name="home-club-custom" placeholder="<?php echo \F3::get('lang.HomeClubCustomPlaceholder') ?>" class="form-control">
     </div>
 
     <div class="form-group">
