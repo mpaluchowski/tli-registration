@@ -1,5 +1,5 @@
 <?php
-$bodyClass="signin";
+\F3::set('bodyClass', "signin");
 ?>
 
 <?php echo \View::instance()->render('header.php') ?>
