@@ -39,4 +39,21 @@ class DictionaryDao {
 		return $clubs;
 	}
 
+	/**
+	 * Saves a new, custom club in the database dictionary.
+	 *
+	 * @param name string name of the club to save.
+	 * @return ID of the newly added club row.
+	 */
+	function createClub($name) {
+		$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'clubs (
+					name
+					)
+				  VALUES (:name)';
+		\F3::get('db')->exec($query, [
+					'name' => $name,
+				]);
+		return \F3::get('db')->lastInsertID();
+	}
+
 }
