@@ -62,9 +62,10 @@ tliRegister.registrationForm = function() {
 	},
 
 	initCustomClubEntry = function() {
-		$("#home-club-custom")
-			.hide();
-		$("#home-club-custom-help").hide();
+		if ($("#home-club").val() !== "Other") {
+			$("#home-club-custom").hide();
+			$("#home-club-custom-help").hide();
+		}
 		$("#home-club").change(handleHomeClubSelection);
 	},
 
