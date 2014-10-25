@@ -7,7 +7,7 @@
 
 	<p><?php echo \F3::get('lang.SendEmailProblemInfo', $email) ?></p>
 	<p>
-		<a href="/registration/resend_email/<?php echo $email ?>" class="btn btn-primary active" role="button"><?php echo \F3::get('lang.HowProceedToPaymentHavingTroubleResendEmail') ?></a>
+		<a href="<?php echo \F3::get('ALIASES.registration_email') ?>" class="btn btn-primary active" role="button"><?php echo \F3::get('lang.HowProceedToPaymentHavingTroubleResendEmail') ?></a>
 	</p>
 </div>
 

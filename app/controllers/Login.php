@@ -7,7 +7,7 @@ class Login {
 	function beforeroute($f3) {
 		if (\models\AuthenticationDao::isLoggedIn()
 				&& $f3->get('PATTERN') === $f3->get('ALIASES.admin_login')) {
-			$f3->reroute('/admin');
+			$f3->reroute('@admin_registrations_list');
 		}
 	}
 
@@ -27,7 +27,7 @@ class Login {
 			$f3->reroute('@admin_login');
 		} else {
 			$authDao->loginUser($admin);
-			$f3->reroute('/admin');
+			$f3->reroute('@admin_registrations_list');
 		}
 	}
 

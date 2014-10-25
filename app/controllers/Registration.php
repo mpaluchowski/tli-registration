@@ -22,7 +22,7 @@ class Registration {
 
 		if (null !== $formCheck
 				&& null === $formCheck->getDatePaid()) {
-			$f3->reroute('/registration/info_proceed_to_payment/' . $form->getEmail());
+			$f3->reroute('@registration_payment_info(@email=' . $form->getEmail() . ')');
 			die;
 		}
 
@@ -43,7 +43,7 @@ class Registration {
 				)
 			);
 
-		$f3->reroute('/registration/review/' . $form->getHash());
+		$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 	}
 
 	function review($f3, $args) {
@@ -124,9 +124,9 @@ class Registration {
 			);
 
 		if ($result)
-			$f3->reroute('/registration/resend_email_confirm/' . $args['email']);
+			$f3->reroute('@registration_email_confirm(@email=' . $args['email'] . ')');
 		else
-			$f3->reroute('/registration/resend_email_failed/' . $args['email']);
+			$f3->reroute('@registration_email_failed(@email=' . $args['email'] . ')');
 	}
 
 	function resend_email_confirm($f3, $args) {
