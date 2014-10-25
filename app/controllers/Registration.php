@@ -26,14 +26,9 @@ class Registration {
 			die;
 		}
 
-		// Check if a custom club name was entered
-		if ($form->hasField('home-club-custom')
-				&& $form->getField('home-club-custom')) {
-			$dictionaryDao = new \models\DictionaryDao();
-			$dictionaryDao->createClub($form->getField('home-club-custom'));
-
-			$form->setField('home-club', $form->getField('home-club-custom'));
-			$form->clearField('home-club-custom');
+		if ($f3->get("form_processor")) {
+			$processor = $f3->get("form_processor");
+			$processor::processOnSubmit($form);
 		}
 
 		$registrationDao->saveRegistrationForm($form);
