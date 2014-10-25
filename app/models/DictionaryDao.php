@@ -40,13 +40,14 @@ class DictionaryDao {
 	}
 
 	/**
-	 * Saves a new, custom club in the database dictionary.
+	 * Saves a new, custom club in the database dictionary. Will ignore entries
+	 * for already existing club names.
 	 *
 	 * @param name string name of the club to save.
 	 * @return ID of the newly added club row.
 	 */
 	function createClub($name) {
-		$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'clubs (
+		$query = 'INSERT IGNORE INTO ' . \F3::get('db_table_prefix') . 'clubs (
 					name
 					)
 				  VALUES (:name)';
