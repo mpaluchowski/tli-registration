@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS `tli_administrators` (
 CREATE TABLE IF NOT EXISTS `tli_clubs` (
   `id_club` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id_club`)
+  PRIMARY KEY (`id_club`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Data exporting was unselected.

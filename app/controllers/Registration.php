@@ -26,6 +26,11 @@ class Registration {
 			die;
 		}
 
+		if ($f3->get("form_processor")) {
+			$processor = $f3->get("form_processor");
+			$processor::processOnSubmit($form);
+		}
+
 		$registrationDao->saveRegistrationForm($form);
 
 		// Send confirmation e-mail

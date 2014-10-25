@@ -25,11 +25,15 @@
       <label for="home-club"><?php echo \F3::get('lang.HomeClub') ?></label>
       <select name="home-club" id="home-club" class="form-control">
         <option value="None"><?php echo \F3::get('lang.HomeClubNonMember') ?></option>
-      <?php foreach ($clubs as $club): ?>
-        <option value="<?php echo $club->name ?>"><?php echo $club->name ?></option>
-      <?php endforeach; ?>
         <option value="Other"><?php echo \F3::get('lang.HomeClubNotListed') ?></option>
+        <optgroup label="<?php echo \F3::get('lang.HomeClubClubs') ?>">
+        <?php foreach ($clubs as $club): ?>
+          <option value="<?php echo $club->name ?>"><?php echo $club->name ?></option>
+        <?php endforeach; ?>
+        </optgroup>
       </select>
+      <p id="home-club-custom-help" class="help-block"><?php echo \F3::get('lang.HomeClubCustomHelp', \F3::get('lang.HomeClubNotListed')) ?></p>
+      <input type="text" id="home-club-custom" name="home-club-custom" placeholder="<?php echo \F3::get('lang.HomeClubCustomPlaceholder') ?>" class="form-control">
     </div>
 
     <div class="form-group">
