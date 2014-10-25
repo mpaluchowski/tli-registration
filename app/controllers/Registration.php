@@ -17,6 +17,11 @@ class Registration {
 
 		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
 
+		if ($f3->get("form_validator")) {
+			$validator = $f3->get("form_validator");
+			$messages = $validator::validateOnSubmit($form);
+		}
+
 		// Check if e-mail already registered
 		$formCheck = $registrationDao->readRegistrationByEmail($form->getEmail());
 
