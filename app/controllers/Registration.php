@@ -5,10 +5,9 @@ namespace controllers;
 class Registration {
 
 	function form($f3) {
-		if ($f3->get('SESSION.registration')) {
+		if (\models\FlashScope::has('registration')) {
 			// Coming in with validation errors
-			$f3->set('registration', $f3->get('SESSION.registration'));
-			$f3->clear('SESSION.registration');
+			$f3->set('registration', \models\FlashScope::pop('registration'));
 		}
 
 		$dictionaryDao = new \models\DictionaryDao();
@@ -29,11 +28,14 @@ class Registration {
 
 			if (0 !== count($messages)) {
 				// Messages found, redirect back to form and show errors
-				$f3->set('SESSION.registration.messages', $messages);
-				$f3->set('SESSION.registration.email', $form->getEmail());
+				$registration = [
+					'messages' => $messages,
+					'email' => $form->getEmail(),
+					];
 				foreach ($form->getFields() as $name => $value) {
-					$f3->set('SESSION.registration.' . $name, $value);
+					$registration[$name] = $value;
 				}
+				\models\FlashScope::push('registration', $registration);
 				$f3->reroute('@registration_form');
 			}
 		}
