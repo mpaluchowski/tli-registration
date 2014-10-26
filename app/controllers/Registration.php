@@ -5,6 +5,11 @@ namespace controllers;
 class Registration {
 
 	function form($f3) {
+		if (\models\FlashScope::has('registration')) {
+			// Coming in with validation errors
+			$f3->set('registration', \models\FlashScope::pop('registration'));
+		}
+
 		$dictionaryDao = new \models\DictionaryDao();
 
 		$f3->set('clubs', $dictionaryDao->readAllClubs());
@@ -16,6 +21,24 @@ class Registration {
 		$registrationDao = new \models\RegistrationDao();
 
 		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
+
+		if ($f3->get("form_validator")) {
+			$validator = $f3->get("form_validator");
+			$messages = $validator::validateOnSubmit($form);
+
+			if (0 !== count($messages)) {
+				// Messages found, redirect back to form and show errors
+				$registration = [
+					'messages' => $messages,
+					'email' => $form->getEmail(),
+					];
+				foreach ($form->getFields() as $name => $value) {
+					$registration[$name] = $value;
+				}
+				\models\FlashScope::push('registration', $registration);
+				$f3->reroute('@registration_form');
+			}
+		}
 
 		// Check if e-mail already registered
 		$formCheck = $registrationDao->readRegistrationByEmail($form->getEmail());
@@ -48,6 +71,7 @@ class Registration {
 				)
 			);
 
+		// Reroute to an overview of the registration
 		$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 	}
 
