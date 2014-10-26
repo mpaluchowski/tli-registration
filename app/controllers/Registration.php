@@ -5,6 +5,12 @@ namespace controllers;
 class Registration {
 
 	function form($f3) {
+		if ($f3->get('SESSION.registration')) {
+			// Coming in with validation errors
+			$f3->set('registration', $f3->get('SESSION.registration'));
+			$f3->clear('SESSION.registration');
+		}
+
 		$dictionaryDao = new \models\DictionaryDao();
 
 		$f3->set('clubs', $dictionaryDao->readAllClubs());
@@ -20,6 +26,16 @@ class Registration {
 		if ($f3->get("form_validator")) {
 			$validator = $f3->get("form_validator");
 			$messages = $validator::validateOnSubmit($form);
+
+			if (0 !== count($messages)) {
+				// Messages found, redirect back to form and show errors
+				$f3->set('SESSION.registration.messages', $messages);
+				$f3->set('SESSION.registration.email', $form->getEmail());
+				foreach ($form->getFields() as $name => $value) {
+					$f3->set('SESSION.registration.' . $name, $value);
+				}
+				$f3->reroute('@registration_form');
+			}
 		}
 
 		// Check if e-mail already registered
