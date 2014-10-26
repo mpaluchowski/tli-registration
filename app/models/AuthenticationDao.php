@@ -5,12 +5,14 @@ namespace models;
 class AuthenticationDao {
 
 	public function __construct() {
-		\F3::set('db', new \DB\SQL(
-			'mysql:host=' . \F3::get('db_host') . ';port=' . \F3::get('db_port') . ';dbname=' . \F3::get('db_database'),
-			\F3::get('db_username'),
-			\F3::get('db_password'),
-			[\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]
-		));
+		if (!\F3::exists('db')) {
+			\F3::set('db', new \DB\SQL(
+				'mysql:host=' . \F3::get('db_host') . ';port=' . \F3::get('db_port') . ';dbname=' . \F3::get('db_database'),
+				\F3::get('db_username'),
+				\F3::get('db_password'),
+				[\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]
+			));
+		}
 	}
 
 	function authenticate($email, $password) {
