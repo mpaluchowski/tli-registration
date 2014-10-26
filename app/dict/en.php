@@ -43,7 +43,7 @@ return ['lang' => [
 
 	'AccommodationHeader' => "Accommodation",
 	'AccommodationWithToastmasters' => "Accommodation with Toastmasters",
-	'AccommodationWithToastmastersHelp' => "You can choose to sleep over with a member of Toastmasters or hose an incoming guest.",
+	'AccommodationWithToastmastersHelp' => "You can choose to sleep over with a member of Toastmasters or host an incoming guest.",
 	'AccommodationWithToastmastersValidationMsg' => "Please choose an accommodation option.",
 	'AccommodationWithToastmastersStayAnswer' => "I'd like to <strong>stay with</strong> a member of Toastmasters",
 	'AccommodationWithToastmasters-stay' => "Stay with a member of Toastmasters",
