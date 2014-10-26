@@ -104,9 +104,12 @@ tliRegister.registrationForm = function() {
 			if ($(this).prop('checked')
 					&& $(this).val() === dependencyFieldValue) {
 				$(dependent).slideDown();
+				$(':input', dependent).each(function() {
+					$(this).prop('required', $(this).attr('data-required') === 'required');
+				});
 			} else {
 				$(dependent).slideUp(function() {
-					$(':input:checked', dependent).prop('checked', false);
+					$(':input', dependent).prop('checked', false).prop('required', false);
 				});
 			}
 		});
