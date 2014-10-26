@@ -4,6 +4,9 @@ namespace helpers;
 
 class FormValidatorImpl implements FormValidator {
 
+	/**
+	 * @see \helpers\FormValidator#validateOnSubmit($form)
+	 */
 	static function validateOnSubmit(\models\RegistrationForm $form) {
 		$messages = [];
 
@@ -13,17 +16,20 @@ class FormValidatorImpl implements FormValidator {
 			$messages['full-name'] = \F3::get('lang.FullNameValidationMsg');
 		}
 
+		// Must provide valid email
 		if (!$form->getEmail()
 				|| !filter_var($form->getEmail(), FILTER_VALIDATE_EMAIL)) {
 			$messages['email'] = \F3::get('lang.EmailValidationMsg');
 		}
 
+		// Must provide phone number, at least 9 characters
 		if (!$form->hasField('phone')
 				|| !$form->getField('phone')
 				|| !preg_match('/^\+?[0-9 \-]{9,}$/', $form->getField('phone'))) {
 			$messages['phone'] = \F3::get('lang.PhoneValidationMsg');
 		}
 
+		// Must provide the club name if it wasn't on the list to select
 		if ($form->getField('home-club') === 'Other'
 				&& (!$form->hasField('home-club-custom')
 					|| !$form->getField('home-club-custom'))) {
