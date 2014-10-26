@@ -14,7 +14,7 @@ class FormValidatorImpl implements FormValidator {
 		}
 
 		if (!$form->getEmail()
-			|| !filter_var($form->getEmail(), FILTER_VALIDATE_EMAIL)) {
+				|| !filter_var($form->getEmail(), FILTER_VALIDATE_EMAIL)) {
 			$messages['email'] = "Please provide your email address.";
 		}
 
