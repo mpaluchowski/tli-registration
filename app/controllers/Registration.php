@@ -53,6 +53,7 @@ class Registration {
 				)
 			);
 
+		// Reroute to an overview of the registration
 		$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 	}
 
