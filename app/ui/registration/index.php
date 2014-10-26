@@ -70,8 +70,8 @@
         <label><input type="radio" name="accommodation-with-toastmasters" value="stay" required<?php if (isset($registration['accommodation-with-toastmasters']) && $registration['accommodation-with-toastmasters'] == 'stay') echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersStayAnswer') ?></label>
       </div>
 
-      <div class="container-fluid" data-depends-on="accommodation-with-toastmasters" data-depends-on-value="stay">
-        <div class="form-group col-xs-11 col-xs-offset-1<?php if (isset($registration['messages']['accommodation-on'])): ?> has-error<?php endif ?>">
+      <div class="form-group-dependent" data-depends-on="accommodation-with-toastmasters" data-depends-on-value="stay">
+        <div class="form-group<?php if (isset($registration['messages']['accommodation-on'])): ?> has-error<?php endif ?>">
           <label class="control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersNeededOn') ?></label>
           <div class="checkbox">
             <label><input name="accommodation-on[]" type="checkbox" value="fri-sat" data-required="required"<?php if (isset($registration['accommodation-on']) && in_array('fri-sat', $registration['accommodation-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersFriSat') ?></label>
@@ -82,7 +82,7 @@
 
           <?php if (isset($registration['messages']['accommodation-on'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['accommodation-on'] ?></p><?php endif; ?>
         </div>
-        <div class="form-group col-xs-11 col-xs-offset-1<?php if (isset($registration['messages']['sleep-on'])): ?> has-error<?php endif ?>">
+        <div class="form-group<?php if (isset($registration['messages']['sleep-on'])): ?> has-error<?php endif ?>">
           <label class="control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn') ?></label>
           <div class="checkbox">
             <label><input name="sleep-on[]" type="checkbox" value="bed" data-required="required"<?php if (isset($registration['sleep-on']) && in_array('bed', $registration['sleep-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn-bed') ?></label>
@@ -120,8 +120,8 @@
     <div class="checkbox form-group">
       <label><input type="checkbox" name="saturday-dinner-participate"<?php if (isset($registration['saturday-dinner-participate']) && $registration['saturday-dinner-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerYes') ?></label>
 
-      <div class="container-fluid" data-depends-on="saturday-dinner-participate" data-depends-on-value="on">
-        <div class="form-group col-xs-11 col-xs-offset-1<?php if (isset($registration['messages']['saturday-dinner-meal'])): ?> has-error<?php endif ?>">
+      <div class="form-group-dependent" data-depends-on="saturday-dinner-participate" data-depends-on-value="on">
+        <div class="form-group<?php if (isset($registration['messages']['saturday-dinner-meal'])): ?> has-error<?php endif ?>">
           <div class="radio">
             <label><input type="radio" name="saturday-dinner-meal" value="meat" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerMeat') ?></label>
           </div>
