@@ -9,6 +9,7 @@ USE `tli_registrations`;
 
 
 -- Dumping structure for table tli_registrations.tli_administrators
+DROP TABLE IF EXISTS `tli_administrators`;
 CREATE TABLE IF NOT EXISTS `tli_administrators` (
   `id_administrator` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `full_name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
@@ -22,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `tli_administrators` (
 
 
 -- Dumping structure for table tli_registrations.tli_clubs
+DROP TABLE IF EXISTS `tli_clubs`;
 CREATE TABLE IF NOT EXISTS `tli_clubs` (
   `id_club` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
@@ -33,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `tli_clubs` (
 
 
 -- Dumping structure for table tli_registrations.tli_registrations
+DROP TABLE IF EXISTS `tli_registrations`;
 CREATE TABLE IF NOT EXISTS `tli_registrations` (
   `id_registration` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
@@ -47,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `tli_registrations` (
 
 
 -- Dumping structure for table tli_registrations.tli_registration_fields
+DROP TABLE IF EXISTS `tli_registration_fields`;
 CREATE TABLE IF NOT EXISTS `tli_registration_fields` (
   `fk_registration` int(10) unsigned NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
