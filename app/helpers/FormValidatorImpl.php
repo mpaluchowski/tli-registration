@@ -30,6 +30,13 @@ class FormValidatorImpl implements FormValidator {
 			$messages['home-club-custom'] = "Please provide the exact name of your home club, or choose one from the list.";
 		}
 
+		// If someone's not a member of Toastmasters, they can't hold a position
+		// in the Exec Committee
+		if ($form->getField('home-club') === 'None'
+				&& $form->getField('exec-position') !== 'none') {
+			$messages['exec-position'] = "You selected you're not a member of Toastmasters, and yet selected an Executive Committee position. This can't be right.";
+		}
+
 		if ($form->hasField('educational-awards')
 				&& $form->getField('educational-awards')
 				&& !preg_match('/(?:(?:^|, |,| )(CC|ACB|ACS|ACG|CL|ALB|ALS|DTM))+$/', $form->getField('educational-awards'))) {
