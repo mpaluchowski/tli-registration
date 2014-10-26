@@ -70,7 +70,7 @@
         <label><input type="radio" name="accommodation-with-toastmasters" value="stay" required<?php if (isset($registration['accommodation-with-toastmasters']) && $registration['accommodation-with-toastmasters'] == 'stay') echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersStayAnswer') ?></label>
       </div>
 
-      <div class="container-fluid">
+      <div class="container-fluid" data-depends-on="accommodation-with-toastmasters" data-depends-on-value="stay">
         <div class="form-group col-xs-11 col-xs-offset-1<?php if (isset($registration['messages']['accommodation-on'])): ?> has-error<?php endif ?>">
           <label class="control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersNeededOn') ?></label>
           <div class="checkbox">
@@ -113,14 +113,14 @@
 
     <h2><?php echo \F3::get('lang.EventsHeader') ?></h2>
 
-    <div class="checkbox">
+    <div class="checkbox form-group">
       <label><input type="checkbox" name="friday-social-event"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?></label>
     </div>
 
-    <div class="checkbox">
+    <div class="checkbox form-group">
       <label><input type="checkbox" name="saturday-dinner-participate"<?php if (isset($registration['saturday-dinner-participate']) && $registration['saturday-dinner-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerYes') ?></label>
 
-      <div class="container-fluid">
+      <div class="container-fluid" data-depends-on="saturday-dinner-participate" data-depends-on-value="on">
         <div class="form-group col-xs-11 col-xs-offset-1<?php if (isset($registration['messages']['saturday-dinner-meal'])): ?> has-error<?php endif ?>">
           <div class="radio">
             <label><input type="radio" name="saturday-dinner-meal" value="meat"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerMeat') ?></label>
@@ -134,7 +134,7 @@
       </div>
     </div>
 
-    <div class="checkbox">
+    <div class="checkbox form-group">
       <label><input type="checkbox" name="saturday-party-participate"<?php if (isset($registration['saturday-party-participate']) && $registration['saturday-party-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayPartyYes') ?></label>
     </div>
 
