@@ -33,7 +33,7 @@ class FormValidatorImpl implements FormValidator {
 		if ($form->hasField('educational-awards')
 				&& $form->getField('educational-awards')
 				&& !preg_match('/(?:(?:^|, |,| )(CC|ACB|ACS|ACG|CL|ALB|ALS|DTM))+$/', $form->getField('educational-awards'))) {
-			$messages['educational-awards'] = "Please enter your educational awards from among: CC, ACB, ACS, ACG, CL, ALB, ALS, DTM, separated by comas or slashes.";
+			$messages['educational-awards'] = "Please enter your educational awards from among: CC, ACB, ACS, ACG, CL, ALB, ALS, DTM, separated by comas or spaces.";
 		}
 
 		if (!$form->hasField('accommodation-with-toastmasters')
