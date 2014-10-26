@@ -3,11 +3,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping database structure for tli_registrations
-CREATE DATABASE IF NOT EXISTS `tli_registrations` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `tli_registrations`;
-
-
 -- Dumping structure for table tli_registrations.tli_administrators
 DROP TABLE IF EXISTS `tli_administrators`;
 CREATE TABLE IF NOT EXISTS `tli_administrators` (
