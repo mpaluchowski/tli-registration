@@ -58,6 +58,13 @@ class FormValidatorImpl implements FormValidator {
 			}
 		}
 
+		// Whoever goes to Saturday dinner, must choose a meal option
+		if ($form->hasField('saturday-dinner-participate')
+				&& (!$form->hasField('saturday-dinner-meal')
+					|| !$form->getField('saturday-dinner-meal'))) {
+			$messages['saturday-dinner-meal'] = "Please choose a meal option for the Saturday dinner.";
+		}
+
 		return $messages;
 	}
 
