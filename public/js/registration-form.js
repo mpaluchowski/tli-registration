@@ -5,6 +5,7 @@ tliRegister.registrationForm = function() {
 	var init = function() {
 		initEmailExistingCheck();
 		initCustomClubEntry();
+		initDependentFieldGroups();
 	},
 
 	initEmailExistingCheck = function() {
@@ -79,6 +80,39 @@ tliRegister.registrationForm = function() {
 			$("#home-club-custom:visible").slideUp()
 				.val("").prop("required", false);
 		}
+	},
+
+	initDependentFieldGroups = function() {
+		$('[data-depends-on]').each(function() {
+			initDependentField(
+				this,
+				$(this).attr('data-depends-on'),
+				$(this).attr('data-depends-on-value')
+				);
+		});
+	},
+
+	initDependentField = function(dependent, dependencyFieldName, dependencyFieldValue) {
+		var dependency = $(
+			':input[name=' + dependencyFieldName + ']',
+			$(dependent).closest('.form-group')
+			);
+
+		$(dependent).hide();
+
+		$(dependency).change(function(e) {
+			if ($(this).prop('checked')
+					&& $(this).val() === dependencyFieldValue) {
+				$(dependent).slideDown();
+				$(':input', dependent).each(function() {
+					$(this).prop('required', $(this).attr('data-required') === 'required');
+				});
+			} else {
+				$(dependent).slideUp(function() {
+					$(':input', dependent).prop('checked', false).prop('required', false);
+				});
+			}
+		});
 	}
 
 	return {
