@@ -47,3 +47,11 @@ body.signin {
 .form-group-dependent {
 	padding-left: 20px;
 }
+
+table.currencies-1 {
+	tr {
+		td:last-child, th:last-child {
+			text-align: right;
+		}
+	}
+}

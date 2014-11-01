@@ -111,7 +111,7 @@
 	<p>Based on the options you selected, your total due payment breaks down as follows:</p>
 
 	<div class="table-responsive">
-		<table class="table">
+		<table class="table currencies-1">
 			<thead>
 				<tr>
 					<th><?php echo \F3::get('lang.PaymentItemHead') ?></th>
