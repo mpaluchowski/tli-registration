@@ -111,46 +111,58 @@
 	<p>Based on the options you selected, your total due payment breaks down as follows:</p>
 
 	<div class="table-responsive">
-		<table class="table">
+		<table class="table currencies-<?php echo count($paymentSummary['total']) ?>">
 			<thead>
 				<tr>
 					<th><?php echo \F3::get('lang.PaymentItemHead') ?></th>
 					<th><?php echo \F3::get('lang.PaymentTypeHead') ?></th>
-					<th><?php echo \F3::get('lang.PaymentPriceHead') ?></th>
+				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
+					<th><?php echo \F3::get('lang.PaymentPriceHead') . ' ' . $currency ?></th>
+				<?php endforeach; ?>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td><?php echo \F3::get('lang.Participation') ?></td>
-					<td><?php echo \F3::get('lang.TicketEarly') ?></td>
-					<td>50zł</td>
+					<td><?php echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant) ?></td>
+				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+				<?php endforeach; ?>
 				</tr>
 			<?php if ($form->hasField('friday-social-event') && "on" === $form->getField('friday-social-event')): ?>
 				<tr>
 					<td><?php echo \F3::get('lang.EventsFridaySocial') ?></td>
-					<td>&mdash;</td>
-					<td>30zł</td>
+					<td><?php echo $paymentSummary['friday-social-event']->variant ? $paymentSummary['friday-social-event']->variant : '&mdash;' ?></td>
+				<?php foreach ($paymentSummary['friday-social-event']->prices as $currency => $price): ?>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+				<?php endforeach; ?>
 				</tr>
 			<?php endif;
 			if ($form->hasField('saturday-dinner-participate') && "on" === $form->getField('saturday-dinner-participate')): ?>
 				<tr>
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner') ?></td>
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner-' . $form->getField('saturday-dinner-meal')) ?></td>
-					<td>50zł</td>
+				<?php foreach ($paymentSummary['saturday-dinner-participate']->prices as $currency => $price): ?>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+				<?php endforeach; ?>
 				</tr>
 			<?php endif;
 			if ($form->hasField('saturday-party-participate') && "on" === $form->getField('saturday-party-participate')): ?>
 				<tr>
 					<td><?php echo \F3::get('lang.EventsSaturdayParty') ?></td>
-					<td>&mdash;</td>
-					<td>30zł</td>
+					<td><?php echo $paymentSummary['saturday-party-participate']->variant ? $paymentSummary['saturday-party-participate']->variant : '&mdash;' ?></td>
+				<?php foreach ($paymentSummary['saturday-party-participate']->prices as $currency => $price): ?>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+				<?php endforeach; ?>
 				</tr>
 			<?php endif; ?>
 			</tbody>
 			<tfoot>
 				<tr>
 					<td colspan="2" class="text-right"><?php echo \F3::get('lang.PaymentTotal') ?></td>
-					<th>160zł</th>
+				<?php foreach ($paymentSummary['total'] as $currency => $price): ?>
+					<th><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></th>
+				<?php endforeach; ?>
 				</tr>
 			</tfoot>
 		</table>

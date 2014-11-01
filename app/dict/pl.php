@@ -91,9 +91,9 @@ return ['lang' => [
 
 	"PaymentBreakdownHeader" => "Podsmowanie płatności",
 	"Participation" => "Uczestnictwo",
-	"TicketEarly" => "Wczesny",
-	"TicletRegular" => "Normalny",
-	"TicketLate" => "Późny",
+	"Ticket-early" => "Wczesny",
+	"Ticket-regular" => "Normalny",
+	"Ticket-late" => "Późny",
 	"PaymentItemHead" => "Pozycja",
 	"PaymentTypeHead" => "Typ",
 	"PaymentPriceHead" => "Cena",

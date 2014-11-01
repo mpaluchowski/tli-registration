@@ -91,9 +91,9 @@ return ['lang' => [
 
 	"PaymentBreakdownHeader" => "Payment breakdown",
 	"Participation" => "Participation",
-	"TicketEarly" => "Early bird",
-	"TicletRegular" => "Regular",
-	"TicketLate" => "Late",
+	"Ticket-early" => "Early bird",
+	"Ticket-regular" => "Regular",
+	"Ticket-late" => "Late",
 	"PaymentItemHead" => "Item",
 	"PaymentTypeHead" => "Type",
 	"PaymentPriceHead" => "Price",
