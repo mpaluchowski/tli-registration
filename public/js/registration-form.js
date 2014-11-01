@@ -92,6 +92,15 @@ tliRegister.registrationForm = function() {
 		});
 	},
 
+	/**
+	 * Initializes dependent fields, hiding them away until the dependency
+	 * changes to the value indicating they should be shown.
+	 *
+	 * @param dependent Object with the dependent element.
+	 * @param dependencyFieldName Selector for the dependency field.
+	 * @param dependencyFieldValue Value of the dependency that triggers showing
+	 * the dependents.
+	 */
 	initDependentField = function(dependent, dependencyFieldName, dependencyFieldValue) {
 		var dependency = $(
 			':input[name=' + dependencyFieldName + ']',
