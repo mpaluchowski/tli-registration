@@ -65,3 +65,13 @@ table {
 		}
 	}
 }
+
+.table {
+	tfoot {
+		tr {
+			td, th {
+				border-top: 2px solid #ddd;
+			}
+		}
+	}
+}
