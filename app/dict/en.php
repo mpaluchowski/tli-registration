@@ -97,6 +97,7 @@ return ['lang' => [
 	"PaymentItemHead" => "Item",
 	"PaymentTypeHead" => "Type",
 	"PaymentPriceHead" => "Price",
+	"PriceValidThrough" => "valid through {0}",
 	"PaymentTotal" => "Grand total",
 
 	"SelectPaymentOptionButton" => "Select payment option",

@@ -97,6 +97,7 @@ return ['lang' => [
 	"PaymentItemHead" => "Pozycja",
 	"PaymentTypeHead" => "Typ",
 	"PaymentPriceHead" => "Cena",
+	"PriceValidThrough" => "ważny do {0}",
 	"PaymentTotal" => "Suma",
 
 	"SelectPaymentOptionButton" => "Wybierz sposób płatności",
