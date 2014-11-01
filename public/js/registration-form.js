@@ -108,6 +108,11 @@ tliRegister.registrationForm = function() {
 		if (!$(dependency).prop('checked')
 					|| $(dependency).val() !== dependencyFieldValue) {
 			$(dependent).hide();
+		} else {
+			// Add required status for dependent fields that need it
+			$(':input', dependent).each(function() {
+				$(this).prop('required', $(this).attr('data-required') === 'required');
+			});
 		}
 
 		$(dependency).change(function(e) {
