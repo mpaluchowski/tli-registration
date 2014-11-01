@@ -15,6 +15,9 @@ class PriceCalculatorImpl implements PriceCalculator {
 		}
 	}
 
+	/**
+	 * @see \models\PriceCalculatorImpl#calculateSummary(\models\RegistrationForm)
+	 */
 	function calculateSummary(\models\RegistrationForm $form) {
 		$pricing = $this->fetchPricing();
 
@@ -53,6 +56,13 @@ class PriceCalculatorImpl implements PriceCalculator {
 		return $summary;
 	}
 
+	/**
+	 * Retrieves pricing details from the database, for a given moment in time.
+	 * Accounts for some prices being time-sensitive, ie. changing over time.
+	 *
+	 * @param time optional time to return prices for. Default is now.
+	 * @return pricing structure with all available options and variants.
+	 */
 	private function fetchPricing($time = null) {
 		if (!$time) $time = time();
 
@@ -88,6 +98,15 @@ class PriceCalculatorImpl implements PriceCalculator {
 		return $pricing;
 	}
 
+	/**
+	 * Explode the pricing information with currencies returned as single string
+	 * from the database.
+	 *
+	 * @param prices delimited string with pricing information, expected format
+	 * 'EUR;10|PLN;15'
+	 * @return array with elements for each currency, each key being the currency
+	 * code and value the price in that currency.
+	 */
 	private function explodePrices($prices) {
 		preg_match_all("/([^\|]+);([^\|]+)/", $prices, $pairs);
 		return array_combine($pairs[1], $pairs[2]);
