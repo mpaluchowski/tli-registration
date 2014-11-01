@@ -90,6 +90,7 @@ return ['lang' => [
 	"RegistrationReviewIntro" => "Sprawdź informacje, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby przejść do płatności.",
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
+	"PaymentBreakdownIntro" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
 	"Participation" => "Uczestnictwo",
 	"Ticket-early" => "Wczesny",
 	"Ticket-regular" => "Normalny",

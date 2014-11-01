@@ -108,7 +108,7 @@
 
 	<h2><?php echo \F3::get('lang.PaymentBreakdownHeader') ?></h2>
 
-	<p>Based on the options you selected, your total due payment breaks down as follows:</p>
+	<p><?php echo \F3::get('lang.PaymentBreakdownIntro') ?></p>
 
 	<div class="table-responsive">
 		<table class="table currencies-<?php echo count($paymentSummary['total']) ?>">
