@@ -126,7 +126,7 @@
 					<td><?php echo \F3::get('lang.Participation') ?></td>
 					<td><?php echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant) ?></td>
 				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
-					<td><?php echo  $currency . ' ' . number_format($price, 2) ?></td>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
 				<?php endforeach; ?>
 				</tr>
 			<?php if ($form->hasField('friday-social-event') && "on" === $form->getField('friday-social-event')): ?>
@@ -134,7 +134,7 @@
 					<td><?php echo \F3::get('lang.EventsFridaySocial') ?></td>
 					<td><?php echo $paymentSummary['friday-social-event']->variant ? $paymentSummary['friday-social-event']->variant : '&mdash;' ?></td>
 				<?php foreach ($paymentSummary['friday-social-event']->prices as $currency => $price): ?>
-					<td><?php echo $currency . ' ' . number_format($price, 2) ?></td>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
@@ -143,7 +143,7 @@
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner') ?></td>
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner-' . $form->getField('saturday-dinner-meal')) ?></td>
 				<?php foreach ($paymentSummary['saturday-dinner-participate']->prices as $currency => $price): ?>
-					<td><?php echo $currency . ' ' . number_format($price, 2) ?></td>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
@@ -152,7 +152,7 @@
 					<td><?php echo \F3::get('lang.EventsSaturdayParty') ?></td>
 					<td><?php echo $paymentSummary['saturday-party-participate']->variant ? $paymentSummary['saturday-party-participate']->variant : '&mdash;' ?></td>
 				<?php foreach ($paymentSummary['saturday-party-participate']->prices as $currency => $price): ?>
-					<td><?php echo $currency . ' ' . number_format($price, 2) ?></td>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif; ?>
@@ -161,7 +161,7 @@
 				<tr>
 					<td colspan="2" class="text-right"><?php echo \F3::get('lang.PaymentTotal') ?></td>
 				<?php foreach ($paymentSummary['total'] as $currency => $price): ?>
-					<th><?php echo $currency . ' ' . number_format($price, 2) ?></th>
+					<th><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></th>
 				<?php endforeach; ?>
 				</tr>
 			</tfoot>
