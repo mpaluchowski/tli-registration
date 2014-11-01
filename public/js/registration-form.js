@@ -12,7 +12,7 @@ tliRegister.registrationForm = function() {
 		$('#email')
 			.keydown(
 				$.proxy(
-					cleanFieldWarning,
+					cleanFieldFeedback,
 					$("#email"),
 					"#group-email",
 					"#warning-email"
@@ -53,13 +53,10 @@ tliRegister.registrationForm = function() {
 		$("#warning-" + fieldName).slideDown();
 	},
 
-	cleanFieldWarning = function(fieldGroupSelector, fieldWarningSelector) {
-		if (!$(fieldGroupSelector).hasClass("has-warning"))
-			return;
-
-		$(fieldGroupSelector).removeClass("has-warning has-feedback");
+	cleanFieldFeedback = function(fieldGroupSelector, fieldAlertSelector) {
+		$(fieldGroupSelector).removeClass("has-success has-warning has-error has-feedback");
 		$("span.glyphicon", $(fieldGroupSelector)).remove();
-		$(fieldWarningSelector).slideUp(function() { $(this).remove() });
+		$(fieldAlertSelector).slideUp(function() { $(this).remove() });
 	},
 
 	initCustomClubEntry = function() {
@@ -92,24 +89,45 @@ tliRegister.registrationForm = function() {
 		});
 	},
 
+	/**
+	 * Initializes dependent fields, hiding them away until the dependency
+	 * changes to the value indicating they should be shown.
+	 *
+	 * @param dependent Object with the dependent element.
+	 * @param dependencyFieldName Selector for the dependency field.
+	 * @param dependencyFieldValue Value of the dependency that triggers showing
+	 * the dependents.
+	 */
 	initDependentField = function(dependent, dependencyFieldName, dependencyFieldValue) {
 		var dependency = $(
 			':input[name=' + dependencyFieldName + ']',
 			$(dependent).closest('.form-group')
 			);
 
-		$(dependent).hide();
+		// Hide dependencies, unless dependent has the right value to display them
+		if (!$(dependency).prop('checked')
+					|| $(dependency).val() !== dependencyFieldValue) {
+			$(dependent).hide();
+		} else {
+			// Add required status for dependent fields that need it
+			$(':input', dependent).each(function() {
+				$(this).prop('required', $(this).attr('data-required') === 'required');
+			});
+		}
 
 		$(dependency).change(function(e) {
 			if ($(this).prop('checked')
-					&& $(this).val() === dependencyFieldValue) {
+					&& $(this).val() === dependencyFieldValue
+					&& !$(dependent).is(":visible")) {
 				$(dependent).slideDown();
 				$(':input', dependent).each(function() {
 					$(this).prop('required', $(this).attr('data-required') === 'required');
 				});
-			} else {
+			} else if ($(dependent).is(":visible")) {
 				$(dependent).slideUp(function() {
 					$(':input', dependent).prop('checked', false).prop('required', false);
+
+					cleanFieldFeedback($('.form-group', dependent), $('.help-block:last-child', dependent));
 				});
 			}
 		});
