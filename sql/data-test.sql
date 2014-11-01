@@ -35,12 +35,19 @@ INSERT INTO `tli_pricing_items` (`id_pricing_item`, `item`, `variant`, `date_val
 DELETE FROM `tli_pricing_prices`;
 /*!40000 ALTER TABLE `tli_pricing_prices` DISABLE KEYS */;
 INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
+	(1, 'EUR', 10),
 	(1, 'PLN', 39),
+	(2, 'EUR', 15),
 	(2, 'PLN', 49),
+	(3, 'EUR', 20),
 	(3, 'PLN', 59),
+	(4, 'EUR', 8),
 	(4, 'PLN', 30),
+	(5, 'EUR', 13),
 	(5, 'PLN', 50),
+	(6, 'EUR', 11),
 	(6, 'PLN', 40),
+	(7, 'EUR', 5),
 	(7, 'PLN', 20);
 /*!40000 ALTER TABLE `tli_pricing_prices` ENABLE KEYS */;
 

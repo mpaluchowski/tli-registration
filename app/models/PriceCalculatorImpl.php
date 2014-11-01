@@ -40,9 +40,13 @@ class PriceCalculatorImpl implements PriceCalculator {
 				= $pricing['saturday-party-participate'];
 		}
 
-		$total = 0;
+		$total = [];
 		foreach ($summary as $item) {
-			$total += $item->price;
+			foreach ($item->prices as $currency => $price) {
+				if (!array_key_exists($currency, $total))
+					$total[$currency] = 0;
+				$total[$currency] += $price;
+			}
 		}
 		$summary['total'] = $total;
 
@@ -55,7 +59,7 @@ class PriceCalculatorImpl implements PriceCalculator {
 		$query = 'SELECT pi.item,
 						 pi.variant,
 						 pi.date_valid_through,
-						 pp.price
+						 GROUP_CONCAT(CONCAT(pp.currency, ";", pp.price) SEPARATOR "|") AS prices
 				  FROM ' . \F3::get('db_table_prefix') . 'pricing_items pi
 				  JOIN ' . \F3::get('db_table_prefix') . 'pricing_prices pp
 				    ON pi.id_pricing_item = pp.fk_pricing_item
@@ -67,6 +71,7 @@ class PriceCalculatorImpl implements PriceCalculator {
 							  AND FROM_UNIXTIME(:datetime) < pi.date_valid_through
 							GROUP BY pi.item
 				     	)
+				  GROUP BY pi.id_pricing_item
 				  ';
 		$rows = \F3::get('db')->exec($query, [
 				'datetime' => $time
@@ -77,10 +82,15 @@ class PriceCalculatorImpl implements PriceCalculator {
 			$pricing[$row['item'] . ($row['item'] != 'admission' && $row['variant'] ? '-' . $row['variant'] : '')] = (object)[
 				'variant' => $row['variant'],
 				'dateValidThrough' => $row['date_valid_through'],
-				'price' => $row['price'],
+				'prices' => $this->explodePrices($row['prices']),
 			];
 		}
 		return $pricing;
+	}
+
+	private function explodePrices($prices) {
+		preg_match_all("/([^\|]+);([^\|]+)/", $prices, $pairs);
+		return array_combine($pairs[1], $pairs[2]);
 	}
 
 }

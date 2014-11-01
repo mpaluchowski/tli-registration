@@ -48,10 +48,20 @@ body.signin {
 	padding-left: 20px;
 }
 
-table.currencies-1 {
-	tr {
-		td:last-child, th:last-child {
-			text-align: right;
+table {
+	&.currencies-1 {
+		tr {
+			td:last-child, th:last-child {
+				text-align: right;
+			}
+		}
+	}
+
+	&.currencies-2 {
+		tr {
+			td:nth-last-child(-n+2), th:nth-last-child(-n+2) {
+				text-align: right;
+			}
 		}
 	}
 }
