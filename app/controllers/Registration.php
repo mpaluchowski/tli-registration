@@ -86,7 +86,11 @@ class Registration {
 		if (!$form)
 			$f3->error(404);
 
+		$priceCalculatorName = $f3->get('form_price_calculator');
+		$priceCalculator = new $priceCalculatorName;
+
 		$f3->set('form', $form);
+		$f3->set('paymentSummary', $priceCalculator->calculateSummary($form));
 
 		echo \View::instance()->render('registration/review.php');
 	}

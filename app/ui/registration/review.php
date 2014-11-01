@@ -122,35 +122,35 @@
 			<tbody>
 				<tr>
 					<td><?php echo \F3::get('lang.Participation') ?></td>
-					<td><?php echo \F3::get('lang.TicketEarly') ?></td>
-					<td>50zł</td>
+					<td><?php echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant) ?></td>
+					<td><?php echo $paymentSummary['admission']->price ?></td>
 				</tr>
 			<?php if ($form->hasField('friday-social-event') && "on" === $form->getField('friday-social-event')): ?>
 				<tr>
 					<td><?php echo \F3::get('lang.EventsFridaySocial') ?></td>
-					<td>&mdash;</td>
-					<td>30zł</td>
+					<td><?php echo $paymentSummary['friday-social-event']->variant ? $paymentSummary['friday-social-event']->variant : '&mdash;' ?></td>
+					<td><?php echo $paymentSummary['friday-social-event']->price ?></td>
 				</tr>
 			<?php endif;
 			if ($form->hasField('saturday-dinner-participate') && "on" === $form->getField('saturday-dinner-participate')): ?>
 				<tr>
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner') ?></td>
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner-' . $form->getField('saturday-dinner-meal')) ?></td>
-					<td>50zł</td>
+					<td><?php echo $paymentSummary['saturday-dinner-participate']->price ?></td>
 				</tr>
 			<?php endif;
 			if ($form->hasField('saturday-party-participate') && "on" === $form->getField('saturday-party-participate')): ?>
 				<tr>
 					<td><?php echo \F3::get('lang.EventsSaturdayParty') ?></td>
-					<td>&mdash;</td>
-					<td>30zł</td>
+					<td><?php echo $paymentSummary['saturday-party-participate']->variant ? $paymentSummary['saturday-party-participate']->variant : '&mdash;' ?></td>
+					<td><?php echo $paymentSummary['saturday-party-participate']->price ?></td>
 				</tr>
 			<?php endif; ?>
 			</tbody>
 			<tfoot>
 				<tr>
 					<td colspan="2" class="text-right"><?php echo \F3::get('lang.PaymentTotal') ?></td>
-					<th>160zł</th>
+					<th><?php echo $paymentSummary['total'] ?></th>
 				</tr>
 			</tfoot>
 		</table>
