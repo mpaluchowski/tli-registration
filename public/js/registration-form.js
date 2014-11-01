@@ -107,16 +107,21 @@ tliRegister.registrationForm = function() {
 			$(dependent).closest('.form-group')
 			);
 
-		$(dependent).hide();
+		// Hide dependencies, unless dependent has the right value to display them
+		if (!$(dependency).prop('checked')
+					|| $(dependency).val() !== dependencyFieldValue) {
+			$(dependent).hide();
+		}
 
 		$(dependency).change(function(e) {
 			if ($(this).prop('checked')
-					&& $(this).val() === dependencyFieldValue) {
+					&& $(this).val() === dependencyFieldValue
+					&& !$(dependent).is(":visible")) {
 				$(dependent).slideDown();
 				$(':input', dependent).each(function() {
 					$(this).prop('required', $(this).attr('data-required') === 'required');
 				});
-			} else {
+			} else if ($(dependent).is(":visible")) {
 				$(dependent).slideUp(function() {
 					$(':input', dependent).prop('checked', false).prop('required', false);
 				});
