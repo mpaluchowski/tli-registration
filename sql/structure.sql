@@ -29,6 +29,18 @@ CREATE TABLE IF NOT EXISTS `tli_clubs` (
 -- Data exporting was unselected.
 
 
+-- Dumping structure for table tli_registrations.tli_pricing
+DROP TABLE IF EXISTS `tli_pricing`;
+CREATE TABLE IF NOT EXISTS `tli_pricing` (
+  `item` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `variant` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `date_valid_through` datetime DEFAULT NULL,
+  `price` float unsigned NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Data exporting was unselected.
+
+
 -- Dumping structure for table tli_registrations.tli_registrations
 DROP TABLE IF EXISTS `tli_registrations`;
 CREATE TABLE IF NOT EXISTS `tli_registrations` (

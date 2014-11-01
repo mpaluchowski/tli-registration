@@ -18,7 +18,20 @@ INSERT INTO `tli_clubs` (`id_club`, `name`) VALUES
 	(3, 'Top Careers Toastmasters');
 /*!40000 ALTER TABLE `tli_clubs` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_registrations: ~4 rows (approximately)
+-- Dumping data for table tli_registrations.tli_pricing: ~0 rows (approximately)
+DELETE FROM `tli_pricing`;
+/*!40000 ALTER TABLE `tli_pricing` DISABLE KEYS */;
+INSERT INTO `tli_pricing` (`item`, `variant`, `date_valid_through`, `price`) VALUES
+	('admission', 'early', '2014-11-30 23:59:59', 39),
+	('admission', 'regular', '2015-01-10 23:59:59', 49),
+	('admission', 'late', '2015-01-20 23:59:59', 59),
+	('friday-social-event', NULL, NULL, 30),
+	('saturday-dinner-participate', 'meat', NULL, 50),
+	('saturday-dinner-participate', 'vegetarian', NULL, 40),
+	('saturday-party-participate', NULL, NULL, 20);
+/*!40000 ALTER TABLE `tli_pricing` ENABLE KEYS */;
+
+-- Dumping data for table tli_registrations.tli_registrations: ~3 rows (approximately)
 DELETE FROM `tli_registrations`;
 /*!40000 ALTER TABLE `tli_registrations` DISABLE KEYS */;
 INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `date_entered`, `date_paid`) VALUES
