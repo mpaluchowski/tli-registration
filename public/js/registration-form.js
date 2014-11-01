@@ -121,6 +121,8 @@ tliRegister.registrationForm = function() {
 			} else if ($(dependent).is(":visible")) {
 				$(dependent).slideUp(function() {
 					$(':input', dependent).prop('checked', false).prop('required', false);
+
+					cleanFieldFeedback($('.form-group', dependent), $('.help-block:last-child', dependent));
 				});
 			}
 		});
