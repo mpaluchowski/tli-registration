@@ -89,7 +89,7 @@ return ['lang' => [
 	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",
 	"RegistrationReviewIntro" => "Sprawdź informacje, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby przejść do płatności.",
 
-	"PaymentBreakdownHeader" => "Podsmowanie płatności",
+	"PaymentBreakdownHeader" => "Podsumowanie płatności",
 	"Participation" => "Uczestnictwo",
 	"Ticket-early" => "Wczesny",
 	"Ticket-regular" => "Normalny",
