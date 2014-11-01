@@ -12,7 +12,7 @@ tliRegister.registrationForm = function() {
 		$('#email')
 			.keydown(
 				$.proxy(
-					cleanFieldWarning,
+					cleanFieldFeedback,
 					$("#email"),
 					"#group-email",
 					"#warning-email"
@@ -53,13 +53,10 @@ tliRegister.registrationForm = function() {
 		$("#warning-" + fieldName).slideDown();
 	},
 
-	cleanFieldWarning = function(fieldGroupSelector, fieldWarningSelector) {
-		if (!$(fieldGroupSelector).hasClass("has-warning"))
-			return;
-
-		$(fieldGroupSelector).removeClass("has-warning has-feedback");
+	cleanFieldFeedback = function(fieldGroupSelector, fieldAlertSelector) {
+		$(fieldGroupSelector).removeClass("has-success has-warning has-error has-feedback");
 		$("span.glyphicon", $(fieldGroupSelector)).remove();
-		$(fieldWarningSelector).slideUp(function() { $(this).remove() });
+		$(fieldAlertSelector).slideUp(function() { $(this).remove() });
 	},
 
 	initCustomClubEntry = function() {
