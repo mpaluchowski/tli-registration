@@ -52,18 +52,20 @@ class PriceCalculatorImpl implements PriceCalculator {
 	private function fetchPricing($time = null) {
 		if (!$time) $time = time();
 
-		$query = 'SELECT p.item,
-						 p.variant,
-						 p.date_valid_through,
-						 p.price
-				  FROM ' . \F3::get('db_table_prefix') . 'pricing p
-				  WHERE P.date_valid_through IS NULL
-				     OR p.date_valid_through IN (
-							SELECT MIN(p.date_valid_through)
-							FROM ' . \F3::get('db_table_prefix') . 'pricing p
-							WHERE p.date_valid_through IS NOT NULL
-							  AND FROM_UNIXTIME(:datetime) < p.date_valid_through
-							GROUP BY p.item
+		$query = 'SELECT pi.item,
+						 pi.variant,
+						 pi.date_valid_through,
+						 pp.price
+				  FROM ' . \F3::get('db_table_prefix') . 'pricing_items pi
+				  JOIN ' . \F3::get('db_table_prefix') . 'pricing_prices pp
+				    ON pi.id_pricing_item = pp.fk_pricing_item
+				  WHERE pi.date_valid_through IS NULL
+				     OR pi.date_valid_through IN (
+							SELECT MIN(pi.date_valid_through)
+							FROM ' . \F3::get('db_table_prefix') . 'pricing_items pi
+							WHERE pi.date_valid_through IS NOT NULL
+							  AND FROM_UNIXTIME(:datetime) < pi.date_valid_through
+							GROUP BY pi.item
 				     	)
 				  ';
 		$rows = \F3::get('db')->exec($query, [

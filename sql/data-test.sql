@@ -18,18 +18,31 @@ INSERT INTO `tli_clubs` (`id_club`, `name`) VALUES
 	(3, 'Top Careers Toastmasters');
 /*!40000 ALTER TABLE `tli_clubs` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_pricing: ~0 rows (approximately)
-DELETE FROM `tli_pricing`;
-/*!40000 ALTER TABLE `tli_pricing` DISABLE KEYS */;
-INSERT INTO `tli_pricing` (`item`, `variant`, `date_valid_through`, `price`) VALUES
-	('admission', 'early', '2014-11-30 23:59:59', 39),
-	('admission', 'regular', '2015-01-10 23:59:59', 49),
-	('admission', 'late', '2015-01-20 23:59:59', 59),
-	('friday-social-event', NULL, NULL, 30),
-	('saturday-dinner-participate', 'meat', NULL, 50),
-	('saturday-dinner-participate', 'vegetarian', NULL, 40),
-	('saturday-party-participate', NULL, NULL, 20);
-/*!40000 ALTER TABLE `tli_pricing` ENABLE KEYS */;
+-- Dumping data for table tli_registrations.tli_pricing_items: ~7 rows (approximately)
+DELETE FROM `tli_pricing_items`;
+/*!40000 ALTER TABLE `tli_pricing_items` DISABLE KEYS */;
+INSERT INTO `tli_pricing_items` (`id_pricing_item`, `item`, `variant`, `date_valid_through`) VALUES
+	(1, 'admission', 'early', '2014-11-30 23:59:59'),
+	(2, 'admission', 'regular', '2015-01-10 23:59:59'),
+	(3, 'admission', 'late', '2015-01-20 23:59:59'),
+	(4, 'friday-social-event', NULL, NULL),
+	(5, 'saturday-dinner-participate', 'meat', NULL),
+	(6, 'saturday-dinner-participate', 'vegetarian', NULL),
+	(7, 'saturday-party-participate', NULL, NULL);
+/*!40000 ALTER TABLE `tli_pricing_items` ENABLE KEYS */;
+
+-- Dumping data for table tli_registrations.tli_pricing_prices: ~7 rows (approximately)
+DELETE FROM `tli_pricing_prices`;
+/*!40000 ALTER TABLE `tli_pricing_prices` DISABLE KEYS */;
+INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
+	(1, 'PLN', 39),
+	(2, 'PLN', 49),
+	(3, 'PLN', 59),
+	(4, 'PLN', 30),
+	(5, 'PLN', 50),
+	(6, 'PLN', 40),
+	(7, 'PLN', 20);
+/*!40000 ALTER TABLE `tli_pricing_prices` ENABLE KEYS */;
 
 -- Dumping data for table tli_registrations.tli_registrations: ~3 rows (approximately)
 DELETE FROM `tli_registrations`;
