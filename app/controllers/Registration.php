@@ -14,7 +14,7 @@ class Registration {
 
 		$f3->set('clubs', $dictionaryDao->readAllClubs());
 
-		echo \View::instance()->render('registration/index.php');
+		echo \View::instance()->render('registration/form.php');
 	}
 
 	function form_process($f3) {
