@@ -9,7 +9,7 @@ namespace helpers;
 class CurrencyFormatter {
 
 	/** Currency configuration */
-	const currencies = [
+	private static $currencies = [
 		'EUR' => ['symbol' => '€'],
 		'PLN' => ['symbol' => 'zł', 'suffix' => true],
 	];
@@ -23,10 +23,10 @@ class CurrencyFormatter {
 	 * @return String with the official currency display, value and symbol.
 	 */
 	static function moneyFormat($currency, $number, $decimals = 2) {
-		return array_key_exists('suffix', self::currencies[$currency])
-				&& self::currencies[$currency]['suffix']
-			? number_format($number, 2) . self::currencies[$currency]['symbol']
-			: self::currencies[$currency]['symbol'] . ' ' . number_format($number, $decimals);
+		return array_key_exists('suffix', self::$currencies[$currency])
+				&& self::$currencies[$currency]['suffix']
+			? number_format($number, 2) . self::$currencies[$currency]['symbol']
+			: self::$currencies[$currency]['symbol'] . ' ' . number_format($number, $decimals);
 	}
 
 	/**
@@ -36,7 +36,7 @@ class CurrencyFormatter {
 	 * @return Sumbol for the currency.
 	 */
 	static function getSymbol($currency) {
-		return self::currencies[$currency]['symbol'];
+		return self::$currencies[$currency]['symbol'];
 	}
 
 }
