@@ -86,8 +86,7 @@ class Registration {
 		if (!$form)
 			$f3->error(404);
 
-		$priceCalculatorName = $f3->get('form_price_calculator');
-		$priceCalculator = new $priceCalculatorName;
+		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
 
 		$f3->set('form', $form);
 		$f3->set('paymentSummary', $priceCalculator->calculateSummary($form));
