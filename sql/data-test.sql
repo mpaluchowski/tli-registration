@@ -28,7 +28,8 @@ INSERT INTO `tli_pricing_items` (`id_pricing_item`, `item`, `variant`, `date_val
 	(4, 'friday-social-event', NULL, NULL),
 	(5, 'saturday-dinner-participate', 'meat', NULL),
 	(6, 'saturday-dinner-participate', 'vegetarian', NULL),
-	(7, 'saturday-party-participate', NULL, NULL);
+	(7, 'saturday-party-participate', NULL, NULL),
+	(8, 'lunch', NULL, NULL);
 /*!40000 ALTER TABLE `tli_pricing_items` ENABLE KEYS */;
 
 -- Dumping data for table tli_registrations.tli_pricing_prices: ~7 rows (approximately)
@@ -48,7 +49,9 @@ INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
 	(6, 'EUR', 11),
 	(6, 'PLN', 40),
 	(7, 'EUR', 5),
-	(7, 'PLN', 20);
+	(7, 'PLN', 20),
+	(8, 'EUR', 5),
+	(8, 'PLN', 20);
 /*!40000 ALTER TABLE `tli_pricing_prices` ENABLE KEYS */;
 
 -- Dumping data for table tli_registrations.tli_registrations: ~3 rows (approximately)
@@ -67,16 +70,19 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(1, 'accommodation-on', '["fri-sat"]'),
 	(1, 'accommodation-with-toastmasters', '"stay"'),
 	(1, 'comments', '"This is my comment. I\'ll add some  code to that."'),
+	(1, 'contest-attend', '"on"'),
 	(1, 'educational-awards', '"ACS, ALB"'),
 	(1, 'exec-position', '"vpe"'),
 	(1, 'friday-social-event', '"on"'),
 	(1, 'full-name', '"Michal Paluchowski"'),
 	(1, 'home-club', '"Speaking Elephants"'),
+	(1, 'lunch', '"on"'),
+	(1, 'lunch-days', '["saturday", "sunday"]'),
 	(1, 'phone', '"+48888205402"'),
 	(1, 'saturday-dinner-meal', '"vegetarian"'),
 	(1, 'saturday-dinner-participate', '"on"'),
 	(1, 'saturday-party-participate', '"on"'),
-	(1, 'sleep-on', '["mattress","foam-pad"]'),
+	(1, 'translator', '"on"'),
 	(2, 'accommodation-with-toastmasters', '"host"'),
 	(2, 'exec-position', '"none"'),
 	(2, 'friday-social-event', '"on"'),
@@ -84,8 +90,11 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(2, 'home-club', '"None"'),
 	(2, 'phone', '"+48694470100"'),
 	(3, 'accommodation-with-toastmasters', '"independent"'),
+	(3, 'contest-attend', '"on"'),
 	(3, 'exec-position', '"vpe"'),
 	(3, 'full-name', '"Jane Doe"'),
+	(3, 'lunch', '"on"'),
+	(3, 'lunch-days', '["saturday"]'),
 	(3, 'home-club', '"Speaking Elephants"'),
 	(3, 'phone', '"+48 123 456 789"');
 /*!40000 ALTER TABLE `tli_registration_fields` ENABLE KEYS */;

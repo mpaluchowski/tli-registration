@@ -57,11 +57,12 @@ class FormValidatorImpl implements FormValidator {
 					|| !$form->getField('accommodation-on')) {
 				$messages['accommodation-on'] = \F3::get('lang.AccommodationWithToastmastersNeededOnValidationMsg');
 			}
+		}
 
-			if (!$form->hasField('sleep-on')
-					|| !$form->getField('sleep-on')) {
-				$messages['sleep-on'] = \F3::get('lang.AccommodationWithToastmastersSleepOnValidationMsg');
-			}
+		if ($form->hasField('lunch')
+				&& (!$form->hasField('lunch-days')
+					|| !$form->getField('lunch-days'))) {
+			$messages['lunch-days'] = \F3::get('lang.EventsLunchDaysValidationMsg');
 		}
 
 		// Whoever goes to Saturday dinner, must choose a meal option

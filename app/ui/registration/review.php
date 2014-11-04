@@ -64,24 +64,35 @@
 				<p class="form-control-static"><?php echo implode(", ", $accommodationOnOptions) ?></p>
 			</div>
 		</div>
-	<?php endif;
-	if ($form->hasField('sleep-on')):
-		$sleepOnOptions = array_map(function ($item) { return \F3::get('lang.AccommodationWithToastmastersSleepOn-' . $item); }, $form->getField('sleep-on'));
-	?>
-		<div class="form-group">
-			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn') ?></label>
-			<div class="col-sm-9">
-				<p class="form-control-static"><?php echo implode(", ", $sleepOnOptions) ?></p>
-			</div>
-		</div>
 	<?php endif; ?>
 
-		<h2><?php echo \F3::get('lang.EventsHeader') ?></h2>
+		<h2><?php echo \F3::get('lang.EventOptionsHeader') ?></h2>
 
+		<div class="form-group">
+			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsTranslator') ?></label>
+			<div class="col-sm-9">
+				<p class="form-control-static"><?php echo $form->hasField('translator') && "on" === $form->getField('translator') ? \F3::get('lang.Yes') : \F3::get('lang.No') ?></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsContest') ?></label>
+			<div class="col-sm-9">
+				<p class="form-control-static"><?php echo $form->hasField('contest-attend') && "on" === $form->getField('contest-attend') ? \F3::get('lang.Yes') : \F3::get('lang.No') ?></p>
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsFridaySocial') ?></label>
 			<div class="col-sm-9">
 				<p class="form-control-static"><?php echo $form->hasField('friday-social-event') && "on" === $form->getField('friday-social-event') ? \F3::get('lang.Yes') : \F3::get('lang.No') ?></p>
+			</div>
+		</div>
+	<?php if ($form->hasField('lunch-days')) {
+		$lunchDaysOptions = array_map(function ($item) { return \F3::get('lang.EventsLunch-' . $item); }, $form->getField('lunch-days'));
+	} ?>
+		<div class="form-group">
+			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsLunch') ?></label>
+			<div class="col-sm-9">
+				<p class="form-control-static"><?php echo $form->hasField('lunch') && "on" === $form->getField('lunch') ? \F3::get('lang.Yes') . ', ' . implode(", ", $lunchDaysOptions) : \F3::get('lang.No') ?></p>
 			</div>
 		</div>
 		<div class="form-group">
@@ -134,6 +145,15 @@
 					<td><?php echo \F3::get('lang.EventsFridaySocial') ?></td>
 					<td><?php echo $paymentSummary['friday-social-event']->variant ? $paymentSummary['friday-social-event']->variant : '&mdash;' ?></td>
 				<?php foreach ($paymentSummary['friday-social-event']->prices as $currency => $price): ?>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+				<?php endforeach; ?>
+				</tr>
+			<?php endif;
+			if ($form->hasField('lunch') && "on" === $form->getField('lunch')): ?>
+				<tr>
+					<td><?php echo \F3::get('lang.EventsLunch') ?></td>
+					<td><?php echo implode(", ", $lunchDaysOptions) ?></td>
+				<?php foreach ($paymentSummary['lunch']->prices as $currency => $price): ?>
 					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
 				<?php endforeach; ?>
 				</tr>
