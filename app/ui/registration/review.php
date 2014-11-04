@@ -66,7 +66,7 @@
 		</div>
 	<?php endif; ?>
 
-		<h2><?php echo \F3::get('lang.EventsHeader') ?></h2>
+		<h2><?php echo \F3::get('lang.EventOptionsHeader') ?></h2>
 
 		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsFridaySocial') ?></label>

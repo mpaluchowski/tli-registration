@@ -58,7 +58,7 @@ return ['lang' => [
 	'AccommodationWithToastmastersIndependent' => "<strong>Samemu zorganizuję</strong> swój nocleg",
 	'AccommodationWithToastmasters-independent' => "Samemu zorganizuję swój nocleg",
 
-	'EventsHeader' => "Wydarzenia",
+	'EventOptionsHeader' => "Opcje wydarzenia",
 	'EventsFridaySocialYes' => "Chętnie wezmę udział w <strong>piątkowym wydarzeniu</strong>",
 	'EventsFridaySocial' => "Piątkowe wydarzenie",
 	'EventsSaturdayDinner' => "Sobotnia kolacja",

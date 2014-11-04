@@ -94,7 +94,7 @@
       <?php if (isset($registration['messages']['accommodation-with-toastmasters'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['accommodation-with-toastmasters'] ?></p><?php endif; ?>
     </div>
 
-    <h2><?php echo \F3::get('lang.EventsHeader') ?></h2>
+    <h2><?php echo \F3::get('lang.EventOptionsHeader') ?></h2>
 
     <div class="checkbox form-group">
       <label><input type="checkbox" name="friday-social-event"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?></label>
