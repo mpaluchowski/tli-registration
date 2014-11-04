@@ -11,3 +11,4 @@ lib-fatfree/
 
 # Local app configuration
 app/config.ini
+public/.htaccess
