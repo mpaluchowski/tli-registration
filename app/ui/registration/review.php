@@ -75,6 +75,12 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsContest') ?></label>
+			<div class="col-sm-9">
+				<p class="form-control-static"><?php echo $form->hasField('contest-attend') && "on" === $form->getField('contest-attend') ? \F3::get('lang.Yes') : \F3::get('lang.No') ?></p>
+			</div>
+		</div>
+		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsFridaySocial') ?></label>
 			<div class="col-sm-9">
 				<p class="form-control-static"><?php echo $form->hasField('friday-social-event') && "on" === $form->getField('friday-social-event') ? \F3::get('lang.Yes') : \F3::get('lang.No') ?></p>

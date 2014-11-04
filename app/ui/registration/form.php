@@ -102,6 +102,10 @@
     </div>
 
     <div class="checkbox form-group">
+      <label><input type="checkbox" name="contest-attend"<?php if (isset($registration['contest-attend']) && $registration['contest-attend'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsContestYes') ?></label>
+    </div>
+
+    <div class="checkbox form-group">
       <label><input type="checkbox" name="friday-social-event"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?></label>
     </div>
 
