@@ -74,10 +74,10 @@
         <div class="form-group<?php if (isset($registration['messages']['accommodation-on'])): ?> has-error<?php endif ?>">
           <label class="control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersNeededOn') ?></label>
           <div class="checkbox">
-            <label><input name="accommodation-on[]" type="checkbox" value="fri-sat" data-required="required"<?php if (isset($registration['accommodation-on']) && in_array('fri-sat', $registration['accommodation-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersFriSat') ?></label>
+            <label><input name="accommodation-on[]" type="checkbox" value="fri-sat"<?php if (isset($registration['accommodation-on']) && in_array('fri-sat', $registration['accommodation-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersFriSat') ?></label>
           </div>
           <div class="checkbox">
-            <label><input name="accommodation-on[]" type="checkbox" value="sat-sun" data-required="required"<?php if (isset($registration['accommodation-on']) && in_array('sat-sun', $registration['accommodation-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersSatSun') ?></label>
+            <label><input name="accommodation-on[]" type="checkbox" value="sat-sun"<?php if (isset($registration['accommodation-on']) && in_array('sat-sun', $registration['accommodation-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersSatSun') ?></label>
           </div>
 
           <?php if (isset($registration['messages']['accommodation-on'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['accommodation-on'] ?></p><?php endif; ?>
