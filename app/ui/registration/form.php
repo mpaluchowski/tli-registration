@@ -97,6 +97,11 @@
     <h2><?php echo \F3::get('lang.EventOptionsHeader') ?></h2>
 
     <div class="checkbox form-group">
+      <label><input type="checkbox" name="translator"<?php if (isset($registration['translator']) && $registration['translator'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsTranslatorYes') ?></label>
+      <p class="help-block"><?php echo \F3::get('lang.EventTranslatorHelp') ?></p>
+    </div>
+
+    <div class="checkbox form-group">
       <label><input type="checkbox" name="friday-social-event"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?></label>
     </div>
 

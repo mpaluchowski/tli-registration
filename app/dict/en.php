@@ -59,6 +59,9 @@ return ['lang' => [
 	'AccommodationWithToastmasters-independent' => "On my own",
 
 	'EventOptionsHeader' => "Event Options",
+	'EventsTranslator' => "Translator",
+	'EventsTranslatorYes' => "I can act as an English-Polish-English <strong>translator</strong>",
+	'EventTranslatorHelp' => "We'll give you a special badge and may ask you to help out translating some sessions for those, who don't speak their language.",
 	'EventsFridaySocial' => "Friday's social event",
 	'EventsFridaySocialYes' => "I'd love to join <strong>Friday's social event</strong>",
 	'EventsSaturdayDinner' => "Saturday's dinner",

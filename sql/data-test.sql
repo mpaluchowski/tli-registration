@@ -76,6 +76,7 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(1, 'saturday-dinner-meal', '"vegetarian"'),
 	(1, 'saturday-dinner-participate', '"on"'),
 	(1, 'saturday-party-participate', '"on"'),
+	(1, 'translator', '"on"'),
 	(2, 'accommodation-with-toastmasters', '"host"'),
 	(2, 'exec-position', '"none"'),
 	(2, 'friday-social-event', '"on"'),
