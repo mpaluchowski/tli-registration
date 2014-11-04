@@ -64,16 +64,6 @@
 				<p class="form-control-static"><?php echo implode(", ", $accommodationOnOptions) ?></p>
 			</div>
 		</div>
-	<?php endif;
-	if ($form->hasField('sleep-on')):
-		$sleepOnOptions = array_map(function ($item) { return \F3::get('lang.AccommodationWithToastmastersSleepOn-' . $item); }, $form->getField('sleep-on'));
-	?>
-		<div class="form-group">
-			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn') ?></label>
-			<div class="col-sm-9">
-				<p class="form-control-static"><?php echo implode(", ", $sleepOnOptions) ?></p>
-			</div>
-		</div>
 	<?php endif; ?>
 
 		<h2><?php echo \F3::get('lang.EventsHeader') ?></h2>

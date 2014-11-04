@@ -82,23 +82,6 @@
 
           <?php if (isset($registration['messages']['accommodation-on'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['accommodation-on'] ?></p><?php endif; ?>
         </div>
-        <div class="form-group<?php if (isset($registration['messages']['sleep-on'])): ?> has-error<?php endif ?>">
-          <label class="control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn') ?></label>
-          <div class="checkbox">
-            <label><input name="sleep-on[]" type="checkbox" value="bed" data-required="required"<?php if (isset($registration['sleep-on']) && in_array('bed', $registration['sleep-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn-bed') ?></label>
-          </div>
-          <div class="checkbox">
-            <label><input name="sleep-on[]" type="checkbox" value="mattress" data-required="required"<?php if (isset($registration['sleep-on']) &&in_array('mattress',  $registration['sleep-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn-mattress') ?></label>
-          </div>
-          <div class="checkbox">
-            <label><input name="sleep-on[]" type="checkbox" value="foam-pad" data-required="required"<?php if (isset($registration['sleep-on']) && in_array('foam-pad', $registration['sleep-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOn-foam-pad') ?></label>
-          </div>
-          <div class="checkbox">
-            <label><input name="sleep-on[]" type="checkbox" value="anything" data-required="required"<?php if (isset($registration['sleep-on']) && in_array('anything', $registration['sleep-on'])) echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersSleepOnAnything') ?></label>
-          </div>
-
-          <?php if (isset($registration['messages']['sleep-on'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['sleep-on'] ?></p><?php endif; ?>
-        </div>
       </div>
 
       <div class="radio">
