@@ -80,6 +80,15 @@
 				<p class="form-control-static"><?php echo $form->hasField('friday-social-event') && "on" === $form->getField('friday-social-event') ? \F3::get('lang.Yes') : \F3::get('lang.No') ?></p>
 			</div>
 		</div>
+	<?php if ($form->hasField('lunch-days')) {
+		$lunchDaysOptions = array_map(function ($item) { return \F3::get('lang.EventsLunch-' . $item); }, $form->getField('lunch-days'));
+	} ?>
+		<div class="form-group">
+			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsLunch') ?></label>
+			<div class="col-sm-9">
+				<p class="form-control-static"><?php echo $form->hasField('lunch') && "on" === $form->getField('lunch') ? \F3::get('lang.Yes') . ', ' . implode(", ", $lunchDaysOptions) : \F3::get('lang.No') ?></p>
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsSaturdayDinner') ?></label>
 			<div class="col-sm-9">
@@ -130,6 +139,15 @@
 					<td><?php echo \F3::get('lang.EventsFridaySocial') ?></td>
 					<td><?php echo $paymentSummary['friday-social-event']->variant ? $paymentSummary['friday-social-event']->variant : '&mdash;' ?></td>
 				<?php foreach ($paymentSummary['friday-social-event']->prices as $currency => $price): ?>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+				<?php endforeach; ?>
+				</tr>
+			<?php endif;
+			if ($form->hasField('lunch') && "on" === $form->getField('lunch')): ?>
+				<tr>
+					<td><?php echo \F3::get('lang.EventsLunch') ?></td>
+					<td><?php echo implode(", ", $lunchDaysOptions) ?></td>
+				<?php foreach ($paymentSummary['lunch']->prices as $currency => $price): ?>
 					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
 				<?php endforeach; ?>
 				</tr>

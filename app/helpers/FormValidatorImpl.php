@@ -59,6 +59,12 @@ class FormValidatorImpl implements FormValidator {
 			}
 		}
 
+		if ($form->hasField('lunch')
+				&& (!$form->hasField('lunch-days')
+					|| !$form->getField('lunch-days'))) {
+			$messages['lunch-days'] = \F3::get('lang.EventsLunchDaysValidationMsg');
+		}
+
 		// Whoever goes to Saturday dinner, must choose a meal option
 		if ($form->hasField('saturday-dinner-participate')
 				&& (!$form->hasField('saturday-dinner-meal')

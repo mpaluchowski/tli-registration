@@ -106,6 +106,23 @@
     </div>
 
     <div class="checkbox form-group">
+      <label><input type="checkbox" name="lunch"<?php if (isset($registration['lunch']) && $registration['lunch'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchYes') ?></label>
+
+      <div class="form-group-dependent" data-depends-on="lunch" data-depends-on-value="on">
+        <div class="form-group<?php if (isset($registration['messages']['lunch-days'])): ?> has-error<?php endif ?>">
+          <div class="checkbox">
+            <label><input type="checkbox" name="lunch-days[]" value="saturday"<?php if (isset($registration['lunch-days']) && $registration['lunch-days'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchSaturday') ?></label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="lunch-days[]" value="sunday"<?php if (isset($registration['lunch-days']) && $registration['lunch-days'] == 'vegetarian') echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchSunday') ?></label>
+          </div>
+
+          <?php if (isset($registration['messages']['lunch-days'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['lunch-days'] ?></p><?php endif; ?>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkbox form-group">
       <label><input type="checkbox" name="saturday-dinner-participate"<?php if (isset($registration['saturday-dinner-participate']) && $registration['saturday-dinner-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerYes') ?></label>
 
       <div class="form-group-dependent" data-depends-on="saturday-dinner-participate" data-depends-on-value="on">
