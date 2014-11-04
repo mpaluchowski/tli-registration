@@ -69,7 +69,7 @@ class PriceCalculatorImpl implements PriceCalculator {
 		$query = 'SELECT pi.item,
 						 pi.variant,
 						 pi.date_valid_through,
-						 GROUP_CONCAT(CONCAT(pp.currency, ";", pp.price) SEPARATOR "|") AS prices
+						 GROUP_CONCAT(CONCAT(pp.currency, ";", pp.price) ORDER BY pp.currency SEPARATOR "|") AS prices
 				  FROM ' . \F3::get('db_table_prefix') . 'pricing_items pi
 				  JOIN ' . \F3::get('db_table_prefix') . 'pricing_prices pp
 				    ON pi.id_pricing_item = pp.fk_pricing_item
