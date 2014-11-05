@@ -1,8 +1,12 @@
 
-body.signin {
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: #eee;
+body {
+	padding: 0 0 100px 0;
+
+	.signin {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		background-color: #eee;
+	}
 }
 
 .form-signin {
