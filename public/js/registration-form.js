@@ -137,8 +137,27 @@ tliRegister.registrationForm = function() {
 	initTotalPriceDisplay = function() {
 		// Initial recalculation with entrance fee
 		recalculateTotalPrice();
-		$('.field-price-affecting').change(recalculateTotalPrice);
+		$('.field-price-affecting')
+			.change(togglePriceIndicator)
+			.change(recalculateTotalPrice);
 	},
+
+	togglePriceIndicator = function() {
+		$(this).siblings('.label')
+			.toggleClass('label-info', $(this).prop('checked'))
+			.toggleClass('label-default', !$(this).prop('checked'));
+
+		// Toggle labels on radio buttons thar were unchecked
+		if ($(this).is(':radio')) {
+			$('[name=' + $(this).attr('name') + ']')
+				.not($(this))
+				.each(function() {
+					$(this).siblings('.label')
+						.toggleClass('label-info', $(this).prop('checked'))
+						.toggleClass('label-default', !$(this).prop('checked'));
+					});
+		}
+	}
 
 	recalculateTotalPrice = function() {
 		$.getJSON(
