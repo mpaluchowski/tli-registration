@@ -114,10 +114,7 @@
     </div>
 
     <div class="checkbox form-group">
-      <label>
-        <input type="checkbox" name="friday-social-event" class="field-price-affecting"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?>
-        <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['friday-social-event']->prices), ' / ') ?></span>
-      </label>
+      <label><input type="checkbox" name="friday-social-event"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?></label>
     </div>
 
     <div class="checkbox form-group">

@@ -25,11 +25,6 @@ class PriceCalculatorImpl implements PriceCalculator {
 			'admission' => $pricing['admission'],
 		];
 
-		if ($form->hasField('friday-social-event')
-				&& "on" === $form->getField('friday-social-event')) {
-			$summary['friday-social-event'] = $pricing['friday-social-event'];
-		}
-
 		if ($form->hasField('lunch')
 				&& "on" === $form->getField('lunch')
 				&& $form->hasField('lunch-days')) {
