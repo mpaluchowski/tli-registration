@@ -3,9 +3,9 @@ var tliRegister = tliRegister || {};
 tliRegister.registrationForm = function() {
 
 	var init = function() {
-		initEmailExistingCheck();
 		initCustomClubEntry();
 		initDependentFieldGroups();
+		initEmailExistingCheck();
 	},
 
 	initEmailExistingCheck = function() {
