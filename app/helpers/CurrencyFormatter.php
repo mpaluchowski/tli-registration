@@ -30,6 +30,19 @@ class CurrencyFormatter {
 	}
 
 	/**
+	 * Formats an array of prices, supplied as [currency => price].
+	 *
+	 * @param prices array of prices to format.
+	 * @param decimals how many decimal numbers to include.
+	 * @return array with prices formatted according to currency rules.
+	 */
+	static function moneyFormatArray(array $prices, $decimals = 2) {
+		return array_map(function($currency, $price) use ($decimals) {
+			return self::moneyFormat($currency, $price, $decimals);
+		}, array_keys($prices), $prices);
+	}
+
+	/**
 	 * Retrieves the custom symbol for a currency.
 	 *
 	 * @param currency ISO currency code.
