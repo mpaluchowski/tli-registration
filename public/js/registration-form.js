@@ -165,7 +165,7 @@ tliRegister.registrationForm = function() {
 	recalculateTotalPrice = function() {
 		$.getJSON(
 			"/registration/get_total_price",
-			$(this).closest('form').serializeArray(),
+			$("#registration-form").closest('form').serializeArray(),
 			function(data, textStatus) {
 				$('#total-due').text($.map(data, function(obj) { return obj }).join(' / '));
 			}
