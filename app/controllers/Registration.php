@@ -14,6 +14,10 @@ class Registration {
 
 		$f3->set('clubs', $dictionaryDao->readAllClubs());
 
+		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
+
+		$f3->set('pricing', $priceCalculator->fetchPricing());
+
 		echo \View::instance()->render('registration/form.php');
 	}
 

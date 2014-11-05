@@ -5,6 +5,11 @@
     <h1><?php echo \F3::get('lang.RegistrationFormHeader') ?></h1>
   </div>
 
+  <p><?php
+  $admissionPrices = array_map(function ($currency, $price) { return \helpers\CurrencyFormatter::moneyFormat($currency, $price); }, array_keys($pricing['admission']->prices), $pricing['admission']->prices);
+  echo \F3::get('lang.CurrentParticipationPaymentInfo', [implode(" / ", $admissionPrices), strftime('%x', strtotime($pricing['admission']->dateValidThrough))])
+  ?></p>
+
   <form action="<?php echo \F3::get('ALIASES.registration_process') ?>" method="POST">
     <h2><?php echo \F3::get('lang.PersonalInformationHeader') ?></h2>
 
