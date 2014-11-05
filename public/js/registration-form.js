@@ -138,6 +138,9 @@ tliRegister.registrationForm = function() {
 		// Initial recalculation with entrance fee
 		recalculateTotalPrice();
 		$('.field-price-affecting')
+			.each(function() {
+				$.proxy(togglePriceIndicator, $(this))();
+			})
 			.change(togglePriceIndicator)
 			.change(recalculateTotalPrice);
 	},
