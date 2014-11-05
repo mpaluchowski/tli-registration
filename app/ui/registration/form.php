@@ -164,7 +164,10 @@
     </div>
 
     <div class="checkbox form-group">
-      <label><input type="checkbox" name="saturday-party-participate" class="field-price-affecting"<?php if (isset($registration['saturday-party-participate']) && $registration['saturday-party-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayPartyYes') ?></label>
+      <label>
+        <input type="checkbox" name="saturday-party-participate" class="field-price-affecting"<?php if (isset($registration['saturday-party-participate']) && $registration['saturday-party-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayPartyYes') ?>
+        <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['saturday-party-participate']->prices), ' / ') ?></span>
+      </label>
     </div>
 
     <h2><?php echo \F3::get('lang.CommentsHeader') ?></h2>
