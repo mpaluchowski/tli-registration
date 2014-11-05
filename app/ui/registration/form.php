@@ -13,7 +13,7 @@
     ])
   ?></p>
 
-  <form id="registration-form" action="<?php echo \F3::get('ALIASES.registration_process') ?>" method="POST" novalidate>
+  <form id="registration-form" action="<?php echo \F3::get('ALIASES.registration_process') ?>" method="POST">
     <h2><?php echo \F3::get('lang.PersonalInformationHeader') ?></h2>
 
     <div class="form-group<?php if (isset($registration['messages']['full-name'])): ?> has-error<?php endif ?>">
