@@ -31,7 +31,8 @@ class PriceCalculatorImpl implements PriceCalculator {
 		}
 
 		if ($form->hasField('lunch')
-				&& "on" === $form->getField('lunch')) {
+				&& "on" === $form->getField('lunch')
+				&& $form->hasField('lunch-days')) {
 			$summary['lunch'] = $pricing['lunch'];
 			// Multiply lunch price per day by number of days
 			foreach ($summary['lunch']->prices as $currency => $price) {
@@ -72,7 +73,7 @@ class PriceCalculatorImpl implements PriceCalculator {
 	 * @param time optional time to return prices for. Default is now.
 	 * @return pricing structure with all available options and variants.
 	 */
-	private function fetchPricing($time = null) {
+	public function fetchPricing($time = null) {
 		if (!$time) $time = time();
 
 		$query = 'SELECT pi.item,

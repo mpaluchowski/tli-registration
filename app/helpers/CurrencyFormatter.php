@@ -12,6 +12,7 @@ class CurrencyFormatter {
 	private static $currencies = [
 		'EUR' => ['symbol' => '€'],
 		'PLN' => ['symbol' => 'zł', 'suffix' => true],
+		'USD' => ['symbol' => '$'],
 	];
 
 	/**
@@ -27,6 +28,19 @@ class CurrencyFormatter {
 				&& self::$currencies[$currency]['suffix']
 			? number_format($number, 2) . self::$currencies[$currency]['symbol']
 			: self::$currencies[$currency]['symbol'] . ' ' . number_format($number, $decimals);
+	}
+
+	/**
+	 * Formats an array of prices, supplied as [currency => price].
+	 *
+	 * @param prices array of prices to format.
+	 * @param decimals how many decimal numbers to include.
+	 * @return array with prices formatted according to currency rules.
+	 */
+	static function moneyFormatArray(array $prices, $decimals = 2) {
+		return array_map(function($currency, $price) use ($decimals) {
+			return self::moneyFormat($currency, $price, $decimals);
+		}, array_keys($prices), $prices);
 	}
 
 	/**

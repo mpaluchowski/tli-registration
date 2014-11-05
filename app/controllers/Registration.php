@@ -14,6 +14,10 @@ class Registration {
 
 		$f3->set('clubs', $dictionaryDao->readAllClubs());
 
+		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
+
+		$f3->set('pricing', $priceCalculator->fetchPricing());
+
 		echo \View::instance()->render('registration/form.php');
 	}
 
@@ -128,6 +132,22 @@ class Registration {
 					)
 				]);
 		}
+	}
+
+	function get_total_price($f3) {
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('GET')));
+
+		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
+
+		$prices = $priceCalculator->calculateSummary($form)['total'];
+
+		foreach ($prices as $currency => $price) {
+			$prices[$currency] = \helpers\CurrencyFormatter::moneyFormat($currency, $price);
+		}
+
+		echo json_encode($prices);
 	}
 
 	function resend_email($f3, $args) {

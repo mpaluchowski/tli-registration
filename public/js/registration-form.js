@@ -3,9 +3,10 @@ var tliRegister = tliRegister || {};
 tliRegister.registrationForm = function() {
 
 	var init = function() {
-		initEmailExistingCheck();
 		initCustomClubEntry();
 		initDependentFieldGroups();
+		initTotalPriceDisplay();
+		initEmailExistingCheck();
 	},
 
 	initEmailExistingCheck = function() {
@@ -131,6 +132,46 @@ tliRegister.registrationForm = function() {
 				});
 			}
 		});
+	},
+
+	initTotalPriceDisplay = function() {
+		// Initial recalculation with entrance fee
+		recalculateTotalPrice();
+		$('.field-price-affecting')
+			.each(function() {
+				$.proxy(togglePriceIndicator, $(this))();
+			})
+			.change(togglePriceIndicator)
+			.change(recalculateTotalPrice);
+	},
+
+	togglePriceIndicator = function() {
+		$(this).siblings('.label')
+			.toggleClass('label-info', $(this).prop('checked'))
+			.toggleClass('label-default', !$(this).prop('checked'));
+
+		// Toggle labels on radio buttons thar were unchecked
+		if ($(this).is(':radio')) {
+			$('[name=' + $(this).attr('name') + ']')
+				.not($(this))
+				.each(function() {
+					$(this).siblings('.label')
+						.toggleClass('label-info', $(this).prop('checked'))
+						.toggleClass('label-default', !$(this).prop('checked'));
+					});
+		}
+	}
+
+	recalculateTotalPrice = function() {
+		$.getJSON(
+			"/registration/get_total_price",
+			$("#registration-form").closest('form').serializeArray(),
+			function(data, textStatus) {
+				$('#total-due').text($.map(data, function(obj) { return obj }).join(' / '));
+			}
+			).fail(function(jqxhr, textStatus, error) {
+				$('#total-due').html("&mdash;");
+			});
 	}
 
 	return {
