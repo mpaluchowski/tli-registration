@@ -5,6 +5,7 @@ tliRegister.registrationForm = function() {
 	var init = function() {
 		initCustomClubEntry();
 		initDependentFieldGroups();
+		initTotalPriceDisplay();
 		initEmailExistingCheck();
 	},
 
@@ -131,6 +132,24 @@ tliRegister.registrationForm = function() {
 				});
 			}
 		});
+	},
+
+	initTotalPriceDisplay = function() {
+		// Initial recalculation with entrance fee
+		recalculateTotalPrice();
+		$('.field-price-affecting').change(recalculateTotalPrice);
+	},
+
+	recalculateTotalPrice = function() {
+		$.getJSON(
+			"/registration/get_total_price",
+			$(this).closest('form').serializeArray(),
+			function(data, textStatus) {
+				$('#total-due').text($.map(data, function(obj) { return obj }).join(' / '));
+			}
+			).fail(function(jqxhr, textStatus, error) {
+				$('#total-due').html("&mdash;");
+			});
 	}
 
 	return {

@@ -106,7 +106,7 @@
     </div>
 
     <div class="checkbox form-group">
-      <label><input type="checkbox" name="friday-social-event"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?></label>
+      <label><input type="checkbox" name="friday-social-event" class="field-price-affecting"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?></label>
     </div>
 
     <div class="checkbox form-group">
@@ -115,10 +115,10 @@
       <div class="form-group-dependent" data-depends-on="lunch" data-depends-on-value="on">
         <div class="form-group<?php if (isset($registration['messages']['lunch-days'])): ?> has-error<?php endif ?>">
           <div class="checkbox">
-            <label><input type="checkbox" name="lunch-days[]" value="saturday"<?php if (isset($registration['lunch-days']) && $registration['lunch-days'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchSaturday') ?></label>
+            <label><input type="checkbox" name="lunch-days[]" class="field-price-affecting" value="saturday"<?php if (isset($registration['lunch-days']) && $registration['lunch-days'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchSaturday') ?></label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name="lunch-days[]" value="sunday"<?php if (isset($registration['lunch-days']) && $registration['lunch-days'] == 'vegetarian') echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchSunday') ?></label>
+            <label><input type="checkbox" name="lunch-days[]" class="field-price-affecting" value="sunday"<?php if (isset($registration['lunch-days']) && $registration['lunch-days'] == 'vegetarian') echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchSunday') ?></label>
           </div>
 
           <?php if (isset($registration['messages']['lunch-days'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['lunch-days'] ?></p><?php endif; ?>
@@ -132,10 +132,10 @@
       <div class="form-group-dependent" data-depends-on="saturday-dinner-participate" data-depends-on-value="on">
         <div class="form-group<?php if (isset($registration['messages']['saturday-dinner-meal'])): ?> has-error<?php endif ?>">
           <div class="radio">
-            <label><input type="radio" name="saturday-dinner-meal" value="meat" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerMeat') ?></label>
+            <label><input type="radio" name="saturday-dinner-meal" value="meat" class="field-price-affecting" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerMeat') ?></label>
           </div>
           <div class="radio">
-            <label><input type="radio" name="saturday-dinner-meal" value="vegetarian" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'vegetarian') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerVegetarian') ?></label>
+            <label><input type="radio" name="saturday-dinner-meal" value="vegetarian" class="field-price-affecting" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'vegetarian') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerVegetarian') ?></label>
           </div>
 
           <?php if (isset($registration['messages']['saturday-dinner-meal'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['saturday-dinner-meal'] ?></p><?php endif; ?>
@@ -144,7 +144,7 @@
     </div>
 
     <div class="checkbox form-group">
-      <label><input type="checkbox" name="saturday-party-participate"<?php if (isset($registration['saturday-party-participate']) && $registration['saturday-party-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayPartyYes') ?></label>
+      <label><input type="checkbox" name="saturday-party-participate" class="field-price-affecting"<?php if (isset($registration['saturday-party-participate']) && $registration['saturday-party-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayPartyYes') ?></label>
     </div>
 
     <h2><?php echo \F3::get('lang.CommentsHeader') ?></h2>
@@ -159,5 +159,14 @@
     <p class="help-block"><?php echo \F3::get('lang.SubmitAndReviewButtonHelp') ?></p>
   </form>
 </div>
+
+<footer class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <h3 class="navbar-text navbar-right">
+      <?php echo \F3::get('lang.CurrentTotalDue') ?>
+      <span id="total-due" class="label label-info">&mdash;</span>
+    </h3>
+  </div>
+</footer>
 
 <?php echo \View::instance()->render('footer.php') ?>

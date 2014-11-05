@@ -90,6 +90,8 @@ return ['lang' => [
 	'SubmitAndReviewButton' => "Wyślij i potwierdź",
 	'SubmitAndReviewButtonHelp' => "Możesz jeszcze raz sprawdzić swoje zgłoszenie zanim przejdziesz do płatności.",
 
+	"CurrentTotalDue" => "Twoja aktualna należność to",
+
 	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",
 	"RegistrationReviewIntro" => "Sprawdź informacje, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby przejść do płatności.",
 
