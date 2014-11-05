@@ -31,7 +31,8 @@ class PriceCalculatorImpl implements PriceCalculator {
 		}
 
 		if ($form->hasField('lunch')
-				&& "on" === $form->getField('lunch')) {
+				&& "on" === $form->getField('lunch')
+				&& $form->hasField('lunch-days')) {
 			$summary['lunch'] = $pricing['lunch'];
 			// Multiply lunch price per day by number of days
 			foreach ($summary['lunch']->prices as $currency => $price) {
