@@ -22,36 +22,30 @@ INSERT INTO `tli_clubs` (`id_club`, `name`) VALUES
 DELETE FROM `tli_pricing_items`;
 /*!40000 ALTER TABLE `tli_pricing_items` DISABLE KEYS */;
 INSERT INTO `tli_pricing_items` (`id_pricing_item`, `item`, `variant`, `date_valid_through`) VALUES
-	(1, 'admission', 'early', '2014-11-30 23:59:59'),
-	(2, 'admission', 'regular', '2015-01-10 23:59:59'),
-	(3, 'admission', 'late', '2015-01-20 23:59:59'),
-	(4, 'friday-social-event', NULL, NULL),
-	(5, 'saturday-dinner-participate', 'meat', NULL),
-	(6, 'saturday-dinner-participate', 'vegetarian', NULL),
-	(7, 'saturday-party-participate', NULL, NULL),
-	(8, 'lunch', NULL, NULL);
+	(1, 'admission', 'regular', '2015-01-02 23:59:59'),
+	(2, 'admission', 'late', '2015-01-27 23:59:59'),
+	(3, 'saturday-dinner-participate', 'meat', NULL),
+	(4, 'saturday-dinner-participate', 'vegetarian', NULL),
+	(5, 'saturday-party-participate', NULL, NULL),
+	(6, 'lunch', NULL, NULL);
 /*!40000 ALTER TABLE `tli_pricing_items` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_pricing_prices: ~7 rows (approximately)
+-- Dumping data for table tli_registrations.tli_pricing_prices: ~14 rows (approximately)
 DELETE FROM `tli_pricing_prices`;
 /*!40000 ALTER TABLE `tli_pricing_prices` DISABLE KEYS */;
 INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
-	(1, 'EUR', 10),
-	(1, 'PLN', 39),
-	(2, 'EUR', 15),
-	(2, 'PLN', 49),
-	(3, 'EUR', 20),
-	(3, 'PLN', 59),
-	(4, 'EUR', 8),
-	(4, 'PLN', 30),
-	(5, 'EUR', 13),
-	(5, 'PLN', 50),
-	(6, 'EUR', 11),
-	(6, 'PLN', 40),
-	(7, 'EUR', 5),
-	(7, 'PLN', 20),
-	(8, 'EUR', 5),
-	(8, 'PLN', 20);
+	(1, 'EUR', 13),
+	(1, 'PLN', 50),
+	(2, 'EUR', 18),
+	(2, 'PLN', 70),
+	(3, 'EUR', 12),
+	(3, 'PLN', 45),
+	(4, 'EUR', 12),
+	(4, 'PLN', 45),
+	(5, 'EUR', 6),
+	(5, 'PLN', 20),
+	(6, 'EUR', 5),
+	(6, 'PLN', 15);
 /*!40000 ALTER TABLE `tli_pricing_prices` ENABLE KEYS */;
 
 -- Dumping data for table tli_registrations.tli_registrations: ~3 rows (approximately)
@@ -63,7 +57,7 @@ INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `date_enter
 	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', '2014-10-19 22:46:36', '2014-10-19 22:46:56');
 /*!40000 ALTER TABLE `tli_registrations` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_registration_fields: ~29 rows (approximately)
+-- Dumping data for table tli_registrations.tli_registration_fields: ~38 rows (approximately)
 DELETE FROM `tli_registration_fields`;
 /*!40000 ALTER TABLE `tli_registration_fields` DISABLE KEYS */;
 INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUES
@@ -93,9 +87,9 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(3, 'contest-attend', '"on"'),
 	(3, 'exec-position', '"vpe"'),
 	(3, 'full-name', '"Jane Doe"'),
+	(3, 'home-club', '"Speaking Elephants"'),
 	(3, 'lunch', '"on"'),
 	(3, 'lunch-days', '["saturday"]'),
-	(3, 'home-club', '"Speaking Elephants"'),
 	(3, 'phone', '"+48 123 456 789"');
 /*!40000 ALTER TABLE `tli_registration_fields` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
