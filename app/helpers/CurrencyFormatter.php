@@ -12,6 +12,7 @@ class CurrencyFormatter {
 	private static $currencies = [
 		'EUR' => ['symbol' => '€'],
 		'PLN' => ['symbol' => 'zł', 'suffix' => true],
+		'USD' => ['symbol' => '$'],
 	];
 
 	/**
