@@ -91,7 +91,7 @@ return ['lang' => [
 	'SubmitAndReviewButton' => "Submit and Review",
 	'SubmitAndReviewButtonHelp' => "You will have a chance to review your registration before proceeding to payment.",
 
-	"CurrentParticipationPaymentInfo" => 'Your current participation price is <span class="label label-info">{0}</span> if paid by {1}.',
+	"CurrentParticipationPaymentInfo" => 'Your current participation price is <span class="label label-info">{0}</span> ({1}) if paid by {2}.',
 	"CurrentTotalDue" => "Your current total due payment is",
 
 	"RegistrationReviewHeader" => "Review registration for {0}",
