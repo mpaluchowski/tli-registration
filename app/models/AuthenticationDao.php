@@ -15,7 +15,7 @@ class AuthenticationDao {
 		}
 	}
 
-	function authenticate($email, $password) {
+	function authenticate($email, $password = null) {
 		$query = 'SELECT a.id_administrator,
 						 a.full_name,
 						 a.email,
@@ -26,7 +26,7 @@ class AuthenticationDao {
 					'email' => $email,
 				]);
 
-		if (!$result || !password_verify($password, $result[0]['password'])) {
+		if (!$result || ($password != null && !password_verify($password, $result[0]['password']))) {
 			return null;
 		} else {
 			return (object)[
