@@ -2,6 +2,12 @@
 
 A registration form for the Toastmasters Leadership Institute events, built on top of the PHP [Fat-Free Framework][fat-free-framework].
 
+## Requirements
+
+- PHP version minimum 5.4 with extensions
+    + pdo_mysql
+    + curl
+
 ## Installation
 
 1. Copy all files to a web server directory.
