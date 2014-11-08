@@ -12,6 +12,10 @@ class Login {
 	}
 
 	function login($f3) {
+		if (\models\FlashScope::has('Login.errorMessage')) {
+			$f3->set('loginErrorMessage', \models\FlashScope::pop('Login.errorMessage'));
+		}
+
 		$authDao = new \models\AuthenticationDao();
 		$f3->set('oauthState', $authDao->getOauthStateToken());
 		echo \View::instance()->render('login/login.php');
@@ -26,6 +30,7 @@ class Login {
 			);
 
 		if (!$admin) {
+			\models\FlashScope::push('Login.errorMessage', \F3::get('lang.SignInErrorUserUnknown'));
 			$f3->reroute('@admin_login');
 		} else {
 			$authDao->loginUser($admin);
@@ -49,6 +54,7 @@ class Login {
 
 		if (property_exists($tokenResponse, 'error')) {
 			// Error fetching info from Google
+			\models\FlashScope::push('Login.errorMessage', \F3::get('lang.SignInErrorGoogleProcessing'));
 			$f3->reroute('@admin_login');
 		}
 
@@ -56,6 +62,7 @@ class Login {
 			$userIdentification = $authDao->getUserOauthIdentification($tokenResponse->id_token);
 		} catch (Exception $e) {
 			// Error decoding token from Google
+			\models\FlashScope::push('Login.errorMessage', \F3::get('lang.SignInErrorGoogleProcessing'));
 			$f3->reroute('@admin_login');
 		}
 
@@ -63,6 +70,7 @@ class Login {
 
 		if (!$admin) {
 			// Admin not found
+			\models\FlashScope::push('Login.errorMessage', \F3::get('lang.SignInErrorUserUnknown'));
 			$f3->reroute('@admin_login');
 		} else {
 			$authDao->loginUser($admin);
