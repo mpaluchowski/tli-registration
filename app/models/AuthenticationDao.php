@@ -15,26 +15,14 @@ class AuthenticationDao {
 		}
 	}
 
-	function authenticate($email, $password) {
-		$query = 'SELECT a.id_administrator,
-						 a.full_name,
-						 a.email,
-						 a.password
-				  FROM ' . \F3::get('db_table_prefix') . 'administrators a
-				  WHERE a.email = :email';
-		$result = \F3::get('db')->exec($query, [
-					'email' => $email,
-				]);
+	/* Basic login functions */
 
-		if (!$result || !password_verify($password, $result[0]['password'])) {
-			return null;
-		} else {
-			return (object)[
-				'id' => $result[0]['id_administrator'],
-				'fullName' => $result[0]['full_name'],
-				'email' => $result[0]['email'],
-			];
-		}
+	static function isLoggedIn() {
+		return \F3::exists('SESSION.user');
+	}
+
+	static function getUser() {
+		return \F3::get('SESSION.user');
 	}
 
 	function loginUser($user) {
@@ -45,12 +33,81 @@ class AuthenticationDao {
 		\F3::clear('SESSION');
 	}
 
-	static function isLoggedIn() {
-		return \F3::exists('SESSION.user');
+	/* Database authentication */
+
+	function authenticate($email, $password = null) {
+		$query = 'SELECT a.id_administrator,
+						 a.full_name,
+						 a.email,
+						 a.password
+				  FROM ' . \F3::get('db_table_prefix') . 'administrators a
+				  WHERE a.email = :email';
+		$result = \F3::get('db')->exec($query, [
+					'email' => $email,
+				]);
+
+		if (!$result || ($password != null && !password_verify($password, $result[0]['password']))) {
+			return null;
+		} else {
+			return (object)[
+				'id' => $result[0]['id_administrator'],
+				'fullName' => $result[0]['full_name'],
+				'email' => $result[0]['email'],
+			];
+		}
 	}
 
-	static function getUser() {
-		return \F3::get('SESSION.user');
+	/* Google OAuth authentication */
+
+	function getUserOauthToken($code, $redirectUrl) {
+		$web = new \Web;
+		$result = $web->request(
+			'https://accounts.google.com/o/oauth2/token',
+			[
+				'method' => 'POST',
+				'content' => http_build_query([
+					'code' => $code,
+					'client_id' => self::getGoogleClientId(),
+					'client_secret' => $this->getGoogleClientSecret(),
+					'redirect_uri' => $redirectUrl,
+					'grant_type' => 'authorization_code',
+					]),
+			]
+			);
+
+		return json_decode($result['body']);
+	}
+
+	function getUserOauthIdentification($idToken) {
+		return \JWT::decode($idToken, null, false);
+	}
+
+	function getOauthStateToken() {
+		if (!\F3::exists('SESSION.oauthState')) {
+			\F3::set('SESSION.oauthState', md5(rand()));
+		}
+		return \F3::get('SESSION.oauthState');
+	}
+
+	function verifyOauthStateToken($token) {
+		return \F3::exists('SESSION.oauthState')
+				&& \F3::get('SESSION.oauthState') === $token;
+	}
+
+	static function getGoogleClientId() {
+		if (!\F3::exists('google_client_id')
+			|| !\F3::get('google_client_id')) {
+			throw new \Exception('google_client_id variable must be configured.');
+		}
+		return \F3::get('google_client_id');
+	}
+
+	private function getGoogleClientSecret() {
+		if (!\F3::exists('google_client_secret')
+			|| !\F3::get('google_client_secret')) {
+			throw new \Exception('google_client_secret variable must be configured.');
+		}
+		return \F3::get('google_client_secret');
 	}
 
 }

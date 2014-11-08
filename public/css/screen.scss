@@ -2,7 +2,7 @@
 body {
 	padding: 0 0 100px 0;
 
-	.signin {
+	&.signin {
 		padding-top: 40px;
 		padding-bottom: 40px;
 		background-color: #eee;
@@ -45,6 +45,34 @@ body {
 		margin-bottom: 10px;
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
+	}
+}
+
+.social-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+
+	a {
+		border-radius: .3em;
+		display: block;
+		font-size: 1.2em;
+		text-align: left;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		i {
+			border-right: 1px solid #eee;
+			margin-right: .3em;
+			padding: .6em;
+		}
+
+		&.google {
+			background: #dd4b39;
+			color: #FFF;
+		}
 	}
 }
 

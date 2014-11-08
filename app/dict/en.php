@@ -135,9 +135,11 @@ return ['lang' => [
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",
 
-	"SignInHeader" => "Please sign in",
 	"Password" => "Password",
 	"SignInButton" => "Sign in",
+	"SignInGoogle" => "Sign in with Google",
+	"SignInErrorUserUnknown" => "We couldn't find a user account for you in our records. Please contact your friendly administrator for help.",
+	"SignInErrorGoogleProcessing" => "We couldn't retrieve your information from Google. Please try signing in again and if the problem persists, contact the administrator.",
 	"LogoutButton" => "Logout",
 	"SignedInAs" => "Signed in as {0}",
 ]];

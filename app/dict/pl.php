@@ -134,9 +134,11 @@ return ['lang' => [
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
 
-	"SignInHeader" => "Zaloguj się",
 	"Password" => "Hasło",
 	"SignInButton" => "Zaloguj",
+	"SignInGoogle" => "Zaloguj się z Google",
+	"SignInErrorUserUnknown" => "Nie znaleźliśmy twojego użytkownika w naszej bazie danych. Skontaktuj się z administratorem żeby uzyskać pomoc.",
+	"SignInErrorGoogleProcessing" => "Nie mogliśmy pobrać informacji o tobie od Google. Spróbuj zalogować się ponownie i jeśli problem się potwórzy, skontaktuj się z administratorem.",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",
 ]];

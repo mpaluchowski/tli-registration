@@ -6,8 +6,9 @@
 *.css.map
 .sass-cache/
 
-# Fatfree
+# Libraries - should be deployed independently
 lib-fatfree/
+lib-php-jwt/
 
 # Local app configuration
 app/config.ini
