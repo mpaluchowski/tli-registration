@@ -46,7 +46,13 @@ class AuthenticationDao {
 					'email' => $email,
 				]);
 
-		if (!$result || ($password != null && !password_verify($password, $result[0]['password']))) {
+		if (!$result
+				|| ($password != null
+					&& (!$result[0]['password']
+						|| !password_verify($password, $result[0]['password'])
+						)
+					)
+				) {
 			return null;
 		} else {
 			return (object)[

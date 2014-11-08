@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `tli_administrators` (
   `id_administrator` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `full_name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_administrator`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
