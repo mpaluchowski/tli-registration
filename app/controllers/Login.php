@@ -48,14 +48,21 @@ class Login {
 			);
 
 		if (property_exists($tokenResponse, 'error')) {
+			// Error fetching info from Google
 			$f3->reroute('@admin_login');
 		}
 
-		$userIdentification = $authDao->getUserOauthIdentification($tokenResponse->id_token);
+		try {
+			$userIdentification = $authDao->getUserOauthIdentification($tokenResponse->id_token);
+		} catch (Exception $e) {
+			// Error decoding token from Google
+			$f3->reroute('@admin_login');
+		}
 
 		$admin = $authDao->authenticate($userIdentification->email);
 
 		if (!$admin) {
+			// Admin not found
 			$f3->reroute('@admin_login');
 		} else {
 			$authDao->loginUser($admin);
