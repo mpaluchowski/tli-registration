@@ -38,31 +38,20 @@ class Login {
 
 		if (!$authDao->verifyOauthStateToken($f3->get('GET.state'))
 				|| !$f3->exists('GET.code')) {
+			// Invalid requests or CSRF attack
 			$f3->error(401);
 		}
 
-		$web = new \Web;
-		$result = $web->request(
-			'https://accounts.google.com/o/oauth2/token',
-			[
-				'method' => 'POST',
-				'content' => http_build_query([
-					'code' => $f3->get('GET.code'),
-					'client_id' => $f3->get('google_client_id'),
-					'client_secret' => $f3->get('google_client_secret'),
-					'redirect_uri' => \helpers\View::getBaseUrl() . \F3::get('ALIASES.admin_login_process_oauth2'),
-					'grant_type' => 'authorization_code',
-					]),
-			]
+		$tokenResponse = $authDao->getUserOauthToken(
+			$f3->get('GET.code'),
+			\helpers\View::getBaseUrl() . \F3::get('ALIASES.admin_login_process_oauth2')
 			);
 
-		$body = json_decode($result['body']);
-
-		if (property_exists($body, 'error')) {
+		if (property_exists($tokenResponse, 'error')) {
 			$f3->reroute('@admin_login');
 		}
 
-		$userIdentification = \JWT::decode($body->id_token, null, false);
+		$userIdentification = $authDao->getUserOauthIdentification($tokenResponse->id_token);
 
 		$admin = $authDao->authenticate($userIdentification->email);
 

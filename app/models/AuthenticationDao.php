@@ -15,6 +15,26 @@ class AuthenticationDao {
 		}
 	}
 
+	/* Basic login functions */
+
+	static function isLoggedIn() {
+		return \F3::exists('SESSION.user');
+	}
+
+	static function getUser() {
+		return \F3::get('SESSION.user');
+	}
+
+	function loginUser($user) {
+		\F3::set('SESSION.user', $user);
+	}
+
+	function logout() {
+		\F3::clear('SESSION');
+	}
+
+	/* Database authentication */
+
 	function authenticate($email, $password = null) {
 		$query = 'SELECT a.id_administrator,
 						 a.full_name,
@@ -37,6 +57,31 @@ class AuthenticationDao {
 		}
 	}
 
+	/* Google OAuth authentication */
+
+	function getUserOauthToken($code, $redirectUrl) {
+		$web = new \Web;
+		$result = $web->request(
+			'https://accounts.google.com/o/oauth2/token',
+			[
+				'method' => 'POST',
+				'content' => http_build_query([
+					'code' => $code,
+					'client_id' => self::getGoogleClientId(),
+					'client_secret' => $this->getGoogleClientSecret(),
+					'redirect_uri' => $redirectUrl,
+					'grant_type' => 'authorization_code',
+					]),
+			]
+			);
+
+		return json_decode($result['body']);
+	}
+
+	function getUserOauthIdentification($idToken) {
+		return \JWT::decode($idToken, null, false);
+	}
+
 	function getOauthStateToken() {
 		if (!\F3::exists('SESSION.oauthState')) {
 			\F3::set('SESSION.oauthState', md5(rand()));
@@ -49,20 +94,20 @@ class AuthenticationDao {
 				&& \F3::get('SESSION.oauthState') === $token;
 	}
 
-	function loginUser($user) {
-		\F3::set('SESSION.user', $user);
+	static function getGoogleClientId() {
+		if (!\F3::exists('google_client_id')
+			|| !\F3::get('google_client_id')) {
+			throw new \Exception('google_client_id variable must be configured.');
+		}
+		return \F3::get('google_client_id');
 	}
 
-	function logout() {
-		\F3::clear('SESSION');
-	}
-
-	static function isLoggedIn() {
-		return \F3::exists('SESSION.user');
-	}
-
-	static function getUser() {
-		return \F3::get('SESSION.user');
+	private function getGoogleClientSecret() {
+		if (!\F3::exists('google_client_secret')
+			|| !\F3::get('google_client_secret')) {
+			throw new \Exception('google_client_secret variable must be configured.');
+		}
+		return \F3::get('google_client_secret');
 	}
 
 }

@@ -20,7 +20,7 @@
 				'state' => $oauthState,
 				'redirect_uri' => \helpers\View::getBaseUrl() . \F3::get('ALIASES.admin_login_process_oauth2'),
 				'response_type' => 'code',
-				'client_id' => \F3::get('google_client_id')
+				'client_id' => \models\AuthenticationDao::getGoogleClientId()
 				])
 		?>" id="signInButton">Sign in with Google</a>
 	</form>
