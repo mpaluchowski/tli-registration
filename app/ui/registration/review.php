@@ -5,6 +5,8 @@
 		<h1><?php echo \F3::get('lang.RegistrationReviewHeader', $form->getField('full-name')) ?></h1>
 	</div>
 
+	<?php echo \View::instance()->render('message-alerts.php') ?>
+
 	<p><?php echo \F3::get('lang.RegistrationReviewIntro') ?></p>
 
 	<div class="form-horizontal">

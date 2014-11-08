@@ -96,6 +96,7 @@ return ['lang' => [
 
 	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",
 	"RegistrationReviewIntro" => "Sprawdź informacje, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby przejść do płatności.",
+	'RegistrationFormSavedMsg' => "Zapisaliśmy podane przez ciebie informacje i wysłaliśmy ci email pod adres <strong>{0}</strong> z podsumowaniem wszystkich opcji.",
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
 	"PaymentBreakdownIntro" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",

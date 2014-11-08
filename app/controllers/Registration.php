@@ -72,6 +72,11 @@ class Registration {
 			\View::instance()->render('mail/registration_confirm.php')
 			);
 
+		\models\MessageManager::addMessage(
+			'success',
+			$f3->get('lang.RegistrationFormSavedMsg', $form->getEmail())
+			);
+
 		// Reroute to an overview of the registration
 		$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 	}
