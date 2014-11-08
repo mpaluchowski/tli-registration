@@ -5,9 +5,7 @@
 <?php echo \View::instance()->render('header.php') ?>
 
 <div class="container">
-<?php if (isset($loginErrorMessage)): ?>
-	<div class="alert alert-danger" role="alert"><?php echo $loginErrorMessage ?></div>
-<?php endif; ?>
+	<?php echo \View::instance()->render('message-alerts.php') ?>
 
 <?php if (in_array('database', \F3::get('auths_supported'))): ?>
 	<form action="<?php echo \F3::get('ALIASES.admin_login_process') ?>" method="post" class="form-signin" role="form">
