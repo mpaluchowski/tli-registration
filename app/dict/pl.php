@@ -121,7 +121,8 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
 
 	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
-	"EmailRegistrationConfirmationBody" => "Przyjęliśmy twoją rejestrację dla adresu e-mail {0}. Możesz wrócić do niej w każdej chwili pod adresem: " . PHP_EOL . PHP_EOL . "{1}",
+	"EmailRegistrationConfirmationIntro" => "Przyjęliśmy twoją rejestrację dla adresu e-mail <strong>{0}</strong>. Możesz wrócić do niej w każdej chwili pod adresem:",
+	"EmailRegistrationConfirmationReview" => "Oto podsumowanie twojej rejestracji:",
 
 	"SendEmailSuccessHeader" => "Email wysłany do {0}",
 	"SendEmailSuccessInfo" => "Email z informacją o rejestracji został wysłany pod adres <strong>{0}</strong>. Powinien dotrzeć w przeciągu kilku minut.",

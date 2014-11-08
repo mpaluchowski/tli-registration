@@ -122,7 +122,8 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
 
 	"EmailRegistrationConfirmationSubject" => "Registration confirmation for {0}",
-	"EmailRegistrationConfirmationBody" => "We received your registration for the e-mail address {0}. You can access and review your registration at any time at: " . PHP_EOL . PHP_EOL . "{1}",
+	"EmailRegistrationConfirmationIntro" => "We received your registration for the e-mail address <strong>{0}</strong>. You can access and review your registration at any time at:",
+	"EmailRegistrationConfirmationReview" => "Here's a summary of your entries from the registration:",
 
 	"SendEmailSuccessHeader" => "Registration e-mail sent to {0}",
 	"SendEmailSuccessInfo" => "We successfully sent an e-mail to your address at <strong>{0}</strong>. Please allow a few minutes for it to arrive.",
