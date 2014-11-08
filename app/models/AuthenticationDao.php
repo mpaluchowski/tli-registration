@@ -72,6 +72,7 @@ class AuthenticationDao {
 					'redirect_uri' => $redirectUrl,
 					'grant_type' => 'authorization_code',
 					]),
+				'follow_location' => false,
 			]
 			);
 
