@@ -5,6 +5,7 @@
 <?php echo \View::instance()->render('header.php') ?>
 
 <div class="container">
+<?php if (in_array('database', \F3::get('auths_supported'))): ?>
 	<form action="<?php echo \F3::get('ALIASES.admin_login_process') ?>" method="post" class="form-signin" role="form">
 		<h2 class="form-signin-heading"><?php echo \F3::get('lang.SignInHeader') ?></h2>
 		<label for="email" class="sr-only"><?php echo \F3::get('lang.Email') ?></label>
@@ -13,17 +14,21 @@
 		<input type="password" name="password" id="password" class="form-control" placeholder="<?php echo \F3::get("lang.Password") ?>" required>
 		<button class="btn btn-lg btn-primary btn-lock" type="submit"><?php echo \F3::get('lang.SignInButton') ?></button>
 
-		<a href="<?php
-		echo 'https://accounts.google.com/o/oauth2/auth?'
-			. http_build_query([
-				'scope' => 'email',
-				'state' => $oauthState,
-				'redirect_uri' => \helpers\View::getBaseUrl() . \F3::get('ALIASES.admin_login_process_oauth2'),
-				'response_type' => 'code',
-				'client_id' => \models\AuthenticationDao::getGoogleClientId()
-				])
-		?>" id="signInButton">Sign in with Google</a>
 	</form>
+<?php endif; ?>
+
+<?php if (in_array('google', \F3::get('auths_supported'))): ?>
+	<a href="<?php
+	echo 'https://accounts.google.com/o/oauth2/auth?'
+		. http_build_query([
+			'scope' => 'email',
+			'state' => $oauthState,
+			'redirect_uri' => \helpers\View::getBaseUrl() . \F3::get('ALIASES.admin_login_process_oauth2'),
+			'response_type' => 'code',
+			'client_id' => \models\AuthenticationDao::getGoogleClientId()
+			])
+	?>" id="signInButton">Sign in with Google</a>
+<?php endif; ?>
 </div>
 
 <?php echo \View::instance()->render('footer.php') ?>
