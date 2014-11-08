@@ -37,6 +37,18 @@ class AuthenticationDao {
 		}
 	}
 
+	function getOauthStateToken() {
+		if (!\F3::exists('SESSION.oauthState')) {
+			\F3::set('SESSION.oauthState', md5(rand()));
+		}
+		return \F3::get('SESSION.oauthState');
+	}
+
+	function verifyOauthStateToken($token) {
+		return \F3::exists('SESSION.oauthState')
+				&& \F3::get('SESSION.oauthState') === $token;
+	}
+
 	function loginUser($user) {
 		\F3::set('SESSION.user', $user);
 	}

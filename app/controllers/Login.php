@@ -12,6 +12,8 @@ class Login {
 	}
 
 	function login($f3) {
+		$authDao = new \models\AuthenticationDao();
+		$f3->set('oauthState', $authDao->getOauthStateToken());
 		echo \View::instance()->render('login/login.php');
 	}
 
@@ -29,6 +31,9 @@ class Login {
 			$authDao->loginUser($admin);
 			$f3->reroute('@admin_registrations_list');
 		}
+	}
+
+	function login_process_oauth2($f3) {
 	}
 
 	function logout($f3) {
