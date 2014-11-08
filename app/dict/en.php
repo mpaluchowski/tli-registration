@@ -6,6 +6,7 @@ return ['lang' => [
 
 	'RegistrationFormPageTitle' => 'Registration Form',
 	'RegistrationFormHeader' => 'Register for TLI 2015',
+	'RegistrationFormValidationMsg' => "Some things are not quite right in the form. Please review the messages below on how to correct the entries.",
 
 	'PersonalInformationHeader' => 'Personal Information',
 	'FullName' => 'Full name',

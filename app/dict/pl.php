@@ -6,6 +6,7 @@ return ['lang' => [
 
 	'RegistrationFormPageTitle' => 'Formularz rejestracyjny',
 	'RegistrationFormHeader' => 'Rejestracja na TLI 2015',
+	'RegistrationFormValidationMsg' => "Niektóre informacje w formularzu nie do końca się zgadzają. Przeczytaj instrukcje poniżej jak poprawić wybrane opcje.",
 
 	'PersonalInformationHeader' => 'Informacje osobiste',
 	'FullName' => 'Imię i nazwisko',

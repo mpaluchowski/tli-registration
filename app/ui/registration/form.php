@@ -5,6 +5,10 @@
     <h1><?php echo \F3::get('lang.RegistrationFormHeader') ?></h1>
   </div>
 
+  <?php if (isset($registration['messages']) && !empty($registration['messages'])): ?>
+  <div class="alert alert-danger" role="alert"><?php echo \F3::get('lang.RegistrationFormValidationMsg') ?></div>
+  <?php endif; ?>
+
   <p><?php
   echo \F3::get('lang.CurrentParticipationPaymentInfo', [
     implode(" / ", \helpers\CurrencyFormatter::moneyFormatArray($pricing['admission']->prices)),
