@@ -136,6 +136,7 @@ return ['lang' => [
 
 	"Password" => "Hasło",
 	"SignInButton" => "Zaloguj",
+	"SignInGoogle" => "Zaloguj się z Google",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",
 ]];

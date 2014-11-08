@@ -16,18 +16,23 @@
 	</form>
 <?php endif; ?>
 
+	<div class="social-signin">
 <?php if (in_array('google', \F3::get('auths_supported'))): ?>
-	<a href="<?php
-	echo 'https://accounts.google.com/o/oauth2/auth?'
-		. http_build_query([
-			'scope' => 'email',
-			'state' => $oauthState,
-			'redirect_uri' => \helpers\View::getBaseUrl() . \F3::get('ALIASES.admin_login_process_oauth2'),
-			'response_type' => 'code',
-			'client_id' => \models\AuthenticationDao::getGoogleClientId()
-			])
-	?>" id="signInButton">Sign in with Google</a>
+		<a href="<?php
+		echo 'https://accounts.google.com/o/oauth2/auth?'
+			. http_build_query([
+				'scope' => 'email',
+				'state' => $oauthState,
+				'redirect_uri' => \helpers\View::getBaseUrl() . \F3::get('ALIASES.admin_login_process_oauth2'),
+				'response_type' => 'code',
+				'client_id' => \models\AuthenticationDao::getGoogleClientId()
+				])
+		?>" class="google">
+			<i class="fa fa-google-plus"></i>
+			<?php echo \F3::get('lang.SignInGoogle') ?>
+		</a>
 <?php endif; ?>
+	</div>
 </div>
 
 <?php echo \View::instance()->render('footer.php') ?>

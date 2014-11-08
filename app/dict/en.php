@@ -137,6 +137,7 @@ return ['lang' => [
 
 	"Password" => "Password",
 	"SignInButton" => "Sign in",
+	"SignInGoogle" => "Sign in with Google",
 	"LogoutButton" => "Logout",
 	"SignedInAs" => "Signed in as {0}",
 ]];
