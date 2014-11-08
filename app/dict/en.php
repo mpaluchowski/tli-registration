@@ -135,7 +135,6 @@ return ['lang' => [
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",
 
-	"SignInHeader" => "Please sign in",
 	"Password" => "Password",
 	"SignInButton" => "Sign in",
 	"LogoutButton" => "Logout",

@@ -134,7 +134,6 @@ return ['lang' => [
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
 
-	"SignInHeader" => "Zaloguj się",
 	"Password" => "Hasło",
 	"SignInButton" => "Zaloguj",
 	"LogoutButton" => "Wyloguj",
