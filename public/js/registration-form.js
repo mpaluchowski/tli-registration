@@ -163,11 +163,12 @@ tliRegister.registrationForm = function() {
 	}
 
 	recalculateTotalPrice = function() {
+		$('#total-due').prepend('<i class="fa fa-refresh fa-spin">');
 		$.getJSON(
 			"/registration/get_total_price",
 			$("#registration-form").closest('form').serializeArray(),
 			function(data, textStatus) {
-				$('#total-due').text($.map(data, function(obj) { return obj }).join(' / '));
+				$('#total-due').html($.map(data, function(obj) { return obj }).join(' / '));
 			}
 			).fail(function(jqxhr, textStatus, error) {
 				$('#total-due').html("&mdash;");
