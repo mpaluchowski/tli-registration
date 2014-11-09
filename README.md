@@ -1,6 +1,6 @@
 # TLI Registration Form
 
-A registration form for the Toastmasters Leadership Institute events, built on top of the PHP [Fat-Free Framework][fat-free-framework].
+A registration form for the Toastmasters Leadership Institute events, built on top of the PHP [Fat-Free Framework][fat-free-framework] with [Bootstrap][bootstrap].
 
 ## Requirements
 
