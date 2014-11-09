@@ -28,6 +28,16 @@ class Mailer {
 		if ($this->inTestMode()) {
 			$smtp->set('X-Original-To', $this->wrapEmail($to));
 		}
+		if (\F3::get('email_bcc')) {
+			if (is_array(\F3::get('email_bcc'))) {
+				$smtp->set('Bcc', implode(',', array_map(
+						[get_called_class(), 'wrapEmail'],
+						\F3::get('email_bcc'))
+					));
+			} else {
+				$smtp->set('Bcc', $this->wrapEmail(\F3::get('email_bcc')));
+			}
+		}
 
 		$smtp->set('Subject', $subject);
 
