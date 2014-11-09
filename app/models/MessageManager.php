@@ -69,7 +69,7 @@ class MessageManager {
 	static function flushMessages() {
 		$messages = \F3::get('SESSION.messages');
 		\F3::clear('SESSION.messages');
-		return (bool)$messages
+		return is_array($messages)
 			? $messages
 			: [];
 	}
