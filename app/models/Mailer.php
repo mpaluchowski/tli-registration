@@ -28,6 +28,9 @@ class Mailer {
 		if ($this->inTestMode()) {
 			$smtp->set('X-Original-To', $this->wrapEmail($to));
 		}
+		if (\F3::get('email_bcc')) {
+			$smtp->set('Bcc', $this->implodeEmails(\F3::get('email_bcc')));
+		}
 
 		$smtp->set('Subject', $subject);
 
@@ -46,6 +49,24 @@ class Mailer {
 			return "<" . $email . ">";
 		else
 			return $email;
+	}
+
+	/**
+	 * Implodes several emails into one line to set as header.
+	 *
+	 * @param emails the emails to implode, single or array of.
+	 * @param delimiter the delimiter to use for implosion. Default is coma ','.
+	 * @return string with all emails imploded.
+	 */
+	function implodeEmails($emails, $delimiter = ',') {
+		if (is_array($emails)) {
+			return implode($delimiter, array_map(
+					[get_called_class(), 'wrapEmail'],
+					$emails
+				));
+		} else {
+			return $this->wrapEmail($emails);
+		}
 	}
 
 	/**
