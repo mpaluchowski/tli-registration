@@ -17,6 +17,11 @@ class FormProcessorImpl implements \helpers\FormProcessor {
 			$form->setField('home-club', $form->getField('home-club-custom'));
 			$form->clearField('home-club-custom');
 		}
+
+		// We don't need to store the consent field
+		if ($form->hasField('data-collection-consent')) {
+			$form->clearField('data-collection-consent');
+		}
 	}
 
 }
