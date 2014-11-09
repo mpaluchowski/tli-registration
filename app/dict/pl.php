@@ -95,7 +95,14 @@ return ['lang' => [
 	"CurrentTotalDue" => "Twoja aktualna należność to",
 
 	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",
-	"RegistrationReviewIntro" => "Sprawdź informacje, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby przejść do płatności.",
+	"RegistrationReviewIntro" => "<strong>Sprawdź informacje</strong>, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby <strong>przejść do płatności</strong>.",
+	'RegistrationFormSavedMsg' => "Zapisaliśmy podane przez ciebie informacje i wysłaliśmy ci email pod adres <strong>{0}</strong> z podsumowaniem wszystkich opcji.",
+
+	"RegistrationStatus" => "Status rejestracji",
+	"RegistrationStatus-PENDING_PAYMENT" => "Oczekuje na płatność",
+	"RegistrationStatusInfo-PENDING_PAYMENT" => "Twoja rejestracja została zapisana <time>{0}</time> i oczekuje na twoją płatność.",
+	"RegistrationStatus-PAID" => "Opłacona",
+	"RegistrationStatusInfo-PAID" => "Twoja rejestracja została zapisana <time>{0}</time>, opłacona <time>{1}</time> i pozostaje już tylko pojawić się na konferencji!",
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
 	"PaymentBreakdownIntro" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
@@ -121,7 +128,8 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
 
 	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
-	"EmailRegistrationConfirmationBody" => "Przyjęliśmy twoją rejestrację dla adresu e-mail {0}. Możesz wrócić do niej w każdej chwili pod adresem: " . PHP_EOL . PHP_EOL . "{1}",
+	"EmailRegistrationConfirmationIntro" => "Przyjęliśmy twoją rejestrację dla adresu e-mail <strong>{0}</strong>. Możesz wrócić do niej w każdej chwili pod adresem:",
+	"EmailRegistrationConfirmationReview" => "Oto podsumowanie twojej rejestracji:",
 
 	"SendEmailSuccessHeader" => "Email wysłany do {0}",
 	"SendEmailSuccessInfo" => "Email z informacją o rejestracji został wysłany pod adres <strong>{0}</strong>. Powinien dotrzeć w przeciągu kilku minut.",

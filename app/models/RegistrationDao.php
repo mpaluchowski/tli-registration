@@ -104,7 +104,9 @@ class RegistrationDao {
 
 	function readRegistrationForm($registrationHash) {
 		$query = 'SELECT r.id_registration,
-						 r.email
+						 r.email,
+						 r.date_entered,
+						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
 				  WHERE r.hash = :registrationHash';
 		$registrationResult = \F3::get('db')->exec($query, [
@@ -114,32 +116,53 @@ class RegistrationDao {
 		if (!$registrationResult)
 			return null;
 
-		$query = 'SELECT rf.name,
-						 rf.value
-				  FROM ' . \F3::get('db_table_prefix') . 'registration_fields rf
-				  WHERE rf.fk_registration = :registrationId';
-
-		$fieldsResult = \F3::get('db')->exec($query, [
-					'registrationId' => $registrationResult[0]['id_registration'],
-				]);
-
-		return $this->parseQueryToForm($registrationResult[0], $fieldsResult);
+		return $this->parseQueryToForm(
+			$registrationResult[0],
+			$this->fetchRegistrationFields($registrationResult[0]['id_registration'])
+			);
 	}
 
 	function readRegistrationByEmail($email) {
+		$result = $this->fetchRegistrationByEmail($email);
+
+		return !$result
+				? null
+				: $this->parseQueryToForm($result[0]);
+	}
+
+	function readRegistrationFormByEmail($email) {
+		$registrationResult = $this->fetchRegistrationByEmail($email);
+
+		if (!$registrationResult)
+			return null;
+
+		return $this->parseQueryToForm(
+			$registrationResult[0],
+			$this->fetchRegistrationFields($registrationResult[0]['id_registration'])
+			);
+	}
+
+	private function fetchRegistrationByEmail($email) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
 				  WHERE r.email = :email';
-		$result = \F3::get('db')->exec($query, [
+		return \F3::get('db')->exec($query, [
 					'email' => $email,
 				]);
+	}
 
-		return !$result
-				? null
-				: $this->parseQueryToForm($result[0]);
+	private function fetchRegistrationFields($registrationId) {
+		$query = 'SELECT rf.name,
+						 rf.value
+				  FROM ' . \F3::get('db_table_prefix') . 'registration_fields rf
+				  WHERE rf.fk_registration = :registrationId';
+
+		return \F3::get('db')->exec($query, [
+					'registrationId' => $registrationId,
+				]);
 	}
 
 	function readRegistrationStatistics() {

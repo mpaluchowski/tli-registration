@@ -96,7 +96,14 @@ return ['lang' => [
 	"CurrentTotalDue" => "Your current total due payment is",
 
 	"RegistrationReviewHeader" => "Review registration for {0}",
-	"RegistrationReviewIntro" => "Please review the contents of the registration form you have just submitted, the resulting participation cost calculation and final price. If everything is correct, click the button at the bottom of the page to proceed to payment.",
+	"RegistrationReviewIntro" => "Please <strong>review the contents</strong> of the registration form you have just submitted, the resulting participation cost calculation and final price. If everything is correct, click the button at the bottom of the page to <strong>proceed to payment</strong>.",
+	'RegistrationFormSavedMsg' => "We've successfully stored your registration information and sent you an e-mail to <strong>{0}</strong> with a summary of your selections.",
+
+	"RegistrationStatus" => "Registration status",
+	"RegistrationStatus-PENDING_PAYMENT" => "Pending payment",
+	"RegistrationStatusInfo-PENDING_PAYMENT" => "Your registration was recorded on <time>{0}</time> and is awaiting payment to complete.",
+	"RegistrationStatus-PAID" => "Paid",
+	"RegistrationStatusInfo-PAID" => "Your registration was recorded on <time>{0}</time>, paid for on <time>{1}</time> and you're all good for the event!",
 
 	"PaymentBreakdownHeader" => "Payment breakdown",
 	"PaymentBreakdownIntro" => "Based on the options you selected, your total due payment breaks down as follows:",
@@ -122,7 +129,8 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
 
 	"EmailRegistrationConfirmationSubject" => "Registration confirmation for {0}",
-	"EmailRegistrationConfirmationBody" => "We received your registration for the e-mail address {0}. You can access and review your registration at any time at: " . PHP_EOL . PHP_EOL . "{1}",
+	"EmailRegistrationConfirmationIntro" => "We received your registration for the e-mail address <strong>{0}</strong>. You can access and review your registration at any time at:",
+	"EmailRegistrationConfirmationReview" => "Here's a summary of your entries from the registration:",
 
 	"SendEmailSuccessHeader" => "Registration e-mail sent to {0}",
 	"SendEmailSuccessInfo" => "We successfully sent an e-mail to your address at <strong>{0}</strong>. Please allow a few minutes for it to arrive.",

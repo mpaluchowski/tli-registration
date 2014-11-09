@@ -5,9 +5,23 @@
 		<h1><?php echo \F3::get('lang.RegistrationReviewHeader', $form->getField('full-name')) ?></h1>
 	</div>
 
+	<?php echo \View::instance()->render('message-alerts.php') ?>
+
 	<p><?php echo \F3::get('lang.RegistrationReviewIntro') ?></p>
 
 	<div class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.RegistrationStatus') ?></label>
+			<div class="col-sm-9">
+				<p class="form-control-static">
+					<span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($form->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $form->getStatus()) ?></span>
+				</p>
+				<p class="form-control-static">
+					<?php echo \F3::get('lang.RegistrationStatusInfo-' . $form->getStatus(), [strftime('%c', strtotime($form->getDateEntered())), strftime('%c', strtotime($form->getDatePaid()))]) ?>
+				</p>
+			</div>
+		</div>
+
 		<h2><?php echo \F3::get('lang.PersonalInformationHeader') ?></h2>
 
 		<div class="form-group">

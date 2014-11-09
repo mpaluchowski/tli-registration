@@ -21,6 +21,7 @@ class Mailer {
 			\F3::get('smtp_pass')
 			);
 
+		$smtp->set('Content-Type', 'text/html; charset=UTF-8');
 		$smtp->set('From', $this->wrapEmail(\F3::get('email_from')));
 		$smtp->set('Reply-To', $this->wrapEmail(\F3::get('email_reply_to')));
 		$smtp->set('To', $this->wrapEmail($this->getRealToEmail($to)));

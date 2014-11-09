@@ -60,19 +60,21 @@ class Registration {
 
 		$registrationDao->saveRegistrationForm($form);
 
+		$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
+		$f3->set('form', $form);
+
 		// Send confirmation e-mail
 		$mailer = new \models\Mailer();
 
 		$mailer->sendEmail(
 			$form->getEmail(),
 			$f3->get('lang.EmailRegistrationConfirmationSubject', $form->getEmail()),
-			$f3->get(
-				'lang.EmailRegistrationConfirmationBody',
-				[
-					$form->getEmail(),
-					\helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash(),
-				]
-				)
+			\View::instance()->render('mail/registration_confirm.php')
+			);
+
+		\models\MessageManager::addMessage(
+			'success',
+			$f3->get('lang.RegistrationFormSavedMsg', $form->getEmail())
 			);
 
 		// Reroute to an overview of the registration
@@ -156,23 +158,20 @@ class Registration {
 
 		$registrationDao = new \models\RegistrationDao();
 
-		$form = $registrationDao->readRegistrationByEmail($args['email']);
+		$form = $registrationDao->readRegistrationFormByEmail($args['email']);
 
 		if (null === $form)
 			$f3->error(404);
+
+		$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
+		$f3->set('form', $form);
 
 		$mailer = new \models\Mailer();
 
 		$result = $mailer->sendEmail(
 			$args['email'],
 			$f3->get('lang.EmailRegistrationConfirmationSubject', $args['email']),
-			$f3->get(
-				'lang.EmailRegistrationConfirmationBody',
-				[
-					$args['email'],
-					\helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash(),
-				]
-				)
+			\View::instance()->render('mail/registration_confirm.php')
 			);
 
 		if ($result)
