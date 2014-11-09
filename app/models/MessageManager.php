@@ -15,7 +15,6 @@ class MessageManager {
 	}
 
 	static function addMessages(array $messages) {
-		// $messageStore = \F3::ref('SESSION.messages');
 		self::initStore();
 
 		foreach ($messages as $message) {
