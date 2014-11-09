@@ -126,9 +126,15 @@ tliRegister.registrationForm = function() {
 				});
 			} else if ($(dependent).is(":visible")) {
 				$(dependent).slideUp(function() {
-					$(':input', dependent).prop('checked', false).prop('required', false);
+					$(':input', dependent)
+						.prop('checked', false)
+						.prop('required', false)
+						.trigger('change');
 
-					cleanFieldFeedback($('.form-group', dependent), $('.help-block:last-child', dependent));
+					cleanFieldFeedback(
+						$('.form-group', dependent),
+						$('.help-block:last-child', dependent)
+						);
 				});
 			}
 		});
