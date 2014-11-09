@@ -38,6 +38,8 @@ Building the TLI Registration Form quickly was only possible thanks to the relen
 * [Fat-Free Framework][fat-free-framework] by Bong Cosca
 * [Bootstrap][bootstrap]
 * [PHP-JWT][php-jwt]
+* [jQuery][jquery]
+* [SASS][sass]
 
 ## License
 
@@ -46,3 +48,5 @@ The TLI Registration Form is freely available and open-source, following the ter
 [bootstrap]: http://getbootstrap.com/
 [fat-free-framework]: http://fatfreeframework.com/
 [php-jwt]: https://github.com/firebase/php-jwt
+[jquery]: http://jquery.com/
+[sass]: http://sass-lang.com/
