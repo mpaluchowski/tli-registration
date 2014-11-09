@@ -90,6 +90,7 @@ return ['lang' => [
 	'CommentsHelp' => "Anything else you'd like to communicate or ask?",
 
 	'DataCollectionConsentStatement' => "I consent to the collection and processing of my personal data for the purpose of arranging my participation in the Toastmasters Leadership Institute 2015 in Warsaw. I understand that my data may be shared with third parties to the <em>minimal</em> extent required to perform services I requested.",
+	'DataCollectionConsentStatementValidationMsg' => "Please confirm that you allow for processing of your personal data. We are legally required to receive your consent before proceeding.",
 
 	'SubmitAndReviewButton' => "Submit and Review",
 	'SubmitAndReviewButtonHelp' => "You will have a chance to review your registration before proceeding to payment.",

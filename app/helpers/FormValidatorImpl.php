@@ -72,6 +72,11 @@ class FormValidatorImpl implements FormValidator {
 			$messages['saturday-dinner-meal'] = \F3::get('lang.EventsSaturdayDinnerMealValidationMsg');
 		}
 
+		if (!$form->hasField('data-collection-consent')
+			|| 'on' !== $form->getField('data-collection-consent')) {
+			$messages['data-collection-consent'] = \F3::get('lang.DataCollectionConsentStatementValidationMsg');
+		}
+
 		return $messages;
 	}
 
