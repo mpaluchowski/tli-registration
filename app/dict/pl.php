@@ -95,7 +95,7 @@ return ['lang' => [
 	"CurrentTotalDue" => "Twoja aktualna należność to",
 
 	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",
-	"RegistrationReviewIntro" => "Sprawdź informacje, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby przejść do płatności.",
+	"RegistrationReviewIntro" => "<strong>Sprawdź informacje</strong>, które otrzymaliśmy od ciebie w trakcie rejestracji i podsumowanie kosztu rejestracji na dole strony. Jeśli wszystko się zgadza, kliknij przycisk na dole strony aby <strong>przejść do płatności</strong>.",
 	'RegistrationFormSavedMsg' => "Zapisaliśmy podane przez ciebie informacje i wysłaliśmy ci email pod adres <strong>{0}</strong> z podsumowaniem wszystkich opcji.",
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
