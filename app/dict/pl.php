@@ -88,6 +88,9 @@ return ['lang' => [
 	'CommentsNone' => "Brak",
 	'CommentsHelp' => "Czy coś jeszcze chcesz przekazać lub o coś spytać?",
 
+	'DataCollectionConsentStatement' => "Zgadzam się na przechowywanie i przetwarzanie moich danych osobowych do celów organizacji uczestnictwa w Toastmasters Leadership Institute 2015 w Warszawie. Rozumiem, że moje dane mogą zostać udostępnione osobom trzecim w <em>minimalnym</em> zakresie koniecznym do realizacji wybranych przeze mnie usług.",
+	'DataCollectionConsentStatementValidationMsg' => "Potwierdź, że wyrażasz zgodę na przetwarzanie swoich danych osobowych. Prawo wymaga od nas uzyskania twojej zgody zanim możemy przejść do dalszych kroków rejestracji.",
+
 	'SubmitAndReviewButton' => "Wyślij i potwierdź",
 	'SubmitAndReviewButtonHelp' => "Możesz jeszcze raz sprawdzić swoje zgłoszenie zanim przejdziesz do płatności.",
 

@@ -182,6 +182,14 @@
       <textarea name="comments" id="comments" rows="6" class="form-control"><?php if (isset($registration['comments'])) echo $registration['comments'] ?></textarea>
     </div>
 
+    <div class="checkbox form-group<?php if (isset($registration['messages']['data-collection-consent'])): ?> has-error<?php endif ?>">
+      <label>
+        <input type="checkbox" name="data-collection-consent" required<?php if (isset($registration['data-collection-consent']) && $registration['data-collection-consent'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.DataCollectionConsentStatement') ?>
+      </label>
+
+      <?php if (isset($registration['messages']['data-collection-consent'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['data-collection-consent'] ?></p><?php endif; ?>
+    </div>
+
     <button type="submit" class="btn btn-lg btn-success"><?php echo \F3::get('lang.SubmitAndReviewButton') ?></button>
     <p class="help-block"><?php echo \F3::get('lang.SubmitAndReviewButtonHelp') ?></p>
   </form>
