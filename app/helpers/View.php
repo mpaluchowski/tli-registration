@@ -31,7 +31,6 @@ class View {
 				return 'success';
 			default:
 				throw new Exception('Unknown registration status: ' . $status);
-				break;
 		}
 	}
 
