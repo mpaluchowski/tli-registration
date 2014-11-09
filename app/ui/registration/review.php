@@ -14,7 +14,7 @@
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.RegistrationStatus') ?></label>
 			<div class="col-sm-9">
 				<p class="form-control-static">
-					<span class="label label-<?php echo \helpers\View::getRegistrationStatusLabelClass($form->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $form->getStatus()) ?></span>
+					<span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($form->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $form->getStatus()) ?></span>
 				</p>
 				<p class="form-control-static">
 					<?php echo \F3::get('lang.RegistrationStatusInfo-' . $form->getStatus(), [strftime('%c', strtotime($form->getDateEntered())), strftime('%c', strtotime($form->getDatePaid()))]) ?>

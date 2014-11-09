@@ -15,6 +15,13 @@
 
 	<table border="0" cellpadding="0" cellspacing="0">
 		<tr>
+			<th style="text-align: right; padding: 4px 8px 4px 0;"><?php echo \F3::get('lang.RegistrationStatus') ?></th>
+			<td>
+				<p><span style="padding: 2px 6px 3px; font-weight: 700; color: #FFF; border-radius: 3px; background: <?php echo \helpers\View::getRegistrationStatusLabel($form->getStatus(), true) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $form->getStatus()) ?></span></p>
+				<p><?php echo \F3::get('lang.RegistrationStatusInfo-' . $form->getStatus(), [strftime('%c', strtotime($form->getDateEntered())), strftime('%c', strtotime($form->getDatePaid()))]) ?></p>
+			</td>
+		</tr>
+		<tr>
 			<td colspan="2">
 				<h2><?php echo \F3::get('lang.PersonalInformationHeader') ?></h2>
 			</td>
