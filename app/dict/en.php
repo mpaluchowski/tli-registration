@@ -99,6 +99,12 @@ return ['lang' => [
 	"RegistrationReviewIntro" => "Please <strong>review the contents</strong> of the registration form you have just submitted, the resulting participation cost calculation and final price. If everything is correct, click the button at the bottom of the page to <strong>proceed to payment</strong>.",
 	'RegistrationFormSavedMsg' => "We've successfully stored your registration information and sent you an e-mail to <strong>{0}</strong> with a summary of your selections.",
 
+	"RegistrationStatus" => "Registration status",
+	"RegistrationStatus-PENDING_PAYMENT" => "Pending payment",
+	"RegistrationStatusInfo-PENDING_PAYMENT" => "Your registration was recorded on <time>{0}</time> and is awaiting payment to complete.",
+	"RegistrationStatus-PAID" => "Paid",
+	"RegistrationStatusInfo-PAID" => "Your registration was recorded on <time>{0}</time>, paid for on <time>{1}</time> and you're all good for the event!",
+
 	"PaymentBreakdownHeader" => "Payment breakdown",
 	"PaymentBreakdownIntro" => "Based on the options you selected, your total due payment breaks down as follows:",
 	"Participation" => "Participation",
