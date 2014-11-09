@@ -104,7 +104,9 @@ class RegistrationDao {
 
 	function readRegistrationForm($registrationHash) {
 		$query = 'SELECT r.id_registration,
-						 r.email
+						 r.email,
+						 r.date_entered,
+						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
 				  WHERE r.hash = :registrationHash';
 		$registrationResult = \F3::get('db')->exec($query, [

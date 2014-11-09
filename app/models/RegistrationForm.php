@@ -18,6 +18,13 @@ class RegistrationForm {
 		$this->id = $id;
 	}
 
+	function getStatus() {
+		if (!$this->datePaid)
+			return 'PENDING_PAYMENT';
+		if ($this->datePaid)
+			return 'PAID';
+	}
+
 	function getEmail() {
 		return $this->email;
 	}
