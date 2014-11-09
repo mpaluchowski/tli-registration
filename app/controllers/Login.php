@@ -14,6 +14,11 @@ class Login {
 	function login($f3) {
 		$authDao = new \models\AuthenticationDao();
 		$f3->set('oauthState', $authDao->getOauthStateToken());
+
+		if (\models\FlashScope::has('email')) {
+			$f3->set('email', \models\FlashScope::pop('email'));
+		}
+
 		echo \View::instance()->render('login/login.php');
 	}
 
@@ -30,6 +35,10 @@ class Login {
 				'danger',
 				\F3::get('lang.SignInErrorUserUnknown')
 			);
+			\models\FlashScope::push(
+				'email',
+				$f3->get('POST.email')
+				);
 			$f3->reroute('@admin_login');
 		} else {
 			$authDao->loginUser($admin);

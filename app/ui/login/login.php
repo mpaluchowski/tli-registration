@@ -10,7 +10,7 @@
 <?php if (in_array('database', \F3::get('auths_supported'))): ?>
 	<form action="<?php echo \F3::get('ALIASES.admin_login_process') ?>" method="post" class="form-signin" role="form">
 		<label for="email" class="sr-only"><?php echo \F3::get('lang.Email') ?></label>
-		<input type="email" name="email" id="email" class="form-control" placeholder="<?php echo \F3::get('lang.Email') ?>" required autofocus>
+		<input type="email" name="email" id="email"<?php if (isset($email)) echo ' value="' . $email . '"' ?> class="form-control" placeholder="<?php echo \F3::get('lang.Email') ?>" required autofocus>
 		<label for="password" class="sr-only"><?php echo \F3::get("lang.Password") ?></label>
 		<input type="password" name="password" id="password" class="form-control" placeholder="<?php echo \F3::get("lang.Password") ?>" required>
 		<button class="btn btn-lg btn-primary btn-lock" type="submit"><?php echo \F3::get('lang.SignInButton') ?></button>
