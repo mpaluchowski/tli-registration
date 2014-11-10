@@ -7,7 +7,9 @@
 
 	<?php echo \View::instance()->render('message-alerts.php') ?>
 
+	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
 	<p><?php echo \F3::get('lang.RegistrationReviewIntro') ?></p>
+	<?php endif ?>
 
 	<div class="form-horizontal">
 		<div class="form-group">
