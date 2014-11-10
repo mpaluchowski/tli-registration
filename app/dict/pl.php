@@ -159,4 +159,10 @@ return ['lang' => [
 	"SignInErrorGoogleProcessing" => "Nie mogliśmy pobrać informacji o tobie od Google. Spróbuj zalogować się ponownie i jeśli problem się potwórzy, skontaktuj się z administratorem.",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",
+
+	"Error404Header" => "Nie ta strona?",
+	"Error404Info" => "Znaleźliśmy lukę w czasoprzestrzeni i strona, która powinna być pod tym adresem zaginęła. Lepiej wróć do samego początku. Kliknij przycisk poniżej aby tak zrobić.",
+	"ErrorDefaultHeader" => "Ups!",
+	"ErrorDefaultInfo" => "Coś poszło poważnie nie tak i nie mogliśmy odpowiedzieć poprawnie na twoją prośbę. Czasem to przejściowa trudność, jak rozbłysk słoneczny, przez który bity i bajty się gubią. Możesz wrócić do początku z pomocą przycisku poniżej i spróbować ponownie. Jeśli problem się powtarza, bądź przyjacielem i daj nam znać, żebyśmy mogli go naprawić jak najszybciej.",
+	"ErrorGoHome" => "Wróć do domu",
 ]];

@@ -160,4 +160,10 @@ return ['lang' => [
 	"SignInErrorGoogleProcessing" => "We couldn't retrieve your information from Google. Please try signing in again and if the problem persists, contact the administrator.",
 	"LogoutButton" => "Logout",
 	"SignedInAs" => "Signed in as {0}",
+
+	"Error404Header" => "Not the page you were looking for?",
+	"Error404Info" => "Seems we have a gap in the time-space continuum and the page you were expecting to find right here is missing. You'll be better off going back to the beginning. Hit the button below to do so.",
+	"ErrorDefaultHeader" => "Oops!",
+	"ErrorDefaultInfo" => "Something went badly wrong and we couldn't complete your request. Sometimes that's a passing issue, like a sudden solar flare causing bits and bytes to lose their way. You can hit the button below to go back home and try again. If you continue to see this, be a good chap and let us know so we can fix it up as soon as possible.",
+	"ErrorGoHome" => "Go home",
 ]];
