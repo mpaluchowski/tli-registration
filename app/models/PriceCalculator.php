@@ -19,8 +19,10 @@ interface PriceCalculator {
 	 * Prices are returned for all supported currencies.
 	 *
 	 * @param form The registration form to calculate prices for.
+	 * @param time The time to calculate the summary for. 'null' is default and
+	 * will use current time.
 	 * @return Summary structure with pricing details.
 	 */
-	function calculateSummary(\models\RegistrationForm $form);
+	function calculateSummary(\models\RegistrationForm $form, $time = null);
 
 }
