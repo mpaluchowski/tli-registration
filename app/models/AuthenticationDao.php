@@ -17,24 +17,48 @@ class AuthenticationDao {
 
 	/* Basic login functions */
 
+	/**
+	 * @return boolean whether user is logged in currently.
+	 */
 	static function isLoggedIn() {
 		return \F3::exists('SESSION.user');
 	}
 
+	/**
+	 * @return user object stored in session.
+	 */
 	static function getUser() {
 		return \F3::get('SESSION.user');
 	}
 
+	/**
+	 * Stores user object in session for subsequent retrieval.
+	 *
+	 * @param user the user object to store.
+	 */
 	function loginUser($user) {
 		\F3::set('SESSION.user', $user);
 	}
 
+	/**
+	 * Deletes user's session, including the user object.
+	 */
 	function logout() {
 		\F3::clear('SESSION');
 	}
 
 	/* Database authentication */
 
+	/**
+	 * Authenticate user against the database.
+	 *
+	 * @param email of user.
+	 * @param password password supplied by user, if any. For OAuth-based
+	 * authentications password can be left null, and code will only check if
+	 * said user's email is in the database.
+	 * @return user object, if email found in the database, and optionally when
+	 * passwords match. Null otherwise.
+	 */
 	function authenticate($email, $password = null) {
 		$query = 'SELECT a.id_administrator,
 						 a.full_name,
@@ -65,6 +89,15 @@ class AuthenticationDao {
 
 	/* Google OAuth authentication */
 
+	/**
+	 * Fetch user's OAuth ID Token from the provider.
+	 *
+	 * @param code the code received originally from the provider, allowing
+	 * exchange for an ID token.
+	 * @param redirectUrl the original URL used for redirecting to after passing
+	 * through the provider.
+	 * @return the body of the request for the token, returned from provider.
+	 */
 	function getUserOauthToken($code, $redirectUrl) {
 		$web = new \Web;
 		$result = $web->request(
@@ -85,10 +118,22 @@ class AuthenticationDao {
 		return json_decode($result['body']);
 	}
 
+	/**
+	 * Decode a user's OAuth identification information from a JWT-encoded ID
+	 * token.
+	 *
+	 * @param idToken the token to decode.
+	 * @return stdClass object with identification information.
+	 */
 	function getUserOauthIdentification($idToken) {
 		return \JWT::decode($idToken, null, false);
 	}
 
+	/**
+	 * Get an OAuth state token to send to a provider for later verification.
+	 *
+	 * @return random OAuth state token.
+	 */
 	function getOauthStateToken() {
 		if (!\F3::exists('SESSION.oauthState')) {
 			\F3::set('SESSION.oauthState', md5(rand()));
@@ -96,6 +141,12 @@ class AuthenticationDao {
 		return \F3::get('SESSION.oauthState');
 	}
 
+	/**
+	 * Verify that the OAuth state token matches what we have stored.
+	 *
+	 * @param token value to compare against the stored one.
+	 * @return true when tokens match, false otherwise.
+	 */
 	function verifyOauthStateToken($token) {
 		return \F3::exists('SESSION.oauthState')
 				&& \F3::get('SESSION.oauthState') === $token;
