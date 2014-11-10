@@ -155,7 +155,11 @@
 			<tbody>
 				<tr>
 					<td><?php echo \F3::get('lang.Participation') ?></td>
-					<td><?php echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant) ?> (<?php echo \F3::get('lang.PriceValidThrough', strftime('%x', strtotime($paymentSummary['admission']->dateValidThrough))) ?>)</td>
+					<td><?php
+					echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant);
+					if ('PENDING_PAYMENT' === $form->getStatus()):
+						?> (<?php echo \F3::get('lang.PriceValidThrough', strftime('%x', strtotime($paymentSummary['admission']->dateValidThrough))) ?>)<?php
+					endif; ?></td>
 				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
 					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
 				<?php endforeach; ?>
