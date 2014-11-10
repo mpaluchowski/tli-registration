@@ -16,10 +16,10 @@ class PriceCalculatorImpl implements PriceCalculator {
 	}
 
 	/**
-	 * @see \models\PriceCalculatorImpl#calculateSummary(\models\RegistrationForm)
+	 * @see \models\PriceCalculatorImpl#calculateSummary($form, $time)
 	 */
-	function calculateSummary(\models\RegistrationForm $form) {
-		$pricing = $this->fetchPricing();
+	function calculateSummary(\models\RegistrationForm $form, $time = null) {
+		$pricing = $this->fetchPricing($time);
 
 		$summary = [
 			'admission' => $pricing['admission'],

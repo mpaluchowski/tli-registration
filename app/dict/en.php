@@ -110,6 +110,7 @@ return ['lang' => [
 
 	"PaymentBreakdownHeader" => "Payment breakdown",
 	"PaymentBreakdownIntro" => "Based on the options you selected, your total due payment breaks down as follows:",
+	"PaymentBreakdownPaidIntro" => "We <strong>received your payment</strong> on {0}. Based on the options you selected, your payment covered the following items:",
 	"Participation" => "Participation",
 	"Ticket-early" => "Early bird",
 	"Ticket-regular" => "Regular",

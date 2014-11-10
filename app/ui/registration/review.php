@@ -7,7 +7,9 @@
 
 	<?php echo \View::instance()->render('message-alerts.php') ?>
 
+	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
 	<p><?php echo \F3::get('lang.RegistrationReviewIntro') ?></p>
+	<?php endif ?>
 
 	<div class="form-horizontal">
 		<div class="form-group">
@@ -133,7 +135,11 @@
 
 	<h2><?php echo \F3::get('lang.PaymentBreakdownHeader') ?></h2>
 
+	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
 	<p><?php echo \F3::get('lang.PaymentBreakdownIntro') ?></p>
+	<?php else: ?>
+	<p><?php echo \F3::get('lang.PaymentBreakdownPaidIntro', strftime('%c', strtotime($form->getDatePaid()))) ?></p>
+	<?php endif; ?>
 
 	<div class="table-responsive">
 		<table class="table currencies-<?php echo count($paymentSummary['total']) ?>">
@@ -149,7 +155,11 @@
 			<tbody>
 				<tr>
 					<td><?php echo \F3::get('lang.Participation') ?></td>
-					<td><?php echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant) ?> (<?php echo \F3::get('lang.PriceValidThrough', strftime('%x', strtotime($paymentSummary['admission']->dateValidThrough))) ?>)</td>
+					<td><?php
+					echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant);
+					if ('PENDING_PAYMENT' === $form->getStatus()):
+						?> (<?php echo \F3::get('lang.PriceValidThrough', strftime('%x', strtotime($paymentSummary['admission']->dateValidThrough))) ?>)<?php
+					endif; ?></td>
 				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
 					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
 				<?php endforeach; ?>
@@ -193,7 +203,9 @@
 		</table>
 	</div>
 
+	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
 	<a href="#" class="btn btn-lg btn-success"><?php echo \F3::get('lang.SelectPaymentOptionButton') ?></a>
+	<?php endif; ?>
 </div>
 
 <?php echo \View::instance()->render('footer.php') ?>

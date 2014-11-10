@@ -95,7 +95,10 @@ class Registration {
 		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
 
 		$f3->set('form', $form);
-		$f3->set('paymentSummary', $priceCalculator->calculateSummary($form));
+		$f3->set('paymentSummary', $priceCalculator->calculateSummary(
+			$form,
+			$form->getDatePaid()
+			));
 
 		echo \View::instance()->render('registration/review.php');
 	}
