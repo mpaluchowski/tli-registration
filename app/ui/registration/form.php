@@ -10,10 +10,11 @@
   <?php endif; ?>
 
   <p><?php
-  echo \F3::get('lang.CurrentParticipationPaymentInfo', [
+  echo \F3::get('lang.CurrentParticipationInfo', [
     implode(" / ", \helpers\CurrencyFormatter::moneyFormatArray($pricing['admission']->prices)),
     \F3::get('lang.Ticket-' . $pricing['admission']->variant),
     strftime('%x', strtotime($pricing['admission']->dateValidThrough)),
+    $seatsLeft,
     ])
   ?></p>
 

@@ -179,6 +179,19 @@ class RegistrationDao {
 		];
 	}
 
+	/**
+	 * Count how many registrations are currently on file.
+	 *
+	 * @return number of currently stored registrations.
+	 */
+	function countAllRegistrations() {
+		$query = 'SELECT COUNT(r.id_registration) AS counted
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
+		$result = \F3::get('db')->exec($query);
+
+		return $result[0]['counted'];
+	}
+
 	function readAllRegistrationForms() {
 		$query = 'SELECT r.id_registration,
 						 r.email,

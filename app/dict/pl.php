@@ -94,7 +94,7 @@ return ['lang' => [
 	'SubmitAndReviewButton' => "Wyślij i potwierdź",
 	'SubmitAndReviewButtonHelp' => "Możesz jeszcze raz sprawdzić swoje zgłoszenie zanim przejdziesz do płatności.",
 
-	"CurrentParticipationPaymentInfo" => 'Aktualna cena za uczestnictwo w konferencji wynosi <span class="label label-info">{0}</span> ({1}) i obowiązuje dla płatności do {2}.',
+	"CurrentParticipationInfo" => 'Aktualna cena za uczestnictwo w konferencji wynosi <span class="label label-info">{0}</span> ({1}) i obowiązuje dla płatności do {2}. Pozostało <span class="label label-success">{3}</span> wolnych miejsc.',
 	"CurrentTotalDue" => "Twoja aktualna należność to",
 
 	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",
