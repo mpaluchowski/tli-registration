@@ -56,19 +56,27 @@ class RegistrationDao {
 		\F3::get('db')->begin();
 
 		try {
+			$isWaitingList = false;
+			if ($this->isSeatingLimited()) {
+				$isWaitingList = $this->readSeatStatistics()->left == 0;
+			}
+
 			$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'registrations (
 						email,
 						hash,
+						is_waiting_list,
 						date_entered
 					)
 					VALUES (
 						:email,
 						:hash,
+						:isWaitingList,
 						NOW()
 						)';
 			\F3::get('db')->exec($query, [
 					'email' => $form->getEmail(),
 					'hash' => $form->getHash(),
+					'isWaitingList' => $isWaitingList,
 				]);
 
 			$registrationId = \F3::get('db')->lastInsertID();
