@@ -6,6 +6,7 @@ class RegistrationForm {
 
 	private $id;
 	private $email;
+	private $isWaitingList;
 	private $dateEntered;
 	private $datePaid;
 	private $fields = [];
@@ -19,6 +20,8 @@ class RegistrationForm {
 	}
 
 	function getStatus() {
+		if ($this->isWaitingList)
+			return 'WAITING_LIST';
 		if (!$this->datePaid)
 			return 'PENDING_PAYMENT';
 		if ($this->datePaid)
@@ -31,6 +34,14 @@ class RegistrationForm {
 
 	function setEmail($email) {
 		$this->email = $email;
+	}
+
+	function setWaitingList($isWaitingList) {
+		$this->isWaitingList = $isWaitingList;
+	}
+
+	function isWaitingList() {
+		return $this->isWaitingList;
 	}
 
 	function getDateEntered() {

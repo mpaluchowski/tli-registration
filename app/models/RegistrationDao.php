@@ -37,6 +37,7 @@ class RegistrationDao {
 
 		$form->setId($registration['id_registration']);
 		$form->setEmail($registration['email']);
+		$form->setWaitingList($registration['is_waiting_list']);
 		if (array_key_exists('date_entered', $registration))
 			$form->setDateEntered($registration['date_entered']);
 		if (array_key_exists('date_paid', $registration))
@@ -113,6 +114,7 @@ class RegistrationDao {
 	function readRegistrationForm($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.is_waiting_list,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
@@ -153,6 +155,7 @@ class RegistrationDao {
 	private function fetchRegistrationByEmail($email) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.is_waiting_list,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
@@ -247,6 +250,7 @@ class RegistrationDao {
 	function readAllRegistrationForms() {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.is_waiting_list,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
