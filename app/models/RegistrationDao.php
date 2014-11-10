@@ -109,6 +109,7 @@ class RegistrationDao {
 
 		} catch (Exception $e) {
 			\F3::get('db')->rollback();
+			return null;
 		}
 
 		$form->setId($registrationId);
