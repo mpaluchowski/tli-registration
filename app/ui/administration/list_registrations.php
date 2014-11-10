@@ -23,7 +23,7 @@
 		<h1><?php echo \F3::get('lang.RegistrationsListHeader') ?></h1>
 	</div>
 
-	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->paid, strftime("%c", strtotime($stats->last))]) ?></p>
+	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->registered, $stats->waitingList, $stats->paid, strftime("%c", strtotime($stats->last))]) ?></p>
 </div>
 
 <div class="container-fluid">

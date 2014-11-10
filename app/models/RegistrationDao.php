@@ -186,6 +186,8 @@ class RegistrationDao {
 
 	function readRegistrationStatistics() {
 		$query = 'SELECT COUNT(r.id_registration) AS counted,
+						 SUM(CASE r.is_waiting_list WHEN 0 THEN 1 ELSE 0 END) AS registered,
+						 SUM(CASE r.is_waiting_list WHEN 1 THEN 1 ELSE 0 END) AS waiting_list,
 						 COUNT(r.date_paid) AS paid,
 						 MAX(r.date_entered) AS last
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
@@ -193,6 +195,8 @@ class RegistrationDao {
 
 		return (object)[
 			'count' => $result[0]['counted'],
+			'registered' => $result[0]['registered'],
+			'waitingList' => $result[0]['waiting_list'],
 			'paid' => $result[0]['paid'],
 			'last' => $result[0]['last'],
 		];

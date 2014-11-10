@@ -148,7 +148,7 @@ return ['lang' => [
 	"SendEmailProblemInfo" => "Sorry about that. There's been some hiccup on the way and we couldn't get your e-mail out to <strong>{0}</strong>. This may be a one-time problem, so before calling the cavalry please do try this one more time by clicking the button below. If you get to this very same page, contact the person responsible for registration.",
 
 	"RegistrationsListHeader" => "Registrations list",
-	"RegistrationsListIntro" => "We currently have {0} registrations on file, {1} of which are paid. Last registration was on {2}.",
+	"RegistrationsListIntro" => "We currently have {0} registrations on file ({1} registered and {2} on waiting list), {3} of which are paid. Last registration was on {4}.",
 
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",

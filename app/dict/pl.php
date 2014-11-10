@@ -147,7 +147,7 @@ return ['lang' => [
 	"SendEmailProblemInfo" => "Przepraszamy serdecznie. Coś po drodze odbiło się czkawką i nie byliśmy w stanie wysłać maila pod twój adres <strong>{0}</strong>. To może być jednorazowy problem, więc zanim zadzwonisz po kawalerię, spróbuj jeszcze raz klikając na przycisk poniżej. Jeśli wrócisz na tą samą stronę, skontaktuj się z osobą odpowiedzialną za rejestrację",
 
 	"RegistrationsListHeader" => "Lista rejestracji",
-	"RegistrationsListIntro" => "Mamy aktualnie {0} rejestracji.",
+	"RegistrationsListIntro" => "Mamy aktualnie {0} rejestracji ({1} na liście głównej i {2} na rezerwowej), z których {3} jest opłaconych. Ostatnia rejestracja zapisana {4}.",
 
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
