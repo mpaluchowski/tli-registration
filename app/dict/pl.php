@@ -109,6 +109,7 @@ return ['lang' => [
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
 	"PaymentBreakdownIntro" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
+	"PaymentBreakdownPaidIntro" => "<strong>Otrzymaliśmy twoją płatność</strong> {0}. Na podstawie wybranych przez ciebie opcji, twoja płatność składała się z następujących pozycji:",
 	"Participation" => "Uczestnictwo",
 	"Ticket-early" => "Wczesny",
 	"Ticket-regular" => "Normalny",

@@ -133,7 +133,11 @@
 
 	<h2><?php echo \F3::get('lang.PaymentBreakdownHeader') ?></h2>
 
+	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
 	<p><?php echo \F3::get('lang.PaymentBreakdownIntro') ?></p>
+	<?php else: ?>
+	<p><?php echo \F3::get('lang.PaymentBreakdownPaidIntro', strftime('%c', strtotime($form->getDatePaid()))) ?></p>
+	<?php endif; ?>
 
 	<div class="table-responsive">
 		<table class="table currencies-<?php echo count($paymentSummary['total']) ?>">
