@@ -96,7 +96,7 @@ return ['lang' => [
 
 	"CurrentParticipationPaymentInfo" => 'Aktualna cena za uczestnictwo w konferencji wynosi <span class="label label-info">{0}</span> ({1}) i obowiązuje dla płatności do {2}.',
 	"CurrentParticipationSeatsInfo" => 'Pozostało <span class="label label-success">{0}</span> wolnych miejsc.',
-	"CurrentParticipationSeatsWaitingInfo" => 'Pozostało <span class="label label-danger">{0}</span> wolnych miejsc i <span class="label label-warning">{1}</span> osób znajduje się na liście rezerwowej.',
+	"CurrentParticipationSeatsWaitingInfo" => 'Pozostało <span class="label label-danger">{0}</span> wolnych miejsc i <span class="label label-default">{1}</span> osób znajduje się na liście rezerwowej.',
 	"CurrentTotalDue" => "Twoja aktualna należność to",
 
 	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",
