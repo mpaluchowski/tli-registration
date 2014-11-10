@@ -30,6 +30,8 @@ class View {
 				return $color ? '#f0ad4e' : 'warning';
 			case 'PAID':
 				return $color ? '#5cb85c' : 'success';
+			case 'WAITING_LIST':
+				return $color ? '#777' : 'default';
 			default:
 				throw new Exception('Unknown registration status: ' . $status);
 		}

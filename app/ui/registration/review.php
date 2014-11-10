@@ -137,8 +137,10 @@
 
 	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
 	<p><?php echo \F3::get('lang.PaymentBreakdownIntro') ?></p>
-	<?php else: ?>
+	<?php elseif ('PAID' === $form->getStatus()): ?>
 	<p><?php echo \F3::get('lang.PaymentBreakdownPaidIntro', strftime('%c', strtotime($form->getDatePaid()))) ?></p>
+	<?php elseif ('WAITING_LIST' === $form->getStatus()): ?>
+	<p><?php echo \F3::get('lang.PaymentBreakdownWaitingListIntro') ?></p>
 	<?php endif; ?>
 
 	<div class="table-responsive">
@@ -157,7 +159,7 @@
 					<td><?php echo \F3::get('lang.Participation') ?></td>
 					<td><?php
 					echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant);
-					if ('PENDING_PAYMENT' === $form->getStatus()):
+					if ('PAID' !== $form->getStatus()):
 						?> (<?php echo \F3::get('lang.PriceValidThrough', strftime('%x', strtotime($paymentSummary['admission']->dateValidThrough))) ?>)<?php
 					endif; ?></td>
 				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>

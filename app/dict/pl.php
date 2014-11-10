@@ -108,10 +108,13 @@ return ['lang' => [
 	"RegistrationStatusInfo-PENDING_PAYMENT" => "Twoja rejestracja została zapisana <time>{0}</time> i oczekuje na twoją płatność.",
 	"RegistrationStatus-PAID" => "Opłacona",
 	"RegistrationStatusInfo-PAID" => "Twoja rejestracja została zapisana <time>{0}</time>, opłacona <time>{1}</time> i pozostaje już tylko pojawić się na konferencji!",
+	"RegistrationStatus-WAITING_LIST" => "Lista rezerwowa",
+	"RegistrationStatusInfo-WAITING_LIST" => "Twoja rejestracja została zapisana <time>{0}</time> i <strong>oczekuje na liście rezerwowej</strong> na zwolnienie się miejsca w ramach limitu, jaki posiadamy. Skontaktujemy sie z tobą kiedy to się stanie.",
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
 	"PaymentBreakdownIntro" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
 	"PaymentBreakdownPaidIntro" => "<strong>Otrzymaliśmy twoją płatność</strong> {0}. Na podstawie wybranych przez ciebie opcji, twoja płatność składała się z następujących pozycji:",
+	"PaymentBreakdownWaitingListIntro" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja przejdzie z listy oczekujących na główną listę.",
 	"Participation" => "Uczestnictwo",
 	"Ticket-early" => "Wczesny",
 	"Ticket-regular" => "Normalny",
