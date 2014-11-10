@@ -53,7 +53,9 @@ class RegistrationDao {
 		return $form;
 	}
 
-	function saveRegistrationForm($form) {
+	function saveRegistrationForm(&$form) {
+		$dateEntered = time();
+
 		\F3::get('db')->begin();
 
 		try {
@@ -72,12 +74,13 @@ class RegistrationDao {
 						:email,
 						:hash,
 						:isWaitingList,
-						NOW()
+						FROM_UNIXTIME(:dateEntered)
 						)';
 			\F3::get('db')->exec($query, [
 					'email' => $form->getEmail(),
 					'hash' => $form->getHash(),
 					'isWaitingList' => $isWaitingList,
+					'dateEntered' => $dateEntered,
 				]);
 
 			$registrationId = \F3::get('db')->lastInsertID();
@@ -107,6 +110,9 @@ class RegistrationDao {
 		} catch (Exception $e) {
 			\F3::get('db')->rollback();
 		}
+
+		$form->setWaitingList($isWaitingList);
+		$form->setDateEntered(date('Y-m-d H:i:s', $dateEntered));
 
 		return $registrationId;
 	}
