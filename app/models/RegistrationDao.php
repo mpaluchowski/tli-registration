@@ -187,7 +187,7 @@ class RegistrationDao {
 	 * seats are not limited.
 	 */
 	function readSeatStatistics() {
-		if (!\F3::get('registrations_limit_soft')) {
+		if (!$this->isSeatingLimited()) {
 			return null;
 		}
 
@@ -210,10 +210,30 @@ class RegistrationDao {
 				$stats['registered'] = $row['counted'];
 		}
 
-		$leftCount = \F3::get('registrations_limit_soft') - $stats['registered'];
+		$leftCount = $this->getSeatLimit() - $stats['registered'];
 		$stats['left'] = $leftCount < 0 ? 0 : $leftCount;
 
 		return (object)$stats;
+	}
+
+	/**
+	 * Checks if seating is limited for this event.
+	 *
+	 * @return true if seating is limited. False otherwise.
+	 */
+	function isSeatingLimited() {
+		return (bool)\F3::get('registrations_limit_soft');
+	}
+
+	/**
+	 * Returns the current seat limit, if seating is limited.
+	 *
+	 * @return Number of seats in the limit, or null if seats unlimited.
+	 */
+	function getSeatLimit() {
+		return $this->isSeatingLimited()
+			? \F3::get('registrations_limit_soft')
+			: null;
 	}
 
 	function readAllRegistrationForms() {
