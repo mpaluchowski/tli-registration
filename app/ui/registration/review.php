@@ -126,7 +126,7 @@
 
 		<div class="form-group">
 			<div class="col-sm-12">
-				<p class="form-control-static"><?php echo $form->hasField('comments') ? $form->getField('comments') : \F3::get('lang.CommentsNone') ?></p>
+				<p class="form-control-static"><?php echo $form->hasField('comments') ? nl2br($form->getField('comments'), false) : \F3::get('lang.CommentsNone') ?></p>
 			</div>
 		</div>
 	</div>

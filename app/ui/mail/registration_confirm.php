@@ -105,7 +105,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><?php echo $form->hasField('comments') ? $form->getField('comments') : \F3::get('lang.CommentsNone') ?></td>
+			<td colspan="2"><?php echo $form->hasField('comments') ? nl2br($form->getField('comments'), false) : \F3::get('lang.CommentsNone') ?></td>
 		</tr>
 	</table>
 </body>
