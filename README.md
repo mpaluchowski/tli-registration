@@ -2,6 +2,27 @@
 
 A registration form for the Toastmasters Leadership Institute events, built on top of the PHP [Fat-Free Framework][fat-free-framework] with [Bootstrap][bootstrap].
 
+## Features
+
+- customizable form with all but the `email` field being optional, any number of fields supported
+- form dependencies, allowing showing and hiding fields based on others' values
+- list of clubs, allowing adding new custom entries
+- client (HTML5-based) and customizable server-side validation, including guidance for people entering a duplicate email on how to proceed
+- forms retrievable and viewable by a unique hash for simple security
+- confirmation emails upon registration and later on request
+- support for limited seat numbers and waiting list
+- explicit registration statuses and guidance through the registration process
+- customizable price calculation including real-time re-calculation on form edition and support for multiple currencies
+- online payment integration
+- customizable form processing
+- administrative area with overview of all registrations, statistics
+- administrative login via password or Google
+- internationalization
+- all layouts responsive
+- mailer allows rerouting all emails to single inbox in testing, adding BCC to all outgoing email
+- custom, friendly error pages
+- optional SSL enforcement
+
 ## Requirements
 
 - PHP 5.4 or later with extensions
