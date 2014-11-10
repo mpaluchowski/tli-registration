@@ -8,7 +8,7 @@ class Error {
 		if ('404' == $f3->get('ERROR.code')) {
 			echo \View::instance()->render('error/404.php');
 		} else {
-			echo $f3->get('ERROR.code');
+			echo \View::instance()->render('error/default.php');
 		}
 	}
 
