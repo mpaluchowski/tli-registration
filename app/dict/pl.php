@@ -159,4 +159,8 @@ return ['lang' => [
 	"SignInErrorGoogleProcessing" => "Nie mogliśmy pobrać informacji o tobie od Google. Spróbuj zalogować się ponownie i jeśli problem się potwórzy, skontaktuj się z administratorem.",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",
+
+	"Error404Header" => "Nie ta strona?",
+	"Error404Info" => "Znaleźliśmy lukę w czasoprzestrzeni i strona, która powinna być pod tym adresem zaginęła. Lepiej wróć do samego początku. Kliknij przycisk poniżej aby tak zrobić.",
+	"ErrorGoHome" => "Wróć do domu",
 ]];
