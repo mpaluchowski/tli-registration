@@ -193,7 +193,9 @@
 		</table>
 	</div>
 
+	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
 	<a href="#" class="btn btn-lg btn-success"><?php echo \F3::get('lang.SelectPaymentOptionButton') ?></a>
+	<?php endif; ?>
 </div>
 
 <?php echo \View::instance()->render('footer.php') ?>
