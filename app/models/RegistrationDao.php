@@ -111,6 +111,7 @@ class RegistrationDao {
 			\F3::get('db')->rollback();
 		}
 
+		$form->setId($registrationId);
 		$form->setWaitingList($isWaitingList);
 		$form->setDateEntered(date('Y-m-d H:i:s', $dateEntered));
 
