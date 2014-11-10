@@ -94,7 +94,9 @@ return ['lang' => [
 	'SubmitAndReviewButton' => "Wyślij i potwierdź",
 	'SubmitAndReviewButtonHelp' => "Możesz jeszcze raz sprawdzić swoje zgłoszenie zanim przejdziesz do płatności.",
 
-	"CurrentParticipationInfo" => 'Aktualna cena za uczestnictwo w konferencji wynosi <span class="label label-info">{0}</span> ({1}) i obowiązuje dla płatności do {2}. Pozostało <span class="label label-success">{3}</span> wolnych miejsc.',
+	"CurrentParticipationPaymentInfo" => 'Aktualna cena za uczestnictwo w konferencji wynosi <span class="label label-info">{0}</span> ({1}) i obowiązuje dla płatności do {2}.',
+	"CurrentParticipationSeatsInfo" => 'Pozostało <span class="label label-success">{0}</span> wolnych miejsc.',
+	"CurrentParticipationSeatsWaitingInfo" => 'Pozostało <span class="label label-danger">{0}</span> wolnych miejsc i <span class="label label-warning">{1}</span> osób znajduje się na liście rezerwowej.',
 	"CurrentTotalDue" => "Twoja aktualna należność to",
 
 	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",

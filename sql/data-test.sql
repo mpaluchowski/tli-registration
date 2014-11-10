@@ -51,10 +51,10 @@ INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
 -- Dumping data for table tli_registrations.tli_registrations: ~3 rows (approximately)
 DELETE FROM `tli_registrations`;
 /*!40000 ALTER TABLE `tli_registrations` DISABLE KEYS */;
-INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `date_entered`, `date_paid`) VALUES
-	(1, '***REMOVED***', '30085d747a6d6e2711c7c2446fdf296dc65d67f5', '2014-10-16 09:50:26', NULL),
-	(2, 'john@example.com', '5224cb6fdd5bbe463af1db8ee499e858fcb79f81', '2014-10-16 10:50:42', NULL),
-	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', '2014-10-19 22:46:36', '2014-10-19 22:46:56');
+INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `is_waiting_list`, `date_entered`, `date_paid`) VALUES
+	(1, '***REMOVED***', '30085d747a6d6e2711c7c2446fdf296dc65d67f5', b'0', '2014-10-16 09:50:26', NULL),
+	(2, 'john@example.com', '5224cb6fdd5bbe463af1db8ee499e858fcb79f81', b'1', '2014-10-16 10:50:42', NULL),
+	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', b'0', '2014-10-19 22:46:36', '2014-10-19 22:46:56');
 /*!40000 ALTER TABLE `tli_registrations` ENABLE KEYS */;
 
 -- Dumping data for table tli_registrations.tli_registration_fields: ~38 rows (approximately)

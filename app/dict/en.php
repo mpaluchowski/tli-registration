@@ -95,7 +95,9 @@ return ['lang' => [
 	'SubmitAndReviewButton' => "Submit and Review",
 	'SubmitAndReviewButtonHelp' => "You will have a chance to review your registration before proceeding to payment.",
 
-	"CurrentParticipationInfo" => 'Your current participation price is <span class="label label-info">{0}</span> ({1}) if paid by {2}. There are <span class="label label-success">{3}</span> seats left for taking.',
+	"CurrentParticipationPaymentInfo" => 'Your current participation price is <span class="label label-info">{0}</span> ({1}) if paid by {2}.',
+	"CurrentParticipationSeatsInfo" => 'There are <span class="label label-success">{0}</span> seats left for taking.',
+	"CurrentParticipationSeatsWaitingInfo" => 'There are <span class="label label-danger">{0}</span> seats left for taking and <span class="label label-warning">{1}</span> people on the waiting list.',
 	"CurrentTotalDue" => "Your current total due payment is",
 
 	"RegistrationReviewHeader" => "Review registration for {0}",

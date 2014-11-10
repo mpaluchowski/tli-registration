@@ -10,12 +10,21 @@
   <?php endif; ?>
 
   <p><?php
-  echo \F3::get('lang.CurrentParticipationInfo', [
+  echo \F3::get('lang.CurrentParticipationPaymentInfo', [
     implode(" / ", \helpers\CurrencyFormatter::moneyFormatArray($pricing['admission']->prices)),
     \F3::get('lang.Ticket-' . $pricing['admission']->variant),
     strftime('%x', strtotime($pricing['admission']->dateValidThrough)),
-    $seatsLeft,
-    ])
+    ]);
+  if (isset($seatStats)) {
+    if ($seatStats->left != 0) {
+      echo \F3::get('lang.CurrentParticipationSeatsInfo', $seatStats->left);
+    } else {
+      echo \F3::get('lang.CurrentParticipationSeatsWaitingInfo', [
+        $seatStats->left,
+        $seatStats->waitingList,
+        ]);
+    }
+  }
   ?></p>
 
   <form id="registration-form" action="<?php echo \F3::get('ALIASES.registration_process') ?>" method="POST">

@@ -19,9 +19,10 @@ class Registration {
 		$f3->set('pricing', $priceCalculator->fetchPricing());
 
 		$registrationDao = new \models\RegistrationDao();
-
-		$seatsLeft = $f3->get('registrations_limit_soft') - $registrationDao->countAllRegistrations();
-		$f3->set('seatsLeft',  $seatsLeft < 0 ? 0 : $seatsLeft);
+		$seatStats = $registrationDao->readSeatStatistics();
+		if ($seatStats) {
+			$f3->set('seatStats', $seatStats);
+		}
 
 		echo \View::instance()->render('registration/form.php');
 	}

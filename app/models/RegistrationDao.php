@@ -180,16 +180,40 @@ class RegistrationDao {
 	}
 
 	/**
-	 * Count how many registrations are currently on file.
+	 * Count how many registrations, left seats and waiting list persons are
+	 * currently on file.
 	 *
-	 * @return number of currently stored registrations.
+	 * @return stdClass object with numbers of seats accordingly, or null, if
+	 * seats are not limited.
 	 */
-	function countAllRegistrations() {
-		$query = 'SELECT COUNT(r.id_registration) AS counted
-				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
+	function readSeatStatistics() {
+		if (!\F3::get('registrations_limit_soft')) {
+			return null;
+		}
+
+		$query = 'SELECT r.is_waiting_list,
+						 COUNT(r.id_registration) AS counted
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  GROUP BY r.is_waiting_list';
 		$result = \F3::get('db')->exec($query);
 
-		return $result[0]['counted'];
+		$stats = [
+			'registered' => 0,
+			'waitingList' => 0,
+			'left' => 0,
+		];
+
+		foreach ($result as $row) {
+			if ($row['is_waiting_list'])
+				$stats['waitingList'] = $row['counted'];
+			else
+				$stats['registered'] = $row['counted'];
+		}
+
+		$leftCount = \F3::get('registrations_limit_soft') - $stats['registered'];
+		$stats['left'] = $leftCount < 0 ? 0 : $leftCount;
+
+		return (object)$stats;
 	}
 
 	function readAllRegistrationForms() {
