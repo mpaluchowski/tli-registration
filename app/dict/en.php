@@ -96,6 +96,8 @@ return ['lang' => [
 	'SubmitAndReviewButtonHelp' => "You will have a chance to review your registration before proceeding to payment.",
 
 	"CurrentParticipationPaymentInfo" => 'Your current participation price is <span class="label label-info">{0}</span> ({1}) if paid by {2}.',
+	"CurrentParticipationSeatsInfo" => 'There are <span class="label label-success">{0}</span> seats left for taking.',
+	"CurrentParticipationSeatsWaitingInfo" => 'There are <span class="label label-danger">{0}</span> seats left for taking and <span class="label label-default">{1}</span> people on the waiting list.',
 	"CurrentTotalDue" => "Your current total due payment is",
 
 	"RegistrationReviewHeader" => "Review registration for {0}",
@@ -107,10 +109,13 @@ return ['lang' => [
 	"RegistrationStatusInfo-PENDING_PAYMENT" => "Your registration was recorded on <time>{0}</time> and is awaiting payment to complete.",
 	"RegistrationStatus-PAID" => "Paid",
 	"RegistrationStatusInfo-PAID" => "Your registration was recorded on <time>{0}</time>, paid for on <time>{1}</time> and you're all good for the event!",
+	"RegistrationStatus-WAITING_LIST" => "Waiting list",
+	"RegistrationStatusInfo-WAITING_LIST" => "Your registration was recorded on <time>{0}</time>, but is <strong>waiting for an available seat</strong> after the initial limit was reached. We'll get back to you when this happens.",
 
 	"PaymentBreakdownHeader" => "Payment breakdown",
 	"PaymentBreakdownIntro" => "Based on the options you selected, your total due payment breaks down as follows:",
 	"PaymentBreakdownPaidIntro" => "We <strong>received your payment</strong> on {0}. Based on the options you selected, your payment covered the following items:",
+	"PaymentBreakdownWaitingListIntro" => "We'll be able to accept your payment as soon as your registration switches from the waiting list onto the main roster. Hang on!",
 	"Participation" => "Participation",
 	"Ticket-early" => "Early bird",
 	"Ticket-regular" => "Regular",
@@ -143,7 +148,7 @@ return ['lang' => [
 	"SendEmailProblemInfo" => "Sorry about that. There's been some hiccup on the way and we couldn't get your e-mail out to <strong>{0}</strong>. This may be a one-time problem, so before calling the cavalry please do try this one more time by clicking the button below. If you get to this very same page, contact the person responsible for registration.",
 
 	"RegistrationsListHeader" => "Registrations list",
-	"RegistrationsListIntro" => "We currently have {0} registrations on file, {1} of which are paid. Last registration was on {2}.",
+	"RegistrationsListIntro" => "We currently have {0} registrations on file ({1} registered and {2} on waiting list), {3} of which are paid. Last registration was on {4}.",
 
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",

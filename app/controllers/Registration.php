@@ -18,6 +18,11 @@ class Registration {
 
 		$f3->set('pricing', $priceCalculator->fetchPricing());
 
+		$registrationDao = new \models\RegistrationDao();
+		if ($registrationDao->isSeatingLimited()) {
+			$f3->set('seatStats', $registrationDao->readSeatStatistics());
+		}
+
 		echo \View::instance()->render('registration/form.php');
 	}
 

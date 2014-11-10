@@ -37,6 +37,7 @@ class RegistrationDao {
 
 		$form->setId($registration['id_registration']);
 		$form->setEmail($registration['email']);
+		$form->setWaitingList($registration['is_waiting_list']);
 		if (array_key_exists('date_entered', $registration))
 			$form->setDateEntered($registration['date_entered']);
 		if (array_key_exists('date_paid', $registration))
@@ -52,23 +53,34 @@ class RegistrationDao {
 		return $form;
 	}
 
-	function saveRegistrationForm($form) {
+	function saveRegistrationForm(&$form) {
+		$dateEntered = time();
+
 		\F3::get('db')->begin();
 
 		try {
+			$isWaitingList = false;
+			if ($this->isSeatingLimited()) {
+				$isWaitingList = $this->readSeatStatistics()->left == 0;
+			}
+
 			$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'registrations (
 						email,
 						hash,
+						is_waiting_list,
 						date_entered
 					)
 					VALUES (
 						:email,
 						:hash,
-						NOW()
+						:isWaitingList,
+						FROM_UNIXTIME(:dateEntered)
 						)';
 			\F3::get('db')->exec($query, [
 					'email' => $form->getEmail(),
 					'hash' => $form->getHash(),
+					'isWaitingList' => $isWaitingList,
+					'dateEntered' => $dateEntered,
 				]);
 
 			$registrationId = \F3::get('db')->lastInsertID();
@@ -97,7 +109,12 @@ class RegistrationDao {
 
 		} catch (Exception $e) {
 			\F3::get('db')->rollback();
+			return null;
 		}
+
+		$form->setId($registrationId);
+		$form->setWaitingList($isWaitingList);
+		$form->setDateEntered(date('Y-m-d H:i:s', $dateEntered));
 
 		return $registrationId;
 	}
@@ -105,6 +122,7 @@ class RegistrationDao {
 	function readRegistrationForm($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.is_waiting_list,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
@@ -145,6 +163,7 @@ class RegistrationDao {
 	private function fetchRegistrationByEmail($email) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.is_waiting_list,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
@@ -167,6 +186,8 @@ class RegistrationDao {
 
 	function readRegistrationStatistics() {
 		$query = 'SELECT COUNT(r.id_registration) AS counted,
+						 SUM(CASE r.is_waiting_list WHEN 0 THEN 1 ELSE 0 END) AS registered,
+						 SUM(CASE r.is_waiting_list WHEN 1 THEN 1 ELSE 0 END) AS waiting_list,
 						 COUNT(r.date_paid) AS paid,
 						 MAX(r.date_entered) AS last
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
@@ -174,14 +195,74 @@ class RegistrationDao {
 
 		return (object)[
 			'count' => $result[0]['counted'],
+			'registered' => $result[0]['registered'],
+			'waitingList' => $result[0]['waiting_list'],
 			'paid' => $result[0]['paid'],
 			'last' => $result[0]['last'],
 		];
 	}
 
+	/**
+	 * Count how many registrations, left seats and waiting list persons are
+	 * currently on file.
+	 *
+	 * @return stdClass object with numbers of seats accordingly, or null, if
+	 * seats are not limited.
+	 */
+	function readSeatStatistics() {
+		if (!$this->isSeatingLimited()) {
+			return null;
+		}
+
+		$query = 'SELECT r.is_waiting_list,
+						 COUNT(r.id_registration) AS counted
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  GROUP BY r.is_waiting_list';
+		$result = \F3::get('db')->exec($query);
+
+		$stats = [
+			'registered' => 0,
+			'waitingList' => 0,
+			'left' => 0,
+		];
+
+		foreach ($result as $row) {
+			if ($row['is_waiting_list'])
+				$stats['waitingList'] = $row['counted'];
+			else
+				$stats['registered'] = $row['counted'];
+		}
+
+		$leftCount = $this->getSeatLimit() - $stats['registered'];
+		$stats['left'] = $leftCount < 0 ? 0 : $leftCount;
+
+		return (object)$stats;
+	}
+
+	/**
+	 * Checks if seating is limited for this event.
+	 *
+	 * @return true if seating is limited. False otherwise.
+	 */
+	function isSeatingLimited() {
+		return (bool)\F3::get('registrations_limit_soft');
+	}
+
+	/**
+	 * Returns the current seat limit, if seating is limited.
+	 *
+	 * @return Number of seats in the limit, or null if seats unlimited.
+	 */
+	function getSeatLimit() {
+		return $this->isSeatingLimited()
+			? \F3::get('registrations_limit_soft')
+			: null;
+	}
+
 	function readAllRegistrationForms() {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.is_waiting_list,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r

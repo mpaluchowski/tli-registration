@@ -95,6 +95,8 @@ return ['lang' => [
 	'SubmitAndReviewButtonHelp' => "Możesz jeszcze raz sprawdzić swoje zgłoszenie zanim przejdziesz do płatności.",
 
 	"CurrentParticipationPaymentInfo" => 'Aktualna cena za uczestnictwo w konferencji wynosi <span class="label label-info">{0}</span> ({1}) i obowiązuje dla płatności do {2}.',
+	"CurrentParticipationSeatsInfo" => 'Pozostało <span class="label label-success">{0}</span> wolnych miejsc.',
+	"CurrentParticipationSeatsWaitingInfo" => 'Pozostało <span class="label label-danger">{0}</span> wolnych miejsc i <span class="label label-default">{1}</span> osób znajduje się na liście rezerwowej.',
 	"CurrentTotalDue" => "Twoja aktualna należność to",
 
 	"RegistrationReviewHeader" => "Podsumowanie rejestracji dla {0}",
@@ -106,10 +108,13 @@ return ['lang' => [
 	"RegistrationStatusInfo-PENDING_PAYMENT" => "Twoja rejestracja została zapisana <time>{0}</time> i oczekuje na twoją płatność.",
 	"RegistrationStatus-PAID" => "Opłacona",
 	"RegistrationStatusInfo-PAID" => "Twoja rejestracja została zapisana <time>{0}</time>, opłacona <time>{1}</time> i pozostaje już tylko pojawić się na konferencji!",
+	"RegistrationStatus-WAITING_LIST" => "Lista rezerwowa",
+	"RegistrationStatusInfo-WAITING_LIST" => "Twoja rejestracja została zapisana <time>{0}</time> i <strong>oczekuje na liście rezerwowej</strong> na zwolnienie się miejsca w ramach limitu, jaki posiadamy. Skontaktujemy sie z tobą kiedy to się stanie.",
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
 	"PaymentBreakdownIntro" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
 	"PaymentBreakdownPaidIntro" => "<strong>Otrzymaliśmy twoją płatność</strong> {0}. Na podstawie wybranych przez ciebie opcji, twoja płatność składała się z następujących pozycji:",
+	"PaymentBreakdownWaitingListIntro" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja przejdzie z listy oczekujących na główną listę.",
 	"Participation" => "Uczestnictwo",
 	"Ticket-early" => "Wczesny",
 	"Ticket-regular" => "Normalny",
@@ -142,7 +147,7 @@ return ['lang' => [
 	"SendEmailProblemInfo" => "Przepraszamy serdecznie. Coś po drodze odbiło się czkawką i nie byliśmy w stanie wysłać maila pod twój adres <strong>{0}</strong>. To może być jednorazowy problem, więc zanim zadzwonisz po kawalerię, spróbuj jeszcze raz klikając na przycisk poniżej. Jeśli wrócisz na tą samą stronę, skontaktuj się z osobą odpowiedzialną za rejestrację",
 
 	"RegistrationsListHeader" => "Lista rejestracji",
-	"RegistrationsListIntro" => "Mamy aktualnie {0} rejestracji.",
+	"RegistrationsListIntro" => "Mamy aktualnie {0} rejestracji ({1} na liście głównej i {2} na rezerwowej), z których {3} jest opłaconych. Ostatnia rejestracja zapisana {4}.",
 
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
