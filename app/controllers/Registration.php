@@ -63,7 +63,9 @@ class Registration {
 			$processor::processOnSubmit($form);
 		}
 
-		$registrationDao->saveRegistrationForm($form);
+		if (!$registrationDao->saveRegistrationForm($form)) {
+			$f3->error(500);
+		}
 
 		$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
 		$f3->set('form', $form);
