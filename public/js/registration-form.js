@@ -26,14 +26,15 @@ tliRegister.registrationForm = function() {
 		if (!$(this).val() || $("#group-email").hasClass("has-warning"))
 			return;
 
-		$.getJSON(
-			'/registration/email_exists/' + $(this).val(),
-			function(data, textStatus) {
+		$.ajaxQueue({
+			url : '/registration/email_exists/' + $(this).val(),
+			dataType : 'json',
+			success : function(data) {
 				if (undefined !== data.message) {
 					displayFieldWarning("#group-email", "email", data.message);
 				}
 			}
-			);
+			});
 	},
 
 	displayFieldWarning = function(fieldGroupSelector, fieldName, warningText) {
@@ -169,16 +170,20 @@ tliRegister.registrationForm = function() {
 	}
 
 	recalculateTotalPrice = function() {
-		$('#total-due').prepend('<i class="fa fa-refresh fa-spin">');
-		$.getJSON(
-			"/registration/get_total_price",
-			$("#registration-form").closest('form').serializeArray(),
-			function(data, textStatus) {
+		$.ajaxQueue({
+			url : "/registration/get_total_price",
+			data : $("#registration-form").closest('form').serializeArray(),
+			dataType : 'json',
+			beforeSend : function() {
+				$('#total-due').prepend('<i class="fa fa-refresh fa-spin">');
+			},
+			success : function(data) {
 				$('#total-due').html($.map(data, function(obj) { return obj }).join(' / '));
-			}
-			).fail(function(jqxhr, textStatus, error) {
+			},
+			error : function() {
 				$('#total-due').html("&mdash;");
-			});
+			}
+		});
 	}
 
 	return {
