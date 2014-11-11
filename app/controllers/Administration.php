@@ -40,7 +40,7 @@ class Administration {
 		$registrationDao = new \models\RegistrationDao();
 
 		$registrationFields = $registrationDao->readAllRegistrationFieldNames();
-		$registrations = $registrationDao->readAllRegistrationForms(true);
+		$registrations = $registrationDao->readAllRegistrationForms(null, true);
 
 		foreach ($registrationFields as $field) {
 			foreach ($registrations as $index => $registration) {
