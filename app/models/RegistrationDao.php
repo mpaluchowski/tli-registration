@@ -282,7 +282,7 @@ class RegistrationDao {
 	 *
 	 * @return true if seating is limited. False otherwise.
 	 */
-	function isSeatingLimited() {
+	static function isSeatingLimited() {
 		return (bool)\F3::get('registrations_limit_soft');
 	}
 
@@ -291,8 +291,8 @@ class RegistrationDao {
 	 *
 	 * @return Number of seats in the limit, or null if seats unlimited.
 	 */
-	function getSeatLimit() {
-		return $this->isSeatingLimited()
+	static function getSeatLimit() {
+		return self::isSeatingLimited()
 			? \F3::get('registrations_limit_soft')
 			: null;
 	}

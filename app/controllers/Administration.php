@@ -27,7 +27,9 @@ class Administration {
 	function statistics($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
-		$f3->set('totalSeats', \F3::get('registrations_limit_soft'));
+		if (\models\RegistrationDao::isSeatingLimited()) {
+			$f3->set('totalSeats', \models\RegistrationDao::getSeatLimit());
+		}
 		$f3->set('stats', $registrationDao->readRegistrationStatistics());
 		$f3->set('registrationsByWeek', $registrationDao->readRegistrationsByWeekStatistics());
 

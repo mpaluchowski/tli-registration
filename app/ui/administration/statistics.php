@@ -7,6 +7,7 @@
 		<h1><?php echo \F3::get('lang.StatisticsHeader') ?></h1>
 	</div>
 
+<?php if (\models\RegistrationDao::isSeatingLimited()): ?>
 	<h3><?php echo \F3::get('lang.StatisticsSeatsHeader') ?></h3>
 
 	<div class="progress">
@@ -17,6 +18,7 @@
 			<?php echo \F3::get('lang.StatisticsSeatsLeft', $totalSeats - $stats->registered) ?>
 		</div>
 	</div>
+<?php endif; ?>
 
 	<div class="row">
 		<div class="col-sm-4">
