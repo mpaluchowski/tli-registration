@@ -153,11 +153,26 @@ return ['lang' => [
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",
 
+	"StatisticsHeader" => "Statistics",
+	"StatisticsSeatsHeader" => "Seats",
+	"StatisticsSeatsRegistered" => "{0} registered",
+	"StatisticsSeatsLeft" => "{0} free",
+	"StatisticsSeatsWaitingList" => "{0} on waiting list",
+	"StatisticsRegistrationsByStatusHeader" => "Registrations by status",
+	"StatisticsRegistrationStatusLabel" => "Status",
+	"StatisticsRegistrationsLabel" => "Registrations",
+	"StatisticsRegistrationsByWeekHeader" => "Registrations by week",
+	"StatisticsRegistrationsRegisteredLabel" => "Registered",
+	"StatisticsRegistrationsPaidLabel" => "Paid",
+
 	"Password" => "Password",
 	"SignInButton" => "Sign in",
 	"SignInGoogle" => "Sign in with Google",
 	"SignInErrorUserUnknown" => "We couldn't find a user account for you in our records. Please contact your friendly administrator for help.",
 	"SignInErrorGoogleProcessing" => "We couldn't retrieve your information from Google. Please try signing in again and if the problem persists, contact the administrator.",
+
+	"AdminNavRegistrations" => "Registrations",
+	"AdminNavStatistics" => "Statistics",
 	"LogoutButton" => "Logout",
 	"SignedInAs" => "Signed in as {0}",
 
