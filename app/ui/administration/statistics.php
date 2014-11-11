@@ -27,11 +27,11 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<h3><?php echo \F3::get('lang.StatisticsRegistrationsByStatusHeader') ?></h3>
-			<div id="pie-registrations-by-status" style="width: 100%; height: 100%;"></div>
+			<div id="pie-registrations-by-status" style="width: 100%;"></div>
 		</div>
 		<div class="col-sm-8">
 			<h3><?php echo \F3::get('lang.StatisticsRegistrationsByWeekHeader') ?></h3>
-			<div id="column-registrations-by-week" style="width: 100%; height: 100%;"></div>
+			<div id="column-registrations-by-week" style="width: 100%;"></div>
 		</div>
 	</div>
 </div>
