@@ -155,8 +155,9 @@ return ['lang' => [
 
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",
-	"StatisticsSeatsRegistered" => "{0} Registered",
-	"StatisticsSeatsLeft" => "{0} Left",
+	"StatisticsSeatsRegistered" => "{0} registered",
+	"StatisticsSeatsLeft" => "{0} free",
+	"StatisticsSeatsWaitingList" => "{0} on waiting list",
 	"StatisticsRegistrationsByStatusHeader" => "Registrations by status",
 	"StatisticsRegistrationStatusLabel" => "Status",
 	"StatisticsRegistrationsLabel" => "Registrations",

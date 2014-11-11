@@ -11,11 +11,14 @@
 	<h3><?php echo \F3::get('lang.StatisticsSeatsHeader') ?></h3>
 
 	<div class="progress">
-		<div class="progress-bar progress-bar-success" style="width: <?php echo $stats->registered / $totalSeats * 100 ?>%">
+		<div class="progress-bar progress-bar-success" style="width: <?php echo $stats->registered / ($totalSeats + $stats->waitingList) * 100 ?>%">
 			<?php echo \F3::get('lang.StatisticsSeatsRegistered', $stats->registered) ?>
 		</div>
-		<div style="width: <?php echo 100 - $stats->registered / $totalSeats * 100 ?>%; height: 100%; font-size: 12px; line-height: 20px; text-align: center; float: left;">
+		<div style="width: <?php echo ($totalSeats - $stats->registered) / ($totalSeats + $stats->waitingList) * 100 ?>%; height: 100%; font-size: 12px; line-height: 20px; text-align: center; float: left;">
 			<?php echo \F3::get('lang.StatisticsSeatsLeft', $totalSeats - $stats->registered) ?>
+		</div>
+		<div class="progress-bar" style="background: #777; width: <?php echo $stats->waitingList / ($totalSeats + $stats->waitingList) * 100 ?>%;">
+			<?php echo \F3::get('lang.StatisticsSeatsWaitingList', $stats->waitingList) ?>
 		</div>
 	</div>
 <?php endif; ?>
