@@ -36,4 +36,45 @@ class Administration {
 		echo \View::instance()->render('administration/statistics.php');
 	}
 
+	function list_export_csv($f3) {
+		$registrationDao = new \models\RegistrationDao();
+
+		$registrationFields = $registrationDao->readAllRegistrationFieldNames();
+		$registrations = $registrationDao->readAllRegistrationForms(true);
+
+		foreach ($registrationFields as $field) {
+			foreach ($registrations as $index => $registration) {
+				if (!array_key_exists($field, $registration)) {
+					$registrations[$index][$field] = '';
+				}
+			}
+		}
+
+		header('Content-Type: text/csv; charset=utf-8');
+		header('Content-Disposition: attachment; filename="tli-registrations-'
+			. strftime('%Y%m%d') . '-' . strftime('%H%M') . '.csv"');
+
+		$output = fopen('php://output', 'w');
+
+		$headings = array_merge([
+			'id_registration',
+			'email',
+			'is_waiting_list',
+			'date_entered',
+			'date_paid',
+			], $registrationFields);
+		sort($headings);
+		fputcsv($output, $headings, ';');
+
+		foreach ($registrations as $registration) {
+			ksort($registration);
+			foreach ($registration as $field => $value) {
+				if (is_array($value))
+					$registration[$field] = implode(',', $value);
+			}
+			fputcsv($output, $registration, ';');
+		}
+		fclose($output);
+	}
+
 }

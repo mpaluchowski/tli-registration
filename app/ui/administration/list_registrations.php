@@ -8,6 +8,8 @@
 	</div>
 
 	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->registered, $stats->waitingList, $stats->paid, strftime("%c", strtotime($stats->last))]) ?></p>
+
+	<a href="<?php echo \F3::get('ALIASES.admin_registrations_export_csv') ?>" class="btn btn-default">Download CSV</a>
 </div>
 
 <div class="container-fluid">
