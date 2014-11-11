@@ -24,7 +24,7 @@
 		<tbody>
 	<?php foreach ($registrations as $registration): ?>
 			<tr data-id="<?php echo $registration->getId() ?>">
-				<td><?php echo $registration->getField('full-name') ?></td>
+				<td><a href="#" class="registration-details-expander"><?php echo $registration->getField('full-name') ?></a></td>
 				<td><a href="mailto:<?php echo $registration->getEmail() ?>"><?php echo $registration->getEmail() ?></a></td>
 				<td><a href="callto:<?php echo $registration->getField('phone') ?>"><?php echo $registration->getField('phone') ?></a></td>
 				<td><?php echo strftime("%c", strtotime($registration->getDateEntered())) ?></td>
@@ -36,5 +36,13 @@
 	</table>
 </div>
 </div>
+
+<script src="/js/registrations-list.js"></script>
+<script>
+  (function() {
+    tliRegister.registrationsList.init();
+  })();
+</script>
+
 
 <?php echo \View::instance()->render('footer.php') ?>
