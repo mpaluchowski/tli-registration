@@ -15,6 +15,33 @@
 			<?php echo $totalSeats - $stats->registered ?> Left
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-sm-4">
+			<div id="pie-registrations-by-status" style="width: 100%; height: 100%;"></div>
+		</div>
+		<div class="col-sm-8"></div>
+	</div>
 </div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			['Status', 'Registrations'],
+			['Registered', <?php echo $stats->registered ?>],
+			['Waiting List', <?php echo $stats->waitingList ?>],
+			['Paid', <?php echo $stats->paid ?>],
+			]);
+		var options = {
+			pieHole : 0.4
+		};
+		var chart = new google.visualization.PieChart(document.getElementById('pie-registrations-by-status'));
+		chart.draw(data, options);
+	}
+</script>
 
 <?php echo \View::instance()->render('footer.php') ?>
