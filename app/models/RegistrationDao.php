@@ -53,6 +53,14 @@ class RegistrationDao {
 		return $form;
 	}
 
+	function parseQueryToFormArray($registration, $registrationFields) {
+		$form = $registration;
+		foreach ($registrationFields as $field) {
+			$form[$field['name']] = json_decode($field['value']);
+		}
+		return $form;
+	}
+
 	function saveRegistrationForm(&$form) {
 		$dateEntered = time();
 
@@ -310,7 +318,7 @@ class RegistrationDao {
 			: null;
 	}
 
-	function readAllRegistrationForms() {
+	function readAllRegistrationForms($toArray = false) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
 						 r.is_waiting_list,
@@ -342,10 +350,15 @@ class RegistrationDao {
 				$currentIndex++;
 			}
 
-			$registrations[] = $this->parseQueryToForm(
-				$registration,
-				$fields
-				);
+			$registrations[] = $toArray
+				? $this->parseQueryToFormArray(
+					$registration,
+					$fields
+					)
+				: $this->parseQueryToForm(
+					$registration,
+					$fields
+					);
 		}
 
 		return $registrations;
