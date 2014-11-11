@@ -157,6 +157,9 @@ return ['lang' => [
 	"SignInGoogle" => "Zaloguj się z Google",
 	"SignInErrorUserUnknown" => "Nie znaleźliśmy twojego użytkownika w naszej bazie danych. Skontaktuj się z administratorem żeby uzyskać pomoc.",
 	"SignInErrorGoogleProcessing" => "Nie mogliśmy pobrać informacji o tobie od Google. Spróbuj zalogować się ponownie i jeśli problem się potwórzy, skontaktuj się z administratorem.",
+
+	"AdminNavRegistrations" => "Rejestracje",
+	"AdminNavStatistics" => "Statystyki",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",
 
