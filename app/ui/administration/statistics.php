@@ -11,10 +11,10 @@
 	<h3><?php echo \F3::get('lang.StatisticsSeatsHeader') ?></h3>
 
 	<div class="progress">
-		<div class="progress-bar progress-bar-default" style="width: <?php echo $stats->registered / $totalSeats * 100 ?>%">
+		<div class="progress-bar progress-bar-success" style="width: <?php echo $stats->registered / $totalSeats * 100 ?>%">
 			<?php echo \F3::get('lang.StatisticsSeatsRegistered', $stats->registered) ?>
 		</div>
-		<div class="progress-bar progress-bar-warning" style="width: <?php echo 100 - $stats->registered / $totalSeats * 100 ?>%">
+		<div style="width: <?php echo 100 - $stats->registered / $totalSeats * 100 ?>%; height: 100%; font-size: 12px; line-height: 20px; text-align: center; float: left;">
 			<?php echo \F3::get('lang.StatisticsSeatsLeft', $totalSeats - $stats->registered) ?>
 		</div>
 	</div>
@@ -50,7 +50,10 @@
 			['<?php echo \F3::get('lang.RegistrationStatus-PAID') ?>', <?php echo $stats->paid ?>],
 			]);
 		var options = {
-			pieHole : 0.4
+			pieHole : 0.4,
+			colors : [
+				'#f0ad4e', '#777', '#5cb85c'
+			],
 		};
 		var chart = new google.visualization.PieChart(document.getElementById('pie-registrations-by-status'));
 		chart.draw(data, options);
@@ -63,8 +66,13 @@
 			['<?php echo $week->year . "/" . $week->week?>', <?php echo $week->entered ?>, <?php echo $week->paid ?>],
 		<?php endforeach; ?>
 			]);
+		var options = {
+			colors : [
+				'#f0ad4e', '#5cb85c'
+			]
+		};
 		var chart = new google.visualization.ColumnChart(document.getElementById('column-registrations-by-week'));
-		chart.draw(data);
+		chart.draw(data, options);
 	}
 </script>
 
