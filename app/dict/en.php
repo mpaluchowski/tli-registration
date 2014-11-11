@@ -153,6 +153,17 @@ return ['lang' => [
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",
 
+	"StatisticsHeader" => "Statistics",
+	"StatisticsSeatsHeader" => "Seats",
+	"StatisticsSeatsRegistered" => "{0} Registered",
+	"StatisticsSeatsLeft" => "{0} Left",
+	"StatisticsRegistrationsByStatusHeader" => "Registrations by status",
+	"StatisticsRegistrationStatusLabel" => "Status",
+	"StatisticsRegistrationsLabel" => "Registrations",
+	"StatisticsRegistrationsByWeekHeader" => "Registrations by week",
+	"StatisticsRegistrationsRegisteredLabel" => "Registered",
+	"StatisticsRegistrationsPaidLabel" => "Paid",
+
 	"Password" => "Password",
 	"SignInButton" => "Sign in",
 	"SignInGoogle" => "Sign in with Google",

@@ -152,6 +152,17 @@ return ['lang' => [
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
 
+	"StatisticsHeader" => "Statystyki",
+	"StatisticsSeatsHeader" => "Miejsca",
+	"StatisticsSeatsRegistered" => "{0} zarejestrowanych",
+	"StatisticsSeatsLeft" => "{0} pozostało",
+	"StatisticsRegistrationsByStatusHeader" => "Rejestracje wg statusu",
+	"StatisticsRegistrationStatusLabel" => "Status",
+	"StatisticsRegistrationsLabel" => "Rejestracji",
+	"StatisticsRegistrationsByWeekHeader" => "Rejestracji wg tygodniu",
+	"StatisticsRegistrationsRegisteredLabel" => "Zarejestrowanych",
+	"StatisticsRegistrationsPaidLabel" => "Opłaconych",
+
 	"Password" => "Hasło",
 	"SignInButton" => "Zaloguj",
 	"SignInGoogle" => "Zaloguj się z Google",
