@@ -202,6 +202,44 @@ class RegistrationDao {
 		];
 	}
 
+	function readRegistrationsByWeekStatistics() {
+		$query = 'SELECT entered.year,
+						 entered.week,
+						 entered.entered,
+						 paid.paid
+				  FROM (
+					SELECT YEAR(r.date_entered) AS year,
+						   WEEK(r.date_entered) AS week,
+						   COUNT(r.id_registration) AS entered
+					FROM ' . \F3::get('db_table_prefix') . 'registrations r
+					GROUP BY YEARWEEK(r.date_entered)
+					) entered
+				  LEFT JOIN (
+				  	SELECT YEAR(r.date_paid) AS year,
+						   WEEK(r.date_paid) AS week,
+						   COUNT(r.id_registration) AS paid
+					FROM ' . \F3::get('db_table_prefix') . 'registrations r
+					WHERE r.date_paid IS NOT NULL
+					GROUP BY YEARWEEK(r.date_paid)
+				  	) paid
+				  ON entered.year = paid.year
+				  AND entered.week = paid.week
+				  ORDER BY entered.year,
+				  		   entered.week';
+		$result = \F3::get('db')->exec($query);
+
+		$weeks = [];
+		foreach ($result as $row) {
+			$weeks[] = (object)[
+				'year' => $row['year'],
+				'week' => $row['week'],
+				'entered' => $row['entered'] ? $row['entered'] : 0,
+				'paid' => $row['paid'] ? $row['paid'] : 0,
+			];
+		}
+		return $weeks;
+	}
+
 	/**
 	 * Count how many registrations, left seats and waiting list persons are
 	 * currently on file.
