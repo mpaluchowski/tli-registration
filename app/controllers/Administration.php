@@ -51,7 +51,8 @@ class Administration {
 		}
 
 		header('Content-Type: text/csv; charset=utf-8');
-		header('Content-Disposition: attachment; filename="tli-registrations-' . strftime('%Y-%m-%d') . '.csv"');
+		header('Content-Disposition: attachment; filename="tli-registrations-'
+			. strftime('%Y%m%d') . '-' . strftime('%H%M') . '.csv"');
 
 		$output = fopen('php://output', 'w');
 
