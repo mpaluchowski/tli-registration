@@ -15,7 +15,7 @@
 			<?php echo \F3::get('lang.StatisticsSeatsRegistered', $stats->registered) ?>
 		</div>
 		<?php $leftWidth = ($totalSeats - $stats->registered) / (($totalSeats > $stats->registered ? $totalSeats : $stats->registered) + $stats->waitingList) * 100 ?>
-		<div style="width: <?php echo $leftWidth < 0 ? 0 : $leftWidth ?>%; height: 100%; font-size: 12px; line-height: 20px; text-align: center; float: left;">
+		<div class="progress-bar progress-bar-none" style="width: <?php echo $leftWidth < 0 ? 0 : $leftWidth ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsLeft', $totalSeats - $stats->registered) ?>
 		</div>
 		<div class="progress-bar" style="background: #777; width: <?php echo $stats->waitingList / (($totalSeats > $stats->registered ? $totalSeats : $stats->registered) + $stats->waitingList) * 100 ?>%;">
