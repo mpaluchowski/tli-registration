@@ -24,6 +24,10 @@ class Administration {
 		echo \View::instance()->render('administration/list_registrations.php');
 	}
 
+	function get_registration_details($f3) {
+		echo "abcd";
+	}
+
 	function statistics($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
