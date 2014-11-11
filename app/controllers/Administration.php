@@ -24,4 +24,9 @@ class Administration {
 		echo \View::instance()->render('administration/list_registrations.php');
 	}
 
+	function statistics($f3) {
+
+		echo \View::instance()->render('administration/statistics.php');
+	}
+
 }
