@@ -224,8 +224,21 @@ class RegistrationDao {
 				  	) paid
 				  ON entered.year = paid.year
 				  AND entered.week = paid.week
-				  ORDER BY entered.year,
-				  		   entered.week';
+				  UNION ALL
+				  SELECT YEAR(r.date_paid) AS year,
+						 WEEK(r.date_paid) AS week,
+						 NULL AS enetered,
+						 COUNT(r.id_registration) AS paid
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  GROUP BY YEARWEEK(r.date_paid)
+				  HAVING CONCAT(year, week) NOT IN (
+				  	SELECT YEARWEEK(r.date_entered) AS yeaweek
+				  	FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  	GROUP BY YEARWEEK(r.date_entered)
+				  	)
+				  ORDER BY year,
+				  		   week
+				  ';
 		$result = \F3::get('db')->exec($query);
 
 		$weeks = [];
