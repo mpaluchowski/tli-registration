@@ -13,3 +13,4 @@ lib-php-jwt/
 # Local app configuration
 app/config.ini
 public/.htaccess
+logs/
