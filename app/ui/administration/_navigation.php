@@ -12,7 +12,7 @@
 				</li>
 				<li>
 					<a href="<?php echo \F3::get('ALIASES.admin_logout') ?>">
-						<span class="glyphicon glyphicon-log-out"></span>
+						<span class="fa fa-sign-out"></span>
 						<?php echo \F3::get('lang.LogoutButton') ?>
 					</a>
 				</li>
