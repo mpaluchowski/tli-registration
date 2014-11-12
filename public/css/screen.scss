@@ -114,6 +114,16 @@ table {
 	}
 }
 
+.table-registration-details {
+	width: 100%;
+
+	th, td {
+		padding: 5px;
+		vertical-align: top;
+		line-height: 1.42857143;
+	}
+}
+
 .label {
 	font-size: inherit;
 
