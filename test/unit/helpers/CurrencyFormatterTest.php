@@ -66,8 +66,8 @@ $test->expect(
 foreach ($test->results() as $result) {
 	echo $result['text'] . PHP_EOL;
 	if ($result['status'])
-		echo ' Pass';
+		echo "\033[32m Pass\033[0m";
 	else
-		echo ' Fail (' . $result['source'] . ')';
+		echo "\033[31m Fail\033[0m (" . $result['source'] . ")";
 	echo PHP_EOL;
 }
