@@ -25,7 +25,21 @@ class Administration {
 	}
 
 	function get_registration_details($f3) {
-		echo "abcd";
+		if (!$f3->get('GET.id')
+			|| !is_numeric($f3->get('GET.id'))) {
+			$f3->error(404);
+		}
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationFormById($f3->get('GET.id'));
+
+		if (null === $form)
+			$f3->error(404);
+
+		$f3->set('form', $form);
+
+		echo \View::instance()->render('administration/_registration-details.php');
 	}
 
 	function statistics($f3) {

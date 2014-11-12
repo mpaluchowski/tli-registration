@@ -94,7 +94,7 @@ class Registration {
 
 		$registrationDao = new \models\RegistrationDao();
 
-		$form = $registrationDao->readRegistrationForm($args['registrationHash']);
+		$form = $registrationDao->readRegistrationFormByHash($args['registrationHash']);
 
 		if (!$form)
 			$f3->error(404);
