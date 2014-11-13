@@ -171,6 +171,7 @@ return ['lang' => [
 	"SignInErrorUserUnknown" => "We couldn't find a user account for you in our records. Please contact your friendly administrator for help.",
 	"SignInErrorGoogleProcessing" => "We couldn't retrieve your information from Google. Please try signing in again and if the problem persists, contact the administrator.",
 
+	"ToggleNavigation" => "Toggle navigation",
 	"AdminNavRegistrations" => "Registrations",
 	"AdminNavStatistics" => "Statistics",
 	"LogoutButton" => "Logout",
