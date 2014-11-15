@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 					<th><?php echo \F3::get('lang.EventsSaturdayDinner') ?></th>
-					<td><?php echo $form->hasField('lunch') && "on" === $form->getField('lunch') ? \F3::get('lang.Yes') . ', ' . implode(", ", $lunchDaysOptions) : \F3::get('lang.No') ?></td>
+					<td><?php echo $form->hasField('saturday-dinner-participate') && "on" === $form->getField('saturday-dinner-participate') ? \F3::get('lang.Yes') . ', ' . $form->getField('saturday-dinner-meal') : \F3::get('lang.No') ?></td>
 				</tr>
 				<tr>
 					<th><?php echo \F3::get('lang.EventsSaturdayParty') ?></th>
