@@ -83,15 +83,9 @@
 
 <div class="row">
 	<div class="col-sm-12">
-		<div class="form-horizontal">
-			<h4><?php echo \F3::get('lang.CommentsHeader') ?></h4>
+		<h4><?php echo \F3::get('lang.CommentsHeader') ?></h4>
 
-			<div class="form-group">
-				<div class="col-sm-12">
-					<p class="form-control-static"><?php echo $form->hasField('comments') ? nl2br($form->getField('comments'), false) : \F3::get('lang.CommentsNone') ?></p>
-				</div>
-			</div>
-		</div>
+		<p><?php echo $form->hasField('comments') ? nl2br($form->getField('comments'), false) : \F3::get('lang.CommentsNone') ?></p>
 	</div>
 </div>
 </div>
