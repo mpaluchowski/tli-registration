@@ -118,9 +118,31 @@ table {
 	width: 100%;
 
 	th, td {
-		padding: 5px;
-		vertical-align: top;
+		padding: {
+			top: 3px;
+			bottom: 3px;
+		}
 		line-height: 1.42857143;
+		vertical-align: top;
+		width: 50%;
+
+		&:first-child {
+			padding-left: 3px;
+		}
+
+		&:last-child {
+			padding-right: 3px;
+		}
+	}
+
+	th {
+		color: #777;
+	}
+
+	td {
+		h4 {
+			margin-bottom: 2px;
+		}
 	}
 }
 
