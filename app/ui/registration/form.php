@@ -155,20 +155,21 @@
     </div>
 
     <div class="checkbox form-group">
-      <label><input type="checkbox" name="saturday-dinner-participate"<?php if (isset($registration['saturday-dinner-participate']) && $registration['saturday-dinner-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerYes') ?></label>
+      <label>
+        <input type="checkbox" name="saturday-dinner-participate" class="field-price-affecting"<?php if (isset($registration['saturday-dinner-participate']) && $registration['saturday-dinner-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerYes') ?>
+        <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['saturday-dinner-participate']->prices), ' / ') ?></span>
+      </label>
 
       <div class="form-group-dependent" data-depends-on="saturday-dinner-participate" data-depends-on-value="on">
         <div class="form-group<?php if (isset($registration['messages']['saturday-dinner-meal'])): ?> has-error<?php endif ?>">
           <div class="radio">
             <label>
-              <input type="radio" name="saturday-dinner-meal" value="meat" class="field-price-affecting" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerMeat') ?>
-              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['saturday-dinner-participate-meat']->prices), ' / ') ?></span>
+              <input type="radio" name="saturday-dinner-meal" value="meat" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerMeat') ?>
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="saturday-dinner-meal" value="vegetarian" class="field-price-affecting" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'vegetarian') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerVegetarian') ?>
-              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['saturday-dinner-participate-vegetarian']->prices), ' / ') ?></span>
+              <input type="radio" name="saturday-dinner-meal" value="vegetarian" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'vegetarian') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerVegetarian') ?>
             </label>
           </div>
 

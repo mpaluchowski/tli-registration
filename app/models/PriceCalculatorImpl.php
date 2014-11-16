@@ -37,9 +37,8 @@ class PriceCalculatorImpl implements PriceCalculator {
 
 		if ($form->hasField('saturday-dinner-participate')
 				&& "on" === $form->getField('saturday-dinner-participate')) {
-			$summary['saturday-dinner-participate'] = $pricing[
-					'saturday-dinner-participate-' . $form->getField('saturday-dinner-meal')
-				];
+			$summary['saturday-dinner-participate'] =
+				$pricing['saturday-dinner-participate'];
 		}
 
 		if ($form->hasField('saturday-party-participate')

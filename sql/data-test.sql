@@ -18,19 +18,18 @@ INSERT INTO `tli_clubs` (`id_club`, `name`) VALUES
 	(3, 'Top Careers Toastmasters');
 /*!40000 ALTER TABLE `tli_clubs` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_pricing_items: ~7 rows (approximately)
+-- Dumping data for table tli_registrations.tli_pricing_items: ~6 rows (approximately)
 DELETE FROM `tli_pricing_items`;
 /*!40000 ALTER TABLE `tli_pricing_items` DISABLE KEYS */;
 INSERT INTO `tli_pricing_items` (`id_pricing_item`, `item`, `variant`, `date_valid_through`) VALUES
 	(1, 'admission', 'regular', '2015-01-02 23:59:59'),
 	(2, 'admission', 'late', '2015-01-27 23:59:59'),
-	(3, 'saturday-dinner-participate', 'meat', NULL),
-	(4, 'saturday-dinner-participate', 'vegetarian', NULL),
-	(5, 'saturday-party-participate', NULL, NULL),
-	(6, 'lunch', NULL, NULL);
+	(3, 'saturday-dinner-participate', NULL, NULL),
+	(4, 'saturday-party-participate', NULL, NULL),
+	(5, 'lunch', NULL, NULL);
 /*!40000 ALTER TABLE `tli_pricing_items` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_pricing_prices: ~14 rows (approximately)
+-- Dumping data for table tli_registrations.tli_pricing_prices: ~12 rows (approximately)
 DELETE FROM `tli_pricing_prices`;
 /*!40000 ALTER TABLE `tli_pricing_prices` DISABLE KEYS */;
 INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
@@ -40,12 +39,10 @@ INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
 	(2, 'PLN', 70),
 	(3, 'EUR', 12),
 	(3, 'PLN', 45),
-	(4, 'EUR', 12),
-	(4, 'PLN', 45),
-	(5, 'EUR', 6),
-	(5, 'PLN', 20),
-	(6, 'EUR', 5),
-	(6, 'PLN', 15);
+	(4, 'EUR', 6),
+	(4, 'PLN', 20),
+	(5, 'EUR', 5),
+	(5, 'PLN', 15);
 /*!40000 ALTER TABLE `tli_pricing_prices` ENABLE KEYS */;
 
 -- Dumping data for table tli_registrations.tli_registrations: ~3 rows (approximately)
