@@ -35,6 +35,15 @@ class PriceCalculatorImpl implements PriceCalculator {
 			}
 		}
 
+		if ($form->hasField('friday-copernicus-attend')
+				&& "on" === $form->getField('friday-copernicus-attend')
+				&& $form->hasField('friday-copernicus-options')) {
+			foreach ($form->getField('friday-copernicus-options') as $option) {
+				$summary['friday-copernicus-attend-' . $option] =
+					$pricing['friday-copernicus-attend-' . $option];
+			}
+		}
+
 		if ($form->hasField('saturday-dinner-participate')
 				&& "on" === $form->getField('saturday-dinner-participate')) {
 			$summary['saturday-dinner-participate'] =

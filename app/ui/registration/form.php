@@ -128,6 +128,29 @@
     </div>
 
     <div class="checkbox form-group">
+      <label><input type="checkbox" name="friday-copernicus-attend"<?php if (isset($registration['friday-copernicus-attend']) && $registration['friday-copernicus-attend'] == 'on') echo ' checked'?>><?php echo \F3::get('lang.EventsFridayCopernicusYes')?></label>
+
+      <div class="form-group-dependent" data-depends-on="friday-copernicus-attend" data-depends-on-value="on">
+        <div class="form-group<?php if (isset($registration['messages']['lunch-days'])): ?> has-error<?php endif ?>">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="friday-copernicus-options[]" class="field-price-affecting" value="center"<?php if (isset($registration['friday-copernicus-options']) && in_array('center', $registration['friday-copernicus-options'])) echo ' checked' ?>><?php echo \F3::get('lang.EventsFridayCopernicusAttendCenter') ?>
+              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['friday-copernicus-attend-center']->prices), ' / ') ?></span>
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="friday-copernicus-options[]" class="field-price-affecting" value="planetarium"<?php if (isset($registration['friday-copernicus-options']) && in_array('planetarium', $registration['friday-copernicus-options'])) echo ' checked' ?>><?php echo \F3::get('lang.EventsFridayCopernicusAttendPlanetarium') ?>
+              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['friday-copernicus-attend-planetarium']->prices), ' / ') ?></span>
+            </label>
+          </div>
+
+          <?php if (isset($registration['messages']['friday-copernicus-options'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['friday-copernicus-options'] ?></p><?php endif; ?>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkbox form-group">
       <label><input type="checkbox" name="friday-social-event"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?></label>
     </div>
 
