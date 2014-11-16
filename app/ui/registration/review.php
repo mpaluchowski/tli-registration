@@ -96,6 +96,15 @@
 				<p class="form-control-static"><?php echo $form->hasField('contest-attend') && "on" === $form->getField('contest-attend') ? \F3::get('lang.Yes') : \F3::get('lang.No') ?></p>
 			</div>
 		</div>
+	<?php if ($form->hasField('friday-copernicus-options')) {
+		$copernicusOptions = array_map(function ($item) { return \F3::get('lang.EventsFridayCopernicusAttend-' . $item); }, $form->getField('friday-copernicus-options'));
+	} ?>
+		<div class="form-group">
+			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsFridayCopernicus') ?></label>
+			<div class="col-sm-9">
+				<p class="form-control-static"><?php echo $form->hasField('friday-copernicus-attend') && "on" === $form->getField('friday-copernicus-attend') ? \F3::get('lang.Yes') . ', ' . implode(", ", $copernicusOptions) : \F3::get('lang.No') ?></p>
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.EventsFridaySocial') ?></label>
 			<div class="col-sm-9">
@@ -166,7 +175,29 @@
 					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
 				<?php endforeach; ?>
 				</tr>
-			<?php if ($form->hasField('lunch') && "on" === $form->getField('lunch')): ?>
+			<?php if ($form->hasField('friday-copernicus-attend') && "on" === $form->getField('friday-copernicus-attend')):
+			if (in_array('center', $form->getField('friday-copernicus-options'))):
+			?>
+				<tr>
+					<td><?php echo \F3::get('lang.EventsFridayCopernicus') ?></td>
+					<td><?php echo \F3::get('lang.EventsFridayCopernicusAttend-center') ?></td>
+				<?php foreach ($paymentSummary['friday-copernicus-attend-center']->prices as $currency => $price): ?>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+				<?php endforeach; ?>
+				</tr>
+			<?php endif;
+			if (in_array('planetarium', $form->getField('friday-copernicus-options'))):
+			?>
+				<tr>
+					<td><?php echo \F3::get('lang.EventsFridayCopernicus') ?></td>
+					<td><?php echo \F3::get('lang.EventsFridayCopernicusAttend-planetarium') ?></td>
+				<?php foreach ($paymentSummary['friday-copernicus-attend-planetarium']->prices as $currency => $price): ?>
+					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+				<?php endforeach; ?>
+				</tr>
+			<?php endif;
+			endif;
+			if ($form->hasField('lunch') && "on" === $form->getField('lunch')): ?>
 				<tr>
 					<td><?php echo \F3::get('lang.EventsLunch') ?></td>
 					<td><?php echo implode(", ", $lunchDaysOptions) ?></td>
