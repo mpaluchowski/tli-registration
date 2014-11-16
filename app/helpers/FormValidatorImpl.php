@@ -29,6 +29,12 @@ class FormValidatorImpl implements FormValidator {
 			$messages['phone'] = \F3::get('lang.PhoneValidationMsg');
 		}
 
+		// Must select a country
+		if (!$form->hasField('country')
+				|| !$form->getField('country')) {
+			$messages['country'] = \F3::get('lang.CountryValidationMsg');
+		}
+
 		// Must provide the club name if it wasn't on the list to select
 		if ($form->getField('home-club') === 'Other'
 				&& (!$form->hasField('home-club-custom')

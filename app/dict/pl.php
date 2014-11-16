@@ -22,6 +22,7 @@ return ['lang' => [
 	'Country' => "Kraj zamieszkania",
 	'CountryPolandAnswer' => "Polska",
 	'CountryOutsideAnswer' => "Spoza Polski",
+	'CountryValidationMsg' => "Wybierz kraj, z którego do nas przyjeżdżasz.",
 	'HomeClub' => 'Klub Toastmasters',
 	'HomeClubNonMember' => "Nie jestem członkiem Toastmasters",
 	'HomeClubNotListed' => "Mojego klubu nie ma na liście",

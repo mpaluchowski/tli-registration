@@ -55,6 +55,7 @@
           <input type="radio" name="country" value="outside" required<?php if (isset($registration['country']) && $registration['country'] == 'outside') echo ' checked' ?>> <?php echo \F3::get('lang.CountryOutsideAnswer') ?>
         </label>
       </div>
+      <?php if (isset($registration['messages']['country'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['country'] ?></p><?php endif; ?>
     </div>
 
     <div class="form-group<?php if (isset($registration['messages']['home-club-custom'])): ?> has-error<?php endif ?>">

@@ -22,6 +22,7 @@ return ['lang' => [
 	'Country' => "Country of residence",
 	'CountryPolandAnswer' => "Poland",
 	'CountryOutsideAnswer' => "Outside of Poland",
+	'CountryValidationMsg' => "Please select a country you're coming from.",
 	'HomeClub' => 'Home club',
 	'HomeClubNonMember' => "I'm not a member of Toastmasters",
 	'HomeClubNotListed' => "My club is not on this list",
