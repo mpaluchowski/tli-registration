@@ -174,6 +174,7 @@ return ['lang' => [
 	"StatisticsSeatsRegistered" => "{0} zarejestrowanych",
 	"StatisticsSeatsLeft" => "{0} wolnych",
 	"StatisticsSeatsWaitingList" => "{0} na liście oczekujących",
+	"StatisticsSeatsPendingReview" => "{0} oczekuje potwierdzenia",
 	"StatisticsRegistrationsByStatusHeader" => "Rejestracje wg statusu",
 	"StatisticsRegistrationStatusLabel" => "Status",
 	"StatisticsRegistrationsLabel" => "Rejestracji",

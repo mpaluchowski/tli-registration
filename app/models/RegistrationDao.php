@@ -202,12 +202,14 @@ class RegistrationDao {
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
 		$result = \F3::get('db')->exec($query);
 
+		$leftCount = $this->getSeatLimit() - $result[0]['registered'];
 		return (object)[
 			'count' => $result[0]['counted'],
 			'registered' => $result[0]['registered'],
 			'waitingList' => $result[0]['waiting_list'],
 			'pendingReview' => $result[0]['pending_review'],
 			'paid' => $result[0]['paid'],
+			'left' => $leftCount < 0 ? 0 : $leftCount,
 			'last' => $result[0]['last'],
 		];
 	}

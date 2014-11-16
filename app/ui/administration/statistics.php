@@ -11,14 +11,16 @@
 	<h3><?php echo \F3::get('lang.StatisticsSeatsHeader') ?></h3>
 
 	<div class="progress">
-		<div class="progress-bar progress-bar-success" style="width: <?php echo $stats->registered / (($totalSeats > $stats->registered ? $totalSeats : $stats->registered) + $stats->waitingList) * 100 ?>%">
+		<div class="progress-bar progress-bar-success" style="width: <?php echo $stats->registered / ($stats->count + $stats->left) * 100 ?>%">
 			<?php echo \F3::get('lang.StatisticsSeatsRegistered', $stats->registered) ?>
 		</div>
-		<?php $leftWidth = ($totalSeats - $stats->registered) / (($totalSeats > $stats->registered ? $totalSeats : $stats->registered) + $stats->waitingList) * 100 ?>
-		<div class="progress-bar progress-bar-none" style="width: <?php echo $leftWidth < 0 ? 0 : $leftWidth ?>%;">
+		<div class="progress-bar" style="background: #000; width: <?php echo $stats->pendingReview / ($stats->count + $stats->left) * 100 ?>%;">
+			<?php echo \F3::get('lang.StatisticsSeatsPendingReview', $stats->pendingReview) ?>
+		</div>
+		<div class="progress-bar progress-bar-none" style="width: <?php echo $stats->left / ($stats->count + $stats->left) * 100 ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsLeft', $totalSeats - $stats->registered) ?>
 		</div>
-		<div class="progress-bar" style="background: #777; width: <?php echo $stats->waitingList / (($totalSeats > $stats->registered ? $totalSeats : $stats->registered) + $stats->waitingList) * 100 ?>%;">
+		<div class="progress-bar" style="background: #777; width: <?php echo $stats->waitingList / ($stats->count + $stats->left) * 100 ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsWaitingList', $stats->waitingList) ?>
 		</div>
 	</div>
@@ -50,13 +52,14 @@
 		var data = google.visualization.arrayToDataTable([
 			['<?php echo \F3::get('lang.StatisticsRegistrationStatusLabel') ?>', '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
 			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_PAYMENT') ?>', <?php echo $stats->registered ?>],
+			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_REVIEW') ?>', <?php echo $stats->pendingReview ?>],
 			['<?php echo \F3::get('lang.RegistrationStatus-WAITING_LIST') ?>', <?php echo $stats->waitingList ?>],
 			['<?php echo \F3::get('lang.RegistrationStatus-PAID') ?>', <?php echo $stats->paid ?>],
 			]);
 		var options = {
 			pieHole : 0.4,
 			colors : [
-				'#f0ad4e', '#777', '#5cb85c'
+				'#f0ad4e', '#000', '#777', '#5cb85c'
 			],
 		};
 		var chart = new google.visualization.PieChart(document.getElementById('pie-registrations-by-status'));
