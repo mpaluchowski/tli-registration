@@ -68,6 +68,7 @@ return ['lang' => [
 	'EventsFridayCopernicusYes' => "I'd like to visit the <strong>Copernicus Science Centre</strong> on Friday",
 	'EventsFridayCopernicusAttendCenter' => "I'd like to visit the <strong>main exhibition</strong> in the Centre",
 	'EventsFridayCopernicusAttendPlanetarium' => "I'd like to see the <strong>show in the Planetarium</strong>",
+	'EventsFridayCopernicusOptionsValidationMsg' => "Please choose one or both of the options for visiting the Copernicus Science Centere.",
 	'EventsFridaySocial' => "Friday's social event",
 	'EventsFridaySocialYes' => "I'd love to join <strong>Friday's social event</strong>",
 	'EventsLunch' => "Lunch",

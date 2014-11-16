@@ -59,6 +59,12 @@ class FormValidatorImpl implements FormValidator {
 			}
 		}
 
+		if ($form->hasField('friday-copernicus-attend')
+				&& (!$form->hasField('friday-copernicus-options')
+					|| !$form->getField('friday-copernicus-options'))) {
+			$messages['friday-copernicus-options'] = \F3::get('lang.EventsFridayCopernicusOptionsValidationMsg');
+		}
+
 		if ($form->hasField('lunch')
 				&& (!$form->hasField('lunch-days')
 					|| !$form->getField('lunch-days'))) {

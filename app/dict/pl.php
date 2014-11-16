@@ -68,6 +68,7 @@ return ['lang' => [
 	'EventsFridayCopernicusYes' => "Chcę odwiedzić <strong>Centrum Nauki Kopernik</strong> w piątek",
 	'EventsFridayCopernicusAttendCenter' => "Chcę odwiedzić <strong>wystawę główną</strong> Centrum",
 	'EventsFridayCopernicusAttendPlanetarium' => "Chcę zobaczyć <strong>pokaz w Planetarium</strong>",
+	'EventsFridayCopernicusOptionsValidationMsg' => "Wybierz jedną lub obie opcje wizyty w Centrum Nauki Kopernik.",
 	'EventsFridaySocialYes' => "Chętnie wezmę udział w <strong>piątkowym wydarzeniu</strong>",
 	'EventsFridaySocial' => "Piątkowe wydarzenie",
 	'EventsLunch' => "Lunch",
