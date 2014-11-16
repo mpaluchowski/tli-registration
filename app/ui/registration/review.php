@@ -150,13 +150,7 @@
 
 	<h2><?php echo \F3::get('lang.PaymentBreakdownHeader') ?></h2>
 
-	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
-	<p><?php echo \F3::get('lang.PaymentBreakdownIntro') ?></p>
-	<?php elseif ('PAID' === $form->getStatus()): ?>
-	<p><?php echo \F3::get('lang.PaymentBreakdownPaidIntro', strftime('%c', strtotime($form->getDatePaid()))) ?></p>
-	<?php elseif ('WAITING_LIST' === $form->getStatus()): ?>
-	<p><?php echo \F3::get('lang.PaymentBreakdownWaitingListIntro') ?></p>
-	<?php endif; ?>
+	<p><?php echo \F3::get('lang.PaymentBreakdownIntro-' . $form->getStatus(), strftime('%c', strtotime($form->getDatePaid()))) ?></p>
 
 	<div class="table-responsive">
 		<table class="table currencies-<?php echo count($paymentSummary['total']) ?>">

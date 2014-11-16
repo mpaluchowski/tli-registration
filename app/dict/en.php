@@ -126,9 +126,9 @@ return ['lang' => [
 	"RegistrationStatusInfo-WAITING_LIST" => "Your registration was recorded on <time>{0}</time>, but is <strong>waiting for an available seat</strong> after the initial limit was reached. We'll get back to you when this happens.",
 
 	"PaymentBreakdownHeader" => "Payment breakdown",
-	"PaymentBreakdownIntro" => "Based on the options you selected, your total due payment breaks down as follows:",
-	"PaymentBreakdownPaidIntro" => "We <strong>received your payment</strong> on {0}. Based on the options you selected, your payment covered the following items:",
-	"PaymentBreakdownWaitingListIntro" => "We'll be able to accept your payment as soon as your registration switches from the waiting list onto the main roster. Hang on!",
+	"PaymentBreakdownIntro-PENDING_PAYMENT" => "Based on the options you selected, your total due payment breaks down as follows:",
+	"PaymentBreakdownIntro-PAID" => "We <strong>received your payment</strong> on {0}. Based on the options you selected, your payment covered the following items:",
+	"PaymentBreakdownIntro-WAITING_LIST" => "We'll be able to accept your payment as soon as your registration switches from the waiting list onto the main roster. Hang on!",
 	"Participation" => "Participation",
 	"Ticket-early" => "Early bird",
 	"Ticket-regular" => "Regular",
