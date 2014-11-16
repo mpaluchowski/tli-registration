@@ -61,12 +61,12 @@ CREATE TABLE IF NOT EXISTS `tli_registrations` (
   `id_registration` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
   `hash` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `is_waiting_list` bit(1) NOT NULL DEFAULT b'0',
+  `status` enum('waiting-list','pending-review') COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_entered` datetime NOT NULL,
   `date_paid` datetime DEFAULT NULL,
   PRIMARY KEY (`id_registration`),
   UNIQUE KEY `email` (`email`),
-  KEY `is_waiting_list` (`is_waiting_list`)
+  KEY `status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Data exporting was unselected.

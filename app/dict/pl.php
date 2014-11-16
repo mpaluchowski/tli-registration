@@ -120,6 +120,8 @@ return ['lang' => [
 	"RegistrationStatus" => "Status rejestracji",
 	"RegistrationStatus-PENDING_PAYMENT" => "Oczekuje na płatność",
 	"RegistrationStatusInfo-PENDING_PAYMENT" => "Twoja rejestracja została zapisana <time>{0}</time> i oczekuje na twoją płatność.",
+	"RegistrationStatus-PENDING_REVIEW" => "Oczekuje na potwierdzenie",
+	"RegistrationStatusInfo-PENDING_REVIEW" => "Twoja rejestracja została zapisana <time>{0}</time> i oczekuje na potwierdzenie przez organizatorów. Zaczekaj z dokonaniem płatności do czasu kiedy skontaktują się z tobą organizatorzy.",
 	"RegistrationStatus-PAID" => "Opłacona",
 	"RegistrationStatusInfo-PAID" => "Twoja rejestracja została zapisana <time>{0}</time>, opłacona <time>{1}</time> i pozostaje już tylko pojawić się na konferencji!",
 	"RegistrationStatus-WAITING_LIST" => "Lista rezerwowa",
@@ -127,6 +129,7 @@ return ['lang' => [
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
 	"PaymentBreakdownIntro-PENDING_PAYMENT" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
+	"PaymentBreakdownIntro-PENDING_REVIEW" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja zostanie potwierdzona.",
 	"PaymentBreakdownIntro-PAID" => "<strong>Otrzymaliśmy twoją płatność</strong> {0}. Na podstawie wybranych przez ciebie opcji, twoja płatność składała się z następujących pozycji:",
 	"PaymentBreakdownIntro-WAITING_LIST" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja przejdzie z listy oczekujących na główną listę.",
 	"Participation" => "Uczestnictwo",

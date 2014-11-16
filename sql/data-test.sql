@@ -54,13 +54,14 @@ INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
 -- Dumping data for table tli_registrations.tli_registrations: ~3 rows (approximately)
 DELETE FROM `tli_registrations`;
 /*!40000 ALTER TABLE `tli_registrations` DISABLE KEYS */;
-INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `is_waiting_list`, `date_entered`, `date_paid`) VALUES
-	(1, '***REMOVED***', '30085d747a6d6e2711c7c2446fdf296dc65d67f5', b'0', '2014-10-16 09:50:26', NULL),
-	(2, 'john@example.com', '5224cb6fdd5bbe463af1db8ee499e858fcb79f81', b'1', '2014-10-16 10:50:42', NULL),
-	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', b'0', '2014-10-19 22:46:36', '2014-10-19 22:46:56');
+INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `status`, `date_entered`, `date_paid`) VALUES
+	(1, '***REMOVED***', '30085d747a6d6e2711c7c2446fdf296dc65d67f5', NULL, '2014-10-16 09:50:26', NULL),
+	(2, 'john@example.com', '5224cb6fdd5bbe463af1db8ee499e858fcb79f81', 'waiting-list', '2014-10-16 10:50:42', NULL),
+	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', NULL, '2014-10-19 22:46:36', '2014-10-19 22:46:56'),
+	(4, 'ibrahim@example.com', '0361f888e4fd81b343da82653e0961c8bffac06a', 'pending-review', '2014-11-16 21:38:30', NULL);
 /*!40000 ALTER TABLE `tli_registrations` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_registration_fields: ~30 rows (approximately)
+-- Dumping data for table tli_registrations.tli_registration_fields: ~35 rows (approximately)
 DELETE FROM `tli_registration_fields`;
 /*!40000 ALTER TABLE `tli_registration_fields` DISABLE KEYS */;
 INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUES
@@ -98,7 +99,19 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(3, 'home-club', '"Speaking Elephants"'),
 	(3, 'lunch', '"on"'),
 	(3, 'lunch-days', '["saturday"]'),
-	(3, 'phone', '"+48 123 456 789"');
+	(3, 'phone', '"+48 123 456 789"'),
+	(4, 'accommodation-with-toastmasters', '"independent"'),
+	(4, 'comments', '"I need visa! What is Toastmasters?"'),
+	(4, 'country', '"outside"'),
+	(4, 'exec-position', '"none"'),
+	(4, 'friday-copernicus-attend', '"on"'),
+	(4, 'friday-copernicus-options', '["center"]'),
+	(4, 'full-name', '"Ibrahim Abdullah"'),
+	(4, 'home-club', '"None"'),
+	(4, 'phone', '"+33 123 456 789"'),
+	(4, 'saturday-dinner-meal', '"vegetarian"'),
+	(4, 'saturday-dinner-participate', '"on"'),
+	(4, 'translator', '"on"');
 /*!40000 ALTER TABLE `tli_registration_fields` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
