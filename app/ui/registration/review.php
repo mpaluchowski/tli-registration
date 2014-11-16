@@ -45,6 +45,12 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.Country') ?></label>
+			<div class="col-sm-9">
+				<p class="form-control-static"><?php echo \F3::get('lang.Country-' . $form->getField('country')) ?></p>
+			</div>
+		</div>
+		<div class="form-group">
 			<label class="col-sm-3 control-label"><?php echo \F3::get('lang.HomeClub') ?></label>
 			<div class="col-sm-9">
 				<p class="form-control-static"><?php echo $form->getField('home-club') ?></p>

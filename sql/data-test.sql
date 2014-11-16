@@ -60,7 +60,7 @@ INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `is_waiting
 	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', b'0', '2014-10-19 22:46:36', '2014-10-19 22:46:56');
 /*!40000 ALTER TABLE `tli_registrations` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_registration_fields: ~38 rows (approximately)
+-- Dumping data for table tli_registrations.tli_registration_fields: ~30 rows (approximately)
 DELETE FROM `tli_registration_fields`;
 /*!40000 ALTER TABLE `tli_registration_fields` DISABLE KEYS */;
 INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUES
@@ -68,8 +68,11 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(1, 'accommodation-with-toastmasters', '"stay"'),
 	(1, 'comments', '"This is my comment. I\'ll add some  code to that."'),
 	(1, 'contest-attend', '"on"'),
+	(1, 'country', '"poland"'),
 	(1, 'educational-awards', '"ACS, ALB"'),
 	(1, 'exec-position', '"vpe"'),
+	(1, 'friday-copernicus-attend', '"on"'),
+	(1, 'friday-copernicus-options', '["center", "planetarium"]'),
 	(1, 'friday-social-event', '"on"'),
 	(1, 'full-name', '"Michal Paluchowski"'),
 	(1, 'home-club', '"Speaking Elephants"'),
@@ -81,6 +84,7 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(1, 'saturday-party-participate', '"on"'),
 	(1, 'translator', '"on"'),
 	(2, 'accommodation-with-toastmasters', '"host"'),
+	(2, 'country', '"outside"'),
 	(2, 'exec-position', '"none"'),
 	(2, 'friday-social-event', '"on"'),
 	(2, 'full-name', '"John Doe"'),
@@ -88,6 +92,7 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(2, 'phone', '"+48694470100"'),
 	(3, 'accommodation-with-toastmasters', '"independent"'),
 	(3, 'contest-attend', '"on"'),
+	(3, 'country', '"poland"'),
 	(3, 'exec-position', '"vpe"'),
 	(3, 'full-name', '"Jane Doe"'),
 	(3, 'home-club', '"Speaking Elephants"'),
