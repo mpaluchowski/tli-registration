@@ -45,6 +45,17 @@
       <input type="tel" id="phone" name="phone" value="<?php if (isset($registration['phone'])) echo $registration['phone'] ?>" placeholder="<?php echo \F3::get('lang.PhonePlaceholder') ?>" autocomplete="tel" required pattern="^\+?[0-9 \-]{9,}$" class="form-control">
       <?php if (isset($registration['messages']['phone'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['phone'] ?></p><?php endif; ?>
     </div>
+    <div class="form-group<?php if (isset($registration['messages']['country'])): ?> has-error<?php endif ?>">
+      <label class="control-label" value="<?php if (isset($registration['country'])) echo $registration['country'] ?>"><?php echo \F3::get('lang.Country') ?></label>
+      <div class="radio">
+        <label class="radio-inline">
+          <input type="radio" name="country" value="poland" required<?php if (isset($registration['country']) && $registration['country'] == 'poland') echo ' checked' ?>> <?php echo \F3::get('lang.CountryPolandAnswer') ?>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="country" value="outside" required<?php if (isset($registration['country']) && $registration['country'] == 'outside') echo ' checked' ?>> <?php echo \F3::get('lang.CountryOutsideAnswer') ?>
+        </label>
+      </div>
+    </div>
 
     <div class="form-group<?php if (isset($registration['messages']['home-club-custom'])): ?> has-error<?php endif ?>">
       <label for="home-club" class="control-label"><?php echo \F3::get('lang.HomeClub') ?></label>
