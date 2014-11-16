@@ -39,6 +39,10 @@
 			<td><?php echo $form->getField('phone') ?></td>
 		</tr>
 		<tr>
+			<th style="text-align: right; padding: 4px 8px 4px 0;"><?php echo \F3::get('lang.Country') ?></th>
+			<td><?php echo \F3::get('lang.Country-' . $form->getField('country')) ?></td>
+		</tr>
+		<tr>
 			<th style="text-align: right; padding: 4px 8px 4px 0;"><?php echo \F3::get('lang.HomeClub') ?></th>
 			<td><?php echo $form->getField('home-club') ?></td>
 		</tr>
