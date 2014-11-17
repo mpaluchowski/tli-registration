@@ -11,7 +11,7 @@ class FormProcessorImpl implements \helpers\FormProcessor {
 		// Registrations from outside Poland and Toastmasters are put on hold
 		// for review
 		if ('outside' == $form->getField('country')
-				&& 'None' == $form->getField('home-club')) {
+				|| 'None' == $form->getField('home-club')) {
 			$form->setStatusValue('pending-review');
 		}
 
