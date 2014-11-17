@@ -7,7 +7,7 @@
 		<h1><?php echo \F3::get('lang.RegistrationsListHeader') ?></h1>
 	</div>
 
-	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->registered, $stats->waitingList, $stats->paid, strftime("%c", strtotime($stats->last))]) ?></p>
+	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->registered, $stats->waitingList, $stats->pendingReview, $stats->paid, strftime("%c", strtotime($stats->last))]) ?></p>
 
 	<a href="<?php echo \F3::get('ALIASES.admin_registrations_export_csv') ?>" class="btn btn-default">Download CSV</a>
 </div>

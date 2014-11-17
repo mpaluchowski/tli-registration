@@ -8,6 +8,13 @@ class FormProcessorImpl implements \helpers\FormProcessor {
 	 * @see \helpers\FormProcessor#processOnSubmit($form)
 	 */
 	static function processOnSubmit(\models\RegistrationForm &$form) {
+		// Registrations from outside Poland and Toastmasters are put on hold
+		// for review
+		if ('outside' == $form->getField('country')
+				|| 'None' == $form->getField('home-club')) {
+			$form->setStatusValue('pending-review');
+		}
+
 		// Check if a custom club name was entered
 		if ($form->hasField('home-club-custom')
 				&& $form->getField('home-club-custom')) {

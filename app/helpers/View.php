@@ -31,6 +31,7 @@ class View {
 			case 'PAID':
 				return $color ? '#5cb85c' : 'success';
 			case 'WAITING_LIST':
+			case 'PENDING_REVIEW':
 				return $color ? '#777' : 'default';
 			default:
 				throw new Exception('Unknown registration status: ' . $status);

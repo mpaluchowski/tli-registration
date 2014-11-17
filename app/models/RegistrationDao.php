@@ -37,7 +37,7 @@ class RegistrationDao {
 
 		$form->setId($registration['id_registration']);
 		$form->setEmail($registration['email']);
-		$form->setWaitingList($registration['is_waiting_list']);
+		$form->setStatusValue($registration['status']);
 		if (array_key_exists('date_entered', $registration))
 			$form->setDateEntered($registration['date_entered']);
 		if (array_key_exists('date_paid', $registration))
@@ -67,27 +67,28 @@ class RegistrationDao {
 		\F3::get('db')->begin();
 
 		try {
-			$isWaitingList = false;
-			if ($this->isSeatingLimited()) {
-				$isWaitingList = $this->readSeatStatistics()->left == 0;
+			if ($this->isSeatingLimited()
+					&& !$form->getStatusValue()
+					&& $this->readSeatStatistics()->left == 0) {
+				$form->setStatusValue('waiting-list');
 			}
 
 			$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'registrations (
 						email,
 						hash,
-						is_waiting_list,
+						status,
 						date_entered
 					)
 					VALUES (
 						:email,
 						:hash,
-						:isWaitingList,
+						:status,
 						FROM_UNIXTIME(:dateEntered)
 						)';
 			\F3::get('db')->exec($query, [
 					'email' => $form->getEmail(),
 					'hash' => $form->getHash(),
-					'isWaitingList' => $isWaitingList,
+					'status' => $form->getStatusValue(),
 					'dateEntered' => $dateEntered,
 				]);
 
@@ -121,7 +122,6 @@ class RegistrationDao {
 		}
 
 		$form->setId($registrationId);
-		$form->setWaitingList($isWaitingList);
 		$form->setDateEntered(date('Y-m-d H:i:s', $dateEntered));
 
 		return $registrationId;
@@ -130,7 +130,7 @@ class RegistrationDao {
 	function readRegistrationForm($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
-						 r.is_waiting_list,
+						 r.status,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
@@ -171,7 +171,7 @@ class RegistrationDao {
 	private function fetchRegistrationByEmail($email) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
-						 r.is_waiting_list,
+						 r.status,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
@@ -194,18 +194,24 @@ class RegistrationDao {
 
 	function readRegistrationStatistics() {
 		$query = 'SELECT COUNT(r.id_registration) AS counted,
-						 SUM(CASE r.is_waiting_list WHEN 0 THEN 1 ELSE 0 END) AS registered,
-						 SUM(CASE r.is_waiting_list WHEN 1 THEN 1 ELSE 0 END) AS waiting_list,
+						 SUM(r.status IS NULL) AS registered,
+						 SUM(r.status = "waiting-list") AS waiting_list,
+						 SUM(r.status = "pending-review") AS pending_review,
+						 SUM(r.status IS NULL AND r.date_paid IS NULL) AS pending_payment,
 						 COUNT(r.date_paid) AS paid,
 						 MAX(r.date_entered) AS last
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
 		$result = \F3::get('db')->exec($query);
 
+		$leftCount = $this->getSeatLimit() - $result[0]['registered'];
 		return (object)[
 			'count' => $result[0]['counted'],
 			'registered' => $result[0]['registered'],
 			'waitingList' => $result[0]['waiting_list'],
+			'pendingReview' => $result[0]['pending_review'],
+			'pendingPayment' => $result[0]['pending_payment'],
 			'paid' => $result[0]['paid'],
+			'left' => $leftCount < 0 ? 0 : $leftCount,
 			'last' => $result[0]['last'],
 		];
 	}
@@ -262,8 +268,7 @@ class RegistrationDao {
 	}
 
 	/**
-	 * Count how many registrations, left seats and waiting list persons are
-	 * currently on file.
+	 * Count how many registrations are per status and how many seats are left.
 	 *
 	 * @return stdClass object with numbers of seats accordingly, or null, if
 	 * seats are not limited.
@@ -273,29 +278,19 @@ class RegistrationDao {
 			return null;
 		}
 
-		$query = 'SELECT r.is_waiting_list,
-						 COUNT(r.id_registration) AS counted
-				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
-				  GROUP BY r.is_waiting_list';
+		$query = 'SELECT SUM(r.status = "waiting-list") AS waiting_list,
+						 SUM(r.status = "pending-review") AS pending_review,
+						 SUM(r.status IS NULL) AS registered
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
 		$result = \F3::get('db')->exec($query);
 
-		$stats = [
-			'registered' => 0,
-			'waitingList' => 0,
-			'left' => 0,
+		$leftCount = $this->getSeatLimit() - $result[0]['registered'];
+		return (object)[
+			'registered' => $result[0]['registered'],
+			'waitingList' => $result[0]['waiting_list'],
+			'pendingReview' => $result[0]['pending_review'],
+			'left' => $leftCount < 0 ? 0 : $leftCount,
 		];
-
-		foreach ($result as $row) {
-			if ($row['is_waiting_list'])
-				$stats['waitingList'] = $row['counted'];
-			else
-				$stats['registered'] = $row['counted'];
-		}
-
-		$leftCount = $this->getSeatLimit() - $stats['registered'];
-		$stats['left'] = $leftCount < 0 ? 0 : $leftCount;
-
-		return (object)$stats;
 	}
 
 	/**
@@ -321,7 +316,7 @@ class RegistrationDao {
 	function readAllRegistrationForms($toArray = false) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
-						 r.is_waiting_list,
+						 r.status,
 						 r.date_entered,
 						 r.date_paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
