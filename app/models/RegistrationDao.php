@@ -266,8 +266,7 @@ class RegistrationDao {
 	}
 
 	/**
-	 * Count how many registrations, left seats and waiting list persons are
-	 * currently on file.
+	 * Count how many registrations are per status and how many seats are left.
 	 *
 	 * @return stdClass object with numbers of seats accordingly, or null, if
 	 * seats are not limited.
