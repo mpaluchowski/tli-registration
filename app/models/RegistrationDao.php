@@ -206,10 +206,10 @@ class RegistrationDao {
 		$leftCount = $this->getSeatLimit() - $result[0]['registered'];
 		return (object)[
 			'count' => $result[0]['counted'],
-			'registered' => $result[0]['registered'],
-			'waitingList' => $result[0]['waiting_list'],
-			'pendingReview' => $result[0]['pending_review'],
-			'pendingPayment' => $result[0]['pending_payment'],
+			'registered' => $result[0]['registered'] ? $result[0]['registered'] : 0,
+			'waitingList' => $result[0]['waiting_list'] ? $result[0]['waiting_list'] : 0,
+			'pendingReview' => $result[0]['pending_review'] ? $result[0]['pending_review'] : 0,
+			'pendingPayment' => $result[0]['pending_payment'] ? $result[0]['pending_payment'] : 0,
 			'paid' => $result[0]['paid'],
 			'left' => $leftCount < 0 ? 0 : $leftCount,
 			'last' => $result[0]['last'],
@@ -286,9 +286,9 @@ class RegistrationDao {
 
 		$leftCount = $this->getSeatLimit() - $result[0]['registered'];
 		return (object)[
-			'registered' => $result[0]['registered'],
-			'waitingList' => $result[0]['waiting_list'],
-			'pendingReview' => $result[0]['pending_review'],
+			'registered' => $result[0]['registered'] ? $result[0]['registered'] : 0,
+			'waitingList' => $result[0]['waiting_list'] ? $result[0]['waiting_list'] : 0,
+			'pendingReview' => $result[0]['pending_review'] ? $result[0]['pending_review'] : 0,
 			'left' => $leftCount < 0 ? 0 : $leftCount,
 		];
 	}
