@@ -59,7 +59,7 @@ class Administration {
 		$headings = array_merge([
 			'id_registration',
 			'email',
-			'is_waiting_list',
+			'status',
 			'date_entered',
 			'date_paid',
 			], $registrationFields);
