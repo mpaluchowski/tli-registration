@@ -51,7 +51,7 @@
 	function drawRegistrationsByStatusChart() {
 		var data = google.visualization.arrayToDataTable([
 			['<?php echo \F3::get('lang.StatisticsRegistrationStatusLabel') ?>', '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
-			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_PAYMENT') ?>', <?php echo $stats->registered ?>],
+			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_PAYMENT') ?>', <?php echo $stats->pendingPayment ?>],
 			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_REVIEW') ?>', <?php echo $stats->pendingReview ?>],
 			['<?php echo \F3::get('lang.RegistrationStatus-WAITING_LIST') ?>', <?php echo $stats->waitingList ?>],
 			['<?php echo \F3::get('lang.RegistrationStatus-PAID') ?>', <?php echo $stats->paid ?>],

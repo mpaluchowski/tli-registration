@@ -197,6 +197,7 @@ class RegistrationDao {
 						 SUM(r.status IS NULL) AS registered,
 						 SUM(r.status = "waiting-list") AS waiting_list,
 						 SUM(r.status = "pending-review") AS pending_review,
+						 SUM(r.status IS NULL AND r.date_paid IS NULL) AS pending_payment,
 						 COUNT(r.date_paid) AS paid,
 						 MAX(r.date_entered) AS last
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
@@ -208,6 +209,7 @@ class RegistrationDao {
 			'registered' => $result[0]['registered'],
 			'waitingList' => $result[0]['waiting_list'],
 			'pendingReview' => $result[0]['pending_review'],
+			'pendingPayment' => $result[0]['pending_payment'],
 			'paid' => $result[0]['paid'],
 			'left' => $leftCount < 0 ? 0 : $leftCount,
 			'last' => $result[0]['last'],
