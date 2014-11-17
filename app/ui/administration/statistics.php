@@ -14,11 +14,11 @@
 		<div class="progress-bar progress-bar-success" style="width: <?php echo $stats->registered / ($stats->count + $stats->left) * 100 ?>%">
 			<?php echo \F3::get('lang.StatisticsSeatsRegistered', $stats->registered) ?>
 		</div>
-		<div class="progress-bar" style="background: #000; width: <?php echo $stats->pendingReview / ($stats->count + $stats->left) * 100 ?>%;">
-			<?php echo \F3::get('lang.StatisticsSeatsPendingReview', $stats->pendingReview) ?>
-		</div>
 		<div class="progress-bar progress-bar-none" style="width: <?php echo $stats->left / ($stats->count + $stats->left) * 100 ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsLeft', $totalSeats - $stats->registered) ?>
+		</div>
+		<div class="progress-bar" style="background: #000; width: <?php echo $stats->pendingReview / ($stats->count + $stats->left) * 100 ?>%;">
+			<?php echo \F3::get('lang.StatisticsSeatsPendingReview', $stats->pendingReview) ?>
 		</div>
 		<div class="progress-bar" style="background: #777; width: <?php echo $stats->waitingList / ($stats->count + $stats->left) * 100 ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsWaitingList', $stats->waitingList) ?>
