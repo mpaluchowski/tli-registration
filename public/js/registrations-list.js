@@ -10,7 +10,9 @@ tliRegister.registrationsList = function() {
 		$('.registration-details-expander').click(handleRegistrationExpansion);
 	},
 
-	handleRegistrationExpansion = function() {
+	handleRegistrationExpansion = function(e) {
+		e.preventDefault();
+
 		var row = $(this).closest('tr');
 		var detailsRow = $('#details-' + row.attr('data-id'));
 
