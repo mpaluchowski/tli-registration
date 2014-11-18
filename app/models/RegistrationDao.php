@@ -127,7 +127,7 @@ class RegistrationDao {
 		return $registrationId;
 	}
 
-	function readRegistrationForm($registrationHash) {
+	function readRegistrationFormByHash($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
 						 r.status,
@@ -137,6 +137,27 @@ class RegistrationDao {
 				  WHERE r.hash = :registrationHash';
 		$registrationResult = \F3::get('db')->exec($query, [
 					'registrationHash' => $registrationHash,
+				]);
+
+		if (!$registrationResult)
+			return null;
+
+		return $this->parseQueryToForm(
+			$registrationResult[0],
+			$this->fetchRegistrationFields($registrationResult[0]['id_registration'])
+			);
+	}
+
+	function readRegistrationFormById($id) {
+		$query = 'SELECT r.id_registration,
+						 r.email,
+						 r.status,
+						 r.date_entered,
+						 r.date_paid
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  WHERE r.id_registration = :id';
+		$registrationResult = \F3::get('db')->exec($query, [
+					'id' => $id,
 				]);
 
 		if (!$registrationResult)
@@ -313,7 +334,7 @@ class RegistrationDao {
 			: null;
 	}
 
-	function readAllRegistrationForms($toArray = false) {
+	function readAllRegistrationForms(array $selectFields = null, $toArray = false) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
 						 r.status,
@@ -329,8 +350,15 @@ class RegistrationDao {
 		$query = 'SELECT rf.fk_registration,
 						 rf.name,
 						 rf.value
-				  FROM ' . \F3::get('db_table_prefix') . 'registration_fields rf
-				  ORDER BY rf.fk_registration';
+				  FROM ' . \F3::get('db_table_prefix') . 'registration_fields rf';
+		if ($selectFields) {
+			$query .= ' WHERE rf.name IN (' . implode(',',
+				array_map(function($value) {
+						return \F3::get('db')->quote($value);
+					}, $selectFields)
+				) . ')';
+		}
+		$query .= ' ORDER BY rf.fk_registration';
 		$resultFields = \F3::get('db')->exec($query);
 
 		$registrations = [];

@@ -14,7 +14,9 @@ class Administration {
 	function list_registrations($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
-		$registrations = $registrationDao->readAllRegistrationForms();
+		$renderer = \helpers\FormRendererFactory::className();
+
+		$registrations = $registrationDao->readAllRegistrationForms($renderer::getMainFields());
 		usort($registrations, "\helpers\Sorters::sortRegistrationsByFullName");
 
 		$f3->set('stats', $registrationDao->readRegistrationStatistics());
@@ -22,6 +24,24 @@ class Administration {
 		$f3->set('registrations', $registrations);
 
 		echo \View::instance()->render('administration/list_registrations.php');
+	}
+
+	function get_registration_details($f3) {
+		if (!$f3->get('GET.id')
+			|| !is_numeric($f3->get('GET.id'))) {
+			$f3->error(404);
+		}
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationFormById($f3->get('GET.id'));
+
+		if (null === $form)
+			$f3->error(404);
+
+		$f3->set('form', $form);
+
+		echo \View::instance()->render('administration/_registration-details.php');
 	}
 
 	function statistics($f3) {
@@ -40,7 +60,7 @@ class Administration {
 		$registrationDao = new \models\RegistrationDao();
 
 		$registrationFields = $registrationDao->readAllRegistrationFieldNames();
-		$registrations = $registrationDao->readAllRegistrationForms(true);
+		$registrations = $registrationDao->readAllRegistrationForms(null, true);
 
 		foreach ($registrationFields as $field) {
 			foreach ($registrations as $index => $registration) {

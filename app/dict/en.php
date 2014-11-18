@@ -164,7 +164,7 @@ return ['lang' => [
 	"SendEmailProblemInfo" => "Sorry about that. There's been some hiccup on the way and we couldn't get your e-mail out to <strong>{0}</strong>. This may be a one-time problem, so before calling the cavalry please do try this one more time by clicking the button below. If you get to this very same page, contact the person responsible for registration.",
 
 	"RegistrationsListHeader" => "Registrations list",
-	"RegistrationsListIntro" => "We currently have {0} registrations on file ({1} registered, {2} on waiting list and {3} pending review), {4} of which are paid. Last registration was on {5}.",
+	"RegistrationsListIntro" => "We currently have {0} registrations on file, {1} registered, {4} of which are paid, {2} on waiting list and {3} pending review. Last registration was on {5}.",
 	"RegistrationsDownloadCsv" => "Download CSV",
 
 	"DateEntered" => "Date entered",

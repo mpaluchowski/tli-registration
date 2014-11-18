@@ -250,4 +250,11 @@
   </div>
 </footer>
 
+<script src="/js/registration-form.js"></script>
+<script>
+  (function() {
+    tliRegister.registrationForm.init();
+  })();
+</script>
+
 <?php echo \View::instance()->render('footer.php') ?>
