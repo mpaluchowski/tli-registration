@@ -165,6 +165,7 @@ return ['lang' => [
 
 	"RegistrationsListHeader" => "Lista rejestracji",
 	"RegistrationsListIntro" => "Mamy aktualnie {0} rejestracji ({1} na liście głównej, {2} na rezerwowej, {3} oczekują na potwierdzenie), z których {4} jest opłaconych. Ostatnia rejestracja zapisana {5}.",
+	"RegistrationsDownloadCsv" => "Ściągnij CSV",
 
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",

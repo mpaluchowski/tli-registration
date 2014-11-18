@@ -9,7 +9,7 @@
 
 	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->registered, $stats->waitingList, $stats->pendingReview, $stats->paid, strftime("%c", strtotime($stats->last))]) ?></p>
 
-	<a href="<?php echo \F3::get('ALIASES.admin_registrations_export_csv') ?>" class="btn btn-default">Download CSV</a>
+	<a href="<?php echo \F3::get('ALIASES.admin_registrations_export_csv') ?>" class="btn btn-default"><?php echo \F3::get('lang.RegistrationsDownloadCsv') ?></a>
 </div>
 
 <div class="container-fluid">

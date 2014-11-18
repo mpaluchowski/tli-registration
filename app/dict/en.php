@@ -165,6 +165,7 @@ return ['lang' => [
 
 	"RegistrationsListHeader" => "Registrations list",
 	"RegistrationsListIntro" => "We currently have {0} registrations on file ({1} registered, {2} on waiting list and {3} pending review), {4} of which are paid. Last registration was on {5}.",
+	"RegistrationsDownloadCsv" => "Download CSV",
 
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",
