@@ -4,6 +4,19 @@ namespace helpers;
 
 class FormRendererImpl {
 
+	/** Fields considered 'main' to show in Registration headers */
+	private static $mainFields = [
+		'full-name',
+		'phone',
+	];
+
+	/**
+	 * @see \helpers\FormRenderer#getMainFields()
+	 */
+	static function getMainFields() {
+		return self::$mainFields;
+	}
+
 	/**
 	 * @see \helpers\FormRenderer#Value(\models\RegistrationForm $form, $field)
 	 */

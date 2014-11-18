@@ -8,6 +8,12 @@ namespace helpers;
 interface FormRenderer {
 
 	/**
+	 * @return array with fields considered 'main', usually displayed in headers
+	 * of registrations
+	 */
+	static function getMainFields();
+
+	/**
 	 * Render the value of a form field.
 	 *
 	 * @param $form instance of \models\RegistrationForm

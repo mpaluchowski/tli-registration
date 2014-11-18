@@ -14,7 +14,9 @@ class Administration {
 	function list_registrations($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
-		$registrations = $registrationDao->readAllRegistrationForms(['full-name', 'phone']);
+		$renderer = \helpers\FormRendererFactory::className();
+
+		$registrations = $registrationDao->readAllRegistrationForms($renderer::getMainFields());
 		usort($registrations, "\helpers\Sorters::sortRegistrationsByFullName");
 
 		$f3->set('stats', $registrationDao->readRegistrationStatistics());
