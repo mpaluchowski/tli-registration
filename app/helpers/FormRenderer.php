@@ -14,6 +14,6 @@ interface FormRenderer {
 	 * @param $field name of field to render
 	 * @return string with a rendering of the field's value in the given form
 	 */
-	static function value(\models\RegistrationForm $form, $field);
+	static function value(\models\RegistrationForm &$form, $field);
 
 }

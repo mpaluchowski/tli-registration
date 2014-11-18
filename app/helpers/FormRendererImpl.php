@@ -7,7 +7,7 @@ class FormRendererImpl {
 	/**
 	 * @see \helpers\FormRenderer#Value(\models\RegistrationForm $form, $field)
 	 */
-	static function value(\models\RegistrationForm $form, $field) {
+	static function value(\models\RegistrationForm &$form, $field) {
 		switch ($field) {
 			case 'full-name':
 			case 'email':
