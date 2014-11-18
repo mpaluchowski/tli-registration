@@ -9,6 +9,10 @@
 					</td>
 				</tr>
 				<tr>
+					<th><?php echo \F3::get('lang.Country') ?></th>
+					<td><?php echo \F3::get('lang.Country-' . $form->getField('country')) ?></td>
+				</tr>
+				<tr>
 					<th><?php echo \F3::get('lang.HomeClub') ?></th>
 					<td><?php echo $form->getField('home-club') ?></td>
 				</tr>
@@ -56,6 +60,13 @@
 				<tr>
 					<th><?php echo \F3::get('lang.EventsContest') ?></th>
 					<td><?php echo $form->hasField('contest-attend') && "on" === $form->getField('contest-attend') ? \F3::get('lang.Yes') : \F3::get('lang.No') ?></td>
+				</tr>
+			<?php if ($form->hasField('friday-copernicus-options')) {
+				$copernicusOptions = array_map(function ($item) { return \F3::get('lang.EventsFridayCopernicusAttend-' . $item); }, $form->getField('friday-copernicus-options'));
+			} ?>
+				<tr>
+					<th><?php echo \F3::get('lang.EventsFridayCopernicus') ?></th>
+					<td><?php echo $form->hasField('friday-copernicus-attend') && "on" === $form->getField('friday-copernicus-attend') ? \F3::get('lang.Yes') . ', ' . implode(", ", $copernicusOptions) : \F3::get('lang.No') ?></td>
 				</tr>
 				<tr>
 					<th><?php echo \F3::get('lang.EventsFridaySocial') ?></th>
