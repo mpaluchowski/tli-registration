@@ -12,7 +12,7 @@
 	<a href="<?php echo \F3::get('ALIASES.admin_registrations_export_csv') ?>" class="btn btn-default">Download CSV</a>
 
 <div class="table-responsive">
-	<table class="table table-striped">
+	<table class="table table-hover">
 		<thead>
 			<th style="white-space: nowrap;"><?php echo \F3::get('lang.FullName') ?></th>
 			<th style="white-space: nowrap;"><?php echo \F3::get('lang.Email') ?></th>
