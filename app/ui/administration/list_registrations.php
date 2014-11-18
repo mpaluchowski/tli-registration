@@ -2,6 +2,10 @@
 
 <?php echo \View::instance()->render('administration/_navigation.php') ?>
 
+<?php
+$renderer = \helpers\FormRendererFactory::className();
+?>
+
 <div class="container">
 	<div class="page-header">
 		<h1><?php echo \F3::get('lang.RegistrationsListHeader') ?></h1>
@@ -26,10 +30,10 @@
 			<tr data-id="<?php echo $registration->getId() ?>">
 				<td><a href="#" class="registration-details-expander">
 					<span class="fa fa-plus-square"></span>
-					<?php echo $registration->getField('full-name') ?>
+					<?php echo $renderer::value($registration, 'full-name') ?>
 				</a></td>
 				<td><a href="mailto:<?php echo $registration->getEmail() ?>"><?php echo $registration->getEmail() ?></a></td>
-				<td><a href="callto:<?php echo $registration->getField('phone') ?>"><?php echo $registration->getField('phone') ?></a></td>
+				<td><a href="callto:<?php echo $registration->getField('phone') ?>"><?php echo $renderer::value($registration, 'phone') ?></a></td>
 				<td><?php echo strftime("%c", strtotime($registration->getDateEntered())) ?></td>
 				<td><?php echo $registration->getDatePaid() ? strftime("%c", strtotime($registration->getDatePaid())) : "&mdash;" ?></td>
 				<td><span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($registration->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $registration->getStatus()) ?></span></td>
