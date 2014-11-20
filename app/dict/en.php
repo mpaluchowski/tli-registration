@@ -190,10 +190,11 @@ return ['lang' => [
 
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",
-	"StatisticsSeatsRegistered" => "{0} registered",
+	"StatisticsSeatsPaid" => "{0} paid",
 	"StatisticsSeatsLeft" => "{0} free",
 	"StatisticsSeatsWaitingList" => "{0} on waiting list",
 	"StatisticsSeatsPendingReview" => "{0} pending confirmation",
+	"StatisticsSeatsPendingPayment" => "{0} pending payment",
 	"StatisticsRegistrationsByStatusHeader" => "Registrations by status",
 	"StatisticsRegistrationStatusLabel" => "Status",
 	"StatisticsRegistrationsLabel" => "Registrations",

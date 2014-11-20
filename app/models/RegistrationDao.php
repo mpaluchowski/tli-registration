@@ -224,7 +224,7 @@ class RegistrationDao {
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
 		$result = \F3::get('db')->exec($query);
 
-		$leftCount = $this->getSeatLimit() - $result[0]['registered'];
+		$leftCount = $this->getSeatLimit() - $result[0]['paid'];
 		return (object)[
 			'count' => $result[0]['counted'],
 			'registered' => $result[0]['registered'] ? $result[0]['registered'] : 0,
@@ -301,13 +301,14 @@ class RegistrationDao {
 
 		$query = 'SELECT SUM(r.status = "waiting-list") AS waiting_list,
 						 SUM(r.status = "pending-review") AS pending_review,
-						 SUM(r.status IS NULL) AS registered
+						 SUM(r.status IS NULL AND r.date_paid IS NULL) AS pending_payment,
+						 SUM(r.date_paid IS NOT NULL) AS paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
 		$result = \F3::get('db')->exec($query);
 
-		$leftCount = $this->getSeatLimit() - $result[0]['registered'];
+		$leftCount = $this->getSeatLimit() - $result[0]['paid'];
 		return (object)[
-			'registered' => $result[0]['registered'] ? $result[0]['registered'] : 0,
+			'pendingPayment' => $result[0]['pending_payment'] ? $result[0]['pending_payment'] : 0,
 			'waitingList' => $result[0]['waiting_list'] ? $result[0]['waiting_list'] : 0,
 			'pendingReview' => $result[0]['pending_review'] ? $result[0]['pending_review'] : 0,
 			'left' => $leftCount < 0 ? 0 : $leftCount,
