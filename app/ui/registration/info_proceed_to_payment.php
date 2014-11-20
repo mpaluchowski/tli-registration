@@ -1,3 +1,5 @@
+<?php \F3::set('bodyClass', "navigated") ?>
+
 <?php echo \View::instance()->render('header.php') ?>
 
 <div class="container">

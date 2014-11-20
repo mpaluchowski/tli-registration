@@ -26,7 +26,11 @@ body {
 	}
 
 	@media #{$responsive-tablet-desktop} {
-		padding: 50px 0 100px 0;
+		padding: 0 0 100px 0;
+
+		&.navigated {
+			padding-top: 50px;
+		}
 	}
 
 	&.signin {
