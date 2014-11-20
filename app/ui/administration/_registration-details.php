@@ -5,7 +5,7 @@ $renderer = \helpers\FormRendererFactory::className();
 <div class="container-fluid">
 <div class="row">
 	<div class="col-sm-6">
-		<table class="table-registration-details">
+		<table class="tli-table-registration-details">
 			<tbody>
 				<tr>
 					<td colspan="2">

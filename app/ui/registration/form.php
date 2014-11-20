@@ -1,4 +1,4 @@
-<?php \F3::set('bodyClass', "navigated") ?>
+<?php \F3::set('bodyClass', "tli-navigated") ?>
 
 <?php echo \View::instance()->render('header.php') ?>
 
@@ -106,7 +106,7 @@
         <label><input type="radio" name="accommodation-with-toastmasters" value="stay" required<?php if (isset($registration['accommodation-with-toastmasters']) && $registration['accommodation-with-toastmasters'] == 'stay') echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersStayAnswer') ?></label>
       </div>
 
-      <div class="form-group-dependent" data-depends-on="accommodation-with-toastmasters" data-depends-on-value="stay">
+      <div class="tli-form-group-dependent" data-depends-on="accommodation-with-toastmasters" data-depends-on-value="stay">
         <div class="form-group<?php if (isset($registration['messages']['accommodation-on'])): ?> has-error<?php endif ?>">
           <label class="control-label"><?php echo \F3::get('lang.AccommodationWithToastmastersNeededOn') ?></label>
           <div class="checkbox">
@@ -144,7 +144,7 @@
     <div class="checkbox form-group">
       <label><input type="checkbox" name="friday-copernicus-attend"<?php if (isset($registration['friday-copernicus-attend']) && $registration['friday-copernicus-attend'] == 'on') echo ' checked'?>><?php echo \F3::get('lang.EventsFridayCopernicusYes')?></label>
 
-      <div class="form-group-dependent" data-depends-on="friday-copernicus-attend" data-depends-on-value="on">
+      <div class="tli-form-group-dependent" data-depends-on="friday-copernicus-attend" data-depends-on-value="on">
         <div class="form-group<?php if (isset($registration['messages']['lunch-days'])): ?> has-error<?php endif ?>">
           <div class="checkbox">
             <label>
@@ -171,7 +171,7 @@
     <div class="checkbox form-group">
       <label><input type="checkbox" name="lunch"<?php if (isset($registration['lunch']) && $registration['lunch'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchYes') ?></label>
 
-      <div class="form-group-dependent" data-depends-on="lunch" data-depends-on-value="on">
+      <div class="tli-form-group-dependent" data-depends-on="lunch" data-depends-on-value="on">
         <div class="form-group<?php if (isset($registration['messages']['lunch-days'])): ?> has-error<?php endif ?>">
           <div class="checkbox">
             <label>
@@ -197,7 +197,7 @@
         <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['saturday-dinner-participate']->prices), ' / ') ?></span>
       </label>
 
-      <div class="form-group-dependent" data-depends-on="saturday-dinner-participate" data-depends-on-value="on">
+      <div class="tli-form-group-dependent" data-depends-on="saturday-dinner-participate" data-depends-on-value="on">
         <div class="form-group<?php if (isset($registration['messages']['saturday-dinner-meal'])): ?> has-error<?php endif ?>">
           <div class="radio">
             <label>

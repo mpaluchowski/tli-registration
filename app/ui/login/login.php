@@ -1,5 +1,5 @@
 <?php
-\F3::set('bodyClass', "signin");
+\F3::set('bodyClass', "tli-signin");
 ?>
 
 <?php echo \View::instance()->render('header.php') ?>
@@ -8,7 +8,7 @@
 	<?php echo \View::instance()->render('message-alerts.php') ?>
 
 <?php if (in_array('database', \F3::get('auths_supported'))): ?>
-	<form action="<?php echo \F3::get('ALIASES.admin_login_process') ?>" method="post" class="form-signin" role="form">
+	<form action="<?php echo \F3::get('ALIASES.admin_login_process') ?>" method="post" class="tli-form-signin" role="form">
 		<label for="email" class="sr-only"><?php echo \F3::get('lang.Email') ?></label>
 		<input type="email" name="email" id="email"<?php if (isset($email)) echo ' value="' . $email . '"' ?> class="form-control" placeholder="<?php echo \F3::get('lang.Email') ?>" required autofocus>
 		<label for="password" class="sr-only"><?php echo \F3::get("lang.Password") ?></label>
@@ -18,7 +18,7 @@
 	</form>
 <?php endif; ?>
 
-	<div class="social-signin">
+	<div class="tli-social-signin">
 <?php if (in_array('google', \F3::get('auths_supported'))): ?>
 		<a href="<?php
 		echo 'https://accounts.google.com/o/oauth2/auth?'
@@ -29,7 +29,7 @@
 				'response_type' => 'code',
 				'client_id' => \models\AuthenticationDao::getGoogleClientId()
 				])
-		?>" class="google">
+		?>" class="tli-google">
 			<i class="fa fa-google-plus"></i>
 			<?php echo \F3::get('lang.SignInGoogle') ?>
 		</a>

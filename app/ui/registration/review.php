@@ -1,4 +1,4 @@
-<?php \F3::set('bodyClass', "navigated") ?>
+<?php \F3::set('bodyClass', "tli-navigated") ?>
 
 <?php echo \View::instance()->render('header.php') ?>
 
@@ -151,7 +151,7 @@ $renderer = \helpers\FormRendererFactory::className();
 	<p><?php echo \F3::get('lang.PaymentBreakdownIntro-' . $form->getStatus(), strftime('%c', strtotime($form->getDatePaid()))) ?></p>
 
 	<div class="table-responsive">
-		<table class="table currencies-<?php echo count($paymentSummary['total']) ?>">
+		<table class="table tli-currencies-<?php echo count($paymentSummary['total']) ?>">
 			<thead>
 				<tr>
 					<th><?php echo \F3::get('lang.PaymentItemHead') ?></th>

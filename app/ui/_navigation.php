@@ -1,9 +1,9 @@
-<div id="navigation-bar">
+<div id="tli-navigation-bar">
 <div class="container">
-	<nav id="main-navigation" class="navigation-menu">
+	<nav id="tli-main-navigation" class="tli-navigation-menu">
 		<ul>
 			<li>
-				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavRegisterUrl') ?>" class="current"><?php echo \F3::get('lang.TliNavRegister') ?></a>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavRegisterUrl') ?>" class="tli-current"><?php echo \F3::get('lang.TliNavRegister') ?></a>
 			</li><li>
 				<a href="http://tli.toastmasters.org.pl/"><?php echo \F3::get('lang.TliNavHome') ?></a>
 			</li><li>
@@ -20,7 +20,7 @@
 		</ul>
 	</nav>
 
-	<nav id="side-navigation" class="navigation-menu">
+	<nav id="tli-side-navigation" class="tli-navigation-menu">
 		<ul>
 			<li>
 				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavOrganizersUrl') ?>" data-title="<?php echo \F3::get('lang.TliNavOrganizers') ?>"><i class="fa fa-group"></i><span><?php echo \F3::get('lang.TliNavOrganizers') ?></span></a>
