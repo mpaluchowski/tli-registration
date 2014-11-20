@@ -250,6 +250,8 @@
   </div>
 </footer>
 
+<?php echo \View::instance()->render('_navigation.php') ?>
+
 <script src="/js/registration-form.js"></script>
 <script>
   (function() {
