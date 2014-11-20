@@ -3,19 +3,19 @@
 	<nav id="main-navigation" class="navigation-menu">
 		<ul>
 			<li>
-				<a href="http://tli.toastmasters.org.pl/register" class="current">Register</a>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavRegisterUrl') ?>" class="current"><?php echo \F3::get('lang.TliNavRegister') ?></a>
 			</li><li>
-				<a href="http://tli.toastmasters.org.pl/">Home</a>
+				<a href="http://tli.toastmasters.org.pl/"><?php echo \F3::get('lang.TliNavHome') ?></a>
 			</li><li>
-				<a href="http://tli.toastmasters.org.pl/speakers">Speakers</a>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavSpeakersUrl') ?>"><?php echo \F3::get('lang.TliNavSpeakers') ?></a>
 			</li><li>
-				<a href="http://tli.toastmasters.org.pl/contest">Contest</a>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavContestUrl') ?>"><?php echo \F3::get('lang.TliNavContest') ?></a>
 			</li><li>
-				<a href="http://tli.toastmasters.org.pl/schedule">Schedule</a>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavScheduleUrl') ?>"><?php echo \F3::get('lang.TliNavSchedule') ?></a>
 			</li><li>
-				<a href="http://tli.toastmasters.org.pl/venues">Venues</a>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavVenuesUrl') ?>"><?php echo \F3::get('lang.TliNavVenues') ?></a>
 			</li><li>
-				<a href="http://tli.toastmasters.org.pl/accommodation">Accommodation</a>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavAccommodationUrl') ?>"><?php echo \F3::get('lang.TliNavAccommodation') ?></a>
 			</li>
 		</ul>
 	</nav>
@@ -23,9 +23,9 @@
 	<nav id="side-navigation" class="navigation-menu">
 		<ul>
 			<li>
-				<a href="http://tli.toastmasters.org.pl/organizers" data-title="Organizers"><i class="fa fa-group"></i><span>Organizers</span></a>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavOrganizersUrl') ?>" data-title="<?php echo \F3::get('lang.TliNavOrganizers') ?>"><i class="fa fa-group"></i><span><?php echo \F3::get('lang.TliNavOrganizers') ?></span></a>
 			</li><li>
-				<a href="http://tli.toastmasters.org.pl/contact" data-title="Contact"><i class="fa fa-envelope"></i><span>Contact</span></a>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavContactUrl') ?>" data-title="<?php echo \F3::get('lang.TliNavContact') ?>"><i class="fa fa-envelope"></i><span><?php echo \F3::get('lang.TliNavContact') ?></span></a>
 			</li>
 		</ul>
 	</nav>
