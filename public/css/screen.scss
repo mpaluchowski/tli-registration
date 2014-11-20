@@ -32,12 +32,6 @@ body {
 			padding-top: 50px;
 		}
 	}
-
-	&.signin {
-		padding-top: 40px;
-		padding-bottom: 40px;
-		background-color: #eee;
-	}
 }
 
 h1, h2, h3, h4, h5 {
@@ -90,12 +84,20 @@ h2 {
 
 /* Custom elements */
 
-.form-signin {
+body {
+	&.tli-signin {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		background-color: #eee;
+	}
+}
+
+.tli-form-signin {
 	max-width: 330px;
 	padding: 15px;
 	margin: 0 auto;
 
-	.form-signin-heading,
+	.tli-form-signin-heading,
 	.checkbox {
 		margin-bottom: 10px;
 	}
@@ -129,7 +131,7 @@ h2 {
 	}
 }
 
-.social-signin {
+.tli-social-signin {
 	max-width: 330px;
 	padding: 15px;
 	margin: 0 auto;
@@ -150,7 +152,7 @@ h2 {
 			padding: .6em;
 		}
 
-		&.google {
+		&.tli-google {
 			background: #dd4b39;
 			color: #FFF;
 		}
