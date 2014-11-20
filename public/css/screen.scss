@@ -1,5 +1,19 @@
 
+// Basic Toastmasters colors
+$tm-blue: #004156;
+$tm-yellow: #F2DF74;
+$tm-grey: #A9B2B1;
+$tm-red: #CD202C;
+$tm-crimson: #772432;
+
+// Fonts
+$font-main: "Open Sans", Arial, Helvetica, sans-serif;
+$font-header: Arial, Helvetica, sans-serif;
+
+/* Bootstrap basics overrides */
+
 body {
+	font-family: $font-main;
 	padding: 0 0 100px 0;
 
 	&.signin {
@@ -8,6 +22,52 @@ body {
 		background-color: #eee;
 	}
 }
+
+h1, h2, h3, h4, h5 {
+	font-family: $font-header;
+	font-weight: bold;
+	text-align: center;
+}
+
+h1 {
+	color: $tm-red;
+	font-size: 34px;
+}
+
+h2 {
+	color: $tm-blue;
+	font-size: 28px;
+}
+
+.page-header {
+	border-bottom: none;
+}
+
+.checkbox {
+	.help-block {
+		padding-left: 20px;
+	}
+}
+
+.label {
+	font-size: inherit;
+
+	.fa-spin {
+		margin-right: .6em;
+	}
+}
+
+.table {
+	tfoot {
+		tr {
+			td, th {
+				border-top: 2px solid #ddd;
+			}
+		}
+	}
+}
+
+/* Custom elements */
 
 .form-signin {
 	max-width: 330px;
@@ -80,12 +140,6 @@ body {
 	padding-left: 20px;
 }
 
-.checkbox {
-	.help-block {
-		padding-left: 20px;
-	}
-}
-
 table {
 	&.currencies-1 {
 		tr {
@@ -99,16 +153,6 @@ table {
 		tr {
 			td:nth-last-child(-n+2), th:nth-last-child(-n+2) {
 				text-align: right;
-			}
-		}
-	}
-}
-
-.table {
-	tfoot {
-		tr {
-			td, th {
-				border-top: 2px solid #ddd;
 			}
 		}
 	}
@@ -143,14 +187,6 @@ table {
 		h4 {
 			margin-bottom: 2px;
 		}
-	}
-}
-
-.label {
-	font-size: inherit;
-
-	.fa-spin {
-		margin-right: .6em;
 	}
 }
 
