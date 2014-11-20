@@ -227,14 +227,18 @@ table {
 	}
 
 	li {
+		font-size: 1.4rem;
+		line-height: 1;
+
 		@media #{$responsive-tablet-desktop} {
 			display: inline-block;
 		}
 	}
 
 	a {
-		position: relative;
 		display: block;
+		padding: 1.2rem .8rem;
+		position: relative;
 		text-decoration: none;
 	}
 }
@@ -246,6 +250,11 @@ table {
 		position: fixed;
 		top: 0;
 		width: 100%;
+	}
+
+	.container {
+		padding: 0;
+		position: relative;
 	}
 
 	a {
@@ -266,17 +275,10 @@ table {
 		}
 	}
 
-	.container {
-		padding: 0;
-		position: relative;
-	}
 }
 
 #tli-main-navigation {
 	li {
-		font-size: 1.4rem;
-		line-height: 1;
-
 		&:first-child {
 			a {
 				background: $tm-yellow;
@@ -292,28 +294,13 @@ table {
 			}
 		}
 	}
-
-	a {
-		padding: 1.2rem .8rem;
-	}
 }
 
 #tli-side-navigation {
 	@media #{$responsive-phone} {
-		li {
-			font-size: 1.4rem;
-		}
-
 		a {
-			padding: 1.2rem 0.8rem;
-
 			i {
-				display: inline-block;
-				margin-right: .4em;
-
-				&.fa {
-					display: none;
-				}
+				display: none;
 			}
 		}
 	}
