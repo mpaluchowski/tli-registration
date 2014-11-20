@@ -51,6 +51,10 @@ h2 {
 
 .label {
 	font-size: inherit;
+	padding: {
+		top: 0.1em;
+		bottom: 0.2em;
+	}
 
 	.fa-spin {
 		margin-right: .6em;
