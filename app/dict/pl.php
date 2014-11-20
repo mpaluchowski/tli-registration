@@ -23,7 +23,7 @@ return ['lang' => [
 	"TliNavContactUrl" => 'kontakt',
 
 	'RegistrationFormPageTitle' => 'Formularz rejestracyjny',
-	'RegistrationFormHeader' => 'Rejestracja na TLI 2015',
+	'RegistrationFormHeader' => 'Formularz rejestracyjny',
 	'RegistrationFormValidationMsg' => "Niektóre informacje w formularzu nie do końca się zgadzają. Przeczytaj instrukcje poniżej jak poprawić wybrane opcje.",
 
 	'PersonalInformationHeader' => 'Informacje osobiste',
