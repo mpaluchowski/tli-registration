@@ -216,7 +216,7 @@ table {
 	color: #000;
 }
 
-.navigation-menu {
+.tli-navigation-menu {
 	ul, li {
 		margin: 0;
 		padding: 0;
@@ -235,7 +235,7 @@ table {
 	}
 }
 
-#navigation-bar {
+#tli-navigation-bar {
 	background: $tm-crimson;
 
 	@media #{$responsive-tablet-desktop} {
@@ -252,7 +252,7 @@ table {
 			border-bottom: 1px solid $tm-red;
 		}
 
-		&:hover, &.current {
+		&:hover, &.tli-current {
 			background: $tm-red;
 
 			@media #{$responsive-tablet-desktop} {
@@ -268,7 +268,7 @@ table {
 	}
 }
 
-#main-navigation {
+#tli-main-navigation {
 	li {
 		font-size: 1.4rem;
 		line-height: 1;
@@ -282,7 +282,7 @@ table {
 					border-bottom-width: 0;
 				}
 
-				&:hover, &.current {
+				&:hover, &.tli-current {
 					border-bottom-color: darken($tm-yellow, 30%);
 				}
 			}
@@ -294,7 +294,7 @@ table {
 	}
 }
 
-#side-navigation {
+#tli-side-navigation {
 	@media #{$responsive-phone} {
 		li {
 			font-size: 1.4rem;
