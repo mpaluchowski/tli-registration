@@ -16,7 +16,7 @@ $responsive-desktop: "only screen and (min-width: 780px)";
 $font-main: "Open Sans", Arial, Helvetica, sans-serif;
 $font-header: Arial, Helvetica, sans-serif;
 
-/* Bootstrap basics overrides */
+/* Bootstrap global overrides */
 
 body {
 	font-family: $font-main;
@@ -78,7 +78,7 @@ h2 {
 	}
 }
 
-/* Custom elements */
+/* TLI custom elements */
 
 body {
 	@media #{$responsive-tablet-desktop} {
