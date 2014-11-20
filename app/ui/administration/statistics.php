@@ -11,11 +11,14 @@
 	<h3><?php echo \F3::get('lang.StatisticsSeatsHeader') ?></h3>
 
 	<div class="progress">
-		<div class="progress-bar progress-bar-success" style="width: <?php echo $stats->registered / ($stats->count + $stats->left) * 100 ?>%">
-			<?php echo \F3::get('lang.StatisticsSeatsRegistered', $stats->registered) ?>
+		<div class="progress-bar progress-bar-success" style="width: <?php echo $stats->paid / ($stats->count + $stats->left) * 100 ?>%">
+			<?php echo \F3::get('lang.StatisticsSeatsPaid', $stats->paid) ?>
 		</div>
 		<div class="progress-bar tli-progress-bar-none" style="width: <?php echo $stats->left / ($stats->count + $stats->left) * 100 ?>%;">
-			<?php echo \F3::get('lang.StatisticsSeatsLeft', $totalSeats - $stats->registered) ?>
+			<?php echo \F3::get('lang.StatisticsSeatsLeft', $stats->left) ?>
+		</div>
+		<div class="progress-bar progress-bar-warning" style="width: <?php echo $stats->pendingPayment / ($stats->count + $stats->left) * 100 ?>%;">
+			<?php echo \F3::get('lang.StatisticsSeatsPendingPayment', $stats->pendingPayment) ?>
 		</div>
 		<div class="progress-bar" style="background: #000; width: <?php echo $stats->pendingReview / ($stats->count + $stats->left) * 100 ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsPendingReview', $stats->pendingReview) ?>
