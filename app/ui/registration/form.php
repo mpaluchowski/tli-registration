@@ -1,4 +1,4 @@
-<?php \F3::set('bodyClass', "navigated") ?>
+<?php \F3::set('bodyClass', "tli-navigated") ?>
 
 <?php echo \View::instance()->render('header.php') ?>
 
