@@ -1,3 +1,5 @@
+<?php \F3::set('bodyClass', "navigated") ?>
+
 <?php echo \View::instance()->render('header.php') ?>
 
 <div class="container">
@@ -27,5 +29,7 @@
 		</div>
 	</div>
 </div>
+
+<?php echo \View::instance()->render('_navigation.php') ?>
 
 <?php echo \View::instance()->render('footer.php') ?>

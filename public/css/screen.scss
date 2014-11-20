@@ -1,6 +1,37 @@
 
+// Basic Toastmasters colors
+$tm-blue: #004156;
+$tm-yellow: #F2DF74;
+$tm-grey: #A9B2B1;
+$tm-red: #CD202C;
+$tm-crimson: #772432;
+
+// Responsive Media Queries
+$responsive-phone: "only screen and (max-width: 519px)";
+$responsive-tablet: "only screen and (min-width: 520px) and (max-width: 779px)";
+$responsive-tablet-desktop: "only screen and (min-width: 520px)";
+$responsive-desktop: "only screen and (min-width: 780px)";
+
+// Fonts
+$font-main: "Open Sans", Arial, Helvetica, sans-serif;
+$font-header: Arial, Helvetica, sans-serif;
+
+/* Bootstrap basics overrides */
+
 body {
-	padding: 0 0 100px 0;
+	font-family: $font-main;
+
+	@media #{$responsive-phone} {
+		padding: 0 0 85px 0;
+	}
+
+	@media #{$responsive-tablet-desktop} {
+		padding: 0 0 100px 0;
+
+		&.navigated {
+			padding-top: 50px;
+		}
+	}
 
 	&.signin {
 		padding-top: 40px;
@@ -8,6 +39,56 @@ body {
 		background-color: #eee;
 	}
 }
+
+h1, h2, h3, h4, h5 {
+	font-family: $font-header;
+	font-weight: bold;
+	text-align: center;
+}
+
+h1 {
+	color: $tm-red;
+	font-size: 34px;
+}
+
+h2 {
+	color: $tm-blue;
+	font-size: 28px;
+}
+
+.page-header {
+	border-bottom: none;
+}
+
+.checkbox {
+	.help-block {
+		padding-left: 20px;
+	}
+}
+
+.label {
+	font-size: inherit;
+	padding: {
+		top: 0.1em;
+		bottom: 0.2em;
+	}
+
+	.fa-spin {
+		margin-right: .6em;
+	}
+}
+
+.table {
+	tfoot {
+		tr {
+			td, th {
+				border-top: 2px solid #ddd;
+			}
+		}
+	}
+}
+
+/* Custom elements */
 
 .form-signin {
 	max-width: 330px;
@@ -80,12 +161,6 @@ body {
 	padding-left: 20px;
 }
 
-.checkbox {
-	.help-block {
-		padding-left: 20px;
-	}
-}
-
 table {
 	&.currencies-1 {
 		tr {
@@ -99,16 +174,6 @@ table {
 		tr {
 			td:nth-last-child(-n+2), th:nth-last-child(-n+2) {
 				text-align: right;
-			}
-		}
-	}
-}
-
-.table {
-	tfoot {
-		tr {
-			td, th {
-				border-top: 2px solid #ddd;
 			}
 		}
 	}
@@ -146,15 +211,157 @@ table {
 	}
 }
 
-.label {
-	font-size: inherit;
-
-	.fa-spin {
-		margin-right: .6em;
-	}
-}
-
 .progress-bar-none {
 	background: none;
 	color: #000;
+}
+
+.navigation-menu {
+	ul, li {
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		@media #{$responsive-tablet-desktop} {
+			display: inline-block;
+		}
+	}
+
+	a {
+		position: relative;
+		display: block;
+		text-decoration: none;
+	}
+}
+
+#navigation-bar {
+	background: $tm-crimson;
+
+	@media #{$responsive-tablet-desktop} {
+		position: fixed;
+		top: 0;
+		width: 100%;
+	}
+
+	a {
+		color: #FFF;
+		transition: background-color 250ms ease-in-out;
+
+		@media #{$responsive-phone} {
+			border-bottom: 1px solid $tm-red;
+		}
+
+		&:hover, &.current {
+			background: $tm-red;
+
+			@media #{$responsive-tablet-desktop} {
+				border-bottom: 3px solid darken($tm-red, 10%);
+				margin-bottom: -3px;
+			}
+		}
+	}
+
+	.container {
+		padding: 0;
+		position: relative;
+	}
+}
+
+#main-navigation {
+	li {
+		font-size: 1.4rem;
+		line-height: 1;
+
+		&:first-child {
+			a {
+				background: $tm-yellow;
+				color: #000;
+
+				@media #{$responsive-phone} {
+					border-bottom-width: 0;
+				}
+
+				&:hover, &.current {
+					border-bottom-color: darken($tm-yellow, 30%);
+				}
+			}
+		}
+	}
+
+	a {
+		padding: 1.2rem .8rem;
+	}
+}
+
+#side-navigation {
+	@media #{$responsive-phone} {
+		li {
+			font-size: 1.4rem;
+		}
+
+		a {
+			padding: 1.2rem 0.8rem;
+
+			i {
+				display: inline-block;
+				margin-right: .4em;
+
+				&.fa {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@media #{$responsive-tablet-desktop} {
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		li {
+			font-size: 1.6rem;
+		}
+
+		a {
+			padding: 1.05rem 1.2rem;
+			min-height: 4.1rem;
+			box-sizing: border-box;
+
+			&:hover {
+				&:before {
+					border: 7px solid transparent;
+					border-bottom-color: $tm-red;
+					bottom: -10px;
+					content: "";
+					display: inline-block;
+					height: 0;
+					margin-right: -5px;
+					position: absolute;
+					right: 50%;
+					width: 0;
+				}
+
+				&:after {
+					background: $tm-red;
+					border-radius: 5px;
+					font-size: 1.2rem;
+					right: 50%;
+					top: calc(100% + 9px);
+					content: attr(data-title);
+					display: inline-block;
+					padding: .8rem 1.2rem;
+					position: absolute;
+					white-space: nowrap;
+					-webkit-transform: translateX(50%);
+					transform: translateX(50%);
+				}
+			}
+
+			span {
+				position: absolute;
+				margin-left: -1000em;
+			}
+		}
+	}
 }

@@ -1,3 +1,5 @@
+<?php \F3::set('bodyClass', "navigated") ?>
+
 <?php echo \View::instance()->render('header.php') ?>
 
 <?php
@@ -236,5 +238,7 @@ $renderer = \helpers\FormRendererFactory::className();
 	<a href="#" class="btn btn-lg btn-success"><?php echo \F3::get('lang.SelectPaymentOptionButton') ?></a>
 	<?php endif; ?>
 </div>
+
+<?php echo \View::instance()->render('_navigation.php') ?>
 
 <?php echo \View::instance()->render('footer.php') ?>

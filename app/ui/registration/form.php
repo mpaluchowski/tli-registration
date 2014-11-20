@@ -1,3 +1,5 @@
+<?php \F3::set('bodyClass', "navigated") ?>
+
 <?php echo \View::instance()->render('header.php') ?>
 
 <div class="container">
@@ -249,6 +251,8 @@
     </h3>
   </div>
 </footer>
+
+<?php echo \View::instance()->render('_navigation.php') ?>
 
 <script src="/js/registration-form.js"></script>
 <script>

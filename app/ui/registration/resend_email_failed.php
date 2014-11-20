@@ -1,3 +1,5 @@
+<?php \F3::set('bodyClass', "navigated") ?>
+
 <?php echo \View::instance()->render('header.php') ?>
 
 <div class="container">
@@ -10,5 +12,7 @@
 		<a href="<?php echo \F3::get('ALIASES.registration_email') ?>" class="btn btn-primary active" role="button"><?php echo \F3::get('lang.HowProceedToPaymentHavingTroubleResendEmail') ?></a>
 	</p>
 </div>
+
+<?php echo \View::instance()->render('_navigation.php') ?>
 
 <?php echo \View::instance()->render('footer.php') ?>
