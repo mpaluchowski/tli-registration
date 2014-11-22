@@ -39,9 +39,25 @@ class Payment {
 			);
 
 		$transactionDao->saveTransaction($transaction);
+
 		$paymentProcessor = \models\PaymentProcessorFactory::instance();
 
-		print_r($paymentProcessor->testConnection());
+		// Register transaction with processor
+		$token = $paymentProcessor->registerTransaction(
+			$transaction,
+			\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_confirmation'),
+			\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_status_receive')
+			);
+
+		// Redirect to payments page
+		$f3->reroute($paymentProcessor->getPaymentPageUrl($token));
+	}
+
+	function confirmation($f3, $args) {
+		if (!is_string($args['registrationHash']) && 40 != strlen($args['registrationHash'] + 0))
+			$f3->error(404);
+
+		print_r($f3->get('POST'));
 	}
 
 }

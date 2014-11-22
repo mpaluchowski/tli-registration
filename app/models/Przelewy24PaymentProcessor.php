@@ -8,8 +8,37 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		P24_VERSION 		= "3.2",
 		HOST_LIVE 			= "https://secure.przelewy24.pl/",
 		HOST_SANDBOX 		= "https://sandbox.przelewy24.pl/",
+		ENDPOINT_REGISTER	= "trnRegister",
+		ENDPOINT_REQUEST	= "trnRequest",
 		ENDPOINT_TEST		= "testConnection",
 		CONFIG_PREFIX		= "p24";
+
+	function registerTransaction(\models\Transaction $transaction, $returnUrl, $statusUrl) {
+		$response = $this->callService(
+			self::ENDPOINT_REGISTER, [
+				'p24_session_id' => $transaction->getSessionId(),
+				'p24_amount' => $this->parseAmountToInt($transaction->getAmount()),
+				'p24_currency' => $transaction->getCurrency(),
+				'p24_description' => $transaction->getDescription(),
+				'p24_email' => $transaction->getEmail(),
+				'p24_country' => $transaction->getCountryCode(),
+				'p24_url_return' => $returnUrl,
+				'p24_url_status' => $statusUrl,
+				'p24_sign' => $this->calculateSign([
+					$transaction->getSessionId(),
+					$this->getConfig('pos_id'),
+					$this->parseAmountToInt($transaction->getAmount()),
+					$transaction->getCurrency(),
+					])
+				]
+			);
+
+		return $response['token'];
+	}
+
+	function getPaymentPageUrl($token) {
+		return $this->getHost() . self::ENDPOINT_REQUEST . "/" . $token;
+	}
 
 	function testConnection() {
 		return $this->callService(
@@ -25,6 +54,10 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 
 	function hasTestMode() {
 		return true;
+	}
+
+	protected function parseAmountToInt($amount) {
+		return (int)($amount * 100);
 	}
 
 	protected function calculateSign(array $elements) {
