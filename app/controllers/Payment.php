@@ -21,6 +21,10 @@ class Payment {
 			);
 			$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 		}
+
+		$paymentProcessor = \models\PaymentProcessorFactory::instance();
+
+		print_r($paymentProcessor->testConnection());
 	}
 
 }
