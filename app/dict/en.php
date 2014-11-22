@@ -171,6 +171,8 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Re-send e-mail",
 	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
 
+	"PaymentAlreadyPaidMsg" => "We already received your payment on {0} and your registration is complete.",
+
 	"EmailRegistrationConfirmationSubject" => "Registration confirmation for {0}",
 	"EmailRegistrationConfirmationIntro" => "We received your registration for the e-mail address <strong>{0}</strong>. You can access and review your registration at any time at:",
 	"EmailRegistrationConfirmationReview" => "Here's a summary of your entries from the registration:",

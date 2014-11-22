@@ -171,6 +171,8 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Wyślij e-mail ponownie",
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
 
+	"PaymentAlreadyPaidMsg" => "Otrzymaliśmy już twoją płatność {0} i twoja rejestracja jest zakończona.",
+
 	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
 	"EmailRegistrationConfirmationIntro" => "Przyjęliśmy twoją rejestrację dla adresu e-mail <strong>{0}</strong>. Możesz wrócić do niej w każdej chwili pod adresem:",
 	"EmailRegistrationConfirmationReview" => "Oto podsumowanie twojej rejestracji:",
