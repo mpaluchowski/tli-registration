@@ -11,11 +11,11 @@ class Payment {
 		$registrationDao = new \models\RegistrationDao();
 		$form = $registrationDao->readRegistrationFormByHash($args['registrationHash']);
 
-		if ('PAID' === $form->getStatus()) {
+		if ('PENDING_PAYMENT' !== $form->getStatus()) {
 			\models\MessageManager::addMessage(
 				'warning',
 				$f3->get(
-						'lang.PaymentAlreadyPaidMsg',
+						'lang.PaymentCannotProceed-' . $form->getStatus(),
 						strftime('%c', strtotime($form->getDatePaid()))
 					)
 			);

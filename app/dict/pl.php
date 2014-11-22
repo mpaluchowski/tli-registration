@@ -171,7 +171,9 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Wyślij e-mail ponownie",
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
 
-	"PaymentAlreadyPaidMsg" => "Otrzymaliśmy już twoją płatność {0} i twoja rejestracja jest zakończona.",
+	"PaymentCannotProceed-PAID" => "Otrzymaliśmy już twoją płatność {0} i twoja rejestracja jest zakończona.",
+	"PaymentCannotProceed-WAITING_LIST" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
+	"PaymentCannotProceed-PENDING_REVIEW" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
 
 	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
 	"EmailRegistrationConfirmationIntro" => "Przyjęliśmy twoją rejestrację dla adresu e-mail <strong>{0}</strong>. Możesz wrócić do niej w każdej chwili pod adresem:",
