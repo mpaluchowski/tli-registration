@@ -11,6 +11,9 @@ class Payment {
 		$registrationDao = new \models\RegistrationDao();
 		$form = $registrationDao->readRegistrationFormByHash($args['registrationHash']);
 
+		if (!$form)
+			$f3->error(404);
+
 		if ('PENDING_PAYMENT' !== $form->getStatus()) {
 			\models\MessageManager::addMessage(
 				'warning',
