@@ -46,6 +46,7 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		// Add args common to all calls
 		$args['p24_merchant_id'] = $this->getConfig('merchant_id');
 		$args['p24_pos_id'] = $this->getConfig('pos_id');
+		$args['p24_api_version'] = self::P24_VERSION;
 
 		$web = new \Web;
 		$result = $web->request(
