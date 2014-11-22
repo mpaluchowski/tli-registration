@@ -22,6 +22,23 @@ class Payment {
 			$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 		}
 
+		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
+		$totalPrice = $priceCalculator->calculateSummary($form)['total'];
+
+		// Create and save a new transaction
+		$transactionDao = new \models\TransactionDao();
+
+		$transaction = new \models\Transaction(
+			$transactionDao->generateSessionId(),
+			$form->getId(),
+			$totalPrice[$transactionDao->getDefaultPaymentCurrency()],
+			$transactionDao->getDefaultPaymentCurrency(),
+			$transactionDao->getDefaultPaymentDescription(),
+			$form->getEmail(),
+			$transactionDao->getDefaultPaymentCountry()
+			);
+
+		$transactionDao->saveTransaction($transaction);
 		$paymentProcessor = \models\PaymentProcessorFactory::instance();
 
 		print_r($paymentProcessor->testConnection());
