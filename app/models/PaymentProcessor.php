@@ -36,12 +36,12 @@ interface PaymentProcessor {
 	 * @return true if the payment processor is working in test mode, so not
 	 * processing actual transactions.
 	 */
-	function isTestMode();
+	static function isTestMode();
 
 	/**
 	 * @return true if the payment processor has a test mode available, to check
 	 * the flow without processing live transactions.
 	 */
-	function hasTestMode();
+	static function hasTestMode();
 
 }

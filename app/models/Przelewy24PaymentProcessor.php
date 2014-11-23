@@ -48,11 +48,11 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 			);
 	}
 
-	function isTestMode() {
+	static function isTestMode() {
 		return (bool)\F3::get('payment_processor_test_mode');
 	}
 
-	function hasTestMode() {
+	static function hasTestMode() {
 		return true;
 	}
 
