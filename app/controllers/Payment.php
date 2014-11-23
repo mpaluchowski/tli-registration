@@ -72,7 +72,51 @@ class Payment {
 		if (!is_string($args['registrationHash']) && 40 != strlen($args['registrationHash'] + 0))
 			$f3->error(404);
 
-		print_r($f3->get('POST'));
+		$transactionDao = new \models\TransactionDao();
+		$paymentProcessor = \models\PaymentProcessorFactory::instance();
+
+		// We may have the session ID from the payment processor
+		if ($f3->get('POST')
+				&& $paymentProcessor->extractSessionId($f3->get('POST'))) {
+			// Read transaction from the session id provided
+			$transaction = $transactionDao->readTransactionBySessionId(
+				$paymentProcessor->extractSessionId($f3->get('POST'))
+				);
+		} else {
+			// Read Transaction via the registration hash
+			$registrationDao = new \models\RegistrationDao();
+			$form = $registrationDao->readRegistrationFormByHash($args['registrationHash']);
+			$transaction = $transactionDao->readTransactionByRegistrationId(
+				$form->getId()
+				);
+		}
+
+		// May only happen if someone calls this action without going through
+		// pay() first
+		if (!$transaction)
+			$f3->reroute('@registration_review');
+
+		// Check if transaction already confirmed with payment processor
+		if (!$transaction->getDatePaid()) {
+			// Mark the registration as payment being processed
+			$registrationDao->updateRegistrationStatusToProcessingPayment($form->getId());
+			$msg = 'lang.PaymentProcessing-PROCESSING_PAYMENT';
+		} else {
+			// Already received confirmation, inform user
+			$msg = 'lang.PaymentProcessing-PAID';
+		}
+		\models\MessageManager::addMessage(
+			'success',
+			$f3->get(
+					$msg,
+					[
+						$transaction->getDateStarted(),
+						$transaction->getDatePaid(),
+					]
+				)
+		);
+
+		$f3->reroute('@registration_review');
 	}
 
 	function status_receive($f3) {

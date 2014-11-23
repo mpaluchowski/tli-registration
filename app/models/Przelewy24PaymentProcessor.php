@@ -113,7 +113,9 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 	 * @see \models\PaymentProcessor#extractSessionId(array $postParameters)
 	 */
 	function extractSessionId(array $postParameters) {
-		return $postParameters['p24_session_id'];
+		return array_key_exists('p24_session_id', $postParameters)
+			? $postParameters['p24_session_id']
+			: null;
 	}
 
 	/**

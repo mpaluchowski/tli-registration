@@ -139,6 +139,15 @@ class RegistrationDao {
 			]);
 	}
 
+	function updateRegistrationStatusToProcessingPayment($registrationId) {
+		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
+				  SET status = "processing-payment"
+				  WHERE id_registration = :registrationId';
+		\F3::get('db')->exec($query, [
+				'registrationId' => $registrationId,
+			]);
+	}
+
 	function readRegistrationFormByHash($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,

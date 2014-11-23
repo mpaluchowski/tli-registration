@@ -66,6 +66,7 @@ class TransactionDao {
 						 t.amount,
 						 t.currency,
 						 t.date_started,
+						 t.date_paid,
 						 r.email
 				  FROM ' . \F3::get('db_table_prefix') . 'transactions t
 				  JOIN ' . \F3::get('db_table_prefix') . 'registrations r
@@ -73,6 +74,27 @@ class TransactionDao {
 				  WHERE t.session_id = :sessionId';
 		$result = \F3::get('db')->exec($query, [
 				'sessionId' => $sessionId,
+			]);
+
+		return $result
+			? $this->parseQueryToTransaction($result[0])
+			: null;
+	}
+
+	function readTransactionByRegistrationId($registrationId) {
+		$query = 'SELECT t.session_id,
+						 t.fk_registration,
+						 t.amount,
+						 t.currency,
+						 t.date_started,
+						 t.date_paid,
+						 r.email
+				  FROM ' . \F3::get('db_table_prefix') . 'transactions t
+				  JOIN ' . \F3::get('db_table_prefix') . 'registrations r
+				    ON t.fk_registration = r.id_registration
+				  WHERE t.fk_registration = :registrationId';
+		$result = \F3::get('db')->exec($query, [
+				'registrationId' => $registrationId,
 			]);
 
 		return $result
@@ -91,7 +113,8 @@ class TransactionDao {
 			$this->getDefaultPaymentCountry()
 			);
 
-		$transaction->setDatestarted($result['date_started']);
+		$transaction->setDateStarted($result['date_started']);
+		$transaction->setDatePaid($result['date_paid']);
 
 		return $transaction;
 	}
