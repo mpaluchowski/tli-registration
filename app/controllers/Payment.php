@@ -34,23 +34,26 @@ class Payment {
 			$f3->reroute('@registration_review');
 		}
 
-		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
-		$totalPrice = $priceCalculator->calculateSummary($form)['total'];
+		// Start new transaction if none found so far. Could happen if we saved
+		// a transactio on our side previously, but it didn't reach the payment
+		// processor.
+		if (!$transaction) {
+			$priceCalculator = \models\PriceCalculatorFactory::newInstance();
+			$totalPrice = $priceCalculator->calculateSummary($form)['total'];
 
-		// Create and save a new transaction
-		$transactionDao = new \models\TransactionDao();
+			// Create and save a new transaction
+			$transaction = new \models\Transaction(
+				$transactionDao->generateSessionId(),
+				$form->getId(),
+				$totalPrice[$transactionDao->getDefaultPaymentCurrency()],
+				$transactionDao->getDefaultPaymentCurrency(),
+				$transactionDao->getDefaultPaymentDescription(),
+				$form->getEmail(),
+				$transactionDao->getDefaultPaymentCountry()
+				);
 
-		$transaction = new \models\Transaction(
-			$transactionDao->generateSessionId(),
-			$form->getId(),
-			$totalPrice[$transactionDao->getDefaultPaymentCurrency()],
-			$transactionDao->getDefaultPaymentCurrency(),
-			$transactionDao->getDefaultPaymentDescription(),
-			$form->getEmail(),
-			$transactionDao->getDefaultPaymentCountry()
-			);
-
-		$transactionDao->saveTransaction($transaction);
+			$transactionDao->saveTransaction($transaction);
+		}
 
 		$paymentProcessor = \models\PaymentProcessorFactory::instance();
 
