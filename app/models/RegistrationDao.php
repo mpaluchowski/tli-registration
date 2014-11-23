@@ -151,10 +151,12 @@ class RegistrationDao {
 	 *
 	 * @param registrationId ID of the Registration
 	 */
-	function updateRegistrationStatusToProcessingPayment($registrationId) {
+	function updateRegistrationStatusToProcessingPayment($registrationId, $force = false) {
 		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
 				  SET status = "processing-payment"
 				  WHERE id_registration = :registrationId';
+		if (!$force)
+			$query .= ' AND date_paid IS NOT NULL';
 		\F3::get('db')->exec($query, [
 				'registrationId' => $registrationId,
 			]);
