@@ -32,6 +32,8 @@ interface PaymentProcessor {
 		\models\Transaction &$transaction
 		);
 
+	function verifyTransaction(\models\Transaction $transaction);
+
 	/**
 	 * Test if the connection with the payment processor is working correctly.
 	 */

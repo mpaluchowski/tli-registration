@@ -10,6 +10,7 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		HOST_SANDBOX 		= "https://sandbox.przelewy24.pl/",
 		ENDPOINT_REGISTER	= "trnRegister",
 		ENDPOINT_REQUEST	= "trnRequest",
+		ENDPOINT_VERIFY		= "trnVerify",
 		ENDPOINT_TEST		= "testConnection",
 		CONFIG_PREFIX		= "p24";
 
@@ -61,6 +62,24 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		$transaction->setStatement($postParameters['p24_statement']);
 
 		return $transaction;
+	}
+
+	function verifyTransaction(\models\Transaction $transaction) {
+		$response = $this->callService(
+			self::ENDPOINT_VERIFY, [
+				'p24_session_id' => $transaction->getSessionId(),
+				'p24_amount' => $this->parseAmountToInt($transaction->getAmount()),
+				'p24_currency' => $transaction->getCurrency(),
+				'p24_order_id' => $transaction->getOrderId(),
+				'p24_sign' => $this->calculateSign([
+					$transaction->getSessionId(),
+					$transaction->getOrderId(),
+					$this->parseAmountToInt($transaction->getAmount()),
+					$transaction->getCurrency(),
+					])
+			]);
+
+		return $response['error'] == 0;
 	}
 
 	function testConnection() {

@@ -85,6 +85,9 @@ class Payment {
 				$transaction->getMethod(),
 				$transaction->getStatement()
 				);
+
+			// Confirm to the processor that the transaction is valid
+			$paymentProcessor->verifyTransaction($transaction);
 		}
 	}
 
