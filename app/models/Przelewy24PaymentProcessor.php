@@ -207,7 +207,24 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 			]
 			);
 
-		parse_str($result['body'], $output);
+		return $this->processResponse($result['body']);
+	}
+
+	protected function processResponse($body) {
+		parse_str($body, $output);
+
+		if (!array_key_exists('error', $output))
+			throw new \models\PaymentProcessorCallException(
+				"Connection issue during communication with Przelewy24",
+				$output
+				);
+
+		if (0 != $output['error'])
+			throw new \models\PaymentProcessorCallException(
+				"Przelewy24 returned an error when calling",
+				$output
+				);
+
 		return $output;
 	}
 

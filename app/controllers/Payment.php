@@ -57,13 +57,26 @@ class Payment {
 
 		$paymentProcessor = \models\PaymentProcessorFactory::instance();
 
-		// Register transaction with processor
-		$token = $paymentProcessor->registerTransaction(
-			$transaction,
-			\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_confirmation'),
-			\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_status_receive'),
-			\helpers\View::getCurrentLanguage()
+		try {
+			// Register transaction with processor
+			$token = $paymentProcessor->registerTransaction(
+				$transaction,
+				\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_confirmation'),
+				\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_status_receive'),
+				\helpers\View::getCurrentLanguage()
+				);
+		} catch (\models\PaymentProcessorCallException $e) {
+			$logger = new \Log($f3->get('logfile_error'));
+			$logger->write(
+				'ERROR: ' . print_r($e, true)
+				);
+
+			\models\MessageManager::addMessage(
+				'danger',
+				$f3->get('lang.PaymentProcessingErrorMsg')
 			);
+			$f3->reroute('@registration_review');
+		}
 
 		// Redirect to payments page
 		$f3->reroute($paymentProcessor->getPaymentPageUrl($token));
