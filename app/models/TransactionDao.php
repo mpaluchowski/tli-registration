@@ -45,6 +45,42 @@ class TransactionDao {
 		return $transaction;
 	}
 
+	function readTransactionBySessionId($sessionId) {
+		$query = 'SELECT t.session_id,
+						 t.fk_registration,
+						 t.amount,
+						 t.currency,
+						 t.date_started,
+						 r.email
+				  FROM ' . \F3::get('db_table_prefix') . 'transactions t
+				  JOIN ' . \F3::get('db_table_prefix') . 'registrations r
+				    ON t.fk_registration = r.id_registration
+				  WHERE t.session_id = :sessionId';
+		$result = \F3::get('db')->exec($query, [
+				'sessionId' => $sessionId,
+			]);
+
+		return $result
+			? $this->parseQueryToTransaction($result[0])
+			: null;
+	}
+
+	function parseQueryToTransaction($result) {
+		$transaction = new \models\Transaction(
+			$result['session_id'],
+			$result['fk_registration'],
+			$result['amount'],
+			$result['currency'],
+			$this->getDefaultPaymentDescription(),
+			$result['email'],
+			$this->getDefaultPaymentCountry()
+			);
+
+		$transaction->setDatestarted($result['date_started']);
+
+		return $transaction;
+	}
+
 	/**
 	 * Generates a transaction session ID to identify the transaction with
 	 * the selected payment processor.

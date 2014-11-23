@@ -63,4 +63,19 @@ class Payment {
 		print_r($f3->get('POST'));
 	}
 
+	function status_receive($f3) {
+		$transactionDao = new \models\TransactionDao();
+		$paymentProcessor = \models\PaymentProcessorFactory::instance();
+
+		$transaction = $transactionDao->readTransactionBySessionId(
+			$paymentProcessor->extractSessionId($f3->get('POST'))
+			);
+
+		// Check incoming transaction parameters against the ones stored
+		$result = $paymentProcessor->processTransactionConfirmation(
+			$f3->get('POST'),
+			$transaction
+			);
+	}
+
 }

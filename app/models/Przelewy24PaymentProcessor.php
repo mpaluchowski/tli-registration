@@ -40,12 +40,39 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		return $this->getHost() . self::ENDPOINT_REQUEST . "/" . $token;
 	}
 
+	function processTransactionConfirmation(array $postParameters, \models\Transaction &$transaction) {
+		$verification = $postParameters['p24_merchant_id'] == $this->getConfig('merchant_id')
+			&& $postParameters['p24_pos_id'] == $this->getConfig('pos_id')
+			&& $postParameters['p24_session_id'] == $transaction->getSessionId()
+			&& $postParameters['p24_amount'] == $this->parseAmountToInt($transaction->getAmount())
+			&& $postParameters['p24_currency'] == $transaction->getCurrency()
+			&& $postParameters['p24_sign'] == $this->calculateSign([
+				$postParameters['p24_session_id'],
+				$postParameters['p24_order_id'],
+				$postParameters['p24_amount'],
+				$postParameters['p24_currency']
+				]);
+
+		if (!$verification)
+			return false;
+
+		$transaction->setOrderId($postParameters['p24_order_id']);
+		$transaction->setMethod($postParameters['p24_method']);
+		$transaction->setStatement($postParameters['p24_statement']);
+
+		return $transaction;
+	}
+
 	function testConnection() {
 		return $this->callService(
 			self::ENDPOINT_TEST, [
 				'p24_sign' => $this->calculateSign([$this->getConfig('pos_id')]),
 				]
 			);
+	}
+
+	function extractSessionId(array $postParameters) {
+		return $postParameters['p24_session_id'];
 	}
 
 	static function isTestMode() {

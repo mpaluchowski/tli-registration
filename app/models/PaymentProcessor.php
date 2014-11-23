@@ -27,10 +27,24 @@ interface PaymentProcessor {
 	 */
 	function getPaymentPageUrl($token);
 
+	function processTransactionConfirmation(
+		array $postParameters,
+		\models\Transaction &$transaction
+		);
+
 	/**
 	 * Test if the connection with the payment processor is working correctly.
 	 */
 	function testConnection();
+
+	/**
+	 * Find and return the session ID in the POST parameters sent in by the
+	 * payment processor.
+	 *
+	 * @param postParameters array with POST parameters from the request.
+	 * @return value of the session ID found in the POST parameters.
+	 */
+	function extractSessionId(array $postParameters);
 
 	/**
 	 * @return true if the payment processor is working in test mode, so not

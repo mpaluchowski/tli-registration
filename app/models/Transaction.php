@@ -13,6 +13,10 @@ class Transaction {
 		$email,
 		$countryCode,
 
+		$orderId,
+		$method,
+		$statement,
+
 		$dateStarted;
 
 	function __construct($sessionId, $registrationId, $amount, $currency, $description,
@@ -52,6 +56,30 @@ class Transaction {
 
 	function getCountryCode() {
 		return $this->countryCode;
+	}
+
+	function setOrderId($orderId) {
+		$this->orderId = $orderId;
+	}
+
+	function getOrderId() {
+		return $this->orderId;
+	}
+
+	function setMethod($method) {
+		$this->method = $method;
+	}
+
+	function getMethod() {
+		return $this->method;
+	}
+
+	function setStatement($statement) {
+		$this->statement = $statement;
+	}
+
+	function getStatement() {
+		return $this->statement;
 	}
 
 	function setDateStarted($dateStarted) {
