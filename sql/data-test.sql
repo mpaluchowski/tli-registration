@@ -51,13 +51,13 @@ INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
 	(7, 'PLN', 11);
 /*!40000 ALTER TABLE `tli_pricing_prices` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_registrations: ~3 rows (approximately)
+-- Dumping data for table tli_registrations.tli_registrations: ~4 rows (approximately)
 DELETE FROM `tli_registrations`;
 /*!40000 ALTER TABLE `tli_registrations` DISABLE KEYS */;
 INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `status`, `date_entered`, `date_paid`) VALUES
-	(1, '***REMOVED***', '30085d747a6d6e2711c7c2446fdf296dc65d67f5', NULL, '2014-10-16 09:50:26', NULL),
+	(1, '***REMOVED***', '30085d747a6d6e2711c7c2446fdf296dc65d67f5', NULL, '2014-10-16 09:50:26', '2014-11-23 08:39:03'),
 	(2, 'john@example.com', '5224cb6fdd5bbe463af1db8ee499e858fcb79f81', 'waiting-list', '2014-10-16 10:50:42', NULL),
-	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', NULL, '2014-10-19 22:46:36', '2014-10-19 22:46:56'),
+	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', NULL, '2014-10-19 22:46:36', NULL),
 	(4, 'ibrahim@example.com', '0361f888e4fd81b343da82653e0961c8bffac06a', 'pending-review', '2014-11-16 21:38:30', NULL);
 /*!40000 ALTER TABLE `tli_registrations` ENABLE KEYS */;
 
@@ -113,6 +113,13 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(4, 'saturday-dinner-participate', '"on"'),
 	(4, 'translator', '"on"');
 /*!40000 ALTER TABLE `tli_registration_fields` ENABLE KEYS */;
+
+-- Dumping data for table tli_registrations.tli_transactions: ~21 rows (approximately)
+DELETE FROM `tli_transactions`;
+/*!40000 ALTER TABLE `tli_transactions` DISABLE KEYS */;
+INSERT INTO `tli_transactions` (`session_id`, `fk_registration`, `amount`, `currency`, `order_id`, `method`, `statement`, `date_started`, `date_paid`) VALUES
+	('9a9ebbef3f63398c984b71c1f28c0ad1', 1, 169, 'PLN', 18382624, 25, 'ABCD', '2014-11-22 19:00:29', '2014-11-23 08:39:03');
+/*!40000 ALTER TABLE `tli_transactions` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -83,6 +83,26 @@ CREATE TABLE IF NOT EXISTS `tli_registration_fields` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Data exporting was unselected.
+
+
+-- Dumping structure for table tli_registrations.tli_transactions
+DROP TABLE IF EXISTS `tli_transactions`;
+CREATE TABLE IF NOT EXISTS `tli_transactions` (
+  `session_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `fk_registration` int(10) unsigned NOT NULL,
+  `amount` float NOT NULL,
+  `currency` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `method` int(11) DEFAULT NULL,
+  `statement` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `date_started` datetime NOT NULL,
+  `date_paid` datetime DEFAULT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `FK__tli_registrations` (`fk_registration`),
+  CONSTRAINT `FK__tli_registrations` FOREIGN KEY (`fk_registration`) REFERENCES `tli_registrations` (`id_registration`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Data exporting was unselected.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
