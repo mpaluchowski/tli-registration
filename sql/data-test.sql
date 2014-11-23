@@ -51,17 +51,18 @@ INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
 	(7, 'PLN', 11);
 /*!40000 ALTER TABLE `tli_pricing_prices` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_registrations: ~4 rows (approximately)
+-- Dumping data for table tli_registrations.tli_registrations: ~5 rows (approximately)
 DELETE FROM `tli_registrations`;
 /*!40000 ALTER TABLE `tli_registrations` DISABLE KEYS */;
 INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `status`, `date_entered`, `date_paid`) VALUES
 	(1, '***REMOVED***', '30085d747a6d6e2711c7c2446fdf296dc65d67f5', NULL, '2014-10-16 09:50:26', '2014-11-23 08:39:03'),
 	(2, 'john@example.com', '5224cb6fdd5bbe463af1db8ee499e858fcb79f81', 'waiting-list', '2014-10-16 10:50:42', NULL),
-	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', NULL, '2014-10-19 22:46:36', NULL),
-	(4, 'ibrahim@example.com', '0361f888e4fd81b343da82653e0961c8bffac06a', 'pending-review', '2014-11-16 21:38:30', NULL);
+	(3, 'jane@example.com', '0850a4cffb73cbc53fd33e8990c2184c915ff041', 'processing-payment', '2014-10-19 22:46:36', NULL),
+	(4, 'ibrahim@example.com', '0361f888e4fd81b343da82653e0961c8bffac06a', 'pending-review', '2014-11-16 21:38:30', NULL),
+	(5, 'maria@example.org', '7d8967805b752068007564285fd65fe78121bab6', NULL, '2014-11-23 13:22:27', NULL);
 /*!40000 ALTER TABLE `tli_registrations` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_registration_fields: ~35 rows (approximately)
+-- Dumping data for table tli_registrations.tli_registration_fields: ~60 rows (approximately)
 DELETE FROM `tli_registration_fields`;
 /*!40000 ALTER TABLE `tli_registration_fields` DISABLE KEYS */;
 INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUES
@@ -111,14 +112,28 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(4, 'phone', '"+33 123 456 789"'),
 	(4, 'saturday-dinner-meal', '"vegetarian"'),
 	(4, 'saturday-dinner-participate', '"on"'),
-	(4, 'translator', '"on"');
+	(4, 'translator', '"on"'),
+	(5, 'accommodation-with-toastmasters', '"host"'),
+	(5, 'country', '"poland"'),
+	(5, 'educational-awards', '"DTM"'),
+	(5, 'exec-position', '"vpe"'),
+	(5, 'friday-social-event', '"on"'),
+	(5, 'full-name', '"Maria dos Santos"'),
+	(5, 'home-club', '"Top Careers Toastmasters"'),
+	(5, 'lunch', '"on"'),
+	(5, 'lunch-days', '["saturday"]'),
+	(5, 'phone', '"+48234567890"'),
+	(5, 'saturday-dinner-meal', '"meat"'),
+	(5, 'saturday-dinner-participate', '"on"'),
+	(5, 'translator', '"on"');
 /*!40000 ALTER TABLE `tli_registration_fields` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_transactions: ~21 rows (approximately)
+-- Dumping data for table tli_registrations.tli_transactions: ~1 rows (approximately)
 DELETE FROM `tli_transactions`;
 /*!40000 ALTER TABLE `tli_transactions` DISABLE KEYS */;
 INSERT INTO `tli_transactions` (`session_id`, `fk_registration`, `amount`, `currency`, `order_id`, `method`, `statement`, `date_started`, `date_paid`) VALUES
-	('9a9ebbef3f63398c984b71c1f28c0ad1', 1, 169, 'PLN', 18382624, 25, 'ABCD', '2014-11-22 19:00:29', '2014-11-23 08:39:03');
+	('9a9ebbef3f63398c984b71c1f28c0ad1', 1, 169, 'PLN', 18382624, 25, 'ABCD', '2014-11-22 19:00:29', '2014-11-23 08:39:03'),
+	('c47045e40c0baf9815c5a12856fb0ce5', 3, 65, 'PLN', NULL, NULL, NULL, '2014-11-23 13:50:05', NULL);
 /*!40000 ALTER TABLE `tli_transactions` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
