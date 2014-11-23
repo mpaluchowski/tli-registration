@@ -70,12 +70,16 @@ class TransactionDao {
 					  statement = :statement,
 					  date_paid = NOW()
 				  WHERE session_id = :sessionId';
-		\F3::get('db')->exec($query, [
+		\F3::get('db')->exec([
+			'SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE',
+			$query,
+			],[[ // empty array, no params
+			],[
 				'orderId' => $orderId,
 				'method' => $method,
 				'statement' => $statement,
 				'sessionId' => $sessionId,
-			]);
+			]]);
 	}
 
 	/**
@@ -95,7 +99,8 @@ class TransactionDao {
 				  FROM ' . \F3::get('db_table_prefix') . 'transactions t
 				  JOIN ' . \F3::get('db_table_prefix') . 'registrations r
 				    ON t.fk_registration = r.id_registration
-				  WHERE t.session_id = :sessionId';
+				  WHERE t.session_id = :sessionId
+				  LOCK IN SHARE MODE';
 		$result = \F3::get('db')->exec($query, [
 				'sessionId' => $sessionId,
 			]);
@@ -123,7 +128,8 @@ class TransactionDao {
 				  FROM ' . \F3::get('db_table_prefix') . 'transactions t
 				  JOIN ' . \F3::get('db_table_prefix') . 'registrations r
 				    ON t.fk_registration = r.id_registration
-				  WHERE t.fk_registration = :registrationId';
+				  WHERE t.fk_registration = :registrationId
+				  LOCK IN SHARE MODE';
 		$result = \F3::get('db')->exec($query, [
 				'registrationId' => $registrationId,
 			]);
