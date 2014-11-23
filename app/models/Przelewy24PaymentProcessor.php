@@ -21,7 +21,12 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 	/**
 	 * @see \models\PaymentProcessor#registerTransaction(\models\Transaction $transaction, $returnUrl, $statusUrl)
 	 */
-	function registerTransaction(\models\Transaction $transaction, $returnUrl, $statusUrl) {
+	function registerTransaction(
+			\models\Transaction $transaction,
+			$returnUrl,
+			$statusUrl,
+			$language = 'en'
+			) {
 		$response = $this->callService(
 			self::ENDPOINT_REGISTER, [
 				'p24_session_id' => $transaction->getSessionId(),
@@ -32,6 +37,7 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 				'p24_country' => $transaction->getCountryCode(),
 				'p24_url_return' => $returnUrl,
 				'p24_url_status' => $statusUrl,
+				'p24_language' => $language,
 				'p24_sign' => $this->calculateSign([
 					$transaction->getSessionId(),
 					$this->getConfig('pos_id'),

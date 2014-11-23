@@ -61,7 +61,8 @@ class Payment {
 		$token = $paymentProcessor->registerTransaction(
 			$transaction,
 			\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_confirmation'),
-			\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_status_receive')
+			\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_status_receive'),
+			\helpers\View::getCurrentLanguage()
 			);
 
 		// Redirect to payments page

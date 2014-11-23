@@ -17,6 +17,13 @@ class View {
 	}
 
 	/**
+	 * @return currently loaded language of application.
+	 */
+	static function getCurrentLanguage() {
+		return explode("-", explode(",", \F3::get('LANGUAGE'))[0])[0];
+	}
+
+	/**
 	 * Produces the label type to display for each registration status.
 	 *
 	 * @param status Registration status to provide a label for.
