@@ -127,11 +127,12 @@ class RegistrationDao {
 		return $registrationId;
 	}
 
-	function updateRegistrationPaidDate($registrationId, $time = null) {
+	function updateRegistrationStatusToPaid($registrationId, $time = null) {
 		if (!$time) $time = time();
 
 		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
-				  SET date_paid = FROM_UNIXTIME(:datePaid)
+				  SET date_paid = FROM_UNIXTIME(:datePaid),
+					  status = NULL
 				  WHERE id_registration = :registrationId';
 		\F3::get('db')->exec($query, [
 				'datePaid' => $time,

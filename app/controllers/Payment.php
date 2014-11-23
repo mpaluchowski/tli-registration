@@ -148,7 +148,7 @@ class Payment {
 			$registrationDao = new \models\RegistrationDao();
 
 			// Mark the registration is paid
-			$registrationDao->updateRegistrationPaidDate(
+			$registrationDao->updateRegistrationStatusToPaid(
 				$transaction->getRegistrationId()
 				);
 		}
