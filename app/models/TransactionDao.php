@@ -45,18 +45,33 @@ class TransactionDao {
 		return $transaction;
 	}
 
+	/**
+	 * Generates a transaction session ID to identify the transaction with
+	 * the selected payment processor.
+	 *
+	 * @return unique string representing the transaction session.
+	 */
 	static function generateSessionId() {
 		return md5(session_id() . date("YmdHis"));
 	}
 
+	/**
+	 * @return 3-letter code of the default currency to process payments in.
+	 */
 	static function getDefaultPaymentCurrency() {
 		return \F3::get('payment_currency');
 	}
 
+	/**
+	 * @return default payment description to send to othe processor.
+	 */
 	static function getDefaultPaymentDescription() {
 		return \F3::get('payment_description');
 	}
 
+	/**
+	 * @return country code for the default payment country.
+	 */
 	static function getDefaultPaymentCountry() {
 		return \F3::get('payment_country');
 	}
