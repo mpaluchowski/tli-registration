@@ -67,9 +67,7 @@ class Payment {
 				);
 		} catch (\models\PaymentProcessorCallException $e) {
 			$logger = new \Log($f3->get('logfile_error'));
-			$logger->write(
-				'ERROR: ' . print_r($e, true)
-				);
+			$logger->write('ERROR: ' . print_r($e, true));
 
 			\models\MessageManager::addMessage(
 				'danger',
