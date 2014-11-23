@@ -171,6 +171,7 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Re-send e-mail",
 	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
 
+	"PaymentTestModeActiveAlert" => "Payment processing is working in <strong>test mode</strong>. <strong>No actual transaction will be performed</strong> - the payment processor will merely confirm that a payment was made and your registration will automatically be confirmed.",
 	"PaymentCannotProceed-PAID" => "We already received your payment on {0} and your registration is complete.",
 	"PaymentCannotProceed-WAITING_LIST" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
 	"PaymentCannotProceed-PENDING_REVIEW" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
