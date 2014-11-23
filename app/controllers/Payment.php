@@ -171,10 +171,17 @@ class Payment {
 
 		// Confirm to the processor that the transaction is valid
 		try {
-			$paymentProcessor->verifyTransaction($transaction);
+			$result = $paymentProcessor->verifyTransaction($transaction);
 		} catch (\models\PaymentProcessorCallException $e) {
 			$logger = new \Log($f3->get('logfile_error'));
 			$logger->write('ERROR: ' . print_r($e, true));
+		}
+
+		if (!$result) {
+			$logger = new \Log($f3->get('logfile_error'));
+			$logger->write('ERROR: Transaction verification with PaymentProcessor failed' . PHP_EOL
+				. print_r($f3->get('POST'), true));
+			return;
 		}
 
 		$registrationDao = new \models\RegistrationDao();
