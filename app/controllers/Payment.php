@@ -185,7 +185,7 @@ class Payment {
 			);
 
 		// Send email confirming payment received
-		$form = $registrationDao->readRegistrationFormByEmail($args['email']);
+		$form = $registrationDao->readRegistrationFormById($transaction->getRegistrationId());
 
 		$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
 		$f3->set('form', $form);
@@ -193,8 +193,8 @@ class Payment {
 		$mailer = new \models\Mailer();
 
 		$mailer->sendEmail(
-			$args['email'],
-			$f3->get('lang.EmailRegistrationConfirmationSubject', $args['email']),
+			$form->getEmail(),
+			$f3->get('lang.EmailRegistrationConfirmationSubject', $form->getEmail()),
 			\View::instance()->render('mail/registration_confirm.php')
 			);
 	}
