@@ -27,11 +27,28 @@ interface PaymentProcessor {
 	 */
 	function getPaymentPageUrl($token);
 
+	/**
+	 * Process transaction status update coming from the Payment Processor to
+	 * see if all data is correct and extract statement data produced by the
+	 * processing party.
+	 *
+	 * @param postParameters the POST parameters received from the processor.
+	 * @param transaction transaction details stored in our system for comparison
+	 * and amending with new data.
+	 * @return transaction details with added statement data from the payment
+	 * processor, or false if stored data don't match incoming data.
+	 */
 	function processTransactionConfirmation(
 		array $postParameters,
 		\models\Transaction &$transaction
 		);
 
+	/**
+	 * Confirm to the payment processor that the transaction is correct and can
+	 * be cleared.
+	 *
+	 * @param transaction the transactio details.
+	 */
 	function verifyTransaction(\models\Transaction $transaction);
 
 	/**

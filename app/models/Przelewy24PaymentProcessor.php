@@ -2,6 +2,10 @@
 
 namespace models;
 
+/**
+ * PaymentProcessor implementation for the Polish www.przelewy24.pl processing
+ * service.
+ */
 class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 
 	const
@@ -14,6 +18,9 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		ENDPOINT_TEST		= "testConnection",
 		CONFIG_PREFIX		= "p24";
 
+	/**
+	 * @see \models\PaymentProcessor#registerTransaction(\models\Transaction $transaction, $returnUrl, $statusUrl)
+	 */
 	function registerTransaction(\models\Transaction $transaction, $returnUrl, $statusUrl) {
 		$response = $this->callService(
 			self::ENDPOINT_REGISTER, [
@@ -37,10 +44,16 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		return $response['token'];
 	}
 
+	/**
+	 * @see \models\PaymentProcessor#getPaymentPageUrl($token)
+	 */
 	function getPaymentPageUrl($token) {
 		return $this->getHost() . self::ENDPOINT_REQUEST . "/" . $token;
 	}
 
+	/**
+	 * @see \models\PaymentProcessor#processTransactionConfirmation(array $postParameters, \models\Transaction &$transaction)
+	 */
 	function processTransactionConfirmation(array $postParameters, \models\Transaction &$transaction) {
 		$verification = $postParameters['p24_merchant_id'] == $this->getConfig('merchant_id')
 			&& $postParameters['p24_pos_id'] == $this->getConfig('pos_id')
@@ -64,6 +77,9 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		return $transaction;
 	}
 
+	/**
+	 * @see \models\PaymentProcessor#verifyTransaction(\models\Transaction $transaction)
+	 */
 	function verifyTransaction(\models\Transaction $transaction) {
 		$response = $this->callService(
 			self::ENDPOINT_VERIFY, [
@@ -82,6 +98,9 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		return $response['error'] == 0;
 	}
 
+	/**
+	 * @see \models\PaymentProcessor#testConnection()
+	 */
 	function testConnection() {
 		return $this->callService(
 			self::ENDPOINT_TEST, [
@@ -90,22 +109,45 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 			);
 	}
 
+	/**
+	 * @see \models\PaymentProcessor#extractSessionId(array $postParameters)
+	 */
 	function extractSessionId(array $postParameters) {
 		return $postParameters['p24_session_id'];
 	}
 
+	/**
+	 * @see \models\PaymentProcessor#isTestMode()
+	 */
 	static function isTestMode() {
 		return (bool)\F3::get('payment_processor_test_mode');
 	}
 
+	/**
+	 * @see \models\PaymentProcessor#hasTestMode()
+	 */
 	static function hasTestMode() {
 		return true;
 	}
 
+	/**
+	 * Parse the float amount to int, formatted as P24 wants it. Will move the
+	 * decimal sign two digits to the right.
+	 *
+	 * @return integer form of the float amount.
+	 */
 	protected function parseAmountToInt($amount) {
 		return (int)($amount * 100);
 	}
 
+	/**
+	 * Calculate the CRC verification sign from a set of elements to add to
+	 * P24 requests.
+	 *
+	 * @param elements array of elements to put into the sign, in order they
+	 * should be added in.
+	 * @return MD5 hash of the concatenated elemnts and configured CRC key.
+	 */
 	protected function calculateSign(array $elements) {
 		$elements[] = $this->getConfig('crc');
 		return md5(implode("|", $elements));
