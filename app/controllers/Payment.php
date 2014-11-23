@@ -141,6 +141,13 @@ class Payment {
 			$paymentProcessor->extractSessionId($f3->get('POST'))
 			);
 
+		if (!$transaction) {
+			$logger = new \Log($f3->get('logfile_error'));
+			$logger->write('ERROR: Transaction not found after PaymentProcessor sent confirmation' . PHP_EOL
+				. print_r($f3->get('POST'), true));
+			return;
+		}
+
 		// Check incoming transaction parameters against the ones stored
 		$result = $paymentProcessor->processTransactionConfirmation(
 			$f3->get('POST'),
