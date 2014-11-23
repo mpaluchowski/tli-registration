@@ -76,6 +76,16 @@ class Payment {
 			$f3->get('POST'),
 			$transaction
 			);
+
+		if ($result) {
+			// Update stored transaction with details from processor
+			$transactionDao->updateTransactionPostPayment(
+				$transaction->getSessionId(),
+				$transaction->getOrderId(),
+				$transaction->getMethod(),
+				$transaction->getStatement()
+				);
+		}
 	}
 
 }

@@ -45,6 +45,21 @@ class TransactionDao {
 		return $transaction;
 	}
 
+	function updateTransactionPostPayment($sessionId, $orderId, $method, $statement) {
+		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'transactions
+				  SET order_id = :orderId,
+					  method = :method,
+					  statement = :statement,
+					  date_paid = NOW()
+				  WHERE session_id = :sessionId';
+		\F3::get('db')->exec($query, [
+				'orderId' => $orderId,
+				'method' => $method,
+				'statement' => $statement,
+				'sessionId' => $sessionId,
+			]);
+	}
+
 	function readTransactionBySessionId($sessionId) {
 		$query = 'SELECT t.session_id,
 						 t.fk_registration,
