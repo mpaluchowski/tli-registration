@@ -127,6 +127,12 @@ class RegistrationDao {
 		return $registrationId;
 	}
 
+	/**
+	 * Updates Registration's status to PAID, including timestamp.
+	 *
+	 * @param registrationId ID of registration.
+	 * @param time unix time of when payment was completed.
+	 */
 	function updateRegistrationStatusToPaid($registrationId, $time = null) {
 		if (!$time) $time = time();
 
@@ -140,6 +146,11 @@ class RegistrationDao {
 			]);
 	}
 
+	/**
+	 * Updates Registration's status to PROCESSING_PAYMENT.
+	 *
+	 * @param registrationId ID of the Registration
+	 */
 	function updateRegistrationStatusToProcessingPayment($registrationId) {
 		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
 				  SET status = "processing-payment"

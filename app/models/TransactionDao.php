@@ -2,6 +2,9 @@
 
 namespace models;
 
+/**
+ * Manages Transaction data.
+ */
 class TransactionDao {
 
 	function __construct() {
@@ -15,6 +18,13 @@ class TransactionDao {
 		}
 	}
 
+	/**
+	 * Store a new Transaction in the database.
+	 *
+	 * @param transaction \models\Transaction instance with transaction data to
+	 * store.
+	 * @return same transaction instance, with dateStarted added.
+	 */
 	function saveTransaction(\models\Transaction &$transaction) {
 		$dateStarted = time();
 
@@ -45,6 +55,14 @@ class TransactionDao {
 		return $transaction;
 	}
 
+	/**
+	 * Update transaction with data received from payment processing party.
+	 *
+	 * @param sessionId the sessionId of the transaction to update
+	 * @param orderId the Order ID received from the processor
+	 * @param method the payment method code received from the processor
+	 * @param statement the statement information received from the processor
+	 */
 	function updateTransactionPostPayment($sessionId, $orderId, $method, $statement) {
 		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'transactions
 				  SET order_id = :orderId,
@@ -60,6 +78,12 @@ class TransactionDao {
 			]);
 	}
 
+	/**
+	 * Load a Transaction based on its sessionId.
+	 *
+	 * @param sessionId the sessionId of the transaction
+	 * @return instance of \models\Transaction or null of sessionId not found
+	 */
 	function readTransactionBySessionId($sessionId) {
 		$query = 'SELECT t.session_id,
 						 t.fk_registration,
@@ -81,6 +105,13 @@ class TransactionDao {
 			: null;
 	}
 
+	/**
+	 * Load a Transaction based on its Registration ID.
+	 *
+	 * @param registrationId ID of the Registration to find the Transaction for
+	 * @return instance of \models\Transaction or null if registrationId not
+	 * found
+	 */
 	function readTransactionByRegistrationId($registrationId) {
 		$query = 'SELECT t.session_id,
 						 t.fk_registration,
@@ -102,6 +133,12 @@ class TransactionDao {
 			: null;
 	}
 
+	/**
+	 * Parse Transaction query result into an instance of \models\Transaction.
+	 *
+	 * @param result the result row returne from PDO
+	 * @return instance of \models\Transaction
+	 */
 	function parseQueryToTransaction($result) {
 		$transaction = new \models\Transaction(
 			$result['session_id'],
