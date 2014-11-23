@@ -22,7 +22,7 @@ class Payment {
 						strftime('%c', strtotime($form->getDatePaid()))
 					)
 			);
-			$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
+			$f3->reroute('@registration_review');
 		}
 
 		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
