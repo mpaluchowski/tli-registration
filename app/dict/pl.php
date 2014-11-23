@@ -175,9 +175,10 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
 
 	"PaymentTestModeActiveAlert" => "Obsługa płatności działa w <strong>trybie testowym</strong>. <strong>Żadna płatność nie zostanie wykonana</strong> - system automatycznie potwierdzi transakcję i twoja rejestracja zostanie oznaczona jako opłacona.",
-	"PaymentCannotProceed-PAID" => "Otrzymaliśmy już twoją płatność {0} i twoja rejestracja jest zakończona.",
-	"PaymentCannotProceed-WAITING_LIST" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
-	"PaymentCannotProceed-PENDING_REVIEW" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
+	"PaymentProcessing-PAID" => "Otrzymaliśmy już twoją płatność {0} i twoja rejestracja jest zakończona.",
+	"PaymentProcessing-PROCESSING_PAYMENT" => "Twoja transakcja płatności rozpoczęła się {1} i oczekujemy na odpowiedź serwisu obsługującego płatności. Zazwyczaj przychodzi do nas w ciągu kilku minut, ale jeśli twój status nie zmienia się podejrzanie długo, powiadom nas i sprawdzimy czy nie wystąpił problem.",
+	"PaymentProcessing-WAITING_LIST" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
+	"PaymentProcessing-PENDING_REVIEW" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
 
 	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
 	"EmailRegistrationConfirmationIntro" => "Przyjęliśmy twoją rejestrację dla adresu e-mail <strong>{0}</strong>. Możesz wrócić do niej w każdej chwili pod adresem:",

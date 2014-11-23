@@ -14,12 +14,21 @@ class Payment {
 		if (!$form)
 			$f3->error(404);
 
+		$transactionDao = new \models\TransactionDao();
+
+		$transaction = $transactionDao->readTransactionByRegistrationId(
+			$form->getId()
+			);
+
 		if ('PENDING_PAYMENT' !== $form->getStatus()) {
 			\models\MessageManager::addMessage(
 				'warning',
 				$f3->get(
-						'lang.PaymentCannotProceed-' . $form->getStatus(),
-						strftime('%c', strtotime($form->getDatePaid()))
+						'lang.PaymentProcessing-' . $form->getStatus(),
+						[
+							strftime('%c', strtotime($form->getDatePaid())),
+							!$transaction ? : strftime('%c', strtotime($transaction->getDateStarted()))
+						]
 					)
 			);
 			$f3->reroute('@registration_review');

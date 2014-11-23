@@ -175,9 +175,10 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
 
 	"PaymentTestModeActiveAlert" => "Payment processing is working in <strong>test mode</strong>. <strong>No actual transaction will be performed</strong> - the payment processor will merely confirm that a payment was made and your registration will automatically be confirmed.",
-	"PaymentCannotProceed-PAID" => "We already received your payment on {0} and your registration is complete.",
-	"PaymentCannotProceed-WAITING_LIST" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
-	"PaymentCannotProceed-PENDING_REVIEW" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
+	"PaymentProcessing-PAID" => "We already received your payment on {0} and your registration is complete.",
+	"PaymentProcessing-PROCESSING_PAYMENT" => "Your payment transaction started on {1} and we're waiting for the processing entity to return to us with a confirmation. Hang on! Or, if it takes suspiciously long, let us know and we'll look into it.",
+	"PaymentProcessing-WAITING_LIST" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
+	"PaymentProcessing-PENDING_REVIEW" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
 
 	"EmailRegistrationConfirmationSubject" => "Registration confirmation for {0}",
 	"EmailRegistrationConfirmationIntro" => "We received your registration for the e-mail address <strong>{0}</strong>. You can access and review your registration at any time at:",
