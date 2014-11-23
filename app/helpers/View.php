@@ -17,6 +17,13 @@ class View {
 	}
 
 	/**
+	 * @return currently loaded language of application.
+	 */
+	static function getCurrentLanguage() {
+		return explode("-", explode(",", \F3::get('LANGUAGE'))[0])[0];
+	}
+
+	/**
 	 * Produces the label type to display for each registration status.
 	 *
 	 * @param status Registration status to provide a label for.
@@ -27,6 +34,7 @@ class View {
 	static function getRegistrationStatusLabel($status, $color = false) {
 		switch ($status) {
 			case 'PENDING_PAYMENT':
+			case 'PROCESSING_PAYMENT':
 				return $color ? '#f0ad4e' : 'warning';
 			case 'PAID':
 				return $color ? '#5cb85c' : 'success';

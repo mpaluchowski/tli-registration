@@ -127,6 +127,41 @@ class RegistrationDao {
 		return $registrationId;
 	}
 
+	/**
+	 * Updates Registration's status to PAID, including timestamp.
+	 *
+	 * @param registrationId ID of registration.
+	 * @param time unix time of when payment was completed.
+	 */
+	function updateRegistrationStatusToPaid($registrationId, $time = null) {
+		if (!$time) $time = time();
+
+		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
+				  SET date_paid = FROM_UNIXTIME(:datePaid),
+					  status = NULL
+				  WHERE id_registration = :registrationId';
+		\F3::get('db')->exec($query, [
+				'datePaid' => $time,
+				'registrationId' => $registrationId,
+			]);
+	}
+
+	/**
+	 * Updates Registration's status to PROCESSING_PAYMENT.
+	 *
+	 * @param registrationId ID of the Registration
+	 */
+	function updateRegistrationStatusToProcessingPayment($registrationId, $force = false) {
+		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
+				  SET status = "processing-payment"
+				  WHERE id_registration = :registrationId';
+		if (!$force)
+			$query .= ' AND date_paid IS NOT NULL';
+		\F3::get('db')->exec($query, [
+				'registrationId' => $registrationId,
+			]);
+	}
+
 	function readRegistrationFormByHash($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,

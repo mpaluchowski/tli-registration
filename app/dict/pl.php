@@ -142,6 +142,8 @@ return ['lang' => [
 	"RegistrationStatusInfo-PENDING_REVIEW" => "Twoja rejestracja została zapisana <time>{0}</time> i oczekuje na potwierdzenie przez organizatorów. Zaczekaj z dokonaniem płatności do czasu kiedy skontaktują się z tobą organizatorzy.",
 	"RegistrationStatus-PAID" => "Opłacona",
 	"RegistrationStatusInfo-PAID" => "Twoja rejestracja została zapisana <time>{0}</time>, opłacona <time>{1}</time> i pozostaje już tylko pojawić się na konferencji!",
+	"RegistrationStatus-PROCESSING_PAYMENT" => "Przetwarzanie płatności",
+	"RegistrationStatusInfo-PROCESSING_PAYMENT" => "Twoja płatność jest aktualnie przetwarzana i oczekujemy potwierdzenia od serwisu obsługującego płatności. Kiedy tylko je dostaniemy, oznaczymy twoją rejestrację jako opłaconą.",
 	"RegistrationStatus-WAITING_LIST" => "Lista rezerwowa",
 	"RegistrationStatusInfo-WAITING_LIST" => "Twoja rejestracja została zapisana <time>{0}</time> i <strong>oczekuje na liście rezerwowej</strong> na zwolnienie się miejsca w ramach limitu, jaki posiadamy. Skontaktujemy sie z tobą kiedy to się stanie.",
 
@@ -149,6 +151,7 @@ return ['lang' => [
 	"PaymentBreakdownIntro-PENDING_PAYMENT" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
 	"PaymentBreakdownIntro-PENDING_REVIEW" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja zostanie potwierdzona.",
 	"PaymentBreakdownIntro-PAID" => "<strong>Otrzymaliśmy twoją płatność</strong> {0}. Na podstawie wybranych przez ciebie opcji, twoja płatność składała się z następujących pozycji:",
+	"PaymentBreakdownIntro-PROCESSING_PAYMENT" => "<strong>Przetwarzamy twoją płatność</strong> i oczekujemy na potwierdzenie z serwisu obsługującego płatności. Oto opcje, które obejmuje twoja płatność:",
 	"PaymentBreakdownIntro-WAITING_LIST" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja przejdzie z listy oczekujących na główną listę.",
 	"Participation" => "Uczestnictwo",
 	"Ticket-early" => "Wczesny",
@@ -170,6 +173,13 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo1" => "Jeśli e-mail z odnośnikiem w ogóle do ciebie nie dotarł, najpierw <strong>sprawdź swój folder ze Spamem</strong>. Jeśli tam też go nie ma, chętnie prześlemy ci go ponownie. Kliknij przycisk poniżej, a e-mail powinien dotrzeć w ciągu kilku minut.",
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Wyślij e-mail ponownie",
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
+
+	"PaymentTestModeActiveAlert" => "Obsługa płatności działa w <strong>trybie testowym</strong>. <strong>Żadna płatność nie zostanie wykonana</strong> - system automatycznie potwierdzi transakcję i twoja rejestracja zostanie oznaczona jako opłacona.",
+	"PaymentProcessingErrorMsg" => "Wystąpił błąd w komunikacji z systemem obsługi płatności online. Spróbuj przejść do płatności jeszcze raz (opłata <em>nie</em> zostanie naliczona podwójnie) i jeśli problem się powtórzy, skontaktuj się z nami.",
+	"PaymentProcessing-PAID" => "Otrzymaliśmy już twoją płatność {0} i twoja rejestracja jest zakończona.",
+	"PaymentProcessing-PROCESSING_PAYMENT" => "Twoja transakcja płatności rozpoczęła się {1} i oczekujemy na odpowiedź serwisu obsługującego płatności. Zazwyczaj przychodzi do nas w ciągu kilku minut, ale jeśli twój status nie zmienia się podejrzanie długo, powiadom nas i sprawdzimy czy nie wystąpił problem.",
+	"PaymentProcessing-WAITING_LIST" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
+	"PaymentProcessing-PENDING_REVIEW" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
 
 	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
 	"EmailRegistrationConfirmationIntro" => "Przyjęliśmy twoją rejestrację dla adresu e-mail <strong>{0}</strong>. Możesz wrócić do niej w każdej chwili pod adresem:",

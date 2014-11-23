@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `tli_registrations` (
   `id_registration` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
   `hash` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `status` enum('waiting-list','pending-review') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` enum('waiting-list','pending-review','processing-payment') COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_entered` datetime NOT NULL,
   `date_paid` datetime DEFAULT NULL,
   PRIMARY KEY (`id_registration`),
@@ -80,6 +80,26 @@ CREATE TABLE IF NOT EXISTS `tli_registration_fields` (
   `value` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`fk_registration`,`name`),
   CONSTRAINT `FK_tli_registration_fields_tli_registration` FOREIGN KEY (`fk_registration`) REFERENCES `tli_registrations` (`id_registration`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table tli_registrations.tli_transactions
+DROP TABLE IF EXISTS `tli_transactions`;
+CREATE TABLE IF NOT EXISTS `tli_transactions` (
+  `session_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `fk_registration` int(10) unsigned NOT NULL,
+  `amount` float NOT NULL,
+  `currency` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `method` int(11) DEFAULT NULL,
+  `statement` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `date_started` datetime NOT NULL,
+  `date_paid` datetime DEFAULT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `FK__tli_registrations` (`fk_registration`),
+  CONSTRAINT `FK__tli_registrations` FOREIGN KEY (`fk_registration`) REFERENCES `tli_registrations` (`id_registration`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Data exporting was unselected.

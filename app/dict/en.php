@@ -142,6 +142,8 @@ return ['lang' => [
 	"RegistrationStatusInfo-PENDING_REVIEW" => "Your registration was recorded on <time>{0}</time> and is awaiting confirmation from one of our team members. Please wait with your payment until a member of the team contacts you.",
 	"RegistrationStatus-PAID" => "Paid",
 	"RegistrationStatusInfo-PAID" => "Your registration was recorded on <time>{0}</time>, paid for on <time>{1}</time> and you're all good for the event!",
+	"RegistrationStatus-PROCESSING_PAYMENT" => "Processing payment",
+	"RegistrationStatusInfo-PROCESSING_PAYMENT" => "Your registration payment is being processed and as soon as we receive a confirmation from the processing authority, we'll update your status to Paid.",
 	"RegistrationStatus-WAITING_LIST" => "Waiting list",
 	"RegistrationStatusInfo-WAITING_LIST" => "Your registration was recorded on <time>{0}</time>, but is <strong>waiting for an available seat</strong> after the initial limit was reached. We'll get back to you when this happens.",
 
@@ -149,6 +151,7 @@ return ['lang' => [
 	"PaymentBreakdownIntro-PENDING_PAYMENT" => "Based on the options you selected, your total due payment breaks down as follows:",
 	"PaymentBreakdownIntro-PENDING_REVIEW" => "We'll be able to accept your payment as soon as your registration is confirmed. Hang on!",
 	"PaymentBreakdownIntro-PAID" => "We <strong>received your payment</strong> on {0}. Based on the options you selected, your payment covered the following items:",
+	"PaymentBreakdownIntro-PROCESSING_PAYMENT" => "We're <strong>processing your payment</strong>, awaiting confirmation from the online payment authority. Here's an overview of what your payment included:",
 	"PaymentBreakdownIntro-WAITING_LIST" => "We'll be able to accept your payment as soon as your registration switches from the waiting list onto the main roster. Hang on!",
 	"Participation" => "Participation",
 	"Ticket-early" => "Early bird",
@@ -170,6 +173,13 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo1" => "If you didn't receive the email with the link, please <strong>check your Spam folder</strong> first. If you still cannot find it there, we'll be happy to re-send it to you. Just click the button below and the e-mail should arrive within minutes.",
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Re-send e-mail",
 	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
+
+	"PaymentTestModeActiveAlert" => "Payment processing is working in <strong>test mode</strong>. <strong>No actual transaction will be performed</strong> - the payment processor will merely confirm that a payment was made and your registration will automatically be confirmed.",
+	"PaymentProcessingErrorMsg" => "There was an error in communication with the payment processing authority. Please try proceeding to payment again (you will <em>not</em> be charged twice), and if the problem reappears, contact us to report it.",
+	"PaymentProcessing-PAID" => "We already received your payment on {0} and your registration is complete.",
+	"PaymentProcessing-PROCESSING_PAYMENT" => "Your payment transaction started on {1} and we're waiting for the processing entity to return to us with a confirmation. Hang on! Or, if it takes suspiciously long, let us know and we'll look into it.",
+	"PaymentProcessing-WAITING_LIST" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
+	"PaymentProcessing-PENDING_REVIEW" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
 
 	"EmailRegistrationConfirmationSubject" => "Registration confirmation for {0}",
 	"EmailRegistrationConfirmationIntro" => "We received your registration for the e-mail address <strong>{0}</strong>. You can access and review your registration at any time at:",

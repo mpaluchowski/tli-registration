@@ -234,9 +234,17 @@ $renderer = \helpers\FormRendererFactory::className();
 		</table>
 	</div>
 
-	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
-	<a href="#" class="btn btn-lg btn-success"><?php echo \F3::get('lang.SelectPaymentOptionButton') ?></a>
+<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
+
+	<?php
+		$processorClass = \models\PaymentProcessorFactory::className();
+		if ($processorClass::isTestMode()):
+	?>
+	<div class="alert alert-warning" role="alert"><?php echo \F3::get('lang.PaymentTestModeActiveAlert') ?></div>
 	<?php endif; ?>
+
+	<a href="<?php echo \F3::get('ALIASES.payment_pay') ?>" class="btn btn-lg btn-success"><?php echo \F3::get('lang.SelectPaymentOptionButton') ?></a>
+<?php endif; ?>
 </div>
 
 <?php echo \View::instance()->render('_navigation.php') ?>
