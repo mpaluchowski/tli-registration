@@ -210,6 +210,14 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		return $this->processResponse($result['body']);
 	}
 
+	/**
+	 * Process the response from the
+	 *
+	 * @param body the body of the response from Przelewy24
+	 * @return body parsed into an array
+	 * @throws \models\PaymentProcessorCallException if the body includes hints
+	 * of failure of the call, or if Przelewy24 returned an error
+	 */
 	protected function processResponse($body) {
 		parse_str($body, $output);
 
