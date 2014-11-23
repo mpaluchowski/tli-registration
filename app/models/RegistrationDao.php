@@ -127,6 +127,18 @@ class RegistrationDao {
 		return $registrationId;
 	}
 
+	function updateRegistrationPaidDate($registrationId, $time = null) {
+		if (!$time) $time = time();
+
+		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
+				  SET date_paid = FROM_UNIXTIME(:datePaid)
+				  WHERE id_registration = :registrationId';
+		\F3::get('db')->exec($query, [
+				'datePaid' => $time,
+				'registrationId' => $registrationId,
+			]);
+	}
+
 	function readRegistrationFormByHash($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,

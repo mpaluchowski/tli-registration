@@ -88,6 +88,13 @@ class Payment {
 
 			// Confirm to the processor that the transaction is valid
 			$paymentProcessor->verifyTransaction($transaction);
+
+			$registrationDao = new \models\RegistrationDao();
+
+			// Mark the registration is paid
+			$registrationDao->updateRegistrationPaidDate(
+				$transaction->getRegistrationId()
+				);
 		}
 	}
 
