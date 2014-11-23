@@ -27,6 +27,7 @@ class View {
 	static function getRegistrationStatusLabel($status, $color = false) {
 		switch ($status) {
 			case 'PENDING_PAYMENT':
+			case 'PROCESSING_PAYMENT':
 				return $color ? '#f0ad4e' : 'warning';
 			case 'PAID':
 				return $color ? '#5cb85c' : 'success';

@@ -142,6 +142,8 @@ return ['lang' => [
 	"RegistrationStatusInfo-PENDING_REVIEW" => "Twoja rejestracja została zapisana <time>{0}</time> i oczekuje na potwierdzenie przez organizatorów. Zaczekaj z dokonaniem płatności do czasu kiedy skontaktują się z tobą organizatorzy.",
 	"RegistrationStatus-PAID" => "Opłacona",
 	"RegistrationStatusInfo-PAID" => "Twoja rejestracja została zapisana <time>{0}</time>, opłacona <time>{1}</time> i pozostaje już tylko pojawić się na konferencji!",
+	"RegistrationStatus-PROCESSING_PAYMENT" => "Przetwarzanie płatności",
+	"RegistrationStatusInfo-PROCESSING_PAYMENT" => "Twoja płatność jest aktualnie przetwarzana i oczekujemy potwierdzenia od serwisu obsługującego płatności. Kiedy tylko je dostaniemy, oznaczymy twoją rejestrację jako opłaconą.",
 	"RegistrationStatus-WAITING_LIST" => "Lista rezerwowa",
 	"RegistrationStatusInfo-WAITING_LIST" => "Twoja rejestracja została zapisana <time>{0}</time> i <strong>oczekuje na liście rezerwowej</strong> na zwolnienie się miejsca w ramach limitu, jaki posiadamy. Skontaktujemy sie z tobą kiedy to się stanie.",
 
@@ -149,6 +151,7 @@ return ['lang' => [
 	"PaymentBreakdownIntro-PENDING_PAYMENT" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
 	"PaymentBreakdownIntro-PENDING_REVIEW" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja zostanie potwierdzona.",
 	"PaymentBreakdownIntro-PAID" => "<strong>Otrzymaliśmy twoją płatność</strong> {0}. Na podstawie wybranych przez ciebie opcji, twoja płatność składała się z następujących pozycji:",
+	"PaymentBreakdownIntro-PROCESSING_PAYMENT" => "<strong>Przetwarzamy twoją płatność</strong> i oczekujemy na potwierdzenie z serwisu obsługującego płatności. Oto opcje, które obejmuje twoja płatność:",
 	"PaymentBreakdownIntro-WAITING_LIST" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja przejdzie z listy oczekujących na główną listę.",
 	"Participation" => "Uczestnictwo",
 	"Ticket-early" => "Wczesny",

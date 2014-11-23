@@ -20,6 +20,8 @@ class RegistrationForm {
 	}
 
 	function getStatus() {
+		if ('processing-payment' == $this->status)
+			return 'PROCESSING_PAYMENT';
 		if ('waiting-list' == $this->status)
 			return 'WAITING_LIST';
 		if ('pending-review' == $this->status)

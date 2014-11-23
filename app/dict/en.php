@@ -142,6 +142,8 @@ return ['lang' => [
 	"RegistrationStatusInfo-PENDING_REVIEW" => "Your registration was recorded on <time>{0}</time> and is awaiting confirmation from one of our team members. Please wait with your payment until a member of the team contacts you.",
 	"RegistrationStatus-PAID" => "Paid",
 	"RegistrationStatusInfo-PAID" => "Your registration was recorded on <time>{0}</time>, paid for on <time>{1}</time> and you're all good for the event!",
+	"RegistrationStatus-PROCESSING_PAYMENT" => "Processing payment",
+	"RegistrationStatusInfo-PROCESSING_PAYMENT" => "Your registration payment is being processed and as soon as we receive a confirmation from the processing authority, we'll update your status to Paid.",
 	"RegistrationStatus-WAITING_LIST" => "Waiting list",
 	"RegistrationStatusInfo-WAITING_LIST" => "Your registration was recorded on <time>{0}</time>, but is <strong>waiting for an available seat</strong> after the initial limit was reached. We'll get back to you when this happens.",
 
@@ -149,6 +151,7 @@ return ['lang' => [
 	"PaymentBreakdownIntro-PENDING_PAYMENT" => "Based on the options you selected, your total due payment breaks down as follows:",
 	"PaymentBreakdownIntro-PENDING_REVIEW" => "We'll be able to accept your payment as soon as your registration is confirmed. Hang on!",
 	"PaymentBreakdownIntro-PAID" => "We <strong>received your payment</strong> on {0}. Based on the options you selected, your payment covered the following items:",
+	"PaymentBreakdownIntro-PROCESSING_PAYMENT" => "We're <strong>processing your payment</strong>, awaiting confirmation from the online payment authority. Here's an overview of what your payment included:",
 	"PaymentBreakdownIntro-WAITING_LIST" => "We'll be able to accept your payment as soon as your registration switches from the waiting list onto the main roster. Hang on!",
 	"Participation" => "Participation",
 	"Ticket-early" => "Early bird",
