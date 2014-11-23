@@ -85,6 +85,7 @@ class Payment {
 			$f3->error(404);
 
 		$transactionDao = new \models\TransactionDao();
+		$registrationDao = new \models\RegistrationDao();
 		$paymentProcessor = \models\PaymentProcessorFactory::instance();
 
 		// We may have the session ID from the payment processor
@@ -96,7 +97,6 @@ class Payment {
 				);
 		} else {
 			// Read Transaction via the registration hash
-			$registrationDao = new \models\RegistrationDao();
 			$form = $registrationDao->readRegistrationFormByHash($args['registrationHash']);
 			$transaction = $transactionDao->readTransactionByRegistrationId(
 				$form->getId()
