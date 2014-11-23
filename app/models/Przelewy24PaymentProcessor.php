@@ -65,16 +65,36 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 		return md5(implode("|", $elements));
 	}
 
+	/**
+	 * Get the host to connect to, sandbox or live.
+	 *
+	 * @return hostname to connect to at Przelewy24.
+	 */
 	protected function getHost() {
 		return $this->isTestMode()
 			? self::HOST_SANDBOX
 			: self::HOST_LIVE;
 	}
 
+	/**
+	 * Get configuration value for Przelewy24, automatically prefixing the
+	 * key.
+	 *
+	 * @param key configuration key to seek value for.
+	 * @return value of configuration for the given key, or null if not found.
+	 */
 	protected function getConfig($key) {
 		return \F3::get(self::CONFIG_PREFIX . '_' . $key);
 	}
 
+	/**
+	 * Call Przelewy24 webservice. Will add common arguments before sending the
+	 * request.
+	 *
+	 * @param endpoint the exact endpoint to connect to at Przelewy24.
+	 * @param args the arguments to send to Przelewy24.
+	 * @return body structure of the HTTP return call.
+	 */
 	protected function callService($endpoint, array $args) {
 		// Add args common to all calls
 		$args['p24_merchant_id'] = $this->getConfig('merchant_id');
