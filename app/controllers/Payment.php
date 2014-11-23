@@ -145,39 +145,49 @@ class Payment {
 			$transaction
 			);
 
-		if ($result) {
-			// Update stored transaction with details from processor
-			$transactionDao->updateTransactionPostPayment(
-				$transaction->getSessionId(),
-				$transaction->getOrderId(),
-				$transaction->getMethod(),
-				$transaction->getStatement()
-				);
-
-			// Confirm to the processor that the transaction is valid
-			$paymentProcessor->verifyTransaction($transaction);
-
-			$registrationDao = new \models\RegistrationDao();
-
-			// Mark the registration is paid
-			$registrationDao->updateRegistrationStatusToPaid(
-				$transaction->getRegistrationId()
-				);
-
-			// Send email confirming payment received
-			$form = $registrationDao->readRegistrationFormByEmail($args['email']);
-
-			$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
-			$f3->set('form', $form);
-
-			$mailer = new \models\Mailer();
-
-			$mailer->sendEmail(
-				$args['email'],
-				$f3->get('lang.EmailRegistrationConfirmationSubject', $args['email']),
-				\View::instance()->render('mail/registration_confirm.php')
-				);
+		if (!$result) {
+			$logger = new \Log($f3->get('logfile_error'));
+			$logger->write('ERROR: Package verification from PaymentProcessor failed' . PHP_EOL
+				. print_r($f3->get('POST'), true));
+			return;
 		}
+
+		// Update stored transaction with details from processor
+		$transactionDao->updateTransactionPostPayment(
+			$transaction->getSessionId(),
+			$transaction->getOrderId(),
+			$transaction->getMethod(),
+			$transaction->getStatement()
+			);
+
+		// Confirm to the processor that the transaction is valid
+		try {
+			$paymentProcessor->verifyTransaction($transaction);
+		} catch (\models\PaymentProcessorCallException $e) {
+			$logger = new \Log($f3->get('logfile_error'));
+			$logger->write('ERROR: ' . print_r($e, true));
+		}
+
+		$registrationDao = new \models\RegistrationDao();
+
+		// Mark the registration is paid
+		$registrationDao->updateRegistrationStatusToPaid(
+			$transaction->getRegistrationId()
+			);
+
+		// Send email confirming payment received
+		$form = $registrationDao->readRegistrationFormByEmail($args['email']);
+
+		$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
+		$f3->set('form', $form);
+
+		$mailer = new \models\Mailer();
+
+		$mailer->sendEmail(
+			$args['email'],
+			$f3->get('lang.EmailRegistrationConfirmationSubject', $args['email']),
+			\View::instance()->render('mail/registration_confirm.php')
+			);
 	}
 
 }
