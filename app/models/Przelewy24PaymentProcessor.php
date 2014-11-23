@@ -204,6 +204,7 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 			[
 				'method' => 'POST',
 				'content' => http_build_query($args),
+				'follow_location' => false,
 			]
 			);
 
