@@ -111,7 +111,9 @@ class Payment {
 		// Check if transaction already confirmed with payment processor
 		if (!$transaction->getDatePaid()) {
 			// Mark the registration as payment being processed
-			$registrationDao->updateRegistrationStatusToProcessingPayment($form->getId());
+			$registrationDao->updateRegistrationStatusToProcessingPayment(
+				$transaction->getRegistrationId()
+				);
 			$msg = 'lang.PaymentProcessing-PROCESSING_PAYMENT';
 		} else {
 			// Already received confirmation, inform user
