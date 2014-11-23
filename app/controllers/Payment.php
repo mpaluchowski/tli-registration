@@ -151,6 +151,20 @@ class Payment {
 			$registrationDao->updateRegistrationStatusToPaid(
 				$transaction->getRegistrationId()
 				);
+
+			// Send email confirming payment received
+			$form = $registrationDao->readRegistrationFormByEmail($args['email']);
+
+			$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
+			$f3->set('form', $form);
+
+			$mailer = new \models\Mailer();
+
+			$mailer->sendEmail(
+				$args['email'],
+				$f3->get('lang.EmailRegistrationConfirmationSubject', $args['email']),
+				\View::instance()->render('mail/registration_confirm.php')
+				);
 		}
 	}
 
