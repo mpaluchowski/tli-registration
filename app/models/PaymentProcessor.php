@@ -10,6 +10,11 @@ interface PaymentProcessor {
 	/**
 	 * Register a new transaction with the payment processor.
 	 *
+	 * @param transaction the \models\Transaction instance with transaction
+	 * data
+	 * @param returnUrl the URL to redirect user after payment
+	 * @param statusUrl the URL for the payment processing system to report
+	 * status back to
 	 * @return Token representing the transaction at the payment processor to
 	 * redirect the user to the payment selection screen.
 	 */
