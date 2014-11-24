@@ -22,7 +22,7 @@ class Payment {
 
 		if ('PENDING_PAYMENT' !== $form->getStatus()) {
 			\models\MessageManager::addMessage(
-				'warning',
+				$transaction ? 'success' : 'warning',
 				$f3->get(
 						'lang.PaymentProcessing-' . $form->getStatus(),
 						[
