@@ -124,8 +124,8 @@ class Payment {
 			$f3->get(
 					$msg,
 					[
-						$transaction->getDateStarted(),
-						$transaction->getDatePaid(),
+						strftime('%c', strtotime($transaction->getDateStarted())),
+						strftime('%c', strtotime($transaction->getDatePaid())),
 					]
 				)
 		);
