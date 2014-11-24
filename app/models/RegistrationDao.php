@@ -279,32 +279,32 @@ class RegistrationDao {
 						 paid.paid
 				  FROM (
 					SELECT YEAR(r.date_entered) AS year,
-						   WEEK(r.date_entered) AS week,
+						   WEEK(r.date_entered, 3) AS week,
 						   COUNT(r.id_registration) AS entered
 					FROM ' . \F3::get('db_table_prefix') . 'registrations r
-					GROUP BY YEARWEEK(r.date_entered)
+					GROUP BY YEARWEEK(r.date_entered, 3)
 					) entered
 				  LEFT JOIN (
 				  	SELECT YEAR(r.date_paid) AS year,
-						   WEEK(r.date_paid) AS week,
+						   WEEK(r.date_paid, 3) AS week,
 						   COUNT(r.id_registration) AS paid
 					FROM ' . \F3::get('db_table_prefix') . 'registrations r
 					WHERE r.date_paid IS NOT NULL
-					GROUP BY YEARWEEK(r.date_paid)
+					GROUP BY YEARWEEK(r.date_paid, 3)
 				  	) paid
 				  ON entered.year = paid.year
 				  AND entered.week = paid.week
 				  UNION ALL
 				  SELECT YEAR(r.date_paid) AS year,
-						 WEEK(r.date_paid) AS week,
+						 WEEK(r.date_paid, 3) AS week,
 						 NULL AS enetered,
 						 COUNT(r.id_registration) AS paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
-				  GROUP BY YEARWEEK(r.date_paid)
+				  GROUP BY YEARWEEK(r.date_paid, 3)
 				  HAVING CONCAT(year, week) NOT IN (
-				  	SELECT YEARWEEK(r.date_entered) AS yeaweek
+				  	SELECT YEARWEEK(r.date_entered, 3) AS yeaweek
 				  	FROM ' . \F3::get('db_table_prefix') . 'registrations r
-				  	GROUP BY YEARWEEK(r.date_entered)
+				  	GROUP BY YEARWEEK(r.date_entered, 3)
 				  	)
 				  ORDER BY year,
 				  		   week
