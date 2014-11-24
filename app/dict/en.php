@@ -176,8 +176,8 @@ return ['lang' => [
 
 	"PaymentTestModeActiveAlert" => "Payment processing is working in <strong>test mode</strong>. <strong>No actual transaction will be performed</strong> - the payment processor will merely confirm that a payment was made and your registration will automatically be confirmed.",
 	"PaymentProcessingErrorMsg" => "There was an error in communication with the payment processing authority. Please try proceeding to payment again (you will <em>not</em> be charged twice), and if the problem reappears, contact us to report it.",
-	"PaymentProcessing-PAID" => "We received your payment on {0} and your registration is complete.",
-	"PaymentProcessing-PROCESSING_PAYMENT" => "Your payment transaction started on {1} and we're waiting for the processing entity to return to us with a confirmation. Hang on! Or, if it takes suspiciously long, let us know and we'll look into it.",
+	"PaymentProcessing-PAID" => "We received your payment on {1} and your registration is complete.",
+	"PaymentProcessing-PROCESSING_PAYMENT" => "Your payment transaction started on {0} and we're waiting for the processing entity to return to us with a confirmation. Hang on! Or, if it takes suspiciously long, let us know and we'll look into it.",
 	"PaymentProcessing-WAITING_LIST" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
 	"PaymentProcessing-PENDING_REVIEW" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
 
