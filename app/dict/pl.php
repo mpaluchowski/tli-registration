@@ -80,8 +80,8 @@ return ['lang' => [
 	'AccommodationWithToastmasters-sat-sun' => "soboty na niedzielę",
 	'AccommodationWithToastmastersHostAnswer' => "Mogę <strong>przyjąć przyjezdnego</strong> na nocleg",
 	'AccommodationWithToastmasters-host' => "Mogę przyjąć przyjezdnego",
-	'AccommodationWithToastmastersIndependentAnswer' => "<strong>Samemu zorganizuję</strong> swój nocleg",
-	'AccommodationWithToastmasters-independent' => "Samemu zorganizuję swój nocleg",
+	'AccommodationWithToastmastersIndependentAnswer' => "<strong>Samodzielnie zorganizuję</strong> lub <strong>nie potrzebuję</strong> noclegu",
+	'AccommodationWithToastmasters-independent' => "Samodzielnie zorganizuję lub nie potrzebuję noclegu",
 
 	'EventOptionsHeader' => "Opcje wydarzenia",
 	'EventsTranslator' => "Tłumacz",
