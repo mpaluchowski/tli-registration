@@ -2,6 +2,7 @@
 
 return ['lang' => [
 	"dateTimeFormat" => "%Y-%m-%d %H:%M",
+	"dateFormat" => "%Y-%m-%d",
 
 	"Yes" => "Tak",
 	"No" => "Nie",

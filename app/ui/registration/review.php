@@ -167,7 +167,7 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><?php
 					echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant);
 					if ('PAID' !== $form->getStatus()):
-						?> (<?php echo \F3::get('lang.PriceValidThrough', strftime('%x', strtotime($paymentSummary['admission']->dateValidThrough))) ?>)<?php
+						?> (<?php echo \F3::get('lang.PriceValidThrough', \helpers\View::formatDate($paymentSummary['admission']->dateValidThrough)) ?>)<?php
 					endif; ?></td>
 				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
 					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
