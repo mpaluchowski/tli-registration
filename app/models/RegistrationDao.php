@@ -37,6 +37,7 @@ class RegistrationDao {
 
 		$form->setId($registration['id_registration']);
 		$form->setEmail($registration['email']);
+		$form->setLanguageEntered($registration['language_entered']);
 		$form->setStatusValue($registration['status']);
 		if (array_key_exists('date_entered', $registration))
 			$form->setDateEntered($registration['date_entered']);
@@ -165,6 +166,7 @@ class RegistrationDao {
 	function readRegistrationFormByHash($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.language_entered,
 						 r.status,
 						 r.date_entered,
 						 r.date_paid
@@ -186,6 +188,7 @@ class RegistrationDao {
 	function readRegistrationFormById($id) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.language_entered,
 						 r.status,
 						 r.date_entered,
 						 r.date_paid
@@ -227,6 +230,7 @@ class RegistrationDao {
 	private function fetchRegistrationByEmail($email) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.language_entered,
 						 r.status,
 						 r.date_entered,
 						 r.date_paid
@@ -373,6 +377,7 @@ class RegistrationDao {
 	function readAllRegistrationForms(array $selectFields = null, $toArray = false) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.language_entered,
 						 r.status,
 						 r.date_entered,
 						 r.date_paid
