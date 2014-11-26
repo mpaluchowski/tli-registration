@@ -24,6 +24,13 @@ class View {
 	}
 
 	/**
+	 * @return date and time string formatted according to locale set.
+	 */
+	static function formatDateTime($dateTime) {
+		return strftime('%c', strtotime($dateTime));
+	}
+
+	/**
 	 * Produces the label type to display for each registration status.
 	 *
 	 * @param status Registration status to provide a label for.

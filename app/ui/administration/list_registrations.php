@@ -11,7 +11,7 @@ $renderer = \helpers\FormRendererFactory::className();
 		<h1><?php echo \F3::get('lang.RegistrationsListHeader') ?></h1>
 	</div>
 
-	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->registered, $stats->waitingList, $stats->pendingReview, $stats->paid, strftime("%c", strtotime($stats->last))]) ?></p>
+	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->registered, $stats->waitingList, $stats->pendingReview, $stats->paid, \helpers\View::formatDateTime($stats->last)]) ?></p>
 
 	<a href="<?php echo \F3::get('ALIASES.admin_registrations_export_csv') ?>" class="btn btn-default">Download CSV</a>
 
@@ -34,8 +34,8 @@ $renderer = \helpers\FormRendererFactory::className();
 				</a></td>
 				<td><a href="mailto:<?php echo $registration->getEmail() ?>"><?php echo $registration->getEmail() ?></a></td>
 				<td><a href="callto:<?php echo $registration->getField('phone') ?>"><?php echo $renderer::value($registration, 'phone') ?></a></td>
-				<td><?php echo strftime("%c", strtotime($registration->getDateEntered())) ?></td>
-				<td><?php echo $registration->getDatePaid() ? strftime("%c", strtotime($registration->getDatePaid())) : "&mdash;" ?></td>
+				<td><?php echo \helpers\View::formatDateTime($registration->getDateEntered()) ?></td>
+				<td><?php echo $registration->getDatePaid() ? \helpers\View::formatDateTime($registration->getDatePaid()) : "&mdash;" ?></td>
 				<td><span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($registration->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $registration->getStatus()) ?></span></td>
 			</tr>
 	<?php endforeach; ?>
