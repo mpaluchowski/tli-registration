@@ -24,6 +24,20 @@ class View {
 	}
 
 	/**
+	 * @return date and time string formatted according to locale set.
+	 */
+	static function formatDateTime($dateTime) {
+		return strftime(\F3::get('lang.dateTimeFormat'), strtotime($dateTime));
+	}
+
+	/**
+	 * @return date string formatted according to locale set.
+	 */
+	static function formatDate($dateTime) {
+		return strftime(\F3::get('lang.dateFormat'), strtotime($dateTime));
+	}
+
+	/**
 	 * Produces the label type to display for each registration status.
 	 *
 	 * @param status Registration status to provide a label for.

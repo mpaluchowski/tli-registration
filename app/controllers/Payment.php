@@ -26,8 +26,8 @@ class Payment {
 				$f3->get(
 						'lang.PaymentProcessing-' . $form->getStatus(),
 						[
-							!$transaction ? : strftime('%c', strtotime($transaction->getDateStarted())),
-							strftime('%c', strtotime($form->getDatePaid())),
+							!$transaction ? : \helpers\View::formatDateTime($transaction->getDateStarted()),
+							\helpers\View::formatDateTime($form->getDatePaid()),
 						]
 					)
 			);
@@ -124,8 +124,8 @@ class Payment {
 			$f3->get(
 					$msg,
 					[
-						strftime('%c', strtotime($transaction->getDateStarted())),
-						strftime('%c', strtotime($transaction->getDatePaid())),
+						\helpers\View::formatDateTime($transaction->getDateStarted()),
+						\helpers\View::formatDateTime($transaction->getDatePaid()),
 					]
 				)
 		);

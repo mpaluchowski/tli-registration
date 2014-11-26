@@ -25,7 +25,7 @@ $renderer = \helpers\FormRendererFactory::className();
 					<span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($form->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $form->getStatus()) ?></span>
 				</p>
 				<p class="form-control-static">
-					<?php echo \F3::get('lang.RegistrationStatusInfo-' . $form->getStatus(), [strftime('%c', strtotime($form->getDateEntered())), strftime('%c', strtotime($form->getDatePaid()))]) ?>
+					<?php echo \F3::get('lang.RegistrationStatusInfo-' . $form->getStatus(), [\helpers\View::formatDateTime($form->getDateEntered()), \helpers\View::formatDateTime($form->getDatePaid())]) ?>
 				</p>
 			</div>
 		</div>
@@ -148,7 +148,7 @@ $renderer = \helpers\FormRendererFactory::className();
 
 	<h2><?php echo \F3::get('lang.PaymentBreakdownHeader') ?></h2>
 
-	<p><?php echo \F3::get('lang.PaymentBreakdownIntro-' . $form->getStatus(), strftime('%c', strtotime($form->getDatePaid()))) ?></p>
+	<p><?php echo \F3::get('lang.PaymentBreakdownIntro-' . $form->getStatus(), \helpers\View::formatDateTime($form->getDatePaid())) ?></p>
 
 	<div class="table-responsive">
 		<table class="table tli-currencies-<?php echo count($paymentSummary['total']) ?>">
@@ -167,7 +167,7 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><?php
 					echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant);
 					if ('PAID' !== $form->getStatus()):
-						?> (<?php echo \F3::get('lang.PriceValidThrough', strftime('%x', strtotime($paymentSummary['admission']->dateValidThrough))) ?>)<?php
+						?> (<?php echo \F3::get('lang.PriceValidThrough', \helpers\View::formatDate($paymentSummary['admission']->dateValidThrough)) ?>)<?php
 					endif; ?></td>
 				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
 					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
