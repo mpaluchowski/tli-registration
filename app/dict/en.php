@@ -112,9 +112,9 @@ return ['lang' => [
 	'EventsSaturdayDinnerYes' => "I will participate in <strong>Saturday's dinner</strong>",
 	'EventsSaturdayDinnerMealValidationMsg' => "Please choose a meal option for the Saturday dinner.",
 	'EventsSaturdayDinnerMeat' => "I'll have a <strong>meat</strong> meal",
-	'EventsSaturdayDinner-meat' => "Meat",
+	'EventsSaturdayDinner-meat' => "meat",
 	'EventsSaturdayDinnerVegetarian' => "I'll have a <strong>vegetarian</strong> meal",
-	'EventsSaturdayDinner-vegetarian' => "Vegetarian",
+	'EventsSaturdayDinner-vegetarian' => "vegetarian",
 	'EventsSaturdayParty' => "Saturday's party",
 	'EventsSaturdayPartyYes' => "I will take part in <strong>Saturday's party</strong>",
 

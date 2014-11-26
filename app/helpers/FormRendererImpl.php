@@ -85,8 +85,14 @@ class FormRendererImpl {
 			case 'saturday-dinner-participate':
 				return $form->hasField('saturday-dinner-participate')
 						&& "on" === $form->getField('saturday-dinner-participate')
-					? \F3::get('lang.Yes') . ', ' . $form->getField('saturday-dinner-meal')
+					? \F3::get('lang.Yes') . ', ' . self::value($form, 'saturday-dinner-meal')
 					: \F3::get('lang.No');
+
+			case 'saturday-dinner-meal':
+				return $form->hasField('saturday-dinner-meal')
+						&& $form->getField('saturday-dinner-meal')
+					? \F3::get('lang.EventsSaturdayDinner-' . $form->getField('saturday-dinner-meal'))
+					: '';
 
 			case 'comments':
 				return $form->hasField('comments')
