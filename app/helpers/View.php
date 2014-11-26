@@ -27,7 +27,7 @@ class View {
 	 * @return date and time string formatted according to locale set.
 	 */
 	static function formatDateTime($dateTime) {
-		return strftime('%c', strtotime($dateTime));
+		return strftime(\F3::get('lang.dateTimeFormat'), strtotime($dateTime));
 	}
 
 	/**

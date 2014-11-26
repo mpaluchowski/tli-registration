@@ -1,6 +1,8 @@
 <?php
 
 return ['lang' => [
+	"dateTimeFormat" => "%c",
+
 	"Yes" => "Yes",
 	"No" => "No",
 
