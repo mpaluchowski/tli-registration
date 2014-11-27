@@ -29,7 +29,10 @@ class Registration {
 	function form_process($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
-		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('POST')));
+		$form = $registrationDao->parseRequestToForm(
+			$f3->clean($f3->get('POST')),
+			\models\L11nManager::language()
+			);
 
 		if ($f3->get("form_validator")) {
 			$validator = $f3->get("form_validator");
@@ -149,7 +152,10 @@ class Registration {
 	function get_total_price($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
-		$form = $registrationDao->parseRequestToForm($f3->clean($f3->get('GET')));
+		$form = $registrationDao->parseRequestToForm(
+			$f3->clean($f3->get('GET')),
+			\models\L11nManager::language()
+			);
 
 		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
 
