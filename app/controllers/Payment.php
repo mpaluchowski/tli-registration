@@ -63,7 +63,7 @@ class Payment {
 				$transaction,
 				\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_confirmation'),
 				\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_status_receive'),
-				\helpers\View::getCurrentLanguage()
+				\models\L11nManager::language()
 				);
 		} catch (\models\PaymentProcessorCallException $e) {
 			$logger = new \Log($f3->get('logfile_error'));

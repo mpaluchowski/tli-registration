@@ -16,4 +16,7 @@ if(file_exists('../app/config.ini'))
 // Define routes
 $f3->config('../app/routes.ini');
 
+// Interceptors
+\models\L11nManager::setLanguage();
+
 $f3->run();

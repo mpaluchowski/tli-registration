@@ -17,13 +17,6 @@ class View {
 	}
 
 	/**
-	 * @return currently loaded language of application.
-	 */
-	static function getCurrentLanguage() {
-		return explode("-", explode(",", \F3::get('LANGUAGE'))[0])[0];
-	}
-
-	/**
 	 * @return date and time string formatted according to locale set.
 	 */
 	static function formatDateTime($dateTime) {
