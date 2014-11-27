@@ -26,8 +26,18 @@ class CurrencyFormatter {
 	static function moneyFormat($currency, $number, $decimals = 2) {
 		return array_key_exists('suffix', self::$currencies[$currency])
 				&& self::$currencies[$currency]['suffix']
-			? number_format($number, $decimals) . self::$currencies[$currency]['symbol']
-			: self::$currencies[$currency]['symbol'] . ' ' . number_format($number, $decimals);
+			? number_format(
+				$number,
+				$decimals,
+				\F3::get('lang.decimalPoint'),
+				\F3::get('lang.thousandsSeparator')
+				) . self::$currencies[$currency]['symbol']
+			: self::$currencies[$currency]['symbol'] . ' ' . number_format(
+				$number,
+				$decimals,
+				\F3::get('lang.decimalPoint'),
+				\F3::get('lang.thousandsSeparator')
+				);
 	}
 
 	/**

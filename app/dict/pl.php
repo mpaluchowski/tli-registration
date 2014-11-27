@@ -3,6 +3,8 @@
 return ['lang' => [
 	"dateTimeFormat" => "%Y-%m-%d %H:%M",
 	"dateFormat" => "%Y-%m-%d",
+	"decimalPoint" => ",",
+	"thousandsSeparator" => " ",
 
 	"Yes" => "Tak",
 	"No" => "Nie",
