@@ -15,7 +15,7 @@ class RegistrationDao {
 		}
 	}
 
-	function parseRequestToForm(array $postValues) {
+	function parseRequestToForm(array $postValues, $language) {
 		$form = new \models\RegistrationForm();
 
 		foreach ($postValues as $name => $value) {
@@ -29,6 +29,8 @@ class RegistrationDao {
 			}
 		}
 
+		$form->setLanguageEntered($language);
+
 		return $form;
 	}
 
@@ -37,6 +39,7 @@ class RegistrationDao {
 
 		$form->setId($registration['id_registration']);
 		$form->setEmail($registration['email']);
+		$form->setLanguageEntered($registration['language_entered']);
 		$form->setStatusValue($registration['status']);
 		if (array_key_exists('date_entered', $registration))
 			$form->setDateEntered($registration['date_entered']);
@@ -76,18 +79,21 @@ class RegistrationDao {
 			$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'registrations (
 						email,
 						hash,
+						language_entered,
 						status,
 						date_entered
 					)
 					VALUES (
 						:email,
 						:hash,
+						:languageEntered,
 						:status,
 						FROM_UNIXTIME(:dateEntered)
 						)';
 			\F3::get('db')->exec($query, [
 					'email' => $form->getEmail(),
 					'hash' => $form->getHash(),
+					'languageEntered' => $form->getLanguageEntered(),
 					'status' => $form->getStatusValue(),
 					'dateEntered' => $dateEntered,
 				]);
@@ -165,6 +171,7 @@ class RegistrationDao {
 	function readRegistrationFormByHash($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.language_entered,
 						 r.status,
 						 r.date_entered,
 						 r.date_paid
@@ -186,6 +193,7 @@ class RegistrationDao {
 	function readRegistrationFormById($id) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.language_entered,
 						 r.status,
 						 r.date_entered,
 						 r.date_paid
@@ -227,6 +235,7 @@ class RegistrationDao {
 	private function fetchRegistrationByEmail($email) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.language_entered,
 						 r.status,
 						 r.date_entered,
 						 r.date_paid
@@ -373,6 +382,7 @@ class RegistrationDao {
 	function readAllRegistrationForms(array $selectFields = null, $toArray = false) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
+						 r.language_entered,
 						 r.status,
 						 r.date_entered,
 						 r.date_paid

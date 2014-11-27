@@ -6,6 +6,7 @@ class RegistrationForm {
 
 	private $id;
 	private $email;
+	private $languageEntered;
 	private $status;
 	private $dateEntered;
 	private $datePaid;
@@ -38,6 +39,14 @@ class RegistrationForm {
 
 	function setEmail($email) {
 		$this->email = $email;
+	}
+
+	function getLanguageEntered() {
+		return $this->languageEntered;
+	}
+
+	function setLanguageEntered($languageEntered) {
+		$this->languageEntered = $languageEntered;
 	}
 
 	function setStatusValue($status) {

@@ -63,7 +63,7 @@ class Payment {
 				$transaction,
 				\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_confirmation'),
 				\helpers\View::getBaseUrl() . \F3::get('ALIASES.payment_status_receive'),
-				\helpers\View::getCurrentLanguage()
+				\models\L11nManager::language()
 				);
 		} catch (\models\PaymentProcessorCallException $e) {
 			$logger = new \Log($f3->get('logfile_error'));
@@ -193,6 +193,8 @@ class Payment {
 
 		// Send email confirming payment received
 		$form = $registrationDao->readRegistrationFormById($transaction->getRegistrationId());
+
+		\models\L11nManager::setLanguage($form->getLanguageEntered());
 
 		$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
 		$f3->set('form', $form);
