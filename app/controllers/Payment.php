@@ -194,6 +194,8 @@ class Payment {
 		// Send email confirming payment received
 		$form = $registrationDao->readRegistrationFormById($transaction->getRegistrationId());
 
+		\models\L11nManager::setLanguage($form->getLanguageEntered());
+
 		$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
 		$f3->set('form', $form);
 
