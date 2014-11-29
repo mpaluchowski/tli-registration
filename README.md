@@ -49,6 +49,7 @@ The form is designed and built to be generic wherever possible, so that it can e
     + form validation, implementing the interface `/app/helpers/FormValidator.php` and configured in `config.ini` at `form_validator`.
     + __mandatory__ form rendering, implementing the interface `/app/helpers/FormRenderer` and configured in `config.ini` at `form_renderer`.
     + **mandatory** price calculation, implementing the interface `/app/models/PriceCalculator.php` and configured in `config.ini` at `form_price_calculator`.
+    + online payment integration, implementing the `/models/PaymentProcessor` interface (or use one of the existing implementations), and setting the implementation class path in `config.ini` value `payment_processor`, together with all `payment_`-prefixed options and any custom options your processor requires.
 - view
     + form designs in `/app/ui/registration/` and `/app/ui/administration/` with possible adjustments to CSS in `/public/css/`.
     + localizations in `/app/dict/`, mostly around form fields.
