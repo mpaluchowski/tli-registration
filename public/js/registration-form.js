@@ -7,6 +7,23 @@ tliRegister.registrationForm = function() {
 		initDependentFieldGroups();
 		initTotalPriceDisplay();
 		initEmailExistingCheck();
+
+		initExternalLinks();
+	},
+
+	/**
+	 * Initialize handling for external links.
+	 */
+	initExternalLinks = function() {
+		$('a[rel=external]').click(linkOpenNewWindow);
+	},
+
+	/**
+	 * Open a link in a new window, preventing original page reload.
+	 */
+	linkOpenNewWindow = function(e) {
+		e.preventDefault();
+		window.open($(this).attr('href'));
 	},
 
 	initEmailExistingCheck = function() {
