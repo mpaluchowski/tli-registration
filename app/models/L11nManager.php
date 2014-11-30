@@ -48,8 +48,15 @@ class L11nManager {
 		if (\F3::exists('COOKIE.language'))
 			return \F3::get('COOKIE.language');
 
+		if (!\F3::exists('HEADERS.Accept-Language'))
+			return \F3::get('FALLBACK');
+
 		/* Content negotiation */
-		preg_match_all('/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $acceptedLangsParse);
+		preg_match_all(
+			'/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i',
+			\F3::get('HEADERS.Accept-Language'),
+			$acceptedLangsParse
+			);
 
 		if (count($acceptedLangsParse[1])) {
 			// create a list like "en" => 0.8
