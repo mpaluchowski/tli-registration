@@ -18,7 +18,7 @@ INSERT INTO `tli_clubs` (`id_club`, `name`) VALUES
 	(3, 'Top Careers Toastmasters');
 /*!40000 ALTER TABLE `tli_clubs` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_pricing_items: ~6 rows (approximately)
+-- Dumping data for table tli_registrations.tli_pricing_items: ~7 rows (approximately)
 DELETE FROM `tli_pricing_items`;
 /*!40000 ALTER TABLE `tli_pricing_items` DISABLE KEYS */;
 INSERT INTO `tli_pricing_items` (`id_pricing_item`, `item`, `variant`, `date_valid_through`) VALUES
@@ -31,12 +31,12 @@ INSERT INTO `tli_pricing_items` (`id_pricing_item`, `item`, `variant`, `date_val
 	(7, 'friday-copernicus-attend', 'planetarium', NULL);
 /*!40000 ALTER TABLE `tli_pricing_items` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_pricing_prices: ~12 rows (approximately)
+-- Dumping data for table tli_registrations.tli_pricing_prices: ~14 rows (approximately)
 DELETE FROM `tli_pricing_prices`;
 /*!40000 ALTER TABLE `tli_pricing_prices` DISABLE KEYS */;
 INSERT INTO `tli_pricing_prices` (`fk_pricing_item`, `currency`, `price`) VALUES
-	(1, 'EUR', 13),
-	(1, 'PLN', 50),
+	(1, 'EUR', 14),
+	(1, 'PLN', 55),
 	(2, 'EUR', 18),
 	(2, 'PLN', 70),
 	(3, 'EUR', 12),
