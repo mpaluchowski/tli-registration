@@ -116,7 +116,7 @@ class TransactionDao {
 	 * @return instance of \models\Transaction or null if registrationId not
 	 * found
 	 */
-	function readTransactionByRegistrationId($registrationId) {
+	function readTransactionByRegistrationId($registrationId, $valid = true) {
 		$query = 'SELECT t.session_id,
 						 t.fk_registration,
 						 t.amount,
@@ -128,6 +128,7 @@ class TransactionDao {
 				  JOIN ' . \F3::get('db_table_prefix') . 'registrations r
 				    ON t.fk_registration = r.id_registration
 				  WHERE t.fk_registration = :registrationId
+				  ' . ($valid ? 'AND t.date_valid > NOW()' : '') . '
 				  LOCK IN SHARE MODE';
 		$result = \F3::get('db')->exec($query, [
 				'registrationId' => $registrationId,
