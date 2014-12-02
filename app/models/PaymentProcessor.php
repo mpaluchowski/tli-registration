@@ -35,6 +35,15 @@ interface PaymentProcessor {
 	function getPaymentPageUrl($token);
 
 	/**
+	 * For a given timestamp, returns the timestamp by which a transaction is
+	 * valid.
+	 *
+	 * @param startedTimestamp The timestamp a transaction started.
+	 * @return The timestamp by which a transaction is valid.
+	 */
+	function getValidDate($startedTimestamp);
+
+	/**
 	 * Process transaction status update coming from the Payment Processor to
 	 * see if all data is correct and extract statement data produced by the
 	 * processing party.

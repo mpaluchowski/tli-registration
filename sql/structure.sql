@@ -97,9 +97,11 @@ CREATE TABLE IF NOT EXISTS `tli_transactions` (
   `method` int(11) DEFAULT NULL,
   `statement` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_started` datetime NOT NULL,
+  `date_valid` datetime NOT NULL,
   `date_paid` datetime DEFAULT NULL,
   PRIMARY KEY (`session_id`),
   KEY `FK__tli_registrations` (`fk_registration`),
+  KEY `date_valid` (`date_valid`),
   CONSTRAINT `FK__tli_registrations` FOREIGN KEY (`fk_registration`) REFERENCES `tli_registrations` (`id_registration`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

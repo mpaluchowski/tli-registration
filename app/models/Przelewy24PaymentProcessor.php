@@ -58,6 +58,13 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 	}
 
 	/**
+	 * @see \models\PaymentProcessor#getValidDate($startedTimestamp)
+	 */
+	function getValidDate($startedTimestamp) {
+		return strtotime("+15 minutes", $startedTimestamp);
+	}
+
+	/**
 	 * @see \models\PaymentProcessor#processTransactionConfirmation(array $postParameters, \models\Transaction &$transaction)
 	 */
 	function processTransactionConfirmation(array $postParameters, \models\Transaction &$transaction) {

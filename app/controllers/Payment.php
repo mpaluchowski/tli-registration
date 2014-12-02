@@ -34,12 +34,17 @@ class Payment {
 			$f3->reroute('@registration_review');
 		}
 
+		$paymentProcessor = \models\PaymentProcessorFactory::instance();
+
 		// Start new transaction if none found so far. Could happen if we saved
 		// a transactio on our side previously, but it didn't reach the payment
 		// processor.
 		if (!$transaction) {
 			$priceCalculator = \models\PriceCalculatorFactory::newInstance();
 			$totalPrice = $priceCalculator->calculateSummary($form)['total'];
+
+			$startedTimestamp = time();
+			$validTimestamp = $paymentProcessor->getValidDate($startedTimestamp);
 
 			// Create and save a new transaction
 			$transaction = new \models\Transaction(
@@ -51,11 +56,11 @@ class Payment {
 				$form->getEmail(),
 				$transactionDao->getDefaultPaymentCountry()
 				);
+			$transaction->setDateStarted(date('Y-m-d H:i:s', $startedTimestamp));
+			$transaction->setDateValid(date('Y-m-d H:i:s', $validTimestamp));
 
 			$transactionDao->saveTransaction($transaction);
 		}
-
-		$paymentProcessor = \models\PaymentProcessorFactory::instance();
 
 		try {
 			// Register transaction with processor
