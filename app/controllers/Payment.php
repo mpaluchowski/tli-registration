@@ -150,7 +150,7 @@ class Payment {
 			$logger = new \Log($f3->get('logfile_error'));
 			$logger->write('ERROR: Transaction not found after PaymentProcessor sent confirmation' . PHP_EOL
 				. print_r($f3->get('POST'), true));
-			return;
+			$f3->error(400);
 		}
 
 		// Check incoming transaction parameters against the ones stored
@@ -163,7 +163,7 @@ class Payment {
 			$logger = new \Log($f3->get('logfile_error'));
 			$logger->write('ERROR: Package verification from PaymentProcessor failed' . PHP_EOL
 				. print_r($f3->get('POST'), true));
-			return;
+			$f3->error(400);
 		}
 
 		// Update stored transaction with details from processor
@@ -180,13 +180,16 @@ class Payment {
 		} catch (\models\PaymentProcessorCallException $e) {
 			$logger = new \Log($f3->get('logfile_error'));
 			$logger->write('ERROR: ' . print_r($e, true));
+			$logger->write('ERROR: Transaction verification with PaymentProcessor failed' . PHP_EOL
+				. print_r($f3->get('POST'), true));
+			$f3->error(500);
 		}
 
 		if (!$result) {
 			$logger = new \Log($f3->get('logfile_error'));
 			$logger->write('ERROR: Transaction verification with PaymentProcessor failed' . PHP_EOL
 				. print_r($f3->get('POST'), true));
-			return;
+			$f3->error(500);
 		}
 
 		$registrationDao = new \models\RegistrationDao();
