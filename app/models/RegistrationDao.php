@@ -116,7 +116,7 @@ class RegistrationDao {
 				$st->execute(array(
 					'registrationId' => $registrationId,
 					'name' => $name,
-					'value' => json_encode($value),
+					'value' => json_encode($value, JSON_UNESCAPED_UNICODE),
 					));
 			}
 
