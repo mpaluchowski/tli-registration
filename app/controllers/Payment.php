@@ -180,6 +180,8 @@ class Payment {
 		} catch (\models\PaymentProcessorCallException $e) {
 			$logger = new \Log($f3->get('logfile_error'));
 			$logger->write('ERROR: ' . print_r($e, true));
+			$logger->write('ERROR: Transaction verification with PaymentProcessor failed' . PHP_EOL
+				. print_r($f3->get('POST'), true));
 			$f3->error(500);
 		}
 
