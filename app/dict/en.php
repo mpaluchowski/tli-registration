@@ -168,7 +168,7 @@ return ['lang' => [
 	"PriceValidThrough" => "valid through {0}",
 	"PaymentTotal" => "Grand total",
 
-	"SelectPaymentOptionButton" => "Select payment option",
+	"SelectPaymentOptionButton" => "Pay online with Przelewy24 now",
 
 	"HowProceedToPaymentHeader" => "How can I proceed to payment?",
 	"HowProceedToPaymentInfo" => "We have an existing registration for the e-mail address <strong>{0}</strong>, which hasn't been paid for yet. To let you proceed, we need to make sure it's really you, who owns the said e-mail address. Right after filling in your registration form, you received a message with a unique link that lets you access details of your registration. To proceed to payment now, please:",

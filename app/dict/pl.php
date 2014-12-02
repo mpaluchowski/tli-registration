@@ -168,7 +168,7 @@ return ['lang' => [
 	"PriceValidThrough" => "ważny do {0}",
 	"PaymentTotal" => "Suma",
 
-	"SelectPaymentOptionButton" => "Wybierz sposób płatności",
+	"SelectPaymentOptionButton" => "Zapłać teraz online z Przelewy24",
 
 	"HowProceedToPaymentHeader" => "Jak przejść do płatności?",
 	"HowProceedToPaymentInfo" => "Mamy już zapisaną rejestrację dla adresu e-mail <strong>{0}</strong>, która nie została jeszcze opłacona. Aby umożliwić ci teraz dokonanie opłaty, musimy najpierw upewnić się, że podany adres e-mail należy do ciebie. Zaraz po wypełnieniu formularza wysłaliśmy ci e-mail z odnośnikiem, który pozwala otworzyć szczegóły rejestracji. Aby zapłacić teraz:",
