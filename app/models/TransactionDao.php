@@ -26,31 +26,30 @@ class TransactionDao {
 	 * @return same transaction instance, with dateStarted added.
 	 */
 	function saveTransaction(\models\Transaction &$transaction) {
-		$dateStarted = time();
-
 		$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'transactions (
 					session_id,
 					fk_registration,
 					amount,
 					currency,
-					date_started
+					date_started,
+					date_valid
 					)
 				VALUES (
 					:sessionId,
 					:registrationId,
 					:amount,
 					:currency,
-					FROM_UNIXTIME(:dateStarted)
+					:dateStarted,
+					:dateValid
 					)';
 		\F3::get('db')->exec($query, [
 				'sessionId' => $transaction->getSessionId(),
 				'registrationId' => $transaction->getRegistrationId(),
 				'amount' => $transaction->getAmount(),
 				'currency' => $transaction->getCurrency(),
-				'dateStarted' => $dateStarted,
+				'dateStarted' => $transaction->getDateStarted(),
+				'dateValid' => $transaction->getDateValid(),
 			]);
-
-		$transaction->setDateStarted(date('Y-m-d H:i:s', $dateStarted));
 
 		return $transaction;
 	}

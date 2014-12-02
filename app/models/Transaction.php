@@ -18,6 +18,7 @@ class Transaction {
 		$statement,
 
 		$dateStarted,
+		$dateValid,
 		$datePaid;
 
 	function __construct($sessionId, $registrationId, $amount, $currency, $description,
@@ -89,6 +90,14 @@ class Transaction {
 
 	function getDateStarted() {
 		return $this->dateStarted;
+	}
+
+	function setDateValid($dateValid) {
+		$this->dateValid = $dateValid;
+	}
+
+	function getDateValid() {
+		return $this->dateValid;
 	}
 
 	function setDatePaid($datePaid) {
