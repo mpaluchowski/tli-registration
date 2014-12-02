@@ -52,6 +52,7 @@ The form is designed and built to be generic wherever possible, so that it can e
     + online payment integration, implementing the `/models/PaymentProcessor` interface (or use one of the existing implementations), and setting the implementation class path in `config.ini` value `payment_processor`, together with all `payment_`-prefixed options and any custom options your processor requires.
 - view
     + form designs in `/app/ui/registration/` and `/app/ui/administration/` with possible adjustments to CSS in `/public/css/`.
+    + top navigation menu with links to your conference's website in `/app/ui/_navigation.php`
     + localizations in `/app/dict/`, mostly around form fields.
     + possible adjustments to code in `/public/js/`, if some fields are named differently or not available.
 
