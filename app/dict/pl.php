@@ -28,6 +28,7 @@ return ['lang' => [
 	"TliNavOrganizersUrl" => 'organizatorzy',
 	"TliNavContact" => 'Kontakt',
 	"TliNavContactUrl" => 'kontakt',
+	"TliNavLanguagePl" => 'English site',
 
 	'RegistrationFormPageTitle' => 'Formularz rejestracyjny',
 	'RegistrationFormHeader' => 'Formularz rejestracyjny',

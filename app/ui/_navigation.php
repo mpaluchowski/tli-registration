@@ -1,3 +1,6 @@
+<?php
+$otherLanguage = current(array_diff(\models\L11nManager::languagesSupported(), [\models\L11nManager::language()]));
+?>
 <div id="tli-navigation-bar">
 <div class="container">
 	<nav id="tli-main-navigation" class="tli-navigation-menu">
@@ -28,6 +31,8 @@
 				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavOrganizersUrl') ?>" data-title="<?php echo \F3::get('lang.TliNavOrganizers') ?>"><i class="fa fa-group"></i><span><?php echo \F3::get('lang.TliNavOrganizers') ?></span></a>
 			</li><li>
 				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavContactUrl') ?>" data-title="<?php echo \F3::get('lang.TliNavContact') ?>"><i class="fa fa-envelope"></i><span><?php echo \F3::get('lang.TliNavContact') ?></span></a>
+			</li><li>
+				<a href="<?php echo \F3::get('PATH') . '?language=' . $otherLanguage ?>" data-title="<?php echo \F3::get('lang.TliNavLanguagePl') ?>"><i class="lang-<?php echo $otherLanguage ?>"></i><span><?php echo \F3::get('lang.TliNavLanguagePl') ?></span></a>
 			</li>
 		</ul>
 	</nav>

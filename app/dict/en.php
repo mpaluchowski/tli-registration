@@ -28,6 +28,7 @@ return ['lang' => [
 	"TliNavOrganizersUrl" => 'organizers',
 	"TliNavContact" => 'Contact',
 	"TliNavContactUrl" => 'contact',
+	"TliNavLanguagePl" => 'strona polskojęzyczna',
 
 	'RegistrationFormPageTitle' => 'Registration Form',
 	'RegistrationFormHeader' => 'Registration form',

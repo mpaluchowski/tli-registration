@@ -220,6 +220,18 @@ table {
 	color: #000;
 }
 
+.lang-pl {
+	&:before {
+		content: url('http://tli.toastmasters.org.pl/2015-01/img/flags/pl.png');
+	}
+}
+
+.lang-en {
+	&:before {
+		content: url('http://tli.toastmasters.org.pl/2015-01/img/flags/us.png');
+	}
+}
+
 .tli-navigation-menu {
 	ul, li {
 		margin: 0;
