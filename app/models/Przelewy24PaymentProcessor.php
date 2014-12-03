@@ -84,7 +84,8 @@ class Przelewy24PaymentProcessor implements \models\PaymentProcessor {
 			return false;
 
 		$transaction->setOrderId($postParameters['p24_order_id']);
-		$transaction->setMethod($postParameters['p24_method']);
+		if (array_key_exists('p24_method', $postParameters))
+			$transaction->setMethod($postParameters['p24_method']);
 		if (array_key_exists('p24_statement', $postParameters))
 			$transaction->setStatement($postParameters['p24_statement']);
 
