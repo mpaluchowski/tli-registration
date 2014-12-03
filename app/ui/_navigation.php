@@ -13,6 +13,8 @@
 			</li><li>
 				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavScheduleUrl') ?>"><?php echo \F3::get('lang.TliNavSchedule') ?></a>
 			</li><li>
+				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavEventsUrl') ?>"><?php echo \F3::get('lang.TliNavEvents') ?></a>
+			</li><li>
 				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavVenuesUrl') ?>"><?php echo \F3::get('lang.TliNavVenues') ?></a>
 			</li><li>
 				<a href="http://tli.toastmasters.org.pl/<?php echo \F3::get('lang.TliNavAccommodationUrl') ?>"><?php echo \F3::get('lang.TliNavAccommodation') ?></a>
