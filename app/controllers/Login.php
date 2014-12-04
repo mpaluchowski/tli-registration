@@ -42,6 +42,10 @@ class Login {
 			$f3->reroute('@admin_login');
 		} else {
 			$authDao->loginUser($admin);
+
+			$eventDao = new \models\EventDao();
+			$eventDao->saveEvent('AdministratorLogin', $admin->id);
+
 			$f3->reroute('@admin_registrations_list');
 		}
 	}
@@ -91,6 +95,10 @@ class Login {
 			$f3->reroute('@admin_login');
 		} else {
 			$authDao->loginUser($admin);
+
+			$eventDao = new \models\EventDao();
+			$eventDao->saveEvent('AdministratorLogin', $admin->id);
+
 			$f3->reroute('@admin_registrations_list');
 		}
 	}
