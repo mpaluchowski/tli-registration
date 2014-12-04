@@ -15,6 +15,17 @@ class EventDao {
 		}
 	}
 
+	/**
+	 * Save a new event into the EventLog.
+	 *
+	 * @param name Name of the event.
+	 * @param administratorId optional ID of the administrator, who triggered
+	 * the event.
+	 * @param data optional additional data on the event.
+	 * @param objectName optional name of object the event was performed on.
+	 * @param objectId optional ID of object the event was performed on.
+	 * @return ID of the event stored in the database.
+	 */
 	function saveEvent(
 		$name,
 		$administratorId = null,
@@ -52,6 +63,11 @@ class EventDao {
 		return \F3::get('db')->lastInsertID();
 	}
 
+	/**
+	 * Read all events from the database.
+	 *
+	 * @return Array of objects with event data.
+	 */
 	function readEvents() {
 		$query = 'SELECT e.id_event,
 						 e.object_name,
