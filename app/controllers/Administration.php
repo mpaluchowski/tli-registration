@@ -56,6 +56,14 @@ class Administration {
 		echo \View::instance()->render('administration/statistics.php');
 	}
 
+	function audit_log($f3) {
+		$eventDao = new \models\EventDao();
+
+		$f3->set('events', $eventDao->readEvents());
+
+		echo \View::instance()->render('administration/audit_log.php');
+	}
+
 	function list_export_csv($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
