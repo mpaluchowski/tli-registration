@@ -52,4 +52,38 @@ class EventDao {
 		return \F3::get('db')->lastInsertID();
 	}
 
+	function readEvents() {
+		$query = 'SELECT e.id_event,
+						 e.object_name,
+						 e.object_id,
+						 e.ip,
+						 e.name,
+						 e.data,
+						 e.date_occurred,
+						 a.id_administrator,
+						 a.full_name
+				  FROM ' . \F3::get('db_table_prefix') . 'events e
+				  LEFT JOIN ' . \F3::get('db_table_prefix') . 'administrators a
+				    ON e.fk_administrator = a.id_administrator
+				  ORDER BY e.date_occurred DESC';
+		$result = \F3::get('db')->exec($query);
+
+		$events = [];
+		foreach ($result as $row) {
+			$events[] = (object)[
+				'id' => $row['id_event'],
+				'objectName' => $row['object_name'],
+				'objectId' => $row['object_id'],
+				'ip' => $row['ip'],
+				'name' => $row['name'],
+				'data' => $row['data'],
+				'dateOccurred' => $row['date_occurred'],
+				'administratorId' => $row['id_administrator'],
+				'administratorName' => $row['full_name'],
+			];
+		}
+
+		return $events;
+	}
+
 }
