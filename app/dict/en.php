@@ -220,6 +220,12 @@ return ['lang' => [
 	"StatisticsRegistrationsRegisteredLabel" => "Registered",
 	"StatisticsRegistrationsPaidLabel" => "Paid",
 
+	"AuditLogHeader" => "Audit Log",
+	"AuditLogAdminName" => "Administrator",
+	"AuditLogEventName" => "Event",
+	"AuditLogEventData" => "Data",
+	"AuditLogEventDate" => "Date",
+
 	"Password" => "Password",
 	"SignInButton" => "Sign in",
 	"SignInGoogle" => "Sign in with Google",
@@ -229,6 +235,7 @@ return ['lang' => [
 	"ToggleNavigation" => "Toggle navigation",
 	"AdminNavRegistrations" => "Registrations",
 	"AdminNavStatistics" => "Statistics",
+	"AdminNavAuditLog" => "Audit Log",
 	"LogoutButton" => "Logout",
 	"SignedInAs" => "Signed in as {0}",
 

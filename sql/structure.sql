@@ -29,6 +29,25 @@ CREATE TABLE IF NOT EXISTS `tli_clubs` (
 -- Data exporting was unselected.
 
 
+-- Dumping structure for table tli_registrations.tli_events
+DROP TABLE IF EXISTS `tli_events`;
+CREATE TABLE IF NOT EXISTS `tli_events` (
+  `id_event` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `object_name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `object_id` int(10) unsigned DEFAULT NULL,
+  `fk_administrator` int(10) unsigned DEFAULT NULL,
+  `ip` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `data` text COLLATE utf8_unicode_ci,
+  `date_occurred` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_event`),
+  KEY `FK__tli_administrators` (`fk_administrator`),
+  CONSTRAINT `FK__tli_administrators` FOREIGN KEY (`fk_administrator`) REFERENCES `tli_administrators` (`id_administrator`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Data exporting was unselected.
+
+
 -- Dumping structure for table tli_registrations.tli_pricing_items
 DROP TABLE IF EXISTS `tli_pricing_items`;
 CREATE TABLE IF NOT EXISTS `tli_pricing_items` (

@@ -220,6 +220,12 @@ return ['lang' => [
 	"StatisticsRegistrationsRegisteredLabel" => "Zarejestrowanych",
 	"StatisticsRegistrationsPaidLabel" => "Opłaconych",
 
+	"AuditLogHeader" => "Log zdarzeń",
+	"AuditLogAdminName" => "Administrator",
+	"AuditLogEventName" => "Zdarzenie",
+	"AuditLogEventData" => "Dane",
+	"AuditLogEventDate" => "Data",
+
 	"Password" => "Hasło",
 	"SignInButton" => "Zaloguj",
 	"SignInGoogle" => "Zaloguj się z Google",
@@ -229,6 +235,7 @@ return ['lang' => [
 	"ToggleNavigation" => "Pokaż nawigację",
 	"AdminNavRegistrations" => "Rejestracje",
 	"AdminNavStatistics" => "Statystyki",
+	"AdminNavAuditLog" => "Log Zdarzeń",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",
 
