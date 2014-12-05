@@ -18,6 +18,7 @@ A registration form for the Toastmasters Leadership Institute events, built on t
 - customizable form processing
 - administrative area with overview of all registrations, statistics
 - administrative login via password or Google
+- audit log to track back important events
 - internationalization
 - all layouts responsive
 - mailer allows rerouting all emails to single inbox in testing, adding BCC to all outgoing email
