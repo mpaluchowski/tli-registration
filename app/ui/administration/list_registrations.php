@@ -18,12 +18,14 @@ $renderer = \helpers\FormRendererFactory::className();
 <div class="table-responsive">
 	<table class="table table-hover">
 		<thead>
-			<th style="white-space: nowrap;"><?php echo \F3::get('lang.FullName') ?></th>
-			<th style="white-space: nowrap;"><?php echo \F3::get('lang.Email') ?></th>
-			<th style="white-space: nowrap;"><?php echo \F3::get('lang.Phone') ?></th>
-			<th style="white-space: nowrap;"><?php echo \F3::get('lang.DateEntered') ?></th>
-			<th style="white-space: nowrap;"><?php echo \F3::get('lang.DatePaid') ?></th>
-			<th style="white-space: nowrap;"><?php echo \F3::get('lang.RegistrationStatus') ?></th>
+			<tr>
+				<th style="white-space: nowrap;"><?php echo \F3::get('lang.FullName') ?></th>
+				<th style="white-space: nowrap;"><?php echo \F3::get('lang.Email') ?></th>
+				<th style="white-space: nowrap;"><?php echo \F3::get('lang.Phone') ?></th>
+				<th style="white-space: nowrap;"><?php echo \F3::get('lang.DateEntered') ?></th>
+				<th style="white-space: nowrap;"><?php echo \F3::get('lang.DatePaid') ?></th>
+				<th style="white-space: nowrap;"><?php echo \F3::get('lang.RegistrationStatus') ?></th>
+			</tr>
 		</thead>
 		<tbody>
 	<?php foreach ($registrations as $registration): ?>
