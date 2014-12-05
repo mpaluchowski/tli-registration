@@ -11,20 +11,20 @@
 	<h3><?php echo \F3::get('lang.StatisticsSeatsHeader') ?></h3>
 
 	<div class="progress">
-		<div class="progress-bar progress-bar-success" style="width: <?php echo $stats->paid / ($stats->count + $stats->left) * 100 ?>%">
-			<?php echo \F3::get('lang.StatisticsSeatsPaid', $stats->paid) ?>
+		<div class="progress-bar progress-bar-success" style="width: <?php echo $registrationsByStatus->paid / ($registrationsByStatus->count + $registrationsByStatus->left) * 100 ?>%">
+			<?php echo \F3::get('lang.StatisticsSeatsPaid', $registrationsByStatus->paid) ?>
 		</div>
-		<div class="progress-bar tli-progress-bar-none" style="width: <?php echo $stats->left / ($stats->count + $stats->left) * 100 ?>%;">
-			<?php echo \F3::get('lang.StatisticsSeatsLeft', $stats->left) ?>
+		<div class="progress-bar tli-progress-bar-none" style="width: <?php echo $registrationsByStatus->left / ($registrationsByStatus->count + $registrationsByStatus->left) * 100 ?>%;">
+			<?php echo \F3::get('lang.StatisticsSeatsLeft', $registrationsByStatus->left) ?>
 		</div>
-		<div class="progress-bar progress-bar-warning" style="width: <?php echo $stats->pendingPayment / ($stats->count + $stats->left) * 100 ?>%;">
-			<?php echo \F3::get('lang.StatisticsSeatsPendingPayment', $stats->pendingPayment) ?>
+		<div class="progress-bar progress-bar-warning" style="width: <?php echo $registrationsByStatus->pendingPayment / ($registrationsByStatus->count + $registrationsByStatus->left) * 100 ?>%;">
+			<?php echo \F3::get('lang.StatisticsSeatsPendingPayment', $registrationsByStatus->pendingPayment) ?>
 		</div>
-		<div class="progress-bar" style="background: #000; width: <?php echo $stats->pendingReview / ($stats->count + $stats->left) * 100 ?>%;">
-			<?php echo \F3::get('lang.StatisticsSeatsPendingReview', $stats->pendingReview) ?>
+		<div class="progress-bar" style="background: #000; width: <?php echo $registrationsByStatus->pendingReview / ($registrationsByStatus->count + $registrationsByStatus->left) * 100 ?>%;">
+			<?php echo \F3::get('lang.StatisticsSeatsPendingReview', $registrationsByStatus->pendingReview) ?>
 		</div>
-		<div class="progress-bar" style="background: #777; width: <?php echo $stats->waitingList / ($stats->count + $stats->left) * 100 ?>%;">
-			<?php echo \F3::get('lang.StatisticsSeatsWaitingList', $stats->waitingList) ?>
+		<div class="progress-bar" style="background: #777; width: <?php echo $registrationsByStatus->waitingList / ($registrationsByStatus->count + $registrationsByStatus->left) * 100 ?>%;">
+			<?php echo \F3::get('lang.StatisticsSeatsWaitingList', $registrationsByStatus->waitingList) ?>
 		</div>
 	</div>
 <?php endif; ?>
@@ -54,10 +54,10 @@
 	function drawRegistrationsByStatusChart() {
 		var data = google.visualization.arrayToDataTable([
 			['<?php echo \F3::get('lang.StatisticsRegistrationStatusLabel') ?>', '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
-			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_PAYMENT') ?>', <?php echo $stats->pendingPayment ?>],
-			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_REVIEW') ?>', <?php echo $stats->pendingReview ?>],
-			['<?php echo \F3::get('lang.RegistrationStatus-WAITING_LIST') ?>', <?php echo $stats->waitingList ?>],
-			['<?php echo \F3::get('lang.RegistrationStatus-PAID') ?>', <?php echo $stats->paid ?>],
+			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_PAYMENT') ?>', <?php echo $registrationsByStatus->pendingPayment ?>],
+			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_REVIEW') ?>', <?php echo $registrationsByStatus->pendingReview ?>],
+			['<?php echo \F3::get('lang.RegistrationStatus-WAITING_LIST') ?>', <?php echo $registrationsByStatus->waitingList ?>],
+			['<?php echo \F3::get('lang.RegistrationStatus-PAID') ?>', <?php echo $registrationsByStatus->paid ?>],
 			]);
 		var options = {
 			pieHole : 0.4,

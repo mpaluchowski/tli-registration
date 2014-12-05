@@ -50,7 +50,7 @@ class Administration {
 		if (\models\RegistrationDao::isSeatingLimited()) {
 			$f3->set('totalSeats', \models\RegistrationDao::getSeatLimit());
 		}
-		$f3->set('stats', $registrationDao->readRegistrationStatistics());
+		$f3->set('registrationsByStatus', $registrationDao->readRegistrationStatistics());
 		$f3->set('registrationsByWeek', $registrationDao->readRegistrationsByWeekStatistics());
 
 		echo \View::instance()->render('administration/statistics.php');
