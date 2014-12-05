@@ -46,12 +46,17 @@ class Administration {
 
 	function statistics($f3) {
 		$registrationDao = new \models\RegistrationDao();
-
-		$f3->set('registrationsByStatus', $registrationDao->readRegistrationStatistics());
-		$f3->set('registrationsByWeek', $registrationDao->readRegistrationsByWeekStatistics());
-
 		$statisticsDao = \models\StatisticsDaoFactory::newInstance();
+
 		$f3->set('stats', $statisticsDao->readStatistics());
+		$f3->set(
+			'stats.registrations-by-status',
+			$registrationDao->readRegistrationStatistics()
+			);
+		$f3->set(
+			'stats.registrations-by-week',
+			$registrationDao->readRegistrationsByWeekStatistics()
+			);
 
 		echo \View::instance()->render('administration/statistics.php');
 	}
