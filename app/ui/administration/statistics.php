@@ -101,9 +101,11 @@
 		<?php endforeach; ?>
 			]);
 		var options = {
+			height: data.getNumberOfRows() * 40,
 			colors : [
 				'#5cb85c'
 			],
+			chartArea: { left: 150 },
 			legend: { position: "none" },
 		};
 
