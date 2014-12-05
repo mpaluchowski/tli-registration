@@ -15,6 +15,9 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		}
 	}
 
+	/**
+	 * @see \models\StatisticsDao#readStatistics()
+	 */
 	function readStatistics() {
 		$query = "SELECT rf.value,
 						 COUNT(rf.fk_registration) AS registrations
