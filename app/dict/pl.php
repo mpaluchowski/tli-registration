@@ -220,6 +220,8 @@ return ['lang' => [
 	"StatisticsRegistrationsRegisteredLabel" => "Zarejestrowanych",
 	"StatisticsRegistrationsPaidLabel" => "Opłaconych",
 
+	"StatisticsRegistrationsByClubHeader" => "Rejestracje wg klubów",
+
 	"AuditLogHeader" => "Log zdarzeń",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Zdarzenie",

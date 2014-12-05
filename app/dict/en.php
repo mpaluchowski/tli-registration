@@ -220,6 +220,8 @@ return ['lang' => [
 	"StatisticsRegistrationsRegisteredLabel" => "Registered",
 	"StatisticsRegistrationsPaidLabel" => "Paid",
 
+	"StatisticsRegistrationsByClubHeader" => "Registrations by Club",
+
 	"AuditLogHeader" => "Audit Log",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Event",
