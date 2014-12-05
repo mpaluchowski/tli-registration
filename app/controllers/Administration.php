@@ -53,7 +53,7 @@ class Administration {
 		$f3->set('registrationsByStatus', $registrationDao->readRegistrationStatistics());
 		$f3->set('registrationsByWeek', $registrationDao->readRegistrationsByWeekStatistics());
 
-		$statisticsDao = new \models\StatisticsDaoImpl();
+		$statisticsDao = \models\StatisticsDaoFactory::newInstance();
 		$f3->set('stats', $statisticsDao->readStatistics());
 
 		echo \View::instance()->render('administration/statistics.php');
