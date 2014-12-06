@@ -19,6 +19,13 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 	 * @see \models\StatisticsDao#readStatistics()
 	 */
 	function readStatistics() {
+		return [
+			'registrations-by-club' => $this->readRegistrationsByClub(),
+			'officers-by-club' => $this->readOfficersByClub(),
+		];
+	}
+
+	function readRegistrationsByClub() {
 		$query = "SELECT rf.value,
 						 COUNT(rf.fk_registration) AS registrations
 				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf
@@ -28,9 +35,9 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 				  		   rf.value";
 		$result = \F3::get('db')->exec($query);
 
-		$stats = ['registrations-by-club' => []];
+		$stats = [];
 		foreach ($result as $row) {
-			$stats['registrations-by-club'][] = (object)[
+			$stats[] = (object)[
 				'name' => json_decode($row['value']),
 				'count' => $row['registrations'],
 			];
