@@ -55,6 +55,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 					AND rf2.name = 'exec-position'
 					AND rf2.value <> '\"none\"'
 				  WHERE rf1.name = 'home-club'
+				    AND rf1.value <> '\"None\"'
 				  GROUP BY rf1.value
 				  ORDER BY rf1.value";
 		$result = \F3::get('db')->exec($query);
