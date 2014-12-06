@@ -222,6 +222,7 @@ return ['lang' => [
 
 	"StatisticsRegistrationsByClubHeader" => "Rejestracje wg klubów",
 	"StatisticsClubLabel" => "Klub",
+	"StatisticsRegistrationsLabel" => "Rejestracje",
 
 	"StatisticsOfficersByClubHeader" => "Oficerowie wg klubów",
 	"StatisticsOfficersLabel" => "Oficerowie",

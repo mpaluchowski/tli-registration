@@ -100,7 +100,7 @@
 
 	function drawRegistrationsByClubChart() {
 		var data = google.visualization.arrayToDataTable([
-			['Club', 'Registrations'],
+			['<?php echo \F3::get('lang.StatisticsClubLabel') ?>', '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
 		<?php foreach ($stats['registrations-by-club'] as $club): ?>
 			['<?php echo $club->name ?>', <?php echo $club->count ?>],
 		<?php endforeach; ?>

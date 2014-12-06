@@ -222,6 +222,7 @@ return ['lang' => [
 
 	"StatisticsRegistrationsByClubHeader" => "Registrations by Club",
 	"StatisticsClubLabel" => "Club",
+	"StatisticsRegistrationsLabel" => "Registrations",
 
 	"StatisticsOfficersByClubHeader" => "Officers by Club",
 	"StatisticsOfficersLabel" => "Officers",
