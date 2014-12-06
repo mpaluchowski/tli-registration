@@ -38,4 +38,31 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		return $stats;
 	}
 
+	function readOfficersByClub() {
+		$query = "SELECT rf1.value AS club,
+						 COUNT(rf2.fk_registration) AS officers,
+						 GROUP_CONCAT(rf2.value SEPARATOR \"|\") AS positions
+				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf1
+				  LEFT JOIN " . \F3::get('db_table_prefix') . "registration_fields rf2
+					ON rf1.fk_registration = rf2.fk_registration
+					AND rf2.name = 'exec-position'
+					AND rf2.value <> '\"none\"'
+				  WHERE rf1.name = 'home-club'
+				  GROUP BY rf1.value
+				  ORDER BY rf1.value";
+		$result = \F3::get('db')->exec($query);
+
+		$stats = [];
+		foreach ($result as $row) {
+			$stats[] = (object)[
+				'name' => json_decode($row['club']),
+				'count' => $row['officers'],
+				'positions' => array_map(function ($item) {
+					return json_decode($item);
+				}, explode("|", $row['positions'])),
+			];
+		}
+		return $stats;
+	}
+
 }
