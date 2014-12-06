@@ -25,6 +25,12 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		];
 	}
 
+	/**
+	 * Return a list of clubs with the number of registrations from each one
+	 * of them.
+	 *
+	 * @return array with objects, one per club, name and count of registrations.
+	 */
 	function readRegistrationsByClub() {
 		$query = "SELECT rf.value,
 						 COUNT(rf.fk_registration) AS registrations
@@ -45,6 +51,13 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		return $stats;
 	}
 
+	/**
+	 * Return a list of clubs with the number of officers registered from each
+	 * one, and positions that registered.
+	 *
+	 * @return array with objects, one per club, name, count and array of
+	 * positions.
+	 */
 	function readOfficersByClub() {
 		$query = "SELECT rf1.value AS club,
 						 COUNT(rf2.fk_registration) AS officers,
