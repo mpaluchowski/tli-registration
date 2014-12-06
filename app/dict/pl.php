@@ -216,7 +216,7 @@ return ['lang' => [
 	"StatisticsRegistrationsByStatusHeader" => "Rejestracje wg statusu",
 	"StatisticsRegistrationStatusLabel" => "Status",
 	"StatisticsRegistrationsLabel" => "Rejestracji",
-	"StatisticsRegistrationsByWeekHeader" => "Rejestracji wg tygodniu",
+	"StatisticsRegistrationsByWeekHeader" => "Rejestracje wg tygodni",
 	"StatisticsRegistrationsRegisteredLabel" => "Zarejestrowanych",
 	"StatisticsRegistrationsPaidLabel" => "Opłaconych",
 
