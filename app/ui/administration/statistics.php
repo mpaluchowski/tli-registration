@@ -128,16 +128,13 @@
 
 	function drawOfficersByClubChart() {
 		var data = google.visualization.arrayToDataTable([
-			['<?php echo \F3::get('lang.StatisticsClubLabel') ?>', '<?php echo \F3::get('lang.StatisticsOfficersLabel') ?>'],
+			['<?php echo \F3::get('lang.StatisticsClubLabel') ?>', '<?php echo \F3::get('lang.StatisticsOfficersLabel') ?>', { role: 'style' }],
 		<?php foreach ($stats['officers-by-club'] as $club): ?>
-			['<?php echo $club->name ?>', <?php echo $club->count ?>],
+			['<?php echo $club->name ?>', <?php echo $club->count ?>, '<?php echo $club->count < 4 ? '#d9534f' : '#5cb85c' ?>'],
 		<?php endforeach; ?>
 			]);
 		var options = {
 			height: data.getNumberOfRows() * 40,
-			colors : [
-				'#5cb85c'
-			],
 			chartArea: { left: 150 },
 			legend: { position: "none" },
 		};
@@ -148,7 +145,7 @@
 				sourceColumn: 1,
 				type: "string",
 				role: "annotation"
-			}]);
+			}, 2]);
 
 		var chart = new google.visualization.BarChart(document.getElementById('bar-officers-by-club'));
 		chart.draw(view, options);
