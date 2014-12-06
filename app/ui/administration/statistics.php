@@ -106,11 +106,14 @@
 		<?php endforeach; ?>
 			]);
 		var options = {
-			height: data.getNumberOfRows() * 40,
+			height: data.getNumberOfRows() * 25,
 			colors : [
 				'#5cb85c'
 			],
-			chartArea: { left: 150 },
+			chartArea: {
+				left: 150,
+				height: '100%',
+			},
 			legend: { position: "none" },
 		};
 
@@ -134,8 +137,11 @@
 		<?php endforeach; ?>
 			]);
 		var options = {
-			height: data.getNumberOfRows() * 40,
-			chartArea: { left: 150 },
+			height: data.getNumberOfRows() * 25,
+			chartArea: {
+				left: 150,
+				height: '100%',
+			},
 			legend: { position: "none" },
 		};
 
