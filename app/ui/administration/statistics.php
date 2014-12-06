@@ -45,6 +45,10 @@
 			<h3><?php echo \F3::get('lang.StatisticsRegistrationsByClubHeader') ?></h3>
 			<div id="bar-registrations-by-club" style="width: 100%;"></div>
 		</div>
+		<div class="col-sm-4">
+			<h3><?php echo \F3::get('lang.StatisticsOfficersByClubHeader') ?></h3>
+			<div id="bar-officers-by-club"></div>
+		</div>
 	</div>
 </div>
 
@@ -57,6 +61,7 @@
 		drawRegistrationsByStatusChart();
 		drawRegistrationsByWeekChart();
 		drawRegistrationsByClubChart();
+		drawOfficersByClubChart();
 	}
 
 	function drawRegistrationsByStatusChart() {
@@ -118,6 +123,34 @@
 			}]);
 
 		var chart = new google.visualization.BarChart(document.getElementById('bar-registrations-by-club'));
+		chart.draw(view, options);
+	}
+
+	function drawOfficersByClubChart() {
+		var data = google.visualization.arrayToDataTable([
+			['<?php echo \F3::get('lang.StatisticsClubLabel') ?>', '<?php echo \F3::get('lang.StatisticsOfficersLabel') ?>'],
+		<?php foreach ($stats['officers-by-club'] as $club): ?>
+			['<?php echo $club->name ?>', <?php echo $club->count ?>],
+		<?php endforeach; ?>
+			]);
+		var options = {
+			height: data.getNumberOfRows() * 40,
+			colors : [
+				'#5cb85c'
+			],
+			chartArea: { left: 150 },
+			legend: { position: "none" },
+		};
+
+		var view = new google.visualization.DataView(data);
+		view.setColumns([0, 1, {
+				calc: "stringify",
+				sourceColumn: 1,
+				type: "string",
+				role: "annotation"
+			}]);
+
+		var chart = new google.visualization.BarChart(document.getElementById('bar-officers-by-club'));
 		chart.draw(view, options);
 	}
 </script>

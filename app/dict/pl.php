@@ -221,6 +221,10 @@ return ['lang' => [
 	"StatisticsRegistrationsPaidLabel" => "Opłaconych",
 
 	"StatisticsRegistrationsByClubHeader" => "Rejestracje wg klubów",
+	"StatisticsClubLabel" => "Klub",
+
+	"StatisticsOfficersByClubHeader" => "Oficerowie wg klubów",
+	"StatisticsOfficersLabel" => "Oficerowie",
 
 	"AuditLogHeader" => "Log zdarzeń",
 	"AuditLogAdminName" => "Administrator",
