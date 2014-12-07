@@ -7,6 +7,8 @@
 		<h1><?php echo \F3::get('lang.CodesHeader') ?></h1>
 	</div>
 
+<?php echo \View::instance()->render('message-alerts.php') ?>
+
 	<form action="<?php echo \F3::get('ALIASES.admin_code_create') ?>" method="POST">
 		<div class="form-group">
 			<label for="email" class="control-label"><?php echo \F3::get('lang.CodesRecipientEmail') ?></label>

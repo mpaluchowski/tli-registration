@@ -218,6 +218,7 @@ return ['lang' => [
 	"CodesCode" => "Code",
 	"CodesDateCreated" => "Date created",
 	"CodesDateRedeemed" => "Date redeemed",
+	"CodesCreatedMsg" => "Code for <strong>{0}</strong> successfully generated.",
 
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",

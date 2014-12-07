@@ -71,6 +71,13 @@ class Administration {
 			'DiscountCode',
 			$codeId
 			);
+
+		\models\MessageManager::addMessage(
+			'success',
+			$f3->get('lang.CodesCreatedMsg', $code->getEmail())
+			);
+
+		$f3->reroute('@admin_codes');
 	}
 
 	function statistics($f3) {

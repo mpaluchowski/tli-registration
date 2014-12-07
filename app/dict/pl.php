@@ -218,6 +218,7 @@ return ['lang' => [
 	"CodesCode" => "Kod",
 	"CodesDateCreated" => "Data utworzenia",
 	"CodesDateRedeemed" => "Data wykorzystania",
+	"CodesCreatedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany.",
 
 	"StatisticsHeader" => "Statystyki",
 	"StatisticsSeatsHeader" => "Miejsca",
