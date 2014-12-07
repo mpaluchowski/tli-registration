@@ -245,6 +245,8 @@ $renderer = \helpers\FormRendererFactory::className();
 				<button type="submit" class="btn btn-default"><?php echo \F3::get('lang.DiscountCodeRedeemButton') ?></button>
 			</span>
 		</div>
+
+		<input type="hidden" name="email" value="<?php echo $form->getEmail() ?>">
 	</form>
 
 	<?php

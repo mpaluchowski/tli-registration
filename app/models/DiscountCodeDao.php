@@ -101,6 +101,34 @@ class DiscountCodeDao {
 		return $codeId;
 	}
 
+	/**
+	 * Find a non-previously-redeemed code for a given code string and email.
+	 *
+	 * @param code the code string to look for
+	 * @param email email to find code for
+	 * @return DiscountCode instance or null of particular arguments not found
+	 * or the code is already redeemed.
+	 */
+	function readDiscountCodeByCodeEmail($code, $email) {
+		$query = 'SELECT dc.id_discount_code,
+						 dc.code,
+						 dc.email,
+						 dc.date_created,
+						 dc.date_redeemed
+				  FROM ' . \F3::get('db_table_prefix') . 'discount_codes dc
+				  WHERE dc.code = :code
+				    AND dc.email = :email
+				    AND dc.date_redeemed IS NULL';
+		$result = \F3::get('db')->exec($query, [
+			'code' => $code,
+			'email' => $email,
+			]);
+
+		return $result
+			? $this->parseQueryToCode($result[0])
+			: null;
+	}
+
 	function readAllDiscountCodes() {
 		$query = 'SELECT dc.id_discount_code,
 						 dc.code,
