@@ -145,6 +145,12 @@ class Registration {
 
 		// Code found, connect code to registration and inform user
 		$discountCodeDao->redeemCode($code->getId(), $form->getId());
+
+		\models\MessageManager::addMessage(
+			'success',
+			$f3->get('lang.DiscountCodeRedeemedMsg', $code->getCode())
+			);
+		$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 	}
 
 	function info_proceed_to_payment($f3, $args) {
