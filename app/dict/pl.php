@@ -178,6 +178,7 @@ return ['lang' => [
 	"DiscountCodeHelp" => 'Posiadasz kod zniżkowy? Wpisz go tutaj i kliknij "Wykorzystaj kod".',
 	"DiscountCodeTitle" => "13-znakowy kod składający się z dużych liter i cyfr",
 	"DiscountCodeRedeemButton" => "Wykorzystaj kod",
+	"DiscountCodeNotFoundMsg" => "Nie mogliśmy znaleźć kodu {0} w naszym rejestrze. Spróbuj wpisać go ponownie i jeśli uważasz, że to błąd, skontaktuj się z nami i wyjaśnimy sprawę.",
 
 	"SelectPaymentOptionButton" => "Zapłać teraz online z Przelewy24",
 

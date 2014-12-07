@@ -178,6 +178,7 @@ return ['lang' => [
 	"DiscountCodeHelp" => "Have a discount code? Enter it here and click 'Redeem code'.",
 	"DiscountCodeTitle" => "13-character code, mixed uppercase letters and numbers",
 	"DiscountCodeRedeemButton" => "Redeem code",
+	"DiscountCodeNotFoundMsg" => "We couldn't find the code {0} in our records. Please try entering it again and if you think that's an error, contact us for clarification.",
 
 	"SelectPaymentOptionButton" => "Pay online with Przelewy24 now",
 

@@ -134,6 +134,14 @@ class Registration {
 			$form->getEmail()
 			);
 
+		if (!$code) {
+			// Code not found, inform user
+			\models\MessageManager::addMessage(
+				'danger',
+				$f3->get('lang.DiscountCodeNotFoundMsg', $f3->get('POST.discount-code'))
+				);
+			$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
+		}
 	}
 
 	function info_proceed_to_payment($f3, $args) {
