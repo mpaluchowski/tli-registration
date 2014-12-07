@@ -174,6 +174,11 @@ return ['lang' => [
 	"PriceValidThrough" => "valid through {0}",
 	"PaymentTotal" => "Grand total",
 
+	"DiscountCode" => "Discount code",
+	"DiscountCodeHelp" => "Have a discount code? Enter it here and click 'Redeem code'.",
+	"DiscountCodeTitle" => "13-character code, mixed uppercase letters and numbers",
+	"DiscountCodeRedeemButton" => "Redeem code",
+
 	"SelectPaymentOptionButton" => "Pay online with Przelewy24 now",
 
 	"HowProceedToPaymentHeader" => "How can I proceed to payment?",

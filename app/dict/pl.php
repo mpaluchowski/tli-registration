@@ -174,6 +174,11 @@ return ['lang' => [
 	"PriceValidThrough" => "ważny do {0}",
 	"PaymentTotal" => "Suma",
 
+	"DiscountCode" => "Kod zniżkowy",
+	"DiscountCodeHelp" => 'Posiadasz kod zniżkowy? Wpisz go tutaj i kliknij "Wykorzystaj kod".',
+	"DiscountCodeTitle" => "13-znakowy kod składający się z dużych liter i cyfr",
+	"DiscountCodeRedeemButton" => "Wykorzystaj kod",
+
 	"SelectPaymentOptionButton" => "Zapłać teraz online z Przelewy24",
 
 	"HowProceedToPaymentHeader" => "Jak przejść do płatności?",

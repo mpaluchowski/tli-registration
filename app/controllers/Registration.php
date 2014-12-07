@@ -113,6 +113,9 @@ class Registration {
 		echo \View::instance()->render('registration/review.php');
 	}
 
+	function code_redeem($f3) {
+	}
+
 	function info_proceed_to_payment($f3, $args) {
 		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
 			$f3->error(404);

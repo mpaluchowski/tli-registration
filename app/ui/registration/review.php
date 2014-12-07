@@ -235,6 +235,17 @@ $renderer = \helpers\FormRendererFactory::className();
 	</div>
 
 <?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
+	<form action="<?php echo \F3::get('ALIASES.registration_code_redeem') ?>" method="POST" style="margin-bottom: 3em;">
+		<label for="discount-code" class="sr-only"><?php echo \F3::get('lang.DiscountCode') ?></label>
+		<p class="help-block"><?php echo \F3::get('lang.DiscountCodeHelp') ?></p>
+
+		<div class="input-group">
+			<input type="text" id="discount-code" name="discount-code" placeholder="ABCDEF1234567" required pattern="^[A-Za-z0-9]{13}$" title="<?php echo \F3::get('lang.DiscountCodeTitle') ?>" class="form-control">
+			<span class="input-group-btn">
+				<button type="submit" class="btn btn-default"><?php echo \F3::get('lang.DiscountCodeRedeemButton') ?></button>
+			</span>
+		</div>
+	</form>
 
 	<?php
 		$processorClass = \models\PaymentProcessorFactory::className();
