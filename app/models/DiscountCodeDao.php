@@ -102,6 +102,27 @@ class DiscountCodeDao {
 	}
 
 	/**
+	 * Redeem a code by linking it to a specific Registration and setting its
+	 * redeeming date.
+	 *
+	 * @param codeId ID of the code to redeem
+	 * @param registrationId ID of the Registration to attach the code to
+	 * @return true if redeeming succeeded
+	 */
+	function redeemCode($codeId, $registrationId) {
+		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'discount_codes
+				  SET fk_registration = :registrationId,
+					  date_redeemed = NOW()
+				  WHERE id_discount_code = :codeId';
+		\F3::get('db')->exec($query, [
+			'registrationId' => $registrationId,
+			'codeId' => $codeId,
+			]);
+
+		return true;
+	}
+
+	/**
 	 * Find a non-previously-redeemed code for a given code string and email.
 	 *
 	 * @param code the code string to look for

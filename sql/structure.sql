@@ -37,9 +37,12 @@ CREATE TABLE IF NOT EXISTS `tli_discount_codes` (
   `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_redeemed` datetime DEFAULT NULL,
+  `fk_registration` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_discount_code`),
   UNIQUE KEY `code` (`code`),
-  KEY `code_email_date_redeemed` (`code`,`email`,`date_redeemed`)
+  KEY `code_email_date_redeemed` (`code`,`email`,`date_redeemed`),
+  KEY `FK_tli_discount_codes_tli_registrations` (`fk_registration`),
+  CONSTRAINT `FK_tli_discount_codes_tli_registrations` FOREIGN KEY (`fk_registration`) REFERENCES `tli_registrations` (`id_registration`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Data exporting was unselected.

@@ -142,6 +142,9 @@ class Registration {
 				);
 			$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 		}
+
+		// Code found, connect code to registration and inform user
+		$discountCodeDao->redeemCode($code->getId(), $form->getId());
 	}
 
 	function info_proceed_to_payment($f3, $args) {
