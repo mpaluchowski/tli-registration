@@ -115,14 +115,23 @@ class Registration {
 
 	function code_redeem($f3) {
 		if (!\models\DiscountCodeDao::validateCode($f3->get('POST.discount-code'))
-				|| !filter_var($f3->get('POST.email'), FILTER_VALIDATE_EMAIL))
+				|| !is_numeric($f3->get('POST.registrationId')))
 			$f3->error(404);
 
+		// See if we can find the Registration
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationById($f3->get('POST.registrationId'));
+
+		if (!$form)
+			$f3->error(404);
+
+		// Try finding the code
 		$discountCodeDao = new \models\DiscountCodeDao();
 
 		$code = $discountCodeDao->readDiscountCodeByCodeEmail(
 			$f3->get('POST.discount-code'),
-			$f3->get('POST.email')
+			$form->getEmail()
 			);
 
 	}

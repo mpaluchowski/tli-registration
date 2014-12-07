@@ -246,7 +246,7 @@ $renderer = \helpers\FormRendererFactory::className();
 			</span>
 		</div>
 
-		<input type="hidden" name="email" value="<?php echo $form->getEmail() ?>">
+		<input type="hidden" name="registrationId" value="<?php echo $form->getId() ?>">
 	</form>
 
 	<?php
