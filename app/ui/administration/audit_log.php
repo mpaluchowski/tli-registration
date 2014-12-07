@@ -12,6 +12,7 @@
 		<thead>
 			<th><?php echo \F3::get('lang.AuditLogAdminName') ?></th>
 			<th><?php echo \F3::get('lang.AuditLogEventName') ?></th>
+			<th><?php echo \F3::get('lang.AuditLogEventObject') ?></th>
 			<th><?php echo \F3::get('lang.AuditLogEventData') ?></th>
 			<th><?php echo \F3::get('lang.AuditLogEventDate') ?></th>
 		</thead>
@@ -23,7 +24,8 @@
 					<?php echo $event->administratorName ?>
 				</td>
 				<td><?php echo $event->name ?></td>
-				<td><?php echo $event->data ?></td>
+				<td><?php echo $event->objectName ? $event->objectName . '(' . $event->objectId . ')' : "&mdash;" ?></td>
+				<td><?php echo $event->data ?: "&mdash;" ?></td>
 				<td><?php echo \helpers\View::formatDateTime($event->dateOccurred) ?></td>
 			</tr>
 		<?php endforeach; ?>

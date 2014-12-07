@@ -248,6 +248,7 @@ return ['lang' => [
 	"AuditLogHeader" => "Log zdarzeń",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Zdarzenie",
+	"AuditLogEventObject" => "Obiekt",
 	"AuditLogEventData" => "Dane",
 	"AuditLogEventDate" => "Data",
 
