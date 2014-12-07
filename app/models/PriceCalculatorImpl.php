@@ -76,7 +76,7 @@ class PriceCalculatorImpl implements PriceCalculator {
 	 * @param time optional time to return prices for. Default is now.
 	 * @return pricing structure with all available options and variants.
 	 */
-	public function fetchPricing($time = null) {
+	function fetchPricing($time = null) {
 		if (!$time) $time = time();
 
 		$query = 'SELECT pi.item,
