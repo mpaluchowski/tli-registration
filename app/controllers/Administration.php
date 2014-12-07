@@ -77,8 +77,10 @@ class Administration {
 			$f3->reroute('@admin_codes');
 		}
 
+		// Save the discount code
 		$codeId = $discountCodeDao->saveDiscountCode($code);
 
+		// Save Audit Log event
 		$eventDao = new \models\EventDao();
 		$eventDao->saveEvent(
 			"DiscountCodeGenerate",
@@ -88,6 +90,7 @@ class Administration {
 			$codeId
 			);
 
+		// Setup confirmation message and redirect back to list
 		\models\MessageManager::addMessage(
 			'success',
 			$f3->get('lang.CodesCreatedMsg', $code->getEmail())
