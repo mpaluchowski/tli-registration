@@ -209,6 +209,8 @@ return ['lang' => [
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",
 
+	"CodesHeader" => "Discount codes",
+
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",
 	"StatisticsSeatsPaid" => "{0} paid",
@@ -251,6 +253,7 @@ return ['lang' => [
 
 	"ToggleNavigation" => "Toggle navigation",
 	"AdminNavRegistrations" => "Registrations",
+	"AdminNavCodes" => "Codes",
 	"AdminNavStatistics" => "Statistics",
 	"AdminNavAuditLog" => "Audit Log",
 	"LogoutButton" => "Logout",

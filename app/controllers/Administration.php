@@ -44,6 +44,10 @@ class Administration {
 		echo \View::instance()->render('administration/_registration-details.php');
 	}
 
+	function codes($f3) {
+		echo \View::instance()->render('administration/codes.php');
+	}
+
 	function statistics($f3) {
 		$registrationDao = new \models\RegistrationDao();
 		$statisticsDao = \models\StatisticsDaoFactory::newInstance();

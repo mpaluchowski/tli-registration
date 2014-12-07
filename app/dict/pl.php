@@ -209,6 +209,8 @@ return ['lang' => [
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
 
+	"CodesHeader" => "Kody zniżkowe",
+
 	"StatisticsHeader" => "Statystyki",
 	"StatisticsSeatsHeader" => "Miejsca",
 	"StatisticsSeatsPaid" => "{0} opłaconych",
@@ -251,6 +253,7 @@ return ['lang' => [
 
 	"ToggleNavigation" => "Pokaż nawigację",
 	"AdminNavRegistrations" => "Rejestracje",
+	"AdminNavCodes" => "Kody",
 	"AdminNavStatistics" => "Statystyki",
 	"AdminNavAuditLog" => "Log Zdarzeń",
 	"LogoutButton" => "Wyloguj",
