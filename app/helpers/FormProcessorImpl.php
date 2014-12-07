@@ -8,6 +8,16 @@ class FormProcessorImpl implements \helpers\FormProcessor {
 	 * @see \helpers\FormProcessor#processOnSubmit($form)
 	 */
 	static function processOnSubmit(\models\RegistrationForm &$form) {
+		// Make sure full name case is correct. Some people enter weird things
+		// like ALL CAPS strings.
+		$form->setField(
+			'full-name',
+			mb_convert_case(
+				mb_strtolower($form->getField('full-name')),
+				MB_CASE_TITLE
+				)
+			);
+
 		// Registrations from outside Poland and Toastmasters are put on hold
 		// for review
 		if ('outside' == $form->getField('country')
