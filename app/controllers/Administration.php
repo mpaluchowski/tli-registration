@@ -61,6 +61,22 @@ class Administration {
 
 		$code = $discountCodeDao->parseRequestToCode($f3->get('POST'));
 
+		// Check if registration for this email not already paid
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationByEmail($code->getEmail());
+
+		if ($form && 'PAID' == $form->getStatus()) {
+			\models\MessageManager::addMessage(
+				'danger',
+				$f3->get('lang.CodesRegistrationEmailPaidMsg', [
+						$code->getEmail(),
+						\helpers\View::formatDateTime($form->getDatePaid())
+					])
+				);
+			$f3->reroute('@admin_codes');
+		}
+
 		$codeId = $discountCodeDao->saveDiscountCode($code);
 
 		$eventDao = new \models\EventDao();

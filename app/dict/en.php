@@ -219,6 +219,7 @@ return ['lang' => [
 	"CodesDateCreated" => "Date created",
 	"CodesDateRedeemed" => "Date redeemed",
 	"CodesCreatedMsg" => "Code for <strong>{0}</strong> successfully generated.",
+	"CodesRegistrationEmailPaidMsg" => "A registration already exists for {0} and was paid on {1}. A code cannot be generated.",
 
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",
