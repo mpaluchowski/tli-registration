@@ -32,22 +32,22 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<h3><?php echo \F3::get('lang.StatisticsRegistrationsByStatusHeader') ?></h3>
-			<div id="pie-registrations-by-status" style="width: 100%;"></div>
+			<div id="pie-registrations-by-status"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 		</div>
 		<div class="col-sm-8">
 			<h3><?php echo \F3::get('lang.StatisticsRegistrationsByWeekHeader') ?></h3>
-			<div id="column-registrations-by-week" style="width: 100%;"></div>
+			<div id="column-registrations-by-week"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-4">
 			<h3><?php echo \F3::get('lang.StatisticsRegistrationsByClubHeader') ?></h3>
-			<div id="bar-registrations-by-club" style="width: 100%;"></div>
+			<div id="bar-registrations-by-club"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 		</div>
 		<div class="col-sm-4">
 			<h3><?php echo \F3::get('lang.StatisticsOfficersByClubHeader') ?></h3>
-			<div id="bar-officers-by-club"></div>
+			<div id="bar-officers-by-club"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 		</div>
 	</div>
 </div>
@@ -77,6 +77,10 @@
 			colors : [
 				'#f0ad4e', '#000', '#777', '#5cb85c'
 			],
+			height: 150,
+			chartArea: {
+				height: "96%",
+			}
 		};
 		var chart = new google.visualization.PieChart(document.getElementById('pie-registrations-by-status'));
 		chart.draw(data, options);
@@ -92,7 +96,12 @@
 		var options = {
 			colors : [
 				'#f0ad4e', '#5cb85c'
-			]
+			],
+			height: 150,
+			chartArea: {
+				height: "96%",
+				left: "7%",
+			}
 		};
 
 		var view = new google.visualization.DataView(data);
@@ -126,7 +135,7 @@
 			],
 			chartArea: {
 				left: 150,
-				height: '100%',
+				height: '96%',
 			},
 			legend: { position: "none" },
 		};
@@ -154,7 +163,7 @@
 			height: data.getNumberOfRows() * 25,
 			chartArea: {
 				left: 150,
-				height: '100%',
+				height: '96%',
 			},
 			legend: { position: "none" },
 		};
