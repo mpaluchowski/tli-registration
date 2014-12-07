@@ -10,7 +10,7 @@
 	<form action="" method="POST">
 		<div class="form-group">
 			<label for="email" class="control-label"><?php echo \F3::get('lang.CodesRecipientEmail') ?></label>
-			<input type="email" name="email" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" autocomplete="email" required class="form-control">
+			<input type="email" name="email" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" autocomplete="email" autofocus required class="form-control">
 		</div>
 
 		<label><?php echo \F3::get('lang.CodesSelectDiscountedItems') ?></label>
@@ -39,7 +39,7 @@
 						</td>
 						<td><?php echo $item->variant ?></td>
 					<?php foreach ($item->prices as $currency => $price): ?>
-						<td><input type="text" value="<?php echo $price ?>" disabled></td>
+						<td><input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php echo $price ?>" min="0" max="<?php echo $price ?>"></td>
 					<?php endforeach; ?>
 					</tr>
 				<?php endforeach; ?>
