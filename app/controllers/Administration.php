@@ -61,7 +61,16 @@ class Administration {
 
 		$code = $discountCodeDao->parseRequestToCode($f3->get('POST'));
 
-		$discountCodeDao->saveDiscountCode($code);
+		$codeId = $discountCodeDao->saveDiscountCode($code);
+
+		$eventDao = new \models\EventDao();
+		$eventDao->saveEvent(
+			"DiscountCodeGenerate",
+			$f3->get('user')->id,
+			["email" => $code->getEmail()],
+			'DiscountCode',
+			$codeId
+			);
 	}
 
 	function statistics($f3) {
