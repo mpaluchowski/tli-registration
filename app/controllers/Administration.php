@@ -52,6 +52,9 @@ class Administration {
 		echo \View::instance()->render('administration/codes.php');
 	}
 
+	function code_create($f3) {
+	}
+
 	function statistics($f3) {
 		$registrationDao = new \models\RegistrationDao();
 		$statisticsDao = \models\StatisticsDaoFactory::newInstance();
