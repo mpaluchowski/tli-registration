@@ -29,6 +29,22 @@ CREATE TABLE IF NOT EXISTS `tli_clubs` (
 -- Data exporting was unselected.
 
 
+-- Dumping structure for table tli_registrations.tli_discount_codes
+DROP TABLE IF EXISTS `tli_discount_codes`;
+CREATE TABLE IF NOT EXISTS `tli_discount_codes` (
+  `id_discount_code` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_redeemed` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_discount_code`),
+  UNIQUE KEY `code` (`code`),
+  KEY `code_email_date_redeemed` (`code`,`email`,`date_redeemed`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Data exporting was unselected.
+
+
 -- Dumping structure for table tli_registrations.tli_events
 DROP TABLE IF EXISTS `tli_events`;
 CREATE TABLE IF NOT EXISTS `tli_events` (
@@ -101,6 +117,22 @@ CREATE TABLE IF NOT EXISTS `tli_registration_fields` (
   PRIMARY KEY (`fk_registration`,`name`),
   KEY `name_value` (`name`,`value`(255)),
   CONSTRAINT `FK_tli_registration_fields_tli_registration` FOREIGN KEY (`fk_registration`) REFERENCES `tli_registrations` (`id_registration`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table tli_registrations.tli_rel_discount_codes_pricing_items
+DROP TABLE IF EXISTS `tli_rel_discount_codes_pricing_items`;
+CREATE TABLE IF NOT EXISTS `tli_rel_discount_codes_pricing_items` (
+  `fk_discount_code` int(10) unsigned NOT NULL,
+  `fk_pricing_item` int(10) unsigned NOT NULL,
+  `currency` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `price` float NOT NULL,
+  PRIMARY KEY (`fk_discount_code`,`fk_pricing_item`,`currency`),
+  KEY `FK_tli_rel_discount_codes_pricing_items_tli_pricing_items` (`fk_pricing_item`),
+  CONSTRAINT `FK_tli_rel_discount_codes_pricing_items_tli_discount_codes` FOREIGN KEY (`fk_discount_code`) REFERENCES `tli_discount_codes` (`id_discount_code`),
+  CONSTRAINT `FK_tli_rel_discount_codes_pricing_items_tli_pricing_items` FOREIGN KEY (`fk_pricing_item`) REFERENCES `tli_pricing_items` (`id_pricing_item`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Data exporting was unselected.

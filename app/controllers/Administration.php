@@ -56,6 +56,8 @@ class Administration {
 		$discountCodeDao = new \models\DiscountCodeDao();
 
 		$code = $discountCodeDao->parseRequestToCode($f3->get('POST'));
+
+		$discountCodeDao->saveDiscountCode($code);
 	}
 
 	function statistics($f3) {
