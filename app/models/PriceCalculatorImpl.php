@@ -79,7 +79,8 @@ class PriceCalculatorImpl implements PriceCalculator {
 	function fetchPricing($time = null) {
 		if (!$time) $time = time();
 
-		$query = 'SELECT pi.item,
+		$query = 'SELECT pi.id_pricing_item,
+						 pi.item,
 						 pi.variant,
 						 pi.date_valid_through,
 						 GROUP_CONCAT(CONCAT(pp.currency, ";", pp.price) ORDER BY pp.currency SEPARATOR "|") AS prices
@@ -103,6 +104,8 @@ class PriceCalculatorImpl implements PriceCalculator {
 		$pricing = [];
 		foreach ($rows as $row) {
 			$pricing[$row['item'] . ($row['item'] != 'admission' && $row['variant'] ? '-' . $row['variant'] : '')] = (object)[
+				'id' => $row['id_pricing_item'],
+				'name' => $row['item'],
 				'variant' => $row['variant'],
 				'dateValidThrough' => $row['date_valid_through'],
 				'prices' => $this->explodePrices($row['prices']),
