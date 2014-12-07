@@ -38,6 +38,17 @@ class DiscountCodeDao {
 		return $code;
 	}
 
+	/**
+	 * Validates if the code has the required format.
+	 *
+	 * @param $code code string to validate
+	 * @return true if string matches format, false otherwise
+	 */
+	static function validateCode($code) {
+		return null != $code
+			&& preg_match('/^[A-Za-z0-9]{13}$/', $code);
+	}
+
 	function generateCode() {
 		return strtoupper(uniqid());
 	}

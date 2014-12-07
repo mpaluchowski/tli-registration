@@ -114,6 +114,8 @@ class Registration {
 	}
 
 	function code_redeem($f3) {
+		if (!\models\DiscountCodeDao::validateCode($f3->get('POST.discount-code')))
+			$f3->error(404);
 	}
 
 	function info_proceed_to_payment($f3, $args) {
