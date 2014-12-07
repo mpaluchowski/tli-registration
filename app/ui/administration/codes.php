@@ -47,6 +47,13 @@
 			</table>
 		</div>
 
+		<div class="checkbox form-group">
+			<label>
+				<input type="checkbox" name="send-email"><?php echo \F3::get('lang.CodesSendByEmail') ?>
+				<p class="help-block"><?php echo \F3::get('lang.CodesSendByEmailHelp') ?></p>
+			</label>
+		</div>
+
 		<button type="submit" class="btn btn-success"><?php echo \F3::get('lang.CodesCreateCodeButton') ?></button>
 	</form>
 
