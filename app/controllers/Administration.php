@@ -53,6 +53,9 @@ class Administration {
 	}
 
 	function code_create($f3) {
+		$discountCodeDao = new \models\DiscountCodeDao();
+
+		$code = $discountCodeDao->parseRequestToCode($f3->get('POST'));
 	}
 
 	function statistics($f3) {
