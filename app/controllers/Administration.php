@@ -45,6 +45,10 @@ class Administration {
 	}
 
 	function codes($f3) {
+		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
+
+		$f3->set('pricingItems', $priceCalculator->fetchPricing());
+
 		echo \View::instance()->render('administration/codes.php');
 	}
 

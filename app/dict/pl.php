@@ -210,6 +210,9 @@ return ['lang' => [
 	"DatePaid" => "Data opłacenia",
 
 	"CodesHeader" => "Kody zniżkowe",
+	"CodesRecipientEmail" => "Email odbiorcy",
+	"CodesSelectDiscountedItems" => "Wybierz przecenione pozycje",
+	"CodesCreateCodeButton" => "Wygeneruj kod",
 
 	"StatisticsHeader" => "Statystyki",
 	"StatisticsSeatsHeader" => "Miejsca",

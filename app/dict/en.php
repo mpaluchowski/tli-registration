@@ -210,6 +210,9 @@ return ['lang' => [
 	"DatePaid" => "Date paid",
 
 	"CodesHeader" => "Discount codes",
+	"CodesRecipientEmail" => "Recipient's email",
+	"CodesSelectDiscountedItems" => "Select discounted items",
+	"CodesCreateCodeButton" => "Create code",
 
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",
