@@ -12,7 +12,7 @@
 	<form action="<?php echo \F3::get('ALIASES.admin_code_create') ?>" method="POST">
 		<div class="form-group">
 			<label for="email" class="control-label"><?php echo \F3::get('lang.CodesRecipientEmail') ?></label>
-			<input type="email" name="email" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" autocomplete="email" autofocus required class="form-control">
+			<input type="email" id="email" name="email" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" autocomplete="email" autofocus required class="form-control">
 		</div>
 
 		<label><?php echo \F3::get('lang.CodesSelectDiscountedItems') ?></label>
