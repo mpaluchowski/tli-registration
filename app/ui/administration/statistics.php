@@ -94,8 +94,22 @@
 				'#f0ad4e', '#5cb85c'
 			]
 		};
+
+		var view = new google.visualization.DataView(data);
+			view.setColumns([0, 1, {
+				calc: "stringify",
+				sourceColumn: 1,
+				type: "string",
+				role: "annotation" },
+			2, {
+				calc: "stringify",
+				sourceColumn: 2,
+				type: "string",
+				role: "annotation"
+			}]);
+
 		var chart = new google.visualization.ColumnChart(document.getElementById('column-registrations-by-week'));
-		chart.draw(data, options);
+		chart.draw(view, options);
 	}
 
 	function drawRegistrationsByClubChart() {
