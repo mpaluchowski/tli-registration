@@ -49,6 +49,10 @@ class Administration {
 
 		$f3->set('pricingItems', $priceCalculator->fetchPricing());
 
+		$discountCodeDao = new \models\DiscountCodeDao();
+
+		$f3->set('discountCodes', $discountCodeDao->readAllDiscountCodes());
+
 		echo \View::instance()->render('administration/codes.php');
 	}
 

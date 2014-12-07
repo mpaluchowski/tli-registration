@@ -9,6 +9,7 @@ class DiscountCode {
 		$code,
 		$email,
 		$dateCreated,
+		$dateRedeemed,
 
 		$pricingItems = [];
 
@@ -42,6 +43,14 @@ class DiscountCode {
 
 	function setDateCreated($dateCreated) {
 		$this->dateCreated = $dateCreated;
+	}
+
+	function getDateRedeemed() {
+		return $this->dateRedeemed;
+	}
+
+	function setDateRedeemed($dateRedeemed) {
+		$this->dateRedeemed = $dateRedeemed;
 	}
 
 	function getPricingItems() {

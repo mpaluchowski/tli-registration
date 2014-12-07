@@ -213,6 +213,9 @@ return ['lang' => [
 	"CodesRecipientEmail" => "Email odbiorcy",
 	"CodesSelectDiscountedItems" => "Wybierz przecenione pozycje",
 	"CodesCreateCodeButton" => "Wygeneruj kod",
+	"CodesCode" => "Kod",
+	"CodesDateCreated" => "Data utworzenia",
+	"CodesDateRedeemed" => "Data wykorzystania",
 
 	"StatisticsHeader" => "Statystyki",
 	"StatisticsSeatsHeader" => "Miejsca",

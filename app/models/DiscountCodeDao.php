@@ -27,6 +27,17 @@ class DiscountCodeDao {
 		return $code;
 	}
 
+	function parseQueryToCode(array $discountCode) {
+		$code = new \models\DiscountCode($discountCode['email']);
+
+		$code->setId($discountCode['id_discount_code']);
+		$code->setCode($discountCode['code']);
+		$code->setDateCreated($discountCode['date_created']);
+		$code->setDateRedeemed($discountCode['date_redeemed']);
+
+		return $code;
+	}
+
 	function generateCode() {
 		return strtoupper(uniqid());
 	}
@@ -77,6 +88,23 @@ class DiscountCodeDao {
 		\F3::get('db')->commit();
 
 		return $codeId;
+	}
+
+	function readAllDiscountCodes() {
+		$query = 'SELECT dc.id_discount_code,
+						 dc.code,
+						 dc.email,
+						 dc.date_created,
+						 dc.date_redeemed
+				  FROM ' . \F3::get('db_table_prefix') . 'discount_codes dc
+				  ORDER BY dc.email, dc.date_created';
+		$result = \F3::get('db')->exec($query);
+
+		$codes = [];
+		foreach ($result as $row) {
+			$codes[] = $this->parseQueryToCode($row);
+		}
+		return $codes;
 	}
 
 }

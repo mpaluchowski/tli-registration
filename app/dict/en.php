@@ -213,6 +213,9 @@ return ['lang' => [
 	"CodesRecipientEmail" => "Recipient's email",
 	"CodesSelectDiscountedItems" => "Select discounted items",
 	"CodesCreateCodeButton" => "Create code",
+	"CodesCode" => "Code",
+	"CodesDateCreated" => "Date created",
+	"CodesDateRedeemed" => "Date redeemed",
 
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",

@@ -49,6 +49,29 @@
 
 		<button type="submit" class="btn btn-success"><?php echo \F3::get('lang.CodesCreateCodeButton') ?></button>
 	</form>
+
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th><?php echo \F3::get('lang.CodesRecipientEmail') ?></th>
+					<th><?php echo \F3::get('lang.CodesCode') ?></th>
+					<th><?php echo \F3::get('lang.CodesDateCreated') ?></th>
+					<th><?php echo \F3::get('lang.CodesDateRedeemed') ?></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php foreach ($discountCodes as $code): ?>
+				<tr data-id="<?php echo $code->getId() ?>">
+					<td><?php echo $code->getEmail() ?></td>
+					<td><?php echo $code->getCode() ?></td>
+					<td><?php echo \helpers\View::formatDateTime($code->getDateCreated()) ?></td>
+					<td><?php echo $code->getDateRedeemed() ? \helpers\View::formatDateTime($code->getDateRedeemed()) : "&mdash;" ?></td>
+				</tr>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
 </div>
 
 <?php echo \View::instance()->render('footer.php') ?>
