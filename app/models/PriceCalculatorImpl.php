@@ -21,17 +21,26 @@ class PriceCalculatorImpl implements PriceCalculator {
 	function calculateSummary(\models\RegistrationForm $form, $time = null) {
 		$pricing = $this->fetchPricing($time);
 
+		$discountCodeDao = new \models\DiscountCodeDao();
+		$discountPricing = $discountCodeDao->readDiscountsByRegistrationId($form->getId());
+
 		$summary = [
-			'admission' => $pricing['admission'],
+			'admission' => self::getPriceItem('admission', $pricing, $discountPricing)
 		];
 
 		if ($form->hasField('lunch')
 				&& "on" === $form->getField('lunch')
 				&& $form->hasField('lunch-days')) {
-			$summary['lunch'] = $pricing['lunch'];
+			$summary['lunch'] = self::getPriceItem('lunch', $pricing, $discountPricing);
+
 			// Multiply lunch price per day by number of days
 			foreach ($summary['lunch']->prices as $currency => $price) {
-				$summary['lunch']->prices[$currency] *= count($form->getField('lunch-days'));
+				$summary['lunch']->prices[$currency]
+						*= count($form->getField('lunch-days'));
+
+				if (property_exists($summary['lunch'], 'pricesOriginal'))
+					$summary['lunch']->pricesOriginal[$currency]
+							*= count($form->getField('lunch-days'));
 			}
 		}
 
@@ -40,33 +49,62 @@ class PriceCalculatorImpl implements PriceCalculator {
 				&& $form->hasField('friday-copernicus-options')) {
 			foreach ($form->getField('friday-copernicus-options') as $option) {
 				$summary['friday-copernicus-attend-' . $option] =
-					$pricing['friday-copernicus-attend-' . $option];
+					self::getPriceItem('friday-copernicus-attend-' . $option, $pricing, $discountPricing);
 			}
 		}
 
 		if ($form->hasField('saturday-dinner-participate')
 				&& "on" === $form->getField('saturday-dinner-participate')) {
 			$summary['saturday-dinner-participate'] =
-				$pricing['saturday-dinner-participate'];
+				self::getPriceItem('saturday-dinner-participate', $pricing, $discountPricing);
 		}
 
 		if ($form->hasField('saturday-party-participate')
 				&& "on" === $form->getField('saturday-party-participate')) {
-			$summary['saturday-party-participate']
-				= $pricing['saturday-party-participate'];
+			$summary['saturday-party-participate'] =
+				self::getPriceItem('saturday-party-participate', $pricing, $discountPricing);
 		}
 
 		$total = [];
+		$totalOriginal = [];
 		foreach ($summary as $item) {
 			foreach ($item->prices as $currency => $price) {
-				if (!array_key_exists($currency, $total))
+				if (!isset($total[$currency]))
 					$total[$currency] = 0;
+
 				$total[$currency] += $price;
+
+				if ($discountPricing) {
+					if (!isset($totalOriginal[$currency]))
+						$totalOriginal[$currency] = 0;
+
+					$totalOriginal[$currency] +=
+						property_exists($item, 'pricesOriginal')
+						? $item->pricesOriginal[$currency]
+						: $price;
+				}
 			}
 		}
 		$summary['total'] = $total;
+		if ($summary['discounted'] = (bool)$totalOriginal) {
+			$summary['totalOriginal'] = $totalOriginal;
+		}
 
 		return $summary;
+	}
+
+	private static function getPriceItem($name, &$officialPricing, &$discountPricing = null) {
+		$item = $officialPricing[$name];
+
+		if ($item->discounted = (
+					$discountPricing
+					&& isset($discountPricing[$name])
+				)) {
+			$item->pricesOriginal = $item->prices;
+			$item->prices = $discountPricing[$name]->prices;
+		}
+
+		return $item;
 	}
 
 	/**
