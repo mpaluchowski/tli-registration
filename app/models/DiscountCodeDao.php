@@ -49,8 +49,13 @@ class DiscountCodeDao {
 			&& preg_match('/^[A-Za-z0-9]{13}$/', $code);
 	}
 
+	/**
+	 * Generates the discount code, unique for most practical purposes.
+	 *
+	 * @return returns a 13-character, unique discount code.
+	 */
 	function generateCode() {
-		return strtoupper(uniqid());
+		return strtoupper(substr(md5(microtime()), 0, 12));
 	}
 
 	function saveDiscountCode(\models\DiscountCode $code) {
