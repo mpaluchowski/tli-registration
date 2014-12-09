@@ -21,6 +21,7 @@ class PriceCalculatorImpl implements PriceCalculator {
 	function calculateSummary(\models\RegistrationForm $form, $time = null) {
 		$pricing = $this->fetchPricing($time);
 
+		// Fetch discounts, if any
 		$discountCodeDao = new \models\DiscountCodeDao();
 		$discountPricing = $discountCodeDao->readDiscountsByRegistrationId($form->getId());
 
@@ -65,19 +66,16 @@ class PriceCalculatorImpl implements PriceCalculator {
 				self::getPriceItem('saturday-party-participate', $pricing, $discountPricing);
 		}
 
-		$total = [];
-		$totalOriginal = [];
+		// Initialize totals with keys for each currency
+		$total = array_fill_keys(array_keys($summary['admission']->prices), 0);
+		if ($discountPricing)
+			$totalOriginal = array_fill_keys(array_keys($summary['admission']->prices), 0);
+
 		foreach ($summary as $item) {
 			foreach ($item->prices as $currency => $price) {
-				if (!isset($total[$currency]))
-					$total[$currency] = 0;
-
 				$total[$currency] += $price;
 
 				if ($discountPricing) {
-					if (!isset($totalOriginal[$currency]))
-						$totalOriginal[$currency] = 0;
-
 					$totalOriginal[$currency] +=
 						property_exists($item, 'pricesOriginal')
 						? $item->pricesOriginal[$currency]
@@ -85,10 +83,10 @@ class PriceCalculatorImpl implements PriceCalculator {
 				}
 			}
 		}
+
 		$summary['total'] = $total;
-		if ($summary['discounted'] = (bool)$totalOriginal) {
+		if ($summary['discounted'] = (bool)$discountPricing)
 			$summary['totalOriginal'] = $totalOriginal;
-		}
 
 		return $summary;
 	}
@@ -97,8 +95,7 @@ class PriceCalculatorImpl implements PriceCalculator {
 		$item = $officialPricing[$name];
 
 		if ($item->discounted = (
-					$discountPricing
-					&& isset($discountPricing[$name])
+					$discountPricing && isset($discountPricing[$name])
 				)) {
 			$item->pricesOriginal = $item->prices;
 			$item->prices = $discountPricing[$name]->prices;
