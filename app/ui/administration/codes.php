@@ -18,7 +18,7 @@
 		<label><?php echo \F3::get('lang.CodesSelectDiscountedItems') ?></label>
 
 		<div class="table-responsive">
-			<table class="table tli-table-form">
+			<table id="discount-code-items" class="table tli-table-form">
 				<thead>
 					<tr>
 						<th><?php echo \F3::get('lang.PaymentItemHead') ?></th>
@@ -41,7 +41,7 @@
 						</td>
 						<td><?php echo $item->variant ?></td>
 					<?php foreach ($item->prices as $currency => $price): ?>
-						<td><input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php echo $price ?>" min="0" max="<?php echo $price ?>"></td>
+						<td><input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php echo $price ?>" data-value-original="<?php echo $price ?>" min="0" max="<?php echo $price ?>" disabled></td>
 					<?php endforeach; ?>
 					</tr>
 				<?php endforeach; ?>
@@ -82,5 +82,13 @@
 		</table>
 	</div>
 </div>
+
+<script src="/js/discount-codes.js"></script>
+<script>
+  (function() {
+    tliRegister.discountCodes.init();
+  })();
+</script>
+
 
 <?php echo \View::instance()->render('footer.php') ?>
