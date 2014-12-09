@@ -150,6 +150,32 @@ class DiscountCodeDao {
 			: null;
 	}
 
+	function readDiscountsByRegistrationId($registrationId) {
+		$query = 'SELECT pi.item,
+						 pi.variant,
+						 GROUP_CONCAT(CONCAT(rdcpi.currency, ";", rdcpi.price) ORDER BY rdcpi.currency SEPARATOR "|") AS prices
+				  FROM ' . \F3::get('db_table_prefix') . 'pricing_items pi
+				  JOIN ' . \F3::get('db_table_prefix') . 'rel_discount_codes_pricing_items rdcpi
+					ON pi.id_pricing_item = rdcpi.fk_pricing_item
+				  JOIN ' . \F3::get('db_table_prefix') . 'discount_codes dc
+					ON dc.id_discount_code = rdcpi.fk_discount_code
+				  WHERE dc.fk_registration = :registrationId
+				  GROUP BY pi.id_pricing_item';
+		$result = \F3::get('db')->exec($query, [
+				'registrationId' => $registrationId
+			]);
+
+		$pricing = [];
+		foreach ($result as $row) {
+			$pricing[$row['item'] . ($row['item'] != 'admission' && $row['variant'] ? '-' . $row['variant'] : '')] = (object)[
+				'name' => $row['item'],
+				'variant' => $row['variant'],
+				'prices' => $this->explodePrices($row['prices']),
+			];
+		}
+		return $pricing;
+	}
+
 	function readAllDiscountCodes() {
 		$query = 'SELECT dc.id_discount_code,
 						 dc.code,
@@ -165,6 +191,20 @@ class DiscountCodeDao {
 			$codes[] = $this->parseQueryToCode($row);
 		}
 		return $codes;
+	}
+
+	/**
+	 * Explode the pricing information with currencies returned as single string
+	 * from the database.
+	 *
+	 * @param prices delimited string with pricing information, expected format
+	 * 'EUR;10|PLN;15'
+	 * @return array with elements for each currency, each key being the currency
+	 * code and value the price in that currency.
+	 */
+	private function explodePrices($prices) {
+		preg_match_all("/([^\|]+);([^\|]+)/", $prices, $pairs);
+		return array_combine($pairs[1], $pairs[2]);
 	}
 
 }
