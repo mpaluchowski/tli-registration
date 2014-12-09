@@ -99,8 +99,9 @@
 			],
 			height: 150,
 			chartArea: {
-				height: "96%",
+				height: "86%",
 				left: "7%",
+				top: 5
 			}
 		};
 
