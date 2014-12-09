@@ -270,6 +270,7 @@ $renderer = \helpers\FormRendererFactory::className();
 	</div>
 
 <?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
+	<?php if (!$paymentSummary['discounted']): ?>
 	<form action="<?php echo \F3::get('ALIASES.registration_code_redeem') ?>" method="POST" style="margin-bottom: 3em;">
 		<label for="discount-code" class="sr-only"><?php echo \F3::get('lang.DiscountCode') ?></label>
 		<p class="help-block"><?php echo \F3::get('lang.DiscountCodeHelp') ?></p>
@@ -283,6 +284,7 @@ $renderer = \helpers\FormRendererFactory::className();
 
 		<input type="hidden" name="registrationId" value="<?php echo $form->getId() ?>">
 	</form>
+	<?php endif; ?>
 
 	<?php
 		$processorClass = \models\PaymentProcessorFactory::className();
