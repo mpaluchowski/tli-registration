@@ -18,7 +18,7 @@
 		<label><?php echo \F3::get('lang.CodesSelectDiscountedItems') ?></label>
 
 		<div class="table-responsive">
-			<table class="table">
+			<table class="table tli-table-form">
 				<thead>
 					<tr>
 						<th><?php echo \F3::get('lang.PaymentItemHead') ?></th>
