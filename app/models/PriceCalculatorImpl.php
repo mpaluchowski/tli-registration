@@ -91,7 +91,25 @@ class PriceCalculatorImpl implements PriceCalculator {
 		return $summary;
 	}
 
-	private static function getPriceItem($name, &$officialPricing, &$discountPricing = null) {
+	/**
+	 * Produce the pricing item based on official pricing, combined with the
+	 * optional discounted pricing, coming usually from a discount code. Will
+	 * return a structure where the `pricing` field is always the one to use
+	 * for payment, and if an item is discounted, there will be a separate
+	 * `pricesOriginal` field with the original pricing for the item.
+	 *
+	 * @param $name the name of the item to fetch pricing for
+	 * @param $officialPricing array with official pricing for all items
+	 * @param discountPricing optional array with discounted pricing for some or
+	 * all items
+	 * @return stdClass with the item's pricing, actual and possibly original
+	 * if the item was discounted
+	 */
+	private static function getPriceItem(
+			$name,
+			array &$officialPricing,
+			array &$discountPricing = null
+			) {
 		$item = $officialPricing[$name];
 
 		if ($item->discounted = (
