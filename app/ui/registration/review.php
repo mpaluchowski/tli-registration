@@ -239,7 +239,7 @@ $renderer = \helpers\FormRendererFactory::className();
 		<label for="discount-code" class="sr-only"><?php echo \F3::get('lang.DiscountCode') ?></label>
 		<p class="help-block"><?php echo \F3::get('lang.DiscountCodeHelp') ?></p>
 
-		<div class="input-group">
+		<div class="input-group" style="max-width: 400px;">
 			<input type="text" id="discount-code" name="discount-code" placeholder="ABCDEF1234567" required pattern="^[A-Za-z0-9]{13}$" title="<?php echo \F3::get('lang.DiscountCodeTitle') ?>" class="form-control">
 			<span class="input-group-btn">
 				<button type="submit" class="btn btn-default"><?php echo \F3::get('lang.DiscountCodeRedeemButton') ?></button>
