@@ -166,11 +166,16 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><?php echo \F3::get('lang.Participation') ?></td>
 					<td><?php
 					echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant);
-					if ('PAID' !== $form->getStatus()):
+					if ('PAID' !== $form->getStatus() && !$paymentSummary['admission']->discounted):
 						?> (<?php echo \F3::get('lang.PriceValidThrough', \helpers\View::formatDate($paymentSummary['admission']->dateValidThrough)) ?>)<?php
 					endif; ?></td>
 				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['admission']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['admission']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php if ($form->hasField('friday-copernicus-attend') && "on" === $form->getField('friday-copernicus-attend')):
@@ -180,7 +185,12 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><?php echo \F3::get('lang.EventsFridayCopernicus') ?></td>
 					<td><?php echo \F3::get('lang.EventsFridayCopernicusAttend-center') ?></td>
 				<?php foreach ($paymentSummary['friday-copernicus-attend-center']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['friday-copernicus-attend-center']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['friday-copernicus-attend-center']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
@@ -190,7 +200,12 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><?php echo \F3::get('lang.EventsFridayCopernicus') ?></td>
 					<td><?php echo \F3::get('lang.EventsFridayCopernicusAttend-planetarium') ?></td>
 				<?php foreach ($paymentSummary['friday-copernicus-attend-planetarium']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['friday-copernicus-attend-planetarium']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['friday-copernicus-attend-planetarium']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
@@ -200,7 +215,12 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><?php echo \F3::get('lang.EventsLunch') ?></td>
 					<td><?php echo $renderer::value($form, 'lunch-days') ?></td>
 				<?php foreach ($paymentSummary['lunch']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['lunch']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['lunch']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
@@ -209,7 +229,12 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner') ?></td>
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner-' . $form->getField('saturday-dinner-meal')) ?></td>
 				<?php foreach ($paymentSummary['saturday-dinner-participate']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['saturday-dinner-participate']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['saturday-dinner-participate']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
@@ -218,7 +243,12 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><?php echo \F3::get('lang.EventsSaturdayParty') ?></td>
 					<td><?php echo $paymentSummary['saturday-party-participate']->variant ? $paymentSummary['saturday-party-participate']->variant : '&mdash;' ?></td>
 				<?php foreach ($paymentSummary['saturday-party-participate']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['saturday-party-participate']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['saturday-party-participate']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif; ?>
@@ -227,7 +257,12 @@ $renderer = \helpers\FormRendererFactory::className();
 				<tr>
 					<td colspan="2" class="text-right"><?php echo \F3::get('lang.PaymentTotal') ?></td>
 				<?php foreach ($paymentSummary['total'] as $currency => $price): ?>
-					<th><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></th>
+					<th>
+						<?php if ($paymentSummary['discounted']): ?>
+						<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['totalOriginal'][$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</th>
 				<?php endforeach; ?>
 				</tr>
 			</tfoot>
