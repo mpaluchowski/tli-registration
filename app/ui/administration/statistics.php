@@ -196,7 +196,7 @@
 			pieHole : 0.4,
 			pieSliceText : 'value',
 			colors : [
-				'#f0ad4e', '#5cb85c'
+				'#5cb85c', '#f0ad4e'
 			],
 			height: 150,
 			chartArea: {
