@@ -15,6 +15,13 @@ class DiscountCodeDao {
 		}
 	}
 
+	/**
+	 * Parses an array of HTTP request values into a DiscountCode object.
+	 *
+	 * @param $postValues array with request values, including those to build
+	 * a DiscountCode object
+	 * @return an instance of DiscountCode filled in with supplied values
+	 */
 	function parseRequestToCode(array $postValues) {
 		$code = new \models\DiscountCode($postValues['email']);
 
@@ -27,6 +34,12 @@ class DiscountCodeDao {
 		return $code;
 	}
 
+	/**
+	 * Parses a database discount_code row into an instance of DiscountCode.
+	 *
+	 * @param $discountCode a database row with discount code data
+	 * @return an instance of DiscountCode filled in with supplied values
+	 */
 	function parseQueryToCode(array $discountCode) {
 		$code = new \models\DiscountCode($discountCode['email']);
 
