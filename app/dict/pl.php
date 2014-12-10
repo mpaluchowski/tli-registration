@@ -226,6 +226,8 @@ return ['lang' => [
 
 	"StatisticsOfficersByClubHeader" => "Oficerowie wg klubów",
 	"StatisticsOfficersLabel" => "Oficerowie",
+	"StatisticsNonOfficersLabel" => "Pozostali",
+	"StatisticsOfficerRatioHeader" => "Rejestracje oficerów",
 
 	"AuditLogHeader" => "Log zdarzeń",
 	"AuditLogAdminName" => "Administrator",

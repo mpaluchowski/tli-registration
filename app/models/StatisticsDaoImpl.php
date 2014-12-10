@@ -22,6 +22,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		return [
 			'registrations-by-club' => $this->readRegistrationsByClub(),
 			'officers-by-club' => $this->readOfficersByClub(),
+			'officer-ratio' => $this->readOfficerRatio(),
 		];
 	}
 
@@ -84,6 +85,24 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 			];
 		}
 		return $stats;
+	}
+
+	/**
+	 * Reads the counts of officers and non-officers registered.
+	 *
+	 * @return object with two fields for officerCount and nonOfficerCount
+	 */
+	function readOfficerRatio() {
+		$query = "SELECT SUM(rf.value = '\"none\"') AS non_officers,
+						 SUM(rf.value <> '\"none\"') AS officers
+				  FROM tli_registration_fields rf
+				  WHERE rf.name = 'exec-position'";
+		$result = \F3::get('db')->exec($query);
+
+		return (object)[
+			'officerCount' => $result[0]['officers'],
+			'nonOfficerCount' => $result[0]['non_officers'],
+			];
 	}
 
 }

@@ -49,6 +49,10 @@
 			<h3><?php echo \F3::get('lang.StatisticsOfficersByClubHeader') ?></h3>
 			<div id="bar-officers-by-club"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 		</div>
+		<div class="col-sm-4">
+			<h3><?php echo \F3::get('lang.StatisticsOfficerRatioHeader') ?></h3>
+			<div id="pie-officer-ratio"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
+		</div>
 	</div>
 </div>
 
@@ -62,6 +66,7 @@
 		drawRegistrationsByWeekChart();
 		drawRegistrationsByClubChart();
 		drawOfficersByClubChart();
+		drawOfficerRatioChart();
 	}
 
 	function drawRegistrationsByStatusChart() {
@@ -179,6 +184,26 @@
 
 		var chart = new google.visualization.BarChart(document.getElementById('bar-officers-by-club'));
 		chart.draw(view, options);
+	}
+
+	function drawOfficerRatioChart() {
+		var data = google.visualization.arrayToDataTable([
+			['Type', '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
+			['<?php echo \F3::get('lang.StatisticsOfficersLabel') ?>', <?php echo $stats['officer-ratio']->officerCount ?>],
+			['<?php echo \F3::get('lang.StatisticsNonOfficersLabel') ?>', <?php echo $stats['officer-ratio']->nonOfficerCount ?>],
+			]);
+		var options = {
+			pieHole : 0.4,
+			colors : [
+				'#f0ad4e', '#5cb85c'
+			],
+			height: 150,
+			chartArea: {
+				height: "96%",
+			}
+		};
+		var chart = new google.visualization.PieChart(document.getElementById('pie-officer-ratio'));
+		chart.draw(data, options);
 	}
 </script>
 

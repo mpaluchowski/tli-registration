@@ -226,6 +226,8 @@ return ['lang' => [
 
 	"StatisticsOfficersByClubHeader" => "Officers by Club",
 	"StatisticsOfficersLabel" => "Officers",
+	"StatisticsNonOfficersLabel" => "Non-Officers",
+	"StatisticsOfficerRatioHeader" => "Officer registration ratio",
 
 	"AuditLogHeader" => "Audit Log",
 	"AuditLogAdminName" => "Administrator",
