@@ -194,6 +194,7 @@
 			]);
 		var options = {
 			pieHole : 0.4,
+			pieSliceText : 'value',
 			colors : [
 				'#f0ad4e', '#5cb85c'
 			],
