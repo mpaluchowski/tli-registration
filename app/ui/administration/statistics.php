@@ -79,7 +79,7 @@
 			],
 			height: 150,
 			chartArea: {
-				height: "96%",
+				height: "90%",
 			}
 		};
 		var chart = new google.visualization.PieChart(document.getElementById('pie-registrations-by-status'));
