@@ -164,16 +164,20 @@
 				'<?php echo \F3::get('lang.StatisticsClubLabel') ?>',
 				'<?php echo \F3::get('lang.StatisticsOfficersPaidLabel') ?>',
 				{ role: 'style' },
+				{ role: 'annotation'},
 				'<?php echo \F3::get('lang.StatisticsOfficersUnpaidLabel') ?>',
-				{ role: 'style' }
+				{ role: 'style' },
+				{ role: 'annotation'},
 			],
 		<?php foreach ($stats['officers-by-club'] as $club): ?>
 			[
 				'<?php echo $club->name ?>',
 				<?php echo $club->countOfficersPaid ?>,
 				'<?php echo $club->count < 4 ? '#d9534f' : '#5cb85c' ?>',
+				'<?php echo $club->countOfficersPaid ?: '' ?>',
 				<?php echo $club->countOfficersUnpaid ?>,
-				'#f0ad4e'
+				'#f0ad4e',
+				'<?php echo $club->countOfficersUnpaid ?: '' ?>',
 			],
 		<?php endforeach; ?>
 			]);
@@ -187,21 +191,8 @@
 			isStacked: true,
 		};
 
-		var view = new google.visualization.DataView(data);
-		view.setColumns([0, 1, {
-				calc: "stringify",
-				sourceColumn: 1,
-				type: "string",
-				role: "annotation"
-			}, 2, 3, {
-				calc: "stringify",
-				sourceColumn: 3,
-				type: "string",
-				role: "annotation"
-			}, 4]);
-
 		var chart = new google.visualization.BarChart(document.getElementById('bar-officers-by-club'));
-		chart.draw(view, options);
+		chart.draw(data, options);
 	}
 
 	function drawOfficerRatioChart() {
