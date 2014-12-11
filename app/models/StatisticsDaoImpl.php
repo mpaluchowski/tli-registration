@@ -62,7 +62,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 	function readOfficersByClub() {
 		$query = "SELECT rf1.value AS club,
 						 COUNT(rf2.fk_registration) AS officers,
-						 SUM(r.date_paid IS NULL) AS officers_unpaid,
+						 SUM(r.date_paid IS NULL AND r.date_entered IS NOT NULL) AS officers_unpaid,
 						 SUM(r.date_paid IS NOT NULL) AS officers_paid,
 						 GROUP_CONCAT(rf2.value SEPARATOR \"|\") AS positions
 				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf1
