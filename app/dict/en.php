@@ -225,6 +225,8 @@ return ['lang' => [
 	"StatisticsRegistrationsLabel" => "Registrations",
 
 	"StatisticsOfficersByClubHeader" => "Officers by Club",
+	"StatisticsOfficersPaidLabel" => "Paid",
+	"StatisticsOfficersUnpaidLabel" => "Unpaid",
 	"StatisticsOfficersLabel" => "Officers",
 	"StatisticsNonOfficersLabel" => "Non-Officers",
 	"StatisticsOfficerRatioHeader" => "Officer registration ratio",

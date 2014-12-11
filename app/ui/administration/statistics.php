@@ -160,9 +160,21 @@
 
 	function drawOfficersByClubChart() {
 		var data = google.visualization.arrayToDataTable([
-			['<?php echo \F3::get('lang.StatisticsClubLabel') ?>', '<?php echo \F3::get('lang.StatisticsOfficersLabel') ?>', { role: 'style' }],
+			[
+				'<?php echo \F3::get('lang.StatisticsClubLabel') ?>',
+				'<?php echo \F3::get('lang.StatisticsOfficersPaidLabel') ?>',
+				{ role: 'style' },
+				'<?php echo \F3::get('lang.StatisticsOfficersUnpaidLabel') ?>',
+				{ role: 'style' }
+			],
 		<?php foreach ($stats['officers-by-club'] as $club): ?>
-			['<?php echo $club->name ?>', <?php echo $club->count ?>, '<?php echo $club->count < 4 ? '#d9534f' : '#5cb85c' ?>'],
+			[
+				'<?php echo $club->name ?>',
+				<?php echo $club->countOfficersPaid ?>,
+				'<?php echo $club->count < 4 ? '#d9534f' : '#5cb85c' ?>',
+				<?php echo $club->countOfficersUnpaid ?>,
+				'#f0ad4e'
+			],
 		<?php endforeach; ?>
 			]);
 		var options = {
@@ -172,6 +184,7 @@
 				height: '96%',
 			},
 			legend: { position: "none" },
+			isStacked: true,
 		};
 
 		var view = new google.visualization.DataView(data);
@@ -180,7 +193,12 @@
 				sourceColumn: 1,
 				type: "string",
 				role: "annotation"
-			}, 2]);
+			}, 2, 3, {
+				calc: "stringify",
+				sourceColumn: 3,
+				type: "string",
+				role: "annotation"
+			}, 4]);
 
 		var chart = new google.visualization.BarChart(document.getElementById('bar-officers-by-club'));
 		chart.draw(view, options);
