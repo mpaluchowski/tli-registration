@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `tli_registration_fields` (
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `value` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`fk_registration`,`name`),
+  KEY `value` (`name`,`value`(255)),
   CONSTRAINT `FK_tli_registration_fields_tli_registration` FOREIGN KEY (`fk_registration`) REFERENCES `tli_registrations` (`id_registration`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
