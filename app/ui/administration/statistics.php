@@ -174,10 +174,10 @@
 				'<?php echo $club->name ?>',
 				<?php echo $club->countOfficersPaid ?>,
 				'<?php echo $club->count < 4 ? '#d9534f' : '#5cb85c' ?>',
-				'<?php echo $club->countOfficersPaid ?: '' ?>',
+				<?php echo $club->countOfficersPaid ?: '' ?>,
 				<?php echo $club->countOfficersUnpaid ?>,
 				'#f0ad4e',
-				'<?php echo $club->countOfficersUnpaid ?: '' ?>',
+				<?php echo $club->countOfficersUnpaid ?: '' ?>,
 			],
 		<?php endforeach; ?>
 			]);
