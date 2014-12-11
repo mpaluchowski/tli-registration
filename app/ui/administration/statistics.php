@@ -164,20 +164,16 @@
 				'<?php echo \F3::get('lang.StatisticsClubLabel') ?>',
 				'<?php echo \F3::get('lang.StatisticsOfficersPaidLabel') ?>',
 				{ role: 'style' },
-				{ role: 'annotation'},
 				'<?php echo \F3::get('lang.StatisticsOfficersUnpaidLabel') ?>',
 				{ role: 'style' },
-				{ role: 'annotation'},
 			],
 		<?php foreach ($stats['officers-by-club'] as $club): ?>
 			[
 				'<?php echo $club->name ?>',
 				<?php echo $club->countOfficersPaid ?>,
 				'<?php echo $club->count < 4 ? '#d9534f' : '#5cb85c' ?>',
-				<?php echo $club->countOfficersPaid ?: '' ?>,
 				<?php echo $club->countOfficersUnpaid ?>,
 				'#f0ad4e',
-				<?php echo $club->countOfficersUnpaid ?: '' ?>,
 			],
 		<?php endforeach; ?>
 			]);
