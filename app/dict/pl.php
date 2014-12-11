@@ -225,6 +225,8 @@ return ['lang' => [
 	"StatisticsRegistrationsLabel" => "Rejestracje",
 
 	"StatisticsOfficersByClubHeader" => "Oficerowie wg klubów",
+	"StatisticsOfficersPaidLabel" => "Opłaceni",
+	"StatisticsOfficersUnpaidLabel" => "Nieopłaceni",
 	"StatisticsOfficersLabel" => "Oficerowie",
 	"StatisticsNonOfficersLabel" => "Pozostali",
 	"StatisticsOfficerRatioHeader" => "Rejestracje oficerów",
