@@ -70,7 +70,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 					ON rf1.fk_registration = rf2.fk_registration
 					AND rf2.name = 'exec-position'
 					AND rf2.value <> '\"none\"'
-				  JOIN " . \F3::get('db_table_prefix') . "registrations r
+				  LEFT JOIN " . \F3::get('db_table_prefix') . "registrations r
 					ON r.id_registration = rf2.fk_registration
 				  WHERE rf1.name = 'home-club'
 				    AND rf1.value <> '\"None\"'
