@@ -225,7 +225,7 @@
 			],
 		<?php foreach ($stats['event-enrollment'] as $name => $counts): ?>
 			[
-				'<?php echo \F3::get('lang.' . $name) ?>',
+				"<?php echo \F3::get('lang.' . $name) ?>",
 				<?php echo $counts['paid'] ?>,
 				<?php echo $counts['unpaid'] ?>,
 			],
