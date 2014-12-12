@@ -134,31 +134,33 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		$result = \F3::get('db')->exec($query);
 
 		return (object)[
-			'EventsContest' => [
-				'paid' => $result[0]['contest'],
-				'unpaid' => $result[1]['contest'],
-				],
-			'EventsFridayCopernicusAttend-center' => [
-				'paid' => $result[0]['copernicus_exhibition'],
-				'unpaid' => $result[1]['copernicus_exhibition'],
-				],
-			'EventsFridayCopernicusAttend-planetarium' => [
-				'paid' => $result[0]['copernicus_planetarium'],
-				'unpaid' => $result[1]['copernicus_planetarium'],
-				],
-			'EventsFridaySocial' => [
-				'paid' => $result[0]['opera'],
-				'unpaid' => $result[1]['opera'],
-				],
-			'EventsSaturdayDinner' => [
-				'paid' => $result[0]['street'],
-				'unpaid' => $result[1]['street'],
-				],
-			'EventsSaturdayParty' => [
-				'paid' => $result[0]['club70'],
-				'unpaid' => $result[1]['club70'],
-				],
+			'EventsContest' =>
+				$this->parseEventEnrollment($result, 'contest'),
+			'EventsFridayCopernicusAttend-center' =>
+				$this->parseEventEnrollment($result, 'copernicus_exhibition'),
+			'EventsFridayCopernicusAttend-planetarium' =>
+				$this->parseEventEnrollment($result, 'copernicus_planetarium'),
+			'EventsFridaySocial' =>
+				$this->parseEventEnrollment($result, 'opera'),
+			'EventsSaturdayDinner' =>
+				$this->parseEventEnrollment($result, 'street'),
+			'EventsSaturdayParty' =>
+				$this->parseEventEnrollment($result, 'club70'),
 		];
+	}
+
+	/**
+	 * Parses out the paid/unpaid counts for event enrollment for a single event
+	 * key.
+	 *
+	 * @param $key the database key of the event field
+	 * @return array with paid/unpaid counts for the given event
+	 */
+	private function parseEventEnrollment($result, $key) {
+		return [
+			'paid' => $result[0][$key],
+			'unpaid' => $result[1][$key],
+			];
 	}
 
 }
