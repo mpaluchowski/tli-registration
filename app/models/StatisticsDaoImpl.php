@@ -23,6 +23,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 			'registrations-by-club' => $this->readRegistrationsByClub(),
 			'officers-by-club' => $this->readOfficersByClub(),
 			'officer-ratio' => $this->readOfficerRatio(),
+			'event-enrollment' => $this->readEventEnrollment(),
 		];
 	}
 
@@ -108,6 +109,57 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		return (object)[
 			'officerCount' => $result[0]['officers'],
 			'nonOfficerCount' => $result[0]['non_officers'],
+			];
+	}
+
+	/**
+	 * Read counts of enrollments for events during the conference.
+	 *
+	 * @return object with fields for each event type and count of enrolled
+	 * attendees.
+	 */
+	function readEventEnrollment() {
+		$query = "SELECT r.date_paid IS NOT NULL AS is_paid,
+						 SUM(name = 'contest-attend' AND value = '\"on\"') AS contest,
+						 SUM(name = 'friday-copernicus-options' AND value LIKE '%center%') AS copernicus_exhibition,
+						 SUM(name = 'friday-copernicus-options' AND value LIKE '%planetarium%') AS copernicus_planetarium,
+						 SUM(name = 'friday-social-event' AND value = '\"on\"') AS opera,
+						 SUM(name = 'saturday-dinner-participate' AND value = '\"on\"') AS street,
+						 SUM(name = 'saturday-party-participate' AND value = '\"on\"') AS club70
+				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf
+				  JOIN " . \F3::get('db_table_prefix') . "registrations r
+				    ON r.id_registration = rf.fk_registration
+				  GROUP BY r.date_paid IS NULL
+				  ORDER BY r.date_paid IS NULL";
+		$result = \F3::get('db')->exec($query);
+
+		return (object)[
+			'EventsContest' =>
+				$this->parseEventEnrollment($result, 'contest'),
+			'EventsFridayCopernicusAttend-center' =>
+				$this->parseEventEnrollment($result, 'copernicus_exhibition'),
+			'EventsFridayCopernicusAttend-planetarium' =>
+				$this->parseEventEnrollment($result, 'copernicus_planetarium'),
+			'EventsFridaySocial' =>
+				$this->parseEventEnrollment($result, 'opera'),
+			'EventsSaturdayDinner' =>
+				$this->parseEventEnrollment($result, 'street'),
+			'EventsSaturdayParty' =>
+				$this->parseEventEnrollment($result, 'club70'),
+		];
+	}
+
+	/**
+	 * Parses out the paid/unpaid counts for event enrollment for a single event
+	 * key.
+	 *
+	 * @param $key the database key of the event field
+	 * @return array with paid/unpaid counts for the given event
+	 */
+	private function parseEventEnrollment($result, $key) {
+		return [
+			'paid' => $result[0][$key],
+			'unpaid' => $result[1][$key],
 			];
 	}
 

@@ -231,6 +231,9 @@ return ['lang' => [
 	"StatisticsNonOfficersLabel" => "Non-Officers",
 	"StatisticsOfficerRatioHeader" => "Officer registration ratio",
 
+	"StatisticsEventEnrollmentHeader" => "Event enrollments",
+	"StatisticsEventLabel" => "Event",
+
 	"AuditLogHeader" => "Audit Log",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Event",
