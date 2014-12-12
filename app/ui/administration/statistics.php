@@ -52,6 +52,9 @@
 		<div class="col-sm-4">
 			<h3><?php echo \F3::get('lang.StatisticsOfficerRatioHeader') ?></h3>
 			<div id="pie-officer-ratio"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
+
+			<h3><?php echo \F3::get('lang.StatisticsEventEnrollmentHeader') ?></h3>
+			<div id="bar-event-enrollment"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 		</div>
 	</div>
 </div>
@@ -67,6 +70,7 @@
 		drawRegistrationsByClubChart();
 		drawOfficersByClubChart();
 		drawOfficerRatioChart();
+		drawEventEnrollmentChart();
 	}
 
 	function drawRegistrationsByStatusChart() {
@@ -209,6 +213,38 @@
 			}
 		};
 		var chart = new google.visualization.PieChart(document.getElementById('pie-officer-ratio'));
+		chart.draw(data, options);
+	}
+
+	function drawEventEnrollmentChart() {
+		var data = google.visualization.arrayToDataTable([
+			[
+				'<?php echo \F3::get('lang.StatisticsEventLabel') ?>',
+				'<?php echo \F3::get('lang.StatisticsOfficersPaidLabel') ?>',
+				'<?php echo \F3::get('lang.StatisticsOfficersUnpaidLabel') ?>',
+			],
+		<?php foreach ($stats['event-enrollment'] as $name => $counts): ?>
+			[
+				'<?php echo \F3::get('lang.' . $name) ?>',
+				<?php echo $counts['paid'] ?>,
+				<?php echo $counts['unpaid'] ?>,
+			],
+		<?php endforeach; ?>
+			]);
+		var options = {
+			height: data.getNumberOfRows() * 25,
+			colors : [
+				'#5cb85c', '#f0ad4e'
+			],
+			chartArea: {
+				left: 100,
+				height: '96%',
+			},
+			legend: { position: "none" },
+			isStacked: true,
+		};
+
+		var chart = new google.visualization.BarChart(document.getElementById('bar-event-enrollment'));
 		chart.draw(data, options);
 	}
 </script>

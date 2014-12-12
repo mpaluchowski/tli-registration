@@ -231,6 +231,9 @@ return ['lang' => [
 	"StatisticsNonOfficersLabel" => "Pozostali",
 	"StatisticsOfficerRatioHeader" => "Rejestracje oficerów",
 
+	"StatisticsEventEnrollmentHeader" => "Zgłoszenia na wydarzenia",
+	"StatisticsEventLabel" => "Atrakcja",
+
 	"AuditLogHeader" => "Log zdarzeń",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Zdarzenie",
