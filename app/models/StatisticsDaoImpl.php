@@ -23,6 +23,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 			'registrations-by-club' => $this->readRegistrationsByClub(),
 			'officers-by-club' => $this->readOfficersByClub(),
 			'officer-ratio' => $this->readOfficerRatio(),
+			'event-enrollment' => $this->readEventEnrollment(),
 		];
 	}
 
@@ -109,6 +110,55 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 			'officerCount' => $result[0]['officers'],
 			'nonOfficerCount' => $result[0]['non_officers'],
 			];
+	}
+
+	/**
+	 * Read counts of enrollments for events during the conference.
+	 *
+	 * @return object with fields for each event type and count of enrolled
+	 * attendees.
+	 */
+	function readEventEnrollment() {
+		$query = "SELECT r.date_paid IS NOT NULL AS is_paid,
+						 SUM(name = 'contest-attend' AND value = '\"on\"') AS contest,
+						 SUM(name = 'friday-copernicus-options' AND value LIKE '%center%') AS copernicus_exhibition,
+						 SUM(name = 'friday-copernicus-options' AND value LIKE '%planetarium%') AS copernicus_planetarium,
+						 SUM(name = 'friday-social-event' AND value = '\"on\"') AS opera,
+						 SUM(name = 'saturday-dinner-participate' AND value = '\"on\"') AS street,
+						 SUM(name = 'saturday-party-participate' AND value = '\"on\"') AS club70
+				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf
+				  JOIN " . \F3::get('db_table_prefix') . "registrations r
+				    ON r.id_registration = rf.fk_registration
+				  GROUP BY r.date_paid IS NULL
+				  ORDER BY r.date_paid IS NULL";
+		$result = \F3::get('db')->exec($query);
+
+		return (object)[
+			'EventsContest' => [
+				'paid' => $result[0]['contest'],
+				'unpaid' => $result[1]['contest'],
+				],
+			'EventsFridayCopernicusAttend-center' => [
+				'paid' => $result[0]['copernicus_exhibition'],
+				'unpaid' => $result[1]['copernicus_exhibition'],
+				],
+			'EventsFridayCopernicusAttend-planetarium' => [
+				'paid' => $result[0]['copernicus_planetarium'],
+				'unpaid' => $result[1]['copernicus_planetarium'],
+				],
+			'EventsFridaySocial' => [
+				'paid' => $result[0]['opera'],
+				'unpaid' => $result[1]['opera'],
+				],
+			'EventsSaturdayDinner' => [
+				'paid' => $result[0]['street'],
+				'unpaid' => $result[1]['street'],
+				],
+			'EventsSaturdayParty' => [
+				'paid' => $result[0]['club70'],
+				'unpaid' => $result[1]['club70'],
+				],
+		];
 	}
 
 }
