@@ -101,7 +101,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 	function readOfficerRatio() {
 		$query = "SELECT SUM(rf.value = '\"none\"') AS non_officers,
 						 SUM(rf.value <> '\"none\"') AS officers
-				  FROM tli_registration_fields rf
+				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf
 				  WHERE rf.name = 'exec-position'";
 		$result = \F3::get('db')->exec($query);
 
