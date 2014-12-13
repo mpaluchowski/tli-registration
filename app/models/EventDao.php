@@ -77,7 +77,8 @@ class EventDao {
 						 e.data,
 						 e.date_occurred,
 						 a.id_administrator,
-						 a.full_name
+						 a.full_name,
+						 a.email
 				  FROM ' . \F3::get('db_table_prefix') . 'events e
 				  LEFT JOIN ' . \F3::get('db_table_prefix') . 'administrators a
 				    ON e.fk_administrator = a.id_administrator
@@ -96,6 +97,7 @@ class EventDao {
 				'dateOccurred' => $row['date_occurred'],
 				'administratorId' => $row['id_administrator'],
 				'administratorName' => $row['full_name'],
+				'administratorEmail' => $row['email'],
 			];
 		}
 

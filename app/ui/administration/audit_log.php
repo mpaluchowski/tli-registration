@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="table-responsive">
-	<table class="table table-hover">
+	<table class="table table-hover tli-table-gravatar">
 		<thead>
 			<th><?php echo \F3::get('lang.AuditLogAdminName') ?></th>
 			<th><?php echo \F3::get('lang.AuditLogEventName') ?></th>
@@ -18,7 +18,10 @@
 		<tbody>
 		<?php foreach ($events as $event): ?>
 			<tr data-id="<?php echo $event->id ?>">
-				<td><?php echo $event->administratorName ?></td>
+				<td>
+					<img src="//www.gravatar.com/avatar/<?php echo md5($event->administratorEmail) ?>/?s=30&amp;d=mm" alt="<?php echo $event->administratorName ?>">
+					<?php echo $event->administratorName ?>
+				</td>
 				<td><?php echo $event->name ?></td>
 				<td><?php echo $event->data ?></td>
 				<td><?php echo \helpers\View::formatDateTime($event->dateOccurred) ?></td>
