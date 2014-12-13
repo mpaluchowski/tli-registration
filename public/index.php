@@ -7,6 +7,7 @@ $f3->set('ROOT', realpath('../'));
 $f3->set('AUTOLOAD', '../lib-fatfree/;../lib-php-jwt/;../app/');
 $f3->set('UI', '../app/ui/');
 $f3->set('LOCALES','../app/dict/');
+$f3->set('ESCAPE', 0);
 
 $f3->config('../app/defaults.ini');
 // read user config, if it exists
