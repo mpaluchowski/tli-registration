@@ -62,10 +62,8 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 	 */
 	function readOfficersByClub() {
 		$query = "SELECT rf1.value AS club,
-						 COUNT(rf2.fk_registration) AS officers,
 						 SUM(r.date_paid IS NULL AND r.date_entered IS NOT NULL) AS officers_unpaid,
-						 SUM(r.date_paid IS NOT NULL) AS officers_paid,
-						 GROUP_CONCAT(rf2.value SEPARATOR \"|\") AS positions
+						 SUM(r.date_paid IS NOT NULL) AS officers_paid
 				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf1
 				  LEFT JOIN " . \F3::get('db_table_prefix') . "registration_fields rf2
 					ON rf1.fk_registration = rf2.fk_registration
@@ -83,12 +81,9 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		foreach ($result as $row) {
 			$stats[] = (object)[
 				'name' => json_decode($row['club']),
-				'count' => $row['officers'],
+				'count' => $row['officers_unpaid'] + $row['officers_paid'],
 				'countOfficersUnpaid' => $row['officers_unpaid'],
 				'countOfficersPaid' => $row['officers_paid'],
-				'positions' => array_map(function ($item) {
-					return json_decode($item);
-				}, explode("|", $row['positions'])),
 			];
 		}
 		return $stats;
