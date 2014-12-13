@@ -75,11 +75,11 @@
 
 	function drawRegistrationsByStatusChart() {
 		var data = google.visualization.arrayToDataTable([
-			['<?php echo \F3::get('lang.StatisticsRegistrationStatusLabel') ?>', '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
-			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_PAYMENT') ?>', <?php echo $stats['registrations-by-status']->pendingPayment ?>],
-			['<?php echo \F3::get('lang.RegistrationStatus-PENDING_REVIEW') ?>', <?php echo $stats['registrations-by-status']->pendingReview ?>],
-			['<?php echo \F3::get('lang.RegistrationStatus-WAITING_LIST') ?>', <?php echo $stats['registrations-by-status']->waitingList ?>],
-			['<?php echo \F3::get('lang.RegistrationStatus-PAID') ?>', <?php echo $stats['registrations-by-status']->paid ?>],
+			[<?php echo json_encode(\F3::get('lang.StatisticsRegistrationStatusLabel')) ?>, '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-PENDING_PAYMENT')) ?>, <?php echo $stats['registrations-by-status']->pendingPayment ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-PENDING_REVIEW')) ?>, <?php echo $stats['registrations-by-status']->pendingReview ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-WAITING_LIST')) ?>, <?php echo $stats['registrations-by-status']->waitingList ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-PAID')) ?>, <?php echo $stats['registrations-by-status']->paid ?>],
 			]);
 		var options = {
 			pieHole : 0.4,
@@ -135,7 +135,7 @@
 		var data = google.visualization.arrayToDataTable([
 			['<?php echo \F3::get('lang.StatisticsClubLabel') ?>', '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
 		<?php foreach ($stats['registrations-by-club'] as $club): ?>
-			['<?php echo $club->name ?>', <?php echo $club->count ?>],
+			[<?php echo json_encode($club->name) ?>, <?php echo $club->count ?>],
 		<?php endforeach; ?>
 			]);
 		var options = {
@@ -173,7 +173,7 @@
 			],
 		<?php foreach ($stats['officers-by-club'] as $club): ?>
 			[
-				'<?php echo $club->name ?>',
+				<?php echo json_encode($club->name) ?>,
 				<?php echo $club->countOfficersPaid ?>,
 				'<?php echo $club->count < 4 ? '#d9534f' : '#5cb85c' ?>',
 				<?php echo $club->countOfficersUnpaid ?>,
@@ -225,7 +225,7 @@
 			],
 		<?php foreach ($stats['event-enrollment'] as $name => $counts): ?>
 			[
-				"<?php echo \F3::get('lang.' . $name) ?>",
+				<?php echo json_encode(\F3::get('lang.' . $name)) ?>,
 				<?php echo $counts['paid'] ?>,
 				<?php echo $counts['unpaid'] ?>,
 			],
