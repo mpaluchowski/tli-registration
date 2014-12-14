@@ -233,6 +233,10 @@ return ['lang' => [
 	"CodesPricingItemsValidationMsg" => "Wybierz przynajmniej jedną opcję do przeceny",
 	"CodesPricingItemValueValidationMsg" => "Podaj cenę między 0 a {0} dla waluty {1}",
 
+	"EmailDiscountCodeSubject" => "Kod zniżkowy dla {0}",
+	"EmailDiscountCodeIntro" => "Oto Twój kod zniżkowy dla rejestracji na TLI:",
+	"EmailDiscountCodeInstructions" => "Aby wykorzystać kod, po wypełnieniu formularza rejestracyjnego, tuż przed przejściem do płatności online, wklej kod w pole znajdujące się pod podsumowaniem płatności. Jeśli wypełniłeś/aś formularz już wcześniej, a nie dokonałeś/aś jeszcze płatności, możesz otworzyć podsumowanie swojej rejestracji korzystając z odnośnika, który przyszedł w mailu z potwierdzeniem rejestracji. Po poprawnym wykorzystaniu kodu, Twoje ceny zostaną automatycznie i na stałe obniżone.",
+
 	"StatisticsHeader" => "Statystyki",
 	"StatisticsSeatsHeader" => "Miejsca",
 	"StatisticsSeatsPaid" => "{0} opłaconych",

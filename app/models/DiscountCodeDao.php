@@ -116,7 +116,7 @@ class DiscountCodeDao {
 		return strtoupper(substr(md5(microtime()), 0, 12));
 	}
 
-	function saveDiscountCode(\models\DiscountCode $code) {
+	function saveDiscountCode(\models\DiscountCode &$code) {
 		\F3::get('db')->begin();
 
 		$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'discount_codes (
@@ -129,7 +129,7 @@ class DiscountCodeDao {
 				NOW()
 			)';
 		\F3::get('db')->exec($query, [
-			'code' => $code->getCode() ?: $this->generateCode(),
+			'code' => $codeValue = $code->getCode() ?: $this->generateCode(),
 			'email' => $code->getEmail(),
 			]);
 
@@ -160,6 +160,9 @@ class DiscountCodeDao {
 		}
 
 		\F3::get('db')->commit();
+
+		$code->setId($codeId);
+		$code->setCode($codeValue);
 
 		return $codeId;
 	}

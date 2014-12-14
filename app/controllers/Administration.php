@@ -107,6 +107,18 @@ class Administration {
 			$codeId
 			);
 
+		if ($f3->get('POST.send-email')) {
+			// Email code to the recipient, as requested
+			$f3->set('code', $code);
+
+			$mailer = new \models\Mailer();
+			$mailer->sendEmail(
+				$code->getEmail(),
+				$f3->get('lang.EmailDiscountCodeSubject', $code->getEmail()),
+				\View::instance()->render('mail/discount_code.php')
+			);
+		}
+
 		// Setup confirmation message and redirect back to list
 		\models\MessageManager::addMessage(
 			'success',
