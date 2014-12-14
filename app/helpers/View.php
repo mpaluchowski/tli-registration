@@ -17,6 +17,21 @@ class View {
 	}
 
 	/**
+	 * Produces the URL to a Gravatar image for given email.
+	 *
+	 * @param $email the email addres to produce a Gravatar for
+	 * @param $size optional size of image
+	 * @return the URL to place, usually inside the SRC attribute of IMG
+	 */
+	static function getGravatarUrl($email, $size = 30) {
+		return "//www.gravatar.com/avatar/"
+			. md5($email)
+			. "/?s="
+			. $size
+			. "&amp;d=mm";
+	}
+
+	/**
 	 * @return date and time string formatted according to locale set.
 	 */
 	static function formatDateTime($dateTime) {

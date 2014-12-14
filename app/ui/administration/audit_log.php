@@ -19,7 +19,7 @@
 		<?php foreach ($events as $event): ?>
 			<tr data-id="<?php echo $event->id ?>">
 				<td>
-					<img src="//www.gravatar.com/avatar/<?php echo md5($event->administratorEmail) ?>/?s=30&amp;d=mm" alt="<?php echo $event->administratorName ?>">
+					<img src="<?php echo \helpers\View::getGravatarUrl($event->administratorEmail, 30) ?>" alt="<?php echo $event->administratorName ?>">
 					<?php echo $event->administratorName ?>
 				</td>
 				<td><?php echo $event->name ?></td>
