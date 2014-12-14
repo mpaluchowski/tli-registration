@@ -21,6 +21,12 @@ tliRegister.discountCodes = function() {
 			.each(function() {
 				if (!$(chekbox).prop('checked')) {
 					$(this).val($(this).attr('data-value-original'));
+					$('.has-error', row).each(function() {
+						$(this).children('.help-block').slideUp(function() {
+							$(this).remove();
+						});
+						$(this).removeClass('has-error');
+					});
 				}
 			});
 	}
