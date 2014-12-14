@@ -19,6 +19,8 @@
 
 		<div class="table-responsive">
 			<table id="discount-code-items" class="table tli-table-form">
+				<colgroup span="2"></colgroup>
+				<colgroup span="<?php echo count(current($pricingItems)->prices) ?>" class="input-column-number"></colgroup>
 				<thead>
 					<tr>
 						<th><?php echo \F3::get('lang.PaymentItemHead') ?></th>
@@ -42,8 +44,11 @@
 						<td><?php echo $item->variant ?></td>
 					<?php foreach ($item->prices as $currency => $price): ?>
 						<td>
-							<div class="input-group<?php if (isset($messages[$name . '-' . $currency])): ?> has-error<?php endif ?>">
-								<input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php echo isset($code) && $code->hasPricingItem($name) ? $code->getPricingItem($name, $currency) : $price ?>" data-value-original="<?php echo $price ?>" min="0" max="<?php echo $price ?>" disabled>
+							<div class="form-group<?php if (isset($messages[$name])): ?> has-error<?php endif ?>">
+							<div class="input-group">
+								<input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php echo isset($code) && $code->hasPricingItem($name) ? $code->getPricingItem($name, $currency) : $price ?>" data-value-original="<?php echo $price ?>" min="0" max="<?php echo $price ?>" class="form-control" disabled>
+								<span class="input-group-addon"><?php echo $price ?></span>
+							</div>
 							</div>
 						</td>
 					<?php endforeach; ?>
