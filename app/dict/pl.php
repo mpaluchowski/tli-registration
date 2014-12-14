@@ -227,6 +227,8 @@ return ['lang' => [
 	"CodesDateCreated" => "Data utworzenia",
 	"CodesDateRedeemed" => "Data wykorzystania",
 	"CodesCreatedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany.",
+	"CodesCreatedEmailedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany i wysłany.",
+	"CodesCreatedNotEmailedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany, ale wystąpił problem z jego wysłaniem. Prześlij kod ręcznie.",
 	"CodesRegistrationEmailPaidMsg" => "Istnieje już rejestracja dla adresu {0} i została opłacona {1}. Nie można wygenerować kodu.",
 
 	"CodesEmailValidationMsg" => "Podaj poprawny adres email",

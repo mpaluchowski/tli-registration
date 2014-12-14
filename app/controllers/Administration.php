@@ -107,22 +107,32 @@ class Administration {
 			$codeId
 			);
 
+		$messageType = 'success';
+
 		if ($f3->get('POST.send-email')) {
 			// Email code to the recipient, as requested
 			$f3->set('code', $code);
 
 			$mailer = new \models\Mailer();
-			$mailer->sendEmail(
+			$mailResult = $mailer->sendEmail(
 				$code->getEmail(),
 				$f3->get('lang.EmailDiscountCodeSubject', $code->getEmail()),
 				\View::instance()->render('mail/discount_code.php')
 			);
+
+			$messageKey = $mailResult
+				? 'CodesCreatedEmailedMsg'
+				: 'CodesCreatedNotEmailedMsg';
+			if (!$mailResult)
+				$messageType = 'warning';
+		} else {
+			$messageKey = 'CodesCreatedMsg';
 		}
 
 		// Setup confirmation message and redirect back to list
 		\models\MessageManager::addMessage(
-			'success',
-			$f3->get('lang.CodesCreatedMsg', $code->getEmail())
+			$messageType,
+			$f3->get('lang.' . $messageKey, $code->getEmail())
 			);
 
 		$f3->reroute('@admin_codes');
