@@ -57,15 +57,16 @@ class DiscountCode {
 		return $this->pricingItems;
 	}
 
-	function setPricingItem($itemId, $currency, $value) {
-		$this->pricingItems[$itemId][$currency] = $value;
+	function setPricingItem($itemName, $itemId, $currency, $value) {
+		$this->pricingItems[$itemName]["id"] = $itemId;
+		$this->pricingItems[$itemName]["prices"][$currency] = $value;
 	}
 
-	function getPricingItem($itemId, $currency = null) {
+	function getPricingItem($itemName, $currency = null) {
 		if ($currency)
-			return $this->pricingItems[$itemId][$currency];
+			return $this->pricingItems[$itemName]["prices"][$currency];
 		else
-			return $this->pricingItems[$itemId];
+			return $this->pricingItems[$itemName];
 	}
 
 }

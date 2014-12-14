@@ -25,9 +25,11 @@ class DiscountCodeDao {
 	function parseRequestToCode(array $postValues) {
 		$code = new \models\DiscountCode($postValues['email']);
 
-		foreach ($postValues['pricing-items'] as $itemId) {
-			foreach ($postValues['price'][$itemId] as $currency => $price) {
-				$code->setPricingItem($itemId, $currency, $price);
+		if (isset($postValues['pricing-items'])) {
+			foreach ($postValues['pricing-items'] as $itemName => $itemId) {
+				foreach ($postValues['price'][$itemId] as $currency => $price) {
+					$code->setPricingItem($itemName, $itemId, $currency, $price);
+				}
 			}
 		}
 
@@ -103,11 +105,11 @@ class DiscountCodeDao {
 			)';
 		$st = \F3::get('db')->prepare($query);
 
-		foreach ($code->getPricingItems() as $itemId => $prices) {
-			foreach ($prices as $currency => $price) {
+		foreach ($code->getPricingItems() as $itemName => $item) {
+			foreach ($item['prices'] as $currency => $price) {
 				$st->execute([
 					'discountCodeId' => $codeId,
-					'pricingItemId' => $itemId,
+					'pricingItemId' => $item['id'],
 					'currency' => $currency,
 					'price' => $price,
 					]);

@@ -29,12 +29,12 @@
 					</tr>
 				</thead>
 				<tbody>
-				<?php foreach ($pricingItems as $item): ?>
+				<?php foreach ($pricingItems as $name => $item): ?>
 					<tr id="pricing-item-<?php echo $item->id?>">
 						<td>
 							<div class="checkbox">
 								<label for="pricing-item-check-<?php echo $item->id?>">
-									<input type="checkbox" name="pricing-items[]" value="<?php echo $item->id?>" id="pricing-item-check-<?php echo $item->id?>">
+									<input type="checkbox" name="pricing-items[<?php echo $name ?>]" value="<?php echo $item->id?>" id="pricing-item-check-<?php echo $item->id?>">
 									<?php echo $item->name ?>
 								</label>
 							</div>
