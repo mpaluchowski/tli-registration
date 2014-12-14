@@ -4,6 +4,7 @@ tliRegister.discountCodes = function() {
 
 	var init = function() {
 		initCodeItemEnabling();
+		initCreateButtonLabel();
 	},
 
 	initCodeItemEnabling = function() {
@@ -29,6 +30,23 @@ tliRegister.discountCodes = function() {
 					});
 				}
 			});
+	},
+
+	initCreateButtonLabel = function() {
+		$('#send-email')
+			.change(switchButtonLabel);
+	},
+
+	switchButtonLabel = function() {
+		if ($(this).prop('checked')) {
+			$('#create-code-btn').html(
+				$('#create-code-btn').attr('data-email-label')
+				);
+		} else {
+			$('#create-code-btn').html(
+				$('#create-code-btn').attr('data-create-label')
+				);
+		}
 	}
 
 	return {

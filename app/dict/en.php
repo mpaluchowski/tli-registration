@@ -222,6 +222,7 @@ return ['lang' => [
 	"CodesSendByEmail" => "Send code by email to recipient",
 	"CodesSendByEmailHelp" => "Select this, unless you want to send the code to the recipient yourself.",
 	"CodesCreateCodeButton" => "Create code",
+	"CodesCreateEmailCodeButton" => "Create and email code",
 	"CodesCode" => "Code",
 	"CodesDateCreated" => "Date created",
 	"CodesDateRedeemed" => "Date redeemed",

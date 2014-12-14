@@ -68,12 +68,12 @@
 
 		<div class="checkbox form-group">
 			<label>
-				<input type="checkbox" name="send-email"<?php if (isset($sendEmail)): ?> checked<?php endif; ?>><?php echo \F3::get('lang.CodesSendByEmail') ?>
+				<input type="checkbox" name="send-email" id="send-email"<?php if (isset($sendEmail)): ?> checked<?php endif; ?>><?php echo \F3::get('lang.CodesSendByEmail') ?>
 			</label>
 			<p class="help-block"><?php echo \F3::get('lang.CodesSendByEmailHelp') ?></p>
 		</div>
 
-		<button type="submit" class="btn btn-success"><?php echo \F3::get('lang.CodesCreateCodeButton') ?></button>
+		<button type="submit" class="btn btn-success" id="create-code-btn" data-email-label="<?php echo \F3::get('lang.CodesCreateEmailCodeButton') ?>" data-create-label="<?php echo \F3::get('lang.CodesCreateCodeButton') ?>"><?php echo isset($sendEmail) ? \F3::get('lang.CodesCreateEmailCodeButton') : \F3::get('lang.CodesCreateCodeButton') ?></button>
 	</form>
 	</div></div>
 
