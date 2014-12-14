@@ -54,6 +54,19 @@ class DiscountCodeDao {
 	}
 
 	/**
+	 * Validate the correctnes of data stored in a DiscountCode instance.
+	 *
+	 * @param $code an instance of DiscountCode to validate
+	 * @return an array with messages, one for each failed valiation, or empty
+	 * array if no errors were found
+	 */
+	function validateDiscountCode(\models\DiscountCode $code) {
+		$messages = [];
+
+		return $messages;
+	}
+
+	/**
 	 * Validates if the code has the required format.
 	 *
 	 * @param $code code string to validate

@@ -7,16 +7,21 @@ tliRegister.discountCodes = function() {
 	},
 
 	initCodeItemEnabling = function() {
-		$('#discount-code-items input:checkbox').change(handlePricingItemChange);
+		$('#discount-code-items input:checkbox')
+			.change(handlePricingItemChange)
+			.each(handlePricingItemChange);
 	},
 
-	handlePricingItemChange = function(e) {
-		var row = $(this).closest('tr');
+	handlePricingItemChange = function() {
+		var row = $(this).closest('tr'),
+			chekbox = this;
 
 		$('input[type=number]', row)
-			.prop('disabled', !$(this).prop('checked'))
+			.prop('disabled', !$(chekbox).prop('checked'))
 			.each(function() {
-				$(this).val($(this).attr('data-value-original'));
+				if (!$(chekbox).prop('checked')) {
+					$(this).val($(this).attr('data-value-original'));
+				}
 			});
 	}
 

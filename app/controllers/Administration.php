@@ -45,6 +45,11 @@ class Administration {
 	}
 
 	function codes($f3) {
+		if (\models\FlashScope::has('discountCode')) {
+			// Comin in with validation errors
+			$f3->mset(\models\FlashScope::pop('discountCode'));
+		}
+
 		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
 
 		$f3->set('pricingItems', $priceCalculator->fetchPricing());
@@ -74,6 +79,18 @@ class Administration {
 						\helpers\View::formatDateTime($form->getDatePaid())
 					])
 				);
+			$f3->reroute('@admin_codes');
+		}
+
+		$messages = $discountCodeDao->validateDiscountCode($code);
+
+		if (0 !== count($messages)) {
+			// Validation returned messages, redirect back to form and show errors
+			\models\FlashScope::push('discountCode', [
+				"code" => $code,
+				"messages" => $messages,
+				"sendEmail" => $f3->exists('POST.send-email'),
+				]);
 			$f3->reroute('@admin_codes');
 		}
 

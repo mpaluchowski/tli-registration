@@ -12,7 +12,7 @@
 	<form action="<?php echo \F3::get('ALIASES.admin_code_create') ?>" method="POST">
 		<div class="form-group">
 			<label for="email" class="control-label"><?php echo \F3::get('lang.CodesRecipientEmail') ?></label>
-			<input type="email" id="email" name="email" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" autocomplete="email" autofocus required class="form-control">
+			<input type="email" id="email" name="email" value="<?php if (isset($code)) echo $code->getEmail() ?>" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" autocomplete="email" autofocus required class="form-control">
 		</div>
 
 		<label><?php echo \F3::get('lang.CodesSelectDiscountedItems') ?></label>
@@ -34,14 +34,18 @@
 						<td>
 							<div class="checkbox">
 								<label for="pricing-item-check-<?php echo $item->id?>">
-									<input type="checkbox" name="pricing-items[<?php echo $name ?>]" value="<?php echo $item->id?>" id="pricing-item-check-<?php echo $item->id?>">
+									<input type="checkbox" name="pricing-items[<?php echo $name ?>]" value="<?php echo $item->id?>" id="pricing-item-check-<?php echo $item->id?>"<?php if (isset($code) && $code->hasPricingItem($name)): ?> checked<?php endif; ?>>
 									<?php echo $item->name ?>
 								</label>
 							</div>
 						</td>
 						<td><?php echo $item->variant ?></td>
 					<?php foreach ($item->prices as $currency => $price): ?>
-						<td><input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php echo $price ?>" data-value-original="<?php echo $price ?>" min="0" max="<?php echo $price ?>" disabled></td>
+						<td>
+							<div class="input-group<?php if (isset($messages[$name . '-' . $currency])): ?> has-error<?php endif ?>">
+								<input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php echo isset($code) && $code->hasPricingItem($name) ? $code->getPricingItem($name, $currency) : $price ?>" data-value-original="<?php echo $price ?>" min="0" max="<?php echo $price ?>" disabled>
+							</div>
+						</td>
 					<?php endforeach; ?>
 					</tr>
 				<?php endforeach; ?>
@@ -51,7 +55,7 @@
 
 		<div class="checkbox form-group">
 			<label>
-				<input type="checkbox" name="send-email"><?php echo \F3::get('lang.CodesSendByEmail') ?>
+				<input type="checkbox" name="send-email"<?php if (isset($sendEmail)): ?> checked<?php endif; ?>><?php echo \F3::get('lang.CodesSendByEmail') ?>
 				<p class="help-block"><?php echo \F3::get('lang.CodesSendByEmailHelp') ?></p>
 			</label>
 		</div>

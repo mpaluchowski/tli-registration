@@ -69,4 +69,8 @@ class DiscountCode {
 			return $this->pricingItems[$itemName];
 	}
 
+	function hasPricingItem($itemName) {
+		return isset($this->pricingItems[$itemName]);
+	}
+
 }
