@@ -61,8 +61,8 @@
 		<div class="checkbox form-group">
 			<label>
 				<input type="checkbox" name="send-email"<?php if (isset($sendEmail)): ?> checked<?php endif; ?>><?php echo \F3::get('lang.CodesSendByEmail') ?>
-				<p class="help-block"><?php echo \F3::get('lang.CodesSendByEmailHelp') ?></p>
 			</label>
+			<p class="help-block"><?php echo \F3::get('lang.CodesSendByEmailHelp') ?></p>
 		</div>
 
 		<button type="submit" class="btn btn-success"><?php echo \F3::get('lang.CodesCreateCodeButton') ?></button>
