@@ -9,6 +9,7 @@
 
 <?php echo \View::instance()->render('message-alerts.php') ?>
 
+	<div class="panel panel-default"><div class="panel-body">
 	<form action="<?php echo \F3::get('ALIASES.admin_code_create') ?>" method="POST">
 		<div class="form-group<?php if (isset($messages['email'])): ?> has-error<?php endif ?>">
 			<label for="email" class="control-label"><?php echo \F3::get('lang.CodesRecipientEmail') ?></label>
@@ -74,6 +75,7 @@
 
 		<button type="submit" class="btn btn-success"><?php echo \F3::get('lang.CodesCreateCodeButton') ?></button>
 	</form>
+	</div></div>
 
 	<div class="table-responsive">
 		<table class="table table-hover">
