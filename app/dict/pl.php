@@ -228,6 +228,10 @@ return ['lang' => [
 	"CodesCreatedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany.",
 	"CodesRegistrationEmailPaidMsg" => "Istnieje już rejestracja dla adresu {0} i została opłacona {1}. Nie można wygenerować kodu.",
 
+	"CodesEmailValidationMsg" => "Podaj poprawny adres email",
+	"CodesPricingItemsValidationMsg" => "Wybierz przynajmniej jedną opcję do przeceny",
+	"CodesPricingItemValueValidationMsg" => "Podaj cenę między 0 a {0} dla waluty {1}",
+
 	"StatisticsHeader" => "Statystyki",
 	"StatisticsSeatsHeader" => "Miejsca",
 	"StatisticsSeatsPaid" => "{0} opłaconych",

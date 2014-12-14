@@ -10,12 +10,16 @@
 <?php echo \View::instance()->render('message-alerts.php') ?>
 
 	<form action="<?php echo \F3::get('ALIASES.admin_code_create') ?>" method="POST">
-		<div class="form-group">
+		<div class="form-group<?php if (isset($messages['email'])): ?> has-error<?php endif ?>">
 			<label for="email" class="control-label"><?php echo \F3::get('lang.CodesRecipientEmail') ?></label>
 			<input type="email" id="email" name="email" value="<?php if (isset($code)) echo $code->getEmail() ?>" placeholder="<?php echo \F3::get('lang.EmailPlaceholder') ?>" autocomplete="email" autofocus required class="form-control">
+			<?php if (isset($messages['email'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $messages['email'] ?></p><?php endif; ?>
 		</div>
 
-		<label><?php echo \F3::get('lang.CodesSelectDiscountedItems') ?></label>
+		<div class="<?php if (isset($messages['pricing-items'])): ?> has-error<?php endif ?>">
+			<label class="control-label"><?php echo \F3::get('lang.CodesSelectDiscountedItems') ?></label>
+			<?php if (isset($messages['pricing-items'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $messages['pricing-items'] ?></p><?php endif; ?>
+		</div>
 
 		<div class="table-responsive">
 			<table id="discount-code-items" class="table tli-table-form">
@@ -34,17 +38,20 @@
 				<?php foreach ($pricingItems as $name => $item): ?>
 					<tr id="pricing-item-<?php echo $item->id?>">
 						<td>
-							<div class="checkbox">
+							<div class="checkbox<?php if (isset($messages[$name])): ?> has-error<?php endif ?>">
 								<label for="pricing-item-check-<?php echo $item->id?>">
 									<input type="checkbox" name="pricing-items[<?php echo $name ?>]" value="<?php echo $item->id?>" id="pricing-item-check-<?php echo $item->id?>"<?php if (isset($code) && $code->hasPricingItem($name)): ?> checked<?php endif; ?>>
 									<?php echo $item->name ?>
 								</label>
+								<?php if (isset($messages[$name])): ?><p class="help-block">
+									<span class="glyphicon glyphicon-info-sign"></span>
+									<?php echo implode('<br><span class="glyphicon glyphicon-info-sign"></span> ', $messages[$name]) ?></p><?php endif; ?>
 							</div>
 						</td>
 						<td><?php echo $item->variant ?></td>
 					<?php foreach ($item->prices as $currency => $price): ?>
 						<td>
-							<div class="form-group<?php if (isset($messages[$name])): ?> has-error<?php endif ?>">
+							<div class="form-group<?php if (isset($messages[$name][$currency])): ?> has-error<?php endif ?>">
 							<div class="input-group">
 								<input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php echo isset($code) && $code->hasPricingItem($name) ? $code->getPricingItem($name, $currency) : $price ?>" data-value-original="<?php echo $price ?>" min="0" max="<?php echo $price ?>" class="form-control" disabled>
 								<span class="input-group-addon"><?php echo $price ?></span>

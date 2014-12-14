@@ -63,6 +63,36 @@ class DiscountCodeDao {
 	function validateDiscountCode(\models\DiscountCode $code) {
 		$messages = [];
 
+		// Must provide valid email
+		if (!$code->getEmail()
+				|| !filter_var($code->getEmail(), FILTER_VALIDATE_EMAIL)) {
+			$messages['email'] = \F3::get('lang.CodesEmailValidationMsg');
+		}
+
+		// Must choose at least one pricing item
+		if (0 === count($code->getPricingItems())) {
+			$messages['pricing-items'] = \F3::get('lang.CodesPricingItemsValidationMsg');
+		}
+
+		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
+		$pricingItems = $priceCalculator->fetchPricing();
+
+		// No set price can be lower than 0 or higher than original value
+		foreach ($code->getPricingItems() as $name => $item) {
+			foreach ($item['prices'] as $currency => $price) {
+				if ($pricingItems[$name]->prices[$currency] < $price
+						|| $price < 0) {
+					$messages[$name][$currency] = \F3::get(
+						'lang.CodesPricingItemValueValidationMsg',
+						[
+							$pricingItems[$name]->prices[$currency],
+							$currency,
+						]
+						);
+				}
+			}
+		}
+
 		return $messages;
 	}
 

@@ -228,6 +228,10 @@ return ['lang' => [
 	"CodesCreatedMsg" => "Code for <strong>{0}</strong> successfully generated.",
 	"CodesRegistrationEmailPaidMsg" => "A registration already exists for {0} and was paid on {1}. A code cannot be generated.",
 
+	"CodesEmailValidationMsg" => "Please provide a valid email address",
+	"CodesPricingItemsValidationMsg" => "Please choose at least one pricing item to discount",
+	"CodesPricingItemValueValidationMsg" => "Please enter a price between 0 and {0} for currency {1}",
+
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",
 	"StatisticsSeatsPaid" => "{0} paid",
