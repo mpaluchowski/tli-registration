@@ -175,7 +175,7 @@
 			[
 				<?php echo json_encode($club->name) ?>,
 				<?php echo $club->countOfficersPaid ?>,
-				'<?php echo $club->count < 4 ? '#d9534f' : '#5cb85c' ?>',
+				'<?php echo $club->countOfficersPaid < 4 ? '#d9534f' : '#5cb85c' ?>',
 				<?php echo $club->countOfficersUnpaid ?>,
 				'#f0ad4e',
 			],
