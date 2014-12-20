@@ -172,6 +172,13 @@ tliRegister.registrationForm = function() {
 	initExclusiveField = function(field, exclusiveFieldName, exclusiveFieldValue) {
 		var targetField = $('[name="' + exclusiveFieldName + '"]');
 
+		// Set initial exclusion status, based on value
+		toggleExcludedField(
+			field,
+			checkFieldExcluded(targetField, exclusiveFieldValue)
+			);
+
+		// Setup changing exclusion status on option change
 		$(targetField).change(function() {
 			toggleExcludedField(
 				field,
