@@ -169,6 +169,14 @@ tliRegister.registrationForm = function() {
 		})
 	},
 
+	/**
+	 * Initialize checking for exclusive fields and setting their status to
+	 * disabled, when the target field has a matching value.
+	 *
+	 * @param field instance of the field to setup exclusions for
+	 * @param exclusiveFieldName name of the target field to check value for
+	 * @param exclusiveFieldValue value of the target field to check for
+	 */
 	initExclusiveField = function(field, exclusiveFieldName, exclusiveFieldValue) {
 		var targetField = $('[name="' + exclusiveFieldName + '"]');
 
@@ -187,12 +195,26 @@ tliRegister.registrationForm = function() {
 		});
 	},
 
+	/**
+	 * Check if the target field has the expected value, and the original field
+	 * should be marked as excluded.
+	 *
+	 * @param targetField field to check value for
+	 * @param exclusiveFieldValue value to check for
+	 * @return true if target field has the expected value
+	 */
 	checkFieldExcluded = function(targetField, exclusiveFieldValue) {
 		return $(targetField).filter(':checked').map(function () {
 				return this.value;
 			}).get().indexOf(exclusiveFieldValue) > -1;
 	},
 
+	/**
+	 * Toggle status of an excluded field,  enabling or disabling it.
+	 *
+	 * @param field field to toggle disabled status for
+	 * @param flag true/false what to set the disabled status to
+	 */
 	toggleExcludedField = function(field, flag) {
 		if (flag) {
 			$(field)
