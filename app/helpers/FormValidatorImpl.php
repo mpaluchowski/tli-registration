@@ -71,6 +71,15 @@ class FormValidatorImpl implements FormValidator {
 			$messages['friday-copernicus-options'] = \F3::get('lang.EventsFridayCopernicusOptionsValidationMsg');
 		}
 
+		// Cannot participate in Contest and Copernicus Planetarium, as both are
+		// at the same time
+		if ($form->hasField('friday-copernicus-options')
+				&& in_array('planetarium', $form->getField('friday-copernicus-options'))
+				&& $form->hasField('contest-attend')
+				&& 'on' === $form->getField('contest-attend')) {
+			$messages['contest-attend'] = \F3::get('lang.EventsContestCopernicusPlanetariumCollisionValidationMsg');
+		}
+
 		if ($form->hasField('lunch')
 				&& (!$form->hasField('lunch-days')
 					|| !$form->getField('lunch-days'))) {

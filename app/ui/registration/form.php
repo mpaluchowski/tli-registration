@@ -137,8 +137,10 @@
       <p class="help-block"><?php echo \F3::get('lang.EventTranslatorHelp') ?></p>
     </div>
 
-    <div class="checkbox form-group">
+    <div class="checkbox form-group<?php if (isset($registration['messages']['contest-attend'])): ?> has-error<?php endif ?>">
       <label><input type="checkbox" name="contest-attend"<?php if (isset($registration['contest-attend']) && $registration['contest-attend'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsContestYes') ?></label>
+
+      <?php if (isset($registration['messages']['contest-attend'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['contest-attend'] ?></p><?php endif; ?>
     </div>
 
     <div class="checkbox form-group">

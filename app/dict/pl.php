@@ -97,6 +97,7 @@ return ['lang' => [
 	'EventTranslatorHelp' => "Otrzymasz specjalny identyfikator i możemy poprosić cię o tłumaczenie sesji dla osób, które nie znają jej języka.",
 	'EventsContestYes' => "Przyjdę na <a href=\"http://tli.toastmasters.org.pl/2015-01/konkurs\" rel=\"external\"><strong>konkursy Przemówień Humorystycznych i Gorących Pytań</strong></a> w piątek",
 	'EventsContest' => "Piątkowe konkursy",
+	'EventsContestCopernicusPlanetariumCollisionValidationMsg' => "Nie możesz wybrać jednocześnie <strong>konkursu i Planetarium Kopernika</strong>, ponieważ oba wydarzenia mają miejsce <em>w tym samym czasie</em>. Wybierz tylko jedną z tych opcji.",
 	'EventsFridayCopernicus' => "Piątkowe Centrum Nauki Kopernik",
 	'EventsFridayCopernicusYes' => "Chcę odwiedzić <a href=\"http://tli.toastmasters.org.pl/2015-01/atrakcje#event-copernicus\" rel=\"external\"><strong>Centrum Nauki Kopernik</strong></a> w piątek",
 	'EventsFridayCopernicusAttendCenter' => "Chcę zobaczyć <strong>wystawę główną</strong>",
