@@ -173,23 +173,34 @@ tliRegister.registrationForm = function() {
 		var targetField = $('[name="' + exclusiveFieldName + '"]');
 
 		$(targetField).change(function() {
-			if ($(targetField).filter(':checked').map(function () {
-						return this.value;
-					}).get().indexOf(exclusiveFieldValue) > -1) {
-				$(field)
-					.prop('disabled', true)
-					.prop('checked', false)
-					.closest('div')
-					.children('.tli-exclusive-msg')
-					.removeClass('hidden');
-			} else {
-				$(field)
-					.prop('disabled', false)
-					.closest('div')
-					.children('.tli-exclusive-msg')
-					.addClass('hidden');
-			}
+			toggleExcludedField(
+				field,
+				checkFieldExcluded(targetField, exclusiveFieldValue)
+				);
 		});
+	},
+
+	checkFieldExcluded = function(targetField, exclusiveFieldValue) {
+		return $(targetField).filter(':checked').map(function () {
+				return this.value;
+			}).get().indexOf(exclusiveFieldValue) > -1;
+	},
+
+	toggleExcludedField = function(field, flag) {
+		if (flag) {
+			$(field)
+				.prop('disabled', true)
+				.prop('checked', false)
+				.closest('div')
+				.children('.tli-exclusive-msg')
+				.removeClass('hidden');
+		} else {
+			$(field)
+				.prop('disabled', false)
+				.closest('div')
+				.children('.tli-exclusive-msg')
+				.addClass('hidden');
+		}
 	},
 
 	initTotalPriceDisplay = function() {
