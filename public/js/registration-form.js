@@ -5,6 +5,7 @@ tliRegister.registrationForm = function() {
 	var init = function() {
 		initCustomClubEntry();
 		initDependentFieldGroups();
+		initExclusiveChoices();
 		initTotalPriceDisplay();
 		initEmailExistingCheck();
 
@@ -154,6 +155,32 @@ tliRegister.registrationForm = function() {
 						$('.help-block:last-child', dependent)
 						);
 				});
+			}
+		});
+	},
+
+	initExclusiveChoices = function() {
+		$('[data-exclusive-with]').each(function() {
+			initExclusiveField(
+				this,
+				$(this).attr('data-exclusive-with'),
+				$(this).attr('data-exclusive-with-value')
+				);
+		})
+	},
+
+	initExclusiveField = function(field, exclusiveFieldName, exclusiveFieldValue) {
+		var targetField = $('[name="' + exclusiveFieldName + '"]');
+
+		$(targetField).change(function() {
+			if ($(targetField).filter(':checked').map(function () {
+						return this.value;
+					}).get().indexOf(exclusiveFieldValue) > -1) {
+				$(field)
+					.prop('disabled', true)
+					.prop('checked', false);
+			} else {
+				$(field).prop('disabled', false);
 			}
 		});
 	},
