@@ -9,6 +9,8 @@ return ['lang' => [
 	"Yes" => "Yes",
 	"No" => "No",
 
+	"FieldDisabledExclusiveMsg" => "Option unavailable because it's conflicting with \"{0}\" you already selected.",
+
 	"TliNavRegister" => 'Register',
 	"TliNavRegisterUrl" => 'register',
 	"TliNavHome" => 'Home',
@@ -97,6 +99,7 @@ return ['lang' => [
 	'EventTranslatorHelp' => "We'll give you a special badge and may ask you to help out translating some sessions for those, who don't speak their language.",
 	'EventsContestYes' => "I will attend the <a href=\"http://tli.toastmasters.org.pl/2015-01/contest\" rel=\"external\"><strong>Humorous Speech and Table Topics contests</strong></a> on Friday",
 	'EventsContest' => "Friday's contests",
+	'EventsContestCopernicusPlanetariumCollisionValidationMsg' => "You won't be able to attend both the <strong>Contest and the Copernicus Planetarium</strong>, because both happen <em>at the same time</em>. Please select only one of them.",
 	'EventsFridayCopernicus' => "Friday's Copernicus Science Centre",
 	'EventsFridayCopernicusYes' => "I'd like to visit the <a href=\"http://tli.toastmasters.org.pl/2015-01/events#event-copernicus\" rel=\"external\"><strong>Copernicus Science Centre</strong></a> on Friday",
 	'EventsFridayCopernicusAttendCenter' => "I'd like to see the <strong>main exhibition</strong>",

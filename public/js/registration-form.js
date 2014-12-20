@@ -5,6 +5,7 @@ tliRegister.registrationForm = function() {
 	var init = function() {
 		initCustomClubEntry();
 		initDependentFieldGroups();
+		initExclusiveChoices();
 		initTotalPriceDisplay();
 		initEmailExistingCheck();
 
@@ -156,6 +157,82 @@ tliRegister.registrationForm = function() {
 				});
 			}
 		});
+	},
+
+	initExclusiveChoices = function() {
+		$('[data-exclusive-with]').each(function() {
+			initExclusiveField(
+				this,
+				$(this).attr('data-exclusive-with'),
+				$(this).attr('data-exclusive-with-value')
+				);
+		})
+	},
+
+	/**
+	 * Initialize checking for exclusive fields and setting their status to
+	 * disabled, when the target field has a matching value.
+	 *
+	 * @param field instance of the field to setup exclusions for
+	 * @param exclusiveFieldName name of the target field to check value for
+	 * @param exclusiveFieldValue value of the target field to check for
+	 */
+	initExclusiveField = function(field, exclusiveFieldName, exclusiveFieldValue) {
+		var targetField = $('[name="' + exclusiveFieldName + '"]'),
+			excludeInfo = $(field).closest('div').children('.tli-exclusive-msg');
+
+		$(excludeInfo).removeClass('hidden').hide();
+
+		// Set initial exclusion status, based on value
+		toggleExcludedField(
+			field,
+			excludeInfo,
+			checkFieldExcluded(targetField, exclusiveFieldValue)
+			);
+
+		// Setup changing exclusion status on option change
+		$(targetField).change(function() {
+			toggleExcludedField(
+				field,
+				excludeInfo,
+				checkFieldExcluded(targetField, exclusiveFieldValue)
+				);
+		});
+	},
+
+	/**
+	 * Check if the target field has the expected value, and the original field
+	 * should be marked as excluded.
+	 *
+	 * @param targetField field to check value for
+	 * @param exclusiveFieldValue value to check for
+	 * @return true if target field has the expected value
+	 */
+	checkFieldExcluded = function(targetField, exclusiveFieldValue) {
+		return $(targetField).filter(':checked').map(function () {
+				return this.value;
+			}).get().indexOf(exclusiveFieldValue) > -1;
+	},
+
+	/**
+	 * Toggle status of an excluded field, enabling or disabling it.
+	 *
+	 * @param field field to toggle disabled status for
+	 * @param excludeInfo element holding info on why a field is disabled
+	 * @param flag true/false what to set the disabled status to
+	 */
+	toggleExcludedField = function(field, excludeInfo, flag) {
+		if (flag) {
+			$(field)
+				.prop('disabled', true)
+				.prop('checked', false);
+			$(excludeInfo).slideDown();
+		} else {
+			$(field)
+				.prop('disabled', false)
+				.closest('div');
+			$(excludeInfo).slideUp();
+		}
 	},
 
 	initTotalPriceDisplay = function() {

@@ -137,8 +137,11 @@
       <p class="help-block"><?php echo \F3::get('lang.EventTranslatorHelp') ?></p>
     </div>
 
-    <div class="checkbox form-group">
-      <label><input type="checkbox" name="contest-attend"<?php if (isset($registration['contest-attend']) && $registration['contest-attend'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsContestYes') ?></label>
+    <div class="checkbox form-group<?php if (isset($registration['messages']['contest-attend'])): ?> has-error<?php endif ?>">
+      <label><input type="checkbox" name="contest-attend" data-exclusive-with="friday-copernicus-options[]" data-exclusive-with-value="planetarium" <?php if (isset($registration['contest-attend']) && $registration['contest-attend'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsContestYes') ?></label>
+      <p class="help-block hidden tli-exclusive-msg"><?php echo \F3::get('lang.FieldDisabledExclusiveMsg', \F3::get('lang.EventsFridayCopernicusAttend-planetarium')) ?></p>
+
+      <?php if (isset($registration['messages']['contest-attend'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['contest-attend'] ?></p><?php endif; ?>
     </div>
 
     <div class="checkbox form-group">
@@ -154,9 +157,10 @@
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="friday-copernicus-options[]" class="field-price-affecting" value="planetarium"<?php if (isset($registration['friday-copernicus-options']) && in_array('planetarium', $registration['friday-copernicus-options'])) echo ' checked' ?>><?php echo \F3::get('lang.EventsFridayCopernicusAttendPlanetarium') ?>
+              <input type="checkbox" name="friday-copernicus-options[]" class="field-price-affecting" value="planetarium" data-exclusive-with="contest-attend" data-exclusive-with-value="on" <?php if (isset($registration['friday-copernicus-options']) && in_array('planetarium', $registration['friday-copernicus-options'])) echo ' checked' ?>><?php echo \F3::get('lang.EventsFridayCopernicusAttendPlanetarium') ?>
               <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['friday-copernicus-attend-planetarium']->prices), ' / ') ?></span>
             </label>
+            <p class="help-block hidden tli-exclusive-msg"><?php echo \F3::get('lang.FieldDisabledExclusiveMsg', \F3::get('lang.EventsContest')) ?></p>
           </div>
 
           <?php if (isset($registration['messages']['friday-copernicus-options'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['friday-copernicus-options'] ?></p><?php endif; ?>
