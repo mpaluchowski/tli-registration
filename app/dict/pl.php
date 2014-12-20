@@ -9,6 +9,8 @@ return ['lang' => [
 	"Yes" => "Tak",
 	"No" => "Nie",
 
+	"FieldDisabledExclusiveMsg" => "Opcja niedostępna ponieważ konfliktuje z wcześniej zaznaczoną \"{0}\".",
+
 	"TliNavRegister" => 'Rejestracja',
 	"TliNavRegisterUrl" => 'rejestracja',
 	"TliNavHome" => 'Główna',

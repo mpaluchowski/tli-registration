@@ -9,6 +9,8 @@ return ['lang' => [
 	"Yes" => "Yes",
 	"No" => "No",
 
+	"FieldDisabledExclusiveMsg" => "Option unavailable because it's conflicting with \"{0}\" you already selected.",
+
 	"TliNavRegister" => 'Register',
 	"TliNavRegisterUrl" => 'register',
 	"TliNavHome" => 'Home',

@@ -178,9 +178,16 @@ tliRegister.registrationForm = function() {
 					}).get().indexOf(exclusiveFieldValue) > -1) {
 				$(field)
 					.prop('disabled', true)
-					.prop('checked', false);
+					.prop('checked', false)
+					.closest('div')
+					.children('.tli-exclusive-msg')
+					.removeClass('hidden');
 			} else {
-				$(field).prop('disabled', false);
+				$(field)
+					.prop('disabled', false)
+					.closest('div')
+					.children('.tli-exclusive-msg')
+					.addClass('hidden');
 			}
 		});
 	},
