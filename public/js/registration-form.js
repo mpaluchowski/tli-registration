@@ -178,11 +178,15 @@ tliRegister.registrationForm = function() {
 	 * @param exclusiveFieldValue value of the target field to check for
 	 */
 	initExclusiveField = function(field, exclusiveFieldName, exclusiveFieldValue) {
-		var targetField = $('[name="' + exclusiveFieldName + '"]');
+		var targetField = $('[name="' + exclusiveFieldName + '"]'),
+			excludeInfo = $(field).closest('div').children('.tli-exclusive-msg');
+
+		$(excludeInfo).removeClass('hidden').hide();
 
 		// Set initial exclusion status, based on value
 		toggleExcludedField(
 			field,
+			excludeInfo,
 			checkFieldExcluded(targetField, exclusiveFieldValue)
 			);
 
@@ -190,6 +194,7 @@ tliRegister.registrationForm = function() {
 		$(targetField).change(function() {
 			toggleExcludedField(
 				field,
+				excludeInfo,
 				checkFieldExcluded(targetField, exclusiveFieldValue)
 				);
 		});
@@ -210,25 +215,23 @@ tliRegister.registrationForm = function() {
 	},
 
 	/**
-	 * Toggle status of an excluded field,  enabling or disabling it.
+	 * Toggle status of an excluded field, enabling or disabling it.
 	 *
 	 * @param field field to toggle disabled status for
+	 * @param excludeInfo element holding info on why a field is disabled
 	 * @param flag true/false what to set the disabled status to
 	 */
-	toggleExcludedField = function(field, flag) {
+	toggleExcludedField = function(field, excludeInfo, flag) {
 		if (flag) {
 			$(field)
 				.prop('disabled', true)
-				.prop('checked', false)
-				.closest('div')
-				.children('.tli-exclusive-msg')
-				.removeClass('hidden');
+				.prop('checked', false);
+			$(excludeInfo).slideDown();
 		} else {
 			$(field)
 				.prop('disabled', false)
-				.closest('div')
-				.children('.tli-exclusive-msg')
-				.addClass('hidden');
+				.closest('div');
+			$(excludeInfo).slideUp();
 		}
 	},
 
