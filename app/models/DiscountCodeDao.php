@@ -113,7 +113,7 @@ class DiscountCodeDao {
 	 * @return returns a 13-character, unique discount code.
 	 */
 	function generateCode() {
-		return strtoupper(substr(md5(microtime()), 0, 12));
+		return strtoupper(substr(md5(microtime()), 0, 13));
 	}
 
 	/**
