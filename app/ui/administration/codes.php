@@ -76,7 +76,7 @@ $renderer = \helpers\FormRendererFactory::className();
 				<?php echo \F3::get('lang.InLanguage') ?>
 				<select name="send-email-language" id="send-email-language" class="form-control input-sm" style="display: inline-block; width: auto; padding: 0 .4em; margin-left: .4em;"<?php if (!isset($sendEmail) || 'on' != $sendEmail): ?> disabled<?php endif; ?>>
 				<?php foreach (\models\L11nManager::languagesSupported() as $language): ?>
-					<option value="<?php echo $language ?>"<?php if (isset($sendEmailLanguage) && $sendEmailLanguage == $language): ?> selected<?php endif; ?>><?php echo \F3::get('lang.InLanguage-' . $language) ?></option>
+					<option value="<?php echo $language ?>"<?php if ((isset($sendEmailLanguage) && $sendEmailLanguage == $language) || \models\L11nManager::language() == $language) : ?> selected<?php endif; ?>><?php echo \F3::get('lang.InLanguage-' . $language) ?></option>
 				<?php endforeach; ?>
 				</select>
 			</label>
