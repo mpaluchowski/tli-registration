@@ -161,6 +161,10 @@ class Administration {
 		echo \View::instance()->render('administration/statistics.php');
 	}
 
+	function report($f3, $args) {
+		echo \View::instance()->render('administration/report_' . $args['reportName'] . '.php');
+	}
+
 	function audit_log($f3) {
 		$eventDao = new \models\EventDao();
 

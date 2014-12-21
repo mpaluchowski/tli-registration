@@ -279,6 +279,8 @@ return ['lang' => [
 	"StatisticsEventEnrollmentHeader" => "Zgłoszenia na wydarzenia",
 	"StatisticsEventLabel" => "Atrakcja",
 
+	"ReportOfficersByClubHeader" => "Oficerowie wg klubów",
+
 	"AuditLogHeader" => "Log zdarzeń",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Zdarzenie",
@@ -296,6 +298,8 @@ return ['lang' => [
 	"AdminNavRegistrations" => "Rejestracje",
 	"AdminNavCodes" => "Kody",
 	"AdminNavStatistics" => "Statystyki",
+	"AdminNavReports" => "Raporty",
+	"AdminNavReportsOfficersByClub" => "Oficerowie wg klubów",
 	"AdminNavAuditLog" => "Log Zdarzeń",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",

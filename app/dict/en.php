@@ -279,6 +279,8 @@ return ['lang' => [
 	"StatisticsEventEnrollmentHeader" => "Event enrollments",
 	"StatisticsEventLabel" => "Event",
 
+	"ReportOfficersByClubHeader" => "Officers by club",
+
 	"AuditLogHeader" => "Audit Log",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Event",
@@ -296,6 +298,8 @@ return ['lang' => [
 	"AdminNavRegistrations" => "Registrations",
 	"AdminNavCodes" => "Codes",
 	"AdminNavStatistics" => "Statistics",
+	"AdminNavReports" => "Reports",
+	"AdminNavReportsOfficersByClub" => "Officers by club",
 	"AdminNavAuditLog" => "Audit Log",
 	"LogoutButton" => "Logout",
 	"SignedInAs" => "Signed in as {0}",
