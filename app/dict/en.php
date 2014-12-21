@@ -9,6 +9,10 @@ return ['lang' => [
 	"Yes" => "Yes",
 	"No" => "No",
 
+	"InLanguage" => "in",
+	"InLanguage-en" => "English",
+	"InLanguage-pl" => "Polish",
+
 	"FieldDisabledExclusiveMsg" => "Option unavailable because it's conflicting with \"{0}\" you already selected.",
 
 	"TliNavRegister" => 'Register',
@@ -164,15 +168,30 @@ return ['lang' => [
 	"PaymentBreakdownIntro-PAID" => "We <strong>received your payment</strong> on {0}. Based on the options you selected, your payment covered the following items:",
 	"PaymentBreakdownIntro-PROCESSING_PAYMENT" => "We're <strong>processing your payment</strong>, awaiting confirmation from the online payment authority. Here's an overview of what your payment included:",
 	"PaymentBreakdownIntro-WAITING_LIST" => "We'll be able to accept your payment as soon as your registration switches from the waiting list onto the main roster. Hang on!",
-	"Participation" => "Participation",
-	"Ticket-early" => "Early bird",
-	"Ticket-regular" => "Regular",
-	"Ticket-late" => "Late",
+
 	"PaymentItemHead" => "Item",
 	"PaymentTypeHead" => "Type",
 	"PaymentPriceHead" => "Price",
 	"PriceValidThrough" => "valid through {0}",
 	"PaymentTotal" => "Grand total",
+
+	'Pricing-friday-copernicus-attend' => "Friday's Copernicus Science Centre",
+	'Pricing-friday-copernicus-attend-center' => "Exhibition",
+	'Pricing-friday-copernicus-attend-planetarium' => "Planetarium",
+	'Pricing-lunch' => "Lunch",
+	'Pricing-saturday-dinner-participate' => "Saturday's dinner",
+	'Pricing-saturday-party-participate' => "Saturday's party",
+	"Pricing-admission" => "Participation",
+	"Pricing-admission-early" => "Early bird",
+	"Pricing-admission-regular" => "Regular",
+	"Pricing-admission-late" => "Late",
+
+	"DiscountCode" => "Discount code",
+	"DiscountCodeHelp" => "Have a discount code? Enter it here and click 'Redeem code'.",
+	"DiscountCodeTitle" => "13-character code, mixed uppercase letters and numbers",
+	"DiscountCodeRedeemButton" => "Redeem code",
+	"DiscountCodeNotFoundMsg" => "We couldn't find the code {0} in our records. Please try entering it again and if you think that's an error, contact us for clarification.",
+	"DiscountCodeRedeemedMsg" => "Your code {0} was successfully redeemed and prices updated.",
 
 	"SelectPaymentOptionButton" => "Pay online with Przelewy24 now",
 
@@ -209,6 +228,29 @@ return ['lang' => [
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",
 
+	"CodesHeader" => "Discount codes",
+	"CodesRecipientEmail" => "Recipient's email",
+	"CodesSelectDiscountedItems" => "Select discounted items",
+	"CodesSendByEmail" => "Send code by email to recipient",
+	"CodesSendByEmailHelp" => "Select this, unless you want to send the code to the recipient yourself.",
+	"CodesCreateCodeButton" => "Create code",
+	"CodesCreateEmailCodeButton" => "Create and email code",
+	"CodesCode" => "Code",
+	"CodesDateCreated" => "Date created",
+	"CodesDateRedeemed" => "Date redeemed",
+	"CodesCreatedMsg" => "Code for <strong>{0}</strong> successfully generated.",
+	"CodesCreatedEmailedMsg" => "Code for <strong>{0}</strong> successfully generated and emailed.",
+	"CodesCreatedNotEmailedMsg" => "Code for <strong>{0}</strong> successfully generated but could not be emailed. Please email the code manually.",
+	"CodesRegistrationEmailPaidMsg" => "A registration already exists for {0} and was paid on {1}. A code cannot be generated.",
+
+	"CodesEmailValidationMsg" => "Please provide a valid email address",
+	"CodesPricingItemsValidationMsg" => "Please choose at least one pricing item to discount",
+	"CodesPricingItemValueValidationMsg" => "Please enter a price between 0 and {0} for currency {1}",
+
+	"EmailDiscountCodeSubject" => "Discount code for {0}",
+	"EmailDiscountCodeIntro" => "You just received a discount code for your registration for the TLI. Your code is:",
+	"EmailDiscountCodeInstructions" => "To redeem the code, after filling in the registration form, and just before proceeding to pay online, paste the code in the field right underneath the breakdown of your payment. If you registered previously, but have not paid yet, you can open the registration review with the link that came in your confirmation email, scroll down to the payment breakdown and enter the code there. Once the code is successfully submitted, your prices will automatically and permanently be reduced.",
+
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",
 	"StatisticsSeatsPaid" => "{0} paid",
@@ -240,6 +282,7 @@ return ['lang' => [
 	"AuditLogHeader" => "Audit Log",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Event",
+	"AuditLogEventObject" => "Object",
 	"AuditLogEventData" => "Data",
 	"AuditLogEventDate" => "Date",
 
@@ -251,6 +294,7 @@ return ['lang' => [
 
 	"ToggleNavigation" => "Toggle navigation",
 	"AdminNavRegistrations" => "Registrations",
+	"AdminNavCodes" => "Codes",
 	"AdminNavStatistics" => "Statistics",
 	"AdminNavAuditLog" => "Audit Log",
 	"LogoutButton" => "Logout",

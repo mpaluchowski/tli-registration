@@ -22,4 +22,16 @@ interface FormRenderer {
 	 */
 	static function value(\models\RegistrationForm &$form, $field);
 
+	/**
+	 * Render the pricing item. Will output the label to display for the item
+	 * or for the item's variant. If name is passed with a null variant,
+	 * will output an empty string.
+	 *
+	 * @param $name the form field name of the item
+	 * @param $variant optional variant of the item
+	 * @return localized label for the pricing item, or empty string if passed
+	 * name with a null variant
+	 */
+	static function pricing($name, $variant = null);
+
 }

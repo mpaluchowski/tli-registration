@@ -190,18 +190,28 @@ class RegistrationDao {
 			);
 	}
 
+	/**
+	 * Read a Registration, sans fields, by ID.
+	 *
+	 * @param $id the ID of the Registration
+	 * @return instance of RegistrationForm or null if ID not found
+	 */
+	function readRegistrationById($id) {
+		$result = $this->fetchRegistrationById($id);
+
+		return $result
+			? $this->parseQueryToForm($result[0])
+			: null;
+	}
+
+	/**
+	 * Read a Registration by ID, including all fields.
+	 *
+	 * @param $id the ID of the Registration
+	 * @return instance of RegistrationForm or null if ID not found
+	 */
 	function readRegistrationFormById($id) {
-		$query = 'SELECT r.id_registration,
-						 r.email,
-						 r.language_entered,
-						 r.status,
-						 r.date_entered,
-						 r.date_paid
-				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
-				  WHERE r.id_registration = :id';
-		$registrationResult = \F3::get('db')->exec($query, [
-					'id' => $id,
-				]);
+		$registrationResult = $this->fetchRegistrationById($id);
 
 		if (!$registrationResult)
 			return null;
@@ -210,6 +220,20 @@ class RegistrationDao {
 			$registrationResult[0],
 			$this->fetchRegistrationFields($registrationResult[0]['id_registration'])
 			);
+	}
+
+	private function fetchRegistrationById($id) {
+		$query = 'SELECT r.id_registration,
+						 r.email,
+						 r.language_entered,
+						 r.status,
+						 r.date_entered,
+						 r.date_paid
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  WHERE r.id_registration = :id';
+		return \F3::get('db')->exec($query, [
+					'id' => $id,
+				]);
 	}
 
 	function readRegistrationByEmail($email) {

@@ -1,4 +1,7 @@
-<?php \F3::set('bodyClass', "tli-navigated") ?>
+<?php
+\F3::set('bodyClass', "tli-navigated");
+$renderer = \helpers\FormRendererFactory::className();
+?>
 
 <?php echo \View::instance()->render('header.php') ?>
 
@@ -14,7 +17,7 @@
   <p><?php
   echo \F3::get('lang.CurrentParticipationPaymentInfo', [
     implode(" / ", \helpers\CurrencyFormatter::moneyFormatArray($pricing['admission']->prices)),
-    \F3::get('lang.Ticket-' . $pricing['admission']->variant),
+    $renderer::pricing('admission', $pricing['admission']->variant),
     \helpers\View::formatDate($pricing['admission']->dateValidThrough),
     ]);
   if (isset($seatStats)) {

@@ -14,6 +14,7 @@ A registration form for the Toastmasters Leadership Institute events, built on t
 - support for putting registrations on hold, pending further confirmation
 - explicit registration statuses and guidance through the registration process
 - customizable price calculation including real-time re-calculation on form edition and support for multiple currencies
+- discount code support, with ability to define discounts for any of the pricing items and email them directly to the recipient
 - online payment integration, with interface for adding custom processors
 - customizable form processing
 - administrative area with overview of all registrations, statistics

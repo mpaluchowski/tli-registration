@@ -104,4 +104,17 @@ class FormRendererImpl {
 		}
 	}
 
+	/**
+	 * @see \helpers\FormRenderer#pricing($name, $variant = null)
+	 */
+	static function pricing($name, $variant = null) {
+		return func_num_args() > 1 && !$variant
+			? ''
+		 	: \F3::get(
+				'lang.Pricing-'
+				. $name
+				. ($variant ? '-' . $variant : '')
+				);
+	}
+
 }

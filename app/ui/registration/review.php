@@ -163,62 +163,92 @@ $renderer = \helpers\FormRendererFactory::className();
 			</thead>
 			<tbody>
 				<tr>
-					<td><?php echo \F3::get('lang.Participation') ?></td>
+					<td><?php echo $renderer::pricing('admission') ?></td>
 					<td><?php
-					echo \F3::get('lang.Ticket-' . $paymentSummary['admission']->variant);
-					if ('PAID' !== $form->getStatus()):
+					echo $renderer::pricing('admission', $paymentSummary['admission']->variant);
+					if ('PAID' !== $form->getStatus() && !$paymentSummary['admission']->discounted):
 						?> (<?php echo \F3::get('lang.PriceValidThrough', \helpers\View::formatDate($paymentSummary['admission']->dateValidThrough)) ?>)<?php
 					endif; ?></td>
 				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['admission']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['admission']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php if ($form->hasField('friday-copernicus-attend') && "on" === $form->getField('friday-copernicus-attend')):
 			if (in_array('center', $form->getField('friday-copernicus-options'))):
 			?>
 				<tr>
-					<td><?php echo \F3::get('lang.EventsFridayCopernicus') ?></td>
-					<td><?php echo \F3::get('lang.EventsFridayCopernicusAttend-center') ?></td>
+					<td><?php echo $renderer::pricing('friday-copernicus-attend') ?></td>
+					<td><?php echo $renderer::pricing('friday-copernicus-attend', 'center') ?></td>
 				<?php foreach ($paymentSummary['friday-copernicus-attend-center']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['friday-copernicus-attend-center']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['friday-copernicus-attend-center']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
 			if (in_array('planetarium', $form->getField('friday-copernicus-options'))):
 			?>
 				<tr>
-					<td><?php echo \F3::get('lang.EventsFridayCopernicus') ?></td>
-					<td><?php echo \F3::get('lang.EventsFridayCopernicusAttend-planetarium') ?></td>
+					<td><?php echo $renderer::pricing('friday-copernicus-attend') ?></td>
+					<td><?php echo $renderer::pricing('friday-copernicus-attend', 'planetarium') ?></td>
 				<?php foreach ($paymentSummary['friday-copernicus-attend-planetarium']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['friday-copernicus-attend-planetarium']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['friday-copernicus-attend-planetarium']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
 			endif;
 			if ($form->hasField('lunch') && "on" === $form->getField('lunch')): ?>
 				<tr>
-					<td><?php echo \F3::get('lang.EventsLunch') ?></td>
+					<td><?php echo $renderer::pricing('lunch') ?></td>
 					<td><?php echo $renderer::value($form, 'lunch-days') ?></td>
 				<?php foreach ($paymentSummary['lunch']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['lunch']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['lunch']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
 			if ($form->hasField('saturday-dinner-participate') && "on" === $form->getField('saturday-dinner-participate')): ?>
 				<tr>
-					<td><?php echo \F3::get('lang.EventsSaturdayDinner') ?></td>
+					<td><?php echo $renderer::pricing('saturday-dinner-participate') ?></td>
 					<td><?php echo \F3::get('lang.EventsSaturdayDinner-' . $form->getField('saturday-dinner-meal')) ?></td>
 				<?php foreach ($paymentSummary['saturday-dinner-participate']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['saturday-dinner-participate']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['saturday-dinner-participate']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif;
 			if ($form->hasField('saturday-party-participate') && "on" === $form->getField('saturday-party-participate')): ?>
 				<tr>
-					<td><?php echo \F3::get('lang.EventsSaturdayParty') ?></td>
+					<td><?php echo $renderer::pricing('saturday-party-participate') ?></td>
 					<td><?php echo $paymentSummary['saturday-party-participate']->variant ? $paymentSummary['saturday-party-participate']->variant : '&mdash;' ?></td>
 				<?php foreach ($paymentSummary['saturday-party-participate']->prices as $currency => $price): ?>
-					<td><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></td>
+					<td>
+						<?php if ($paymentSummary['saturday-party-participate']->discounted): ?>
+							<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['saturday-party-participate']->pricesOriginal[$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</td>
 				<?php endforeach; ?>
 				</tr>
 			<?php endif; ?>
@@ -227,7 +257,12 @@ $renderer = \helpers\FormRendererFactory::className();
 				<tr>
 					<td colspan="2" class="text-right"><?php echo \F3::get('lang.PaymentTotal') ?></td>
 				<?php foreach ($paymentSummary['total'] as $currency => $price): ?>
-					<th><?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?></th>
+					<th>
+						<?php if ($paymentSummary['discounted']): ?>
+						<del><?php echo \helpers\CurrencyFormatter::moneyFormat($currency, $paymentSummary['totalOriginal'][$currency]) ?></del><br>
+						<?php endif; ?>
+						<?php echo  \helpers\CurrencyFormatter::moneyFormat($currency, $price) ?>
+					</th>
 				<?php endforeach; ?>
 				</tr>
 			</tfoot>
@@ -235,6 +270,21 @@ $renderer = \helpers\FormRendererFactory::className();
 	</div>
 
 <?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
+	<?php if (!$paymentSummary['discounted']): ?>
+	<form action="<?php echo \F3::get('ALIASES.registration_code_redeem') ?>" method="POST" style="margin-bottom: 3em;">
+		<label for="discount-code" class="sr-only"><?php echo \F3::get('lang.DiscountCode') ?></label>
+		<p class="help-block"><?php echo \F3::get('lang.DiscountCodeHelp') ?></p>
+
+		<div class="input-group" style="max-width: 400px;">
+			<input type="text" id="discount-code" name="discount-code" placeholder="ABCDEF1234567" required pattern="^[A-Za-z0-9]{13}$" title="<?php echo \F3::get('lang.DiscountCodeTitle') ?>" class="form-control">
+			<span class="input-group-btn">
+				<button type="submit" class="btn btn-default"><?php echo \F3::get('lang.DiscountCodeRedeemButton') ?></button>
+			</span>
+		</div>
+
+		<input type="hidden" name="registrationId" value="<?php echo $form->getId() ?>">
+	</form>
+	<?php endif; ?>
 
 	<?php
 		$processorClass = \models\PaymentProcessorFactory::className();

@@ -107,10 +107,51 @@ class Registration {
 		$f3->set('form', $form);
 		$f3->set('paymentSummary', $priceCalculator->calculateSummary(
 			$form,
+			true,
 			$form->getDatePaid()
 			));
 
 		echo \View::instance()->render('registration/review.php');
+	}
+
+	function code_redeem($f3) {
+		if (!\models\DiscountCodeDao::validateCode($f3->get('POST.discount-code'))
+				|| !is_numeric($f3->get('POST.registrationId')))
+			$f3->error(404);
+
+		// See if we can find the Registration
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationById($f3->get('POST.registrationId'));
+
+		if (!$form)
+			$f3->error(404);
+
+		// Try finding the code
+		$discountCodeDao = new \models\DiscountCodeDao();
+
+		$code = $discountCodeDao->readDiscountCodeByCodeEmail(
+			$f3->get('POST.discount-code'),
+			$form->getEmail()
+			);
+
+		if (!$code) {
+			// Code not found, inform user
+			\models\MessageManager::addMessage(
+				'danger',
+				$f3->get('lang.DiscountCodeNotFoundMsg', $f3->get('POST.discount-code'))
+				);
+			$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
+		}
+
+		// Code found, connect code to registration and inform user
+		$discountCodeDao->redeemCode($code->getId(), $form->getId());
+
+		\models\MessageManager::addMessage(
+			'success',
+			$f3->get('lang.DiscountCodeRedeemedMsg', $code->getCode())
+			);
+		$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 	}
 
 	function info_proceed_to_payment($f3, $args) {
@@ -159,7 +200,7 @@ class Registration {
 
 		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
 
-		$prices = $priceCalculator->calculateSummary($form)['total'];
+		$prices = $priceCalculator->calculateSummary($form, false)['total'];
 
 		foreach ($prices as $currency => $price) {
 			$prices[$currency] = \helpers\CurrencyFormatter::moneyFormat($currency, $price);

@@ -9,6 +9,10 @@ return ['lang' => [
 	"Yes" => "Tak",
 	"No" => "Nie",
 
+	"InLanguage" => "po",
+	"InLanguage-en" => "angielsku",
+	"InLanguage-pl" => "polsku",
+
 	"FieldDisabledExclusiveMsg" => "Opcja niedostępna ponieważ konfliktuje z wcześniej zaznaczoną \"{0}\".",
 
 	"TliNavRegister" => 'Rejestracja',
@@ -164,15 +168,30 @@ return ['lang' => [
 	"PaymentBreakdownIntro-PAID" => "<strong>Otrzymaliśmy twoją płatność</strong> {0}. Na podstawie wybranych przez ciebie opcji, twoja płatność składała się z następujących pozycji:",
 	"PaymentBreakdownIntro-PROCESSING_PAYMENT" => "<strong>Przetwarzamy twoją płatność</strong> i oczekujemy na potwierdzenie z serwisu obsługującego płatności. Oto opcje, które obejmuje twoja płatność:",
 	"PaymentBreakdownIntro-WAITING_LIST" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja przejdzie z listy oczekujących na główną listę.",
-	"Participation" => "Uczestnictwo",
-	"Ticket-early" => "Wczesny",
-	"Ticket-regular" => "Normalny",
-	"Ticket-late" => "Późny",
+
 	"PaymentItemHead" => "Pozycja",
 	"PaymentTypeHead" => "Typ",
 	"PaymentPriceHead" => "Cena",
 	"PriceValidThrough" => "ważny do {0}",
 	"PaymentTotal" => "Suma",
+
+	'Pricing-friday-copernicus-attend' => "Piątkowe Centrum Nauki Kopernik",
+	'Pricing-friday-copernicus-attend-center' => "Wystawa",
+	'Pricing-friday-copernicus-attend-planetarium' => "Planetarium",
+	'Pricing-lunch' => "Lunch",
+	'Pricing-saturday-dinner-participate' => "Sobotnia kolacja",
+	'Pricing-saturday-party-participate' => "Sobotnia impreza",
+	"Pricing-admission" => "Uczestnictwo",
+	"Pricing-admission-early" => "Wczesny",
+	"Pricing-admission-regular" => "Normalny",
+	"Pricing-admission-late" => "Późny",
+
+	"DiscountCode" => "Kod zniżkowy",
+	"DiscountCodeHelp" => 'Posiadasz kod zniżkowy? Wpisz go tutaj i kliknij "Wykorzystaj kod".',
+	"DiscountCodeTitle" => "13-znakowy kod składający się z dużych liter i cyfr",
+	"DiscountCodeRedeemButton" => "Wykorzystaj kod",
+	"DiscountCodeNotFoundMsg" => "Nie mogliśmy znaleźć kodu {0} w naszym rejestrze. Spróbuj wpisać go ponownie i jeśli uważasz, że to błąd, skontaktuj się z nami i wyjaśnimy sprawę.",
+	"DiscountCodeRedeemedMsg" => "Twój kod {0} został pomyślnie wykorzystany i ceny zaktualizowane.",
 
 	"SelectPaymentOptionButton" => "Zapłać teraz online z Przelewy24",
 
@@ -209,6 +228,29 @@ return ['lang' => [
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
 
+	"CodesHeader" => "Kody zniżkowe",
+	"CodesRecipientEmail" => "Email odbiorcy",
+	"CodesSelectDiscountedItems" => "Wybierz przecenione pozycje",
+	"CodesSendByEmail" => "Wyślij email z kodem do odbiorcy",
+	"CodesSendByEmailHelp" => "Zaznacz to, chyba że chcesz wysłać kod do odbiorcy samodzielnie.",
+	"CodesCreateCodeButton" => "Wygeneruj kod",
+	"CodesCreateEmailCodeButton" => "Wygeneruj i wyślij kod",
+	"CodesCode" => "Kod",
+	"CodesDateCreated" => "Data utworzenia",
+	"CodesDateRedeemed" => "Data wykorzystania",
+	"CodesCreatedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany.",
+	"CodesCreatedEmailedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany i wysłany.",
+	"CodesCreatedNotEmailedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany, ale wystąpił problem z jego wysłaniem. Prześlij kod ręcznie.",
+	"CodesRegistrationEmailPaidMsg" => "Istnieje już rejestracja dla adresu {0} i została opłacona {1}. Nie można wygenerować kodu.",
+
+	"CodesEmailValidationMsg" => "Podaj poprawny adres email",
+	"CodesPricingItemsValidationMsg" => "Wybierz przynajmniej jedną opcję do przeceny",
+	"CodesPricingItemValueValidationMsg" => "Podaj cenę między 0 a {0} dla waluty {1}",
+
+	"EmailDiscountCodeSubject" => "Kod zniżkowy dla {0}",
+	"EmailDiscountCodeIntro" => "Oto Twój kod zniżkowy dla rejestracji na TLI:",
+	"EmailDiscountCodeInstructions" => "Aby wykorzystać kod, po wypełnieniu formularza rejestracyjnego, tuż przed przejściem do płatności online, wklej kod w pole znajdujące się pod podsumowaniem płatności. Jeśli wypełniłeś/aś formularz już wcześniej, a nie dokonałeś/aś jeszcze płatności, możesz otworzyć podsumowanie swojej rejestracji korzystając z odnośnika, który przyszedł w mailu z potwierdzeniem rejestracji. Po poprawnym wykorzystaniu kodu, Twoje ceny zostaną automatycznie i na stałe obniżone.",
+
 	"StatisticsHeader" => "Statystyki",
 	"StatisticsSeatsHeader" => "Miejsca",
 	"StatisticsSeatsPaid" => "{0} opłaconych",
@@ -240,6 +282,7 @@ return ['lang' => [
 	"AuditLogHeader" => "Log zdarzeń",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Zdarzenie",
+	"AuditLogEventObject" => "Obiekt",
 	"AuditLogEventData" => "Dane",
 	"AuditLogEventDate" => "Data",
 
@@ -251,6 +294,7 @@ return ['lang' => [
 
 	"ToggleNavigation" => "Pokaż nawigację",
 	"AdminNavRegistrations" => "Rejestracje",
+	"AdminNavCodes" => "Kody",
 	"AdminNavStatistics" => "Statystyki",
 	"AdminNavAuditLog" => "Log Zdarzeń",
 	"LogoutButton" => "Wyloguj",

@@ -76,6 +76,10 @@ h2 {
 			}
 		}
 	}
+
+	.checkbox {
+		margin: 0;
+	}
 }
 
 /* TLI custom elements */
@@ -219,6 +223,24 @@ table {
 	img {
 		border-radius: 3px;
 		margin: -7px 0.3em -5px 0;
+	}
+}
+
+.tli-table-form {
+	tbody {
+		tr {
+			td {
+				vertical-align: middle;
+			}
+		}
+
+		.form-group {
+			margin: 0;
+		}
+	}
+
+	.input-column-number {
+		width: 200px;
 	}
 }
 

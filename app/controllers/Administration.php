@@ -44,6 +44,106 @@ class Administration {
 		echo \View::instance()->render('administration/_registration-details.php');
 	}
 
+	function codes($f3) {
+		if (\models\FlashScope::has('discountCode')) {
+			// Comin in with validation errors
+			$f3->mset(\models\FlashScope::pop('discountCode'));
+		}
+
+		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
+
+		$f3->set('pricingItems', $priceCalculator->fetchPricing());
+
+		$discountCodeDao = new \models\DiscountCodeDao();
+
+		$f3->set('discountCodes', $discountCodeDao->readAllDiscountCodes());
+
+		echo \View::instance()->render('administration/codes.php');
+	}
+
+	function code_create($f3) {
+		$discountCodeDao = new \models\DiscountCodeDao();
+
+		$code = $discountCodeDao->parseRequestToCode($f3->get('POST'));
+
+		// Check if registration for this email not already paid
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationByEmail($code->getEmail());
+
+		if ($form && 'PAID' == $form->getStatus()) {
+			\models\MessageManager::addMessage(
+				'danger',
+				$f3->get('lang.CodesRegistrationEmailPaidMsg', [
+						$code->getEmail(),
+						\helpers\View::formatDateTime($form->getDatePaid())
+					])
+				);
+			$f3->reroute('@admin_codes');
+		}
+
+		$messages = $discountCodeDao->validateDiscountCode($code);
+
+		if (0 !== count($messages)) {
+			// Validation returned messages, redirect back to form and show errors
+			\models\FlashScope::push('discountCode', [
+				"code" => $code,
+				"messages" => $messages,
+				"sendEmail" => $f3->exists('POST.send-email'),
+				"sendEmailLanguage" => $f3->get('POST.send-email-language'),
+				]);
+			$f3->reroute('@admin_codes');
+		}
+
+		// Save the discount code
+		$codeId = $discountCodeDao->saveDiscountCode($code);
+
+		// Save Audit Log event
+		$eventDao = new \models\EventDao();
+		$eventDao->saveEvent(
+			"DiscountCodeGenerate",
+			$f3->get('user')->id,
+			["email" => $code->getEmail()],
+			'DiscountCode',
+			$codeId
+			);
+
+		$messageType = 'success';
+
+		if ($f3->get('POST.send-email')) {
+			// Email code to the recipient, as requested
+			$f3->set('code', $code);
+
+			$originalLanguage = \models\L11nManager::language();
+			\models\L11nManager::setLanguage($f3->get('POST.send-email-language'));
+
+			$mailer = new \models\Mailer();
+			$mailResult = $mailer->sendEmail(
+				$code->getEmail(),
+				$f3->get('lang.EmailDiscountCodeSubject', $code->getEmail()),
+				\View::instance()->render('mail/discount_code.php')
+			);
+
+			\models\L11nManager::setLanguage($originalLanguage);
+
+			$messageKey = $mailResult
+				? 'CodesCreatedEmailedMsg'
+				: 'CodesCreatedNotEmailedMsg';
+			if (!$mailResult)
+				$messageType = 'warning';
+		} else {
+			$messageKey = 'CodesCreatedMsg';
+		}
+
+		// Setup confirmation message and redirect back to list
+		\models\MessageManager::addMessage(
+			$messageType,
+			$f3->get('lang.' . $messageKey, $code->getEmail())
+			);
+
+		$f3->reroute('@admin_codes');
+	}
+
 	function statistics($f3) {
 		$registrationDao = new \models\RegistrationDao();
 		$statisticsDao = \models\StatisticsDaoFactory::newInstance();
