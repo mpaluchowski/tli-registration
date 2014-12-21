@@ -34,7 +34,8 @@ tliRegister.discountCodes = function() {
 
 	initCreateButtonLabel = function() {
 		$('#send-email')
-			.change(switchButtonLabel);
+			.change(switchButtonLabel)
+			.change(toggleEmailLanguage);
 	},
 
 	switchButtonLabel = function() {
@@ -47,6 +48,10 @@ tliRegister.discountCodes = function() {
 				$('#create-code-btn').attr('data-create-label')
 				);
 		}
+	},
+
+	toggleEmailLanguage = function() {
+		$('#send-email-language').prop('disabled', !$(this).prop('checked'));
 	}
 
 	return {

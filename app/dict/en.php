@@ -9,6 +9,10 @@ return ['lang' => [
 	"Yes" => "Yes",
 	"No" => "No",
 
+	"InLanguage" => "in",
+	"InLanguage-en" => "English",
+	"InLanguage-pl" => "Polish",
+
 	"FieldDisabledExclusiveMsg" => "Option unavailable because it's conflicting with \"{0}\" you already selected.",
 
 	"TliNavRegister" => 'Register',

@@ -90,6 +90,7 @@ class Administration {
 				"code" => $code,
 				"messages" => $messages,
 				"sendEmail" => $f3->exists('POST.send-email'),
+				"sendEmailLanguage" => $f3->get('POST.send-email-language'),
 				]);
 			$f3->reroute('@admin_codes');
 		}
@@ -113,12 +114,17 @@ class Administration {
 			// Email code to the recipient, as requested
 			$f3->set('code', $code);
 
+			$originalLanguage = \models\L11nManager::language();
+			\models\L11nManager::setLanguage($f3->get('POST.send-email-language'));
+
 			$mailer = new \models\Mailer();
 			$mailResult = $mailer->sendEmail(
 				$code->getEmail(),
 				$f3->get('lang.EmailDiscountCodeSubject', $code->getEmail()),
 				\View::instance()->render('mail/discount_code.php')
 			);
+
+			\models\L11nManager::setLanguage($originalLanguage);
 
 			$messageKey = $mailResult
 				? 'CodesCreatedEmailedMsg'

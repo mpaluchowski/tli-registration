@@ -72,7 +72,13 @@ $renderer = \helpers\FormRendererFactory::className();
 
 		<div class="checkbox form-group">
 			<label>
-				<input type="checkbox" name="send-email" id="send-email"<?php if (isset($sendEmail) && 'on' == $sendEmail): ?> checked<?php endif; ?>><?php echo \F3::get('lang.CodesSendByEmail') ?>
+				<input type="checkbox" name="send-email" id="send-email" style="margin-top: 7px;"<?php if (isset($sendEmail) && 'on' == $sendEmail): ?> checked<?php endif; ?>><?php echo \F3::get('lang.CodesSendByEmail') ?>
+				<?php echo \F3::get('lang.InLanguage') ?>
+				<select name="send-email-language" id="send-email-language" class="form-control input-sm" style="display: inline-block; width: auto; padding: 0 .4em; margin-left: .4em;"<?php if (!isset($sendEmail) || 'on' != $sendEmail): ?> disabled<?php endif; ?>>
+				<?php foreach (\models\L11nManager::languagesSupported() as $language): ?>
+					<option value="<?php echo $language ?>"<?php if (isset($sendEmailLanguage) && $sendEmailLanguage == $language): ?> selected<?php endif; ?>><?php echo \F3::get('lang.InLanguage-' . $language) ?></option>
+				<?php endforeach; ?>
+				</select>
 			</label>
 			<p class="help-block"><?php echo \F3::get('lang.CodesSendByEmailHelp') ?></p>
 		</div>
