@@ -116,6 +116,13 @@ class DiscountCodeDao {
 		return strtoupper(substr(md5(microtime()), 0, 12));
 	}
 
+	/**
+	 * Saves a new Discount Code in the database. Will amend the supplied
+	 * DiscountCode instance with generated data.
+	 *
+	 * @param $code instance of \models\DiscountCode with data to store
+	 * @return ID of the newly saved Discount Code
+	 */
 	function saveDiscountCode(\models\DiscountCode &$code) {
 		\F3::get('db')->begin();
 
@@ -216,6 +223,13 @@ class DiscountCodeDao {
 			: null;
 	}
 
+	/**
+	 * Find discounts for a Registration ID.
+	 *
+	 * @param $registrationId ID of a Registration tuple
+	 * @return Discounts assigned for the given Registration, or empty array, if
+	 * no discounts found.
+	 */
 	function readDiscountsByRegistrationId($registrationId) {
 		$query = 'SELECT pi.item,
 						 pi.variant,
@@ -242,6 +256,11 @@ class DiscountCodeDao {
 		return $pricing;
 	}
 
+	/**
+	 * Retrieve all discount codes in the database.
+	 *
+	 * @return array of all DiscountCode entities
+	 */
 	function readAllDiscountCodes() {
 		$query = 'SELECT dc.id_discount_code,
 						 dc.code,
