@@ -164,10 +164,6 @@ return ['lang' => [
 	"PaymentBreakdownIntro-PAID" => "We <strong>received your payment</strong> on {0}. Based on the options you selected, your payment covered the following items:",
 	"PaymentBreakdownIntro-PROCESSING_PAYMENT" => "We're <strong>processing your payment</strong>, awaiting confirmation from the online payment authority. Here's an overview of what your payment included:",
 	"PaymentBreakdownIntro-WAITING_LIST" => "We'll be able to accept your payment as soon as your registration switches from the waiting list onto the main roster. Hang on!",
-	"Participation" => "Participation",
-	"Ticket-early" => "Early bird",
-	"Ticket-regular" => "Regular",
-	"Ticket-late" => "Late",
 
 	"PaymentItemHead" => "Item",
 	"PaymentTypeHead" => "Type",

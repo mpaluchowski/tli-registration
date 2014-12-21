@@ -164,10 +164,6 @@ return ['lang' => [
 	"PaymentBreakdownIntro-PAID" => "<strong>Otrzymaliśmy twoją płatność</strong> {0}. Na podstawie wybranych przez ciebie opcji, twoja płatność składała się z następujących pozycji:",
 	"PaymentBreakdownIntro-PROCESSING_PAYMENT" => "<strong>Przetwarzamy twoją płatność</strong> i oczekujemy na potwierdzenie z serwisu obsługującego płatności. Oto opcje, które obejmuje twoja płatność:",
 	"PaymentBreakdownIntro-WAITING_LIST" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja przejdzie z listy oczekujących na główną listę.",
-	"Participation" => "Uczestnictwo",
-	"Ticket-early" => "Wczesny",
-	"Ticket-regular" => "Normalny",
-	"Ticket-late" => "Późny",
 
 	"PaymentItemHead" => "Pozycja",
 	"PaymentTypeHead" => "Typ",
