@@ -30,4 +30,13 @@ interface PriceCalculator {
 		$time = null
 		);
 
+	/**
+	 * Retrieves pricing details from the database, for a given moment in time.
+	 * Accounts for some prices being time-sensitive, ie. changing over time.
+	 *
+	 * @param time optional time to return prices for. Default is now.
+	 * @return pricing structure with all available options and variants.
+	 */
+	function fetchPricing($time = null);
+
 }
