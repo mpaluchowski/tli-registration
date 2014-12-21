@@ -168,11 +168,23 @@ return ['lang' => [
 	"Ticket-early" => "Early bird",
 	"Ticket-regular" => "Regular",
 	"Ticket-late" => "Late",
+
 	"PaymentItemHead" => "Item",
 	"PaymentTypeHead" => "Type",
 	"PaymentPriceHead" => "Price",
 	"PriceValidThrough" => "valid through {0}",
 	"PaymentTotal" => "Grand total",
+
+	'Pricing-friday-copernicus-attend' => "Friday's Copernicus Science Centre",
+	'Pricing-friday-copernicus-attend-center' => "Exhibition",
+	'Pricing-friday-copernicus-attend-planetarium' => "Planetarium",
+	'Pricing-lunch' => "Lunch",
+	'Pricing-saturday-dinner-participate' => "Saturday's dinner",
+	'Pricing-saturday-party-participate' => "Saturday's party",
+	"Pricing-admission" => "Participation",
+	"Pricing-admission-early" => "Early bird",
+	"Pricing-admission-regular" => "Regular",
+	"Pricing-admission-late" => "Late",
 
 	"DiscountCode" => "Discount code",
 	"DiscountCodeHelp" => "Have a discount code? Enter it here and click 'Redeem code'.",

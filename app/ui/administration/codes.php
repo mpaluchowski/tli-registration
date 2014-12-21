@@ -1,3 +1,7 @@
+<?php
+$renderer = \helpers\FormRendererFactory::className();
+?>
+
 <?php echo \View::instance()->render('header.php') ?>
 
 <?php echo \View::instance()->render('administration/_navigation.php') ?>
@@ -42,14 +46,14 @@
 							<div class="checkbox<?php if (isset($messages[$name])): ?> has-error<?php endif ?>">
 								<label for="pricing-item-check-<?php echo $item->id?>">
 									<input type="checkbox" name="pricing-items[<?php echo $name ?>]" value="<?php echo $item->id?>" id="pricing-item-check-<?php echo $item->id?>"<?php if (isset($code) && $code->hasPricingItem($name)): ?> checked<?php endif; ?>>
-									<?php echo $item->name ?>
+									<?php echo $renderer::pricing($item->name) ?>
 								</label>
 								<?php if (isset($messages[$name])): ?><p class="help-block">
 									<span class="glyphicon glyphicon-info-sign"></span>
 									<?php echo implode('<br><span class="glyphicon glyphicon-info-sign"></span> ', $messages[$name]) ?></p><?php endif; ?>
 							</div>
 						</td>
-						<td><?php echo $item->variant ?></td>
+						<td><?php echo $renderer::pricing($item->name, $item->variant) ?></td>
 					<?php foreach ($item->prices as $currency => $price): ?>
 						<td>
 							<div class="form-group<?php if (isset($messages[$name][$currency])): ?> has-error<?php endif ?>">

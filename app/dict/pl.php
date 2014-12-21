@@ -168,11 +168,23 @@ return ['lang' => [
 	"Ticket-early" => "Wczesny",
 	"Ticket-regular" => "Normalny",
 	"Ticket-late" => "Późny",
+
 	"PaymentItemHead" => "Pozycja",
 	"PaymentTypeHead" => "Typ",
 	"PaymentPriceHead" => "Cena",
 	"PriceValidThrough" => "ważny do {0}",
 	"PaymentTotal" => "Suma",
+
+	'Pricing-friday-copernicus-attend' => "Piątkowe Centrum Nauki Kopernik",
+	'Pricing-friday-copernicus-attend-center' => "Wystawa",
+	'Pricing-friday-copernicus-attend-planetarium' => "Planetarium",
+	'Pricing-lunch' => "Lunch",
+	'Pricing-saturday-dinner-participate' => "Sobotnia kolacja",
+	'Pricing-saturday-party-participate' => "Sobotnia impreza",
+	"Pricing-admission" => "Uczestnictwo",
+	"Pricing-admission-early" => "Wczesny",
+	"Pricing-admission-regular" => "Normalny",
+	"Pricing-admission-late" => "Późny",
 
 	"DiscountCode" => "Kod zniżkowy",
 	"DiscountCodeHelp" => 'Posiadasz kod zniżkowy? Wpisz go tutaj i kliknij "Wykorzystaj kod".',
