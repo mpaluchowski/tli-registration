@@ -3,8 +3,24 @@ var tliRegister = tliRegister || {};
 tliRegister.discountCodes = function() {
 
 	var init = function() {
+		initCodeCreatePanel();
 		initCodeItemEnabling();
 		initCreateButtonLabel();
+	},
+
+	initCodeCreatePanel = function() {
+		if (!$('#create-code-panel').attr('data-visible')) {
+			$('#create-code-panel').hide();
+			$('#create-code-button')
+				.show()
+				.click(openCodeCreatePanel);
+		}
+	},
+
+	openCodeCreatePanel = function() {
+		$('#create-code-panel').slideDown(function() {
+			$('#create-code-button').hide();
+		});
 	},
 
 	initCodeItemEnabling = function() {

@@ -13,7 +13,7 @@ $renderer = \helpers\FormRendererFactory::className();
 
 <?php echo \View::instance()->render('message-alerts.php') ?>
 
-	<div class="panel panel-default"><div class="panel-body">
+	<div id="create-code-panel" class="panel panel-default" data-visible="<?php echo (bool)isset($code) ?>"><div class="panel-body">
 	<form action="<?php echo \F3::get('ALIASES.admin_code_create') ?>" method="POST">
 		<div class="form-group<?php if (isset($messages['email'])): ?> has-error<?php endif ?>">
 			<label for="email" class="control-label"><?php echo \F3::get('lang.CodesRecipientEmail') ?></label>
@@ -86,6 +86,8 @@ $renderer = \helpers\FormRendererFactory::className();
 		<button type="submit" class="btn btn-success" id="create-code-btn" data-email-label="<?php echo \F3::get('lang.CodesCreateEmailCodeButton') ?>" data-create-label="<?php echo \F3::get('lang.CodesCreateCodeButton') ?>"><?php echo isset($sendEmail) && 'on' == $sendEmail ? \F3::get('lang.CodesCreateEmailCodeButton') : \F3::get('lang.CodesCreateCodeButton') ?></button>
 	</form>
 	</div></div>
+
+	<button id="create-code-button" class="btn btn-default" style="display: none;"><?php echo \F3::get('lang.CodesCreateCodeButton') ?></button>
 
 	<div class="table-responsive">
 		<table class="table table-hover">
