@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `tli_discount_codes` (
   `id_discount_code` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_created` datetime NOT NULL,
   `date_redeemed` datetime DEFAULT NULL,
   `fk_registration` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_discount_code`),
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `tli_events` (
   `ip` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `data` text COLLATE utf8_unicode_ci,
-  `date_occurred` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_occurred` datetime NOT NULL,
   PRIMARY KEY (`id_event`),
   KEY `FK__tli_administrators` (`fk_administrator`),
   CONSTRAINT `FK__tli_administrators` FOREIGN KEY (`fk_administrator`) REFERENCES `tli_administrators` (`id_administrator`)
