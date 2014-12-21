@@ -16,14 +16,18 @@ class PriceCalculatorImpl implements PriceCalculator {
 	}
 
 	/**
-	 * @see \models\PriceCalculatorImpl#calculateSummary($form, $time)
+	 * @see \models\PriceCalculatorImpl#calculateSummary($form, $discounts, $time)
 	 */
-	function calculateSummary(\models\RegistrationForm $form, $time = null) {
+	function calculateSummary(\models\RegistrationForm $form, $discounts = true, $time = null) {
 		$pricing = $this->fetchPricing($time);
 
-		// Fetch discounts, if any
-		$discountCodeDao = new \models\DiscountCodeDao();
-		$discountPricing = $discountCodeDao->readDiscountsByRegistrationId($form->getId());
+		if ($discounts) {
+			// Fetch discounts, if any
+			$discountCodeDao = new \models\DiscountCodeDao();
+			$discountPricing = $discountCodeDao->readDiscountsByRegistrationId($form->getId());
+		} else {
+			$discountPricing = [];
+		}
 
 		$summary = [
 			'admission' => self::getPriceItem('admission', $pricing, $discountPricing)

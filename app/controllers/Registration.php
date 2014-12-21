@@ -107,6 +107,7 @@ class Registration {
 		$f3->set('form', $form);
 		$f3->set('paymentSummary', $priceCalculator->calculateSummary(
 			$form,
+			true,
 			$form->getDatePaid()
 			));
 
@@ -199,7 +200,7 @@ class Registration {
 
 		$priceCalculator = \models\PriceCalculatorFactory::newInstance();
 
-		$prices = $priceCalculator->calculateSummary($form)['total'];
+		$prices = $priceCalculator->calculateSummary($form, false)['total'];
 
 		foreach ($prices as $currency => $price) {
 			$prices[$currency] = \helpers\CurrencyFormatter::moneyFormat($currency, $price);
