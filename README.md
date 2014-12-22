@@ -18,6 +18,7 @@ A registration form for the Toastmasters Leadership Institute events, built on t
 - online payment integration, with interface for adding custom processors
 - customizable form processing
 - administrative area with overview of all registrations, statistics
+- reports for administrators, with lists of registrations by: club and Executive Committee position
 - administrative login via password or Google
 - audit log to track back important events
 - internationalization
