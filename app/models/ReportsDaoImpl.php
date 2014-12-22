@@ -60,6 +60,12 @@ class ReportsDaoImpl implements \models\ReportsDao {
 
 			$data[$row['division']][$row['area']][$row['club_name']][json_decode($row['exec_position'])] = $form;
 		}
+
+		// Shift the 'other' clubs to the end of the array
+		$temp = $data['other'];
+		unset($data['other']);
+		$data['other'] = $temp;
+
 		return $data;
 	}
 
