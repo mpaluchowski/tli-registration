@@ -13,9 +13,9 @@ INSERT INTO `tli_administrators` (`id_administrator`, `full_name`, `email`, `pas
 DELETE FROM `tli_clubs`;
 /*!40000 ALTER TABLE `tli_clubs` DISABLE KEYS */;
 INSERT INTO `tli_clubs` (`id_club`, `name`) VALUES
-	(1, 'Speaking Elephants'),
-	(2, 'Toastmasters Polska SA'),
-	(3, 'Top Careers Toastmasters');
+	(1, 'Speaking Elephants', 'J', 1),
+	(2, 'Toastmasters Polska SA', 'J', 1),
+	(3, 'Top Careers Toastmasters Club', 'J', 2);
 /*!40000 ALTER TABLE `tli_clubs` ENABLE KEYS */;
 
 -- Dumping data for table tli_registrations.tli_discount_codes: ~2 rows (approximately)

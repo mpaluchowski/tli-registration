@@ -161,6 +161,19 @@ class Administration {
 		echo \View::instance()->render('administration/statistics.php');
 	}
 
+	function report($f3, $args) {
+		$reportsDao = \models\ReportsDaoFactory::newInstance();
+
+		$reportData = $reportsDao->read($args['reportName']);
+
+		if (!$reportData)
+			$f3->error(404);
+
+		$f3->set('data', $reportData);
+
+		echo \View::instance()->render('administration/report_' . $args['reportName'] . '.php');
+	}
+
 	function audit_log($f3) {
 		$eventDao = new \models\EventDao();
 
