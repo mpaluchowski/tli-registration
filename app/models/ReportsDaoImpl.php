@@ -42,7 +42,7 @@ class ReportsDaoImpl implements \models\ReportsDao {
 				   AND rf_position.name = 'exec-position'
 				   AND rf_position.value <> '\"none\"'
 				  JOIN " . \F3::get('db_table_prefix') . "clubs c
-				    ON rf_club.dictionary_id = c.id_club
+				    ON rf_club.value = CONCAT('\"', c.name, '\"')
 				  ORDER BY c.division,
 				  		   c.area,
 				  		   c.name";
