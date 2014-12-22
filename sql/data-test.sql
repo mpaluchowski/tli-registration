@@ -12,7 +12,7 @@ INSERT INTO `tli_administrators` (`id_administrator`, `full_name`, `email`, `pas
 -- Dumping data for table tli_registrations.tli_clubs: ~4 rows (approximately)
 DELETE FROM `tli_clubs`;
 /*!40000 ALTER TABLE `tli_clubs` DISABLE KEYS */;
-INSERT INTO `tli_clubs` (`id_club`, `name`) VALUES
+INSERT INTO `tli_clubs` (`id_club`, `name`, `division`, `area`) VALUES
 	(1, 'Speaking Elephants', 'J', 1),
 	(2, 'Toastmasters Polska SA', 'J', 1),
 	(3, 'Top Careers Toastmasters Club', 'J', 2);
