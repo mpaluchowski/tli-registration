@@ -22,6 +22,8 @@ DROP TABLE IF EXISTS `tli_clubs`;
 CREATE TABLE IF NOT EXISTS `tli_clubs` (
   `id_club` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `division` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `area` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id_club`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
