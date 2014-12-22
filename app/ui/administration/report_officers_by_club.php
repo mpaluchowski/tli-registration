@@ -26,7 +26,7 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th><?php echo \F3::get('lang.ExecCommmitteePosition') ?></th>
+							<th><?php echo \F3::get('lang.ReportExecCommitteePositionShort') ?></th>
 							<th><?php echo \F3::get('lang.FullName') ?></th>
 							<th><?php echo \F3::get('lang.RegistrationStatus') ?></th>
 						</tr>
@@ -34,7 +34,7 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 					<tbody>
 					<?php foreach ($positions as $position): ?>
 						<tr>
-							<td><?php echo \F3::get('lang.ExecCommmitteePosition-' . $position) ?></td>
+							<td><?php echo \F3::get('lang.ExecCommmitteePositionShort-' . $position) ?></td>
 						<?php if (isset($registrations[$position])): ?>
 							<td><?php echo $renderer::value($registrations[$position], 'full-name') ?></td>
 							<td><span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($registrations[$position]->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $registrations[$position]->getStatus()) ?></span></td>
