@@ -15,12 +15,23 @@ class ReportsDaoImpl implements \models\ReportsDao {
 		}
 	}
 
+	/**
+	 * @see \models\ReportsDao#read($name)
+	 */
 	function read($name) {
 		return method_exists($this, \F3::instance()->camelcase('read_' . $name))
 			? $this->{\F3::instance()->camelcase('read_' . $name)}()
 			: null;
 	}
 
+	/**
+	 * Produce report data for officers registered, sorted by clubs. Clubs with
+	 * no Division assigned, will be returned last.
+	 *
+	 * @return array, indexed by Division, Area, Club name and Executive
+	 * Committee Position. Only clubs which have min. 1 officer registered,
+	 * and only registered positions.
+	 */
 	function readOfficersByClub() {
 		$query = "SELECT c.name AS club_name,
 						 IFNULL(c.division, 'other') AS division,
