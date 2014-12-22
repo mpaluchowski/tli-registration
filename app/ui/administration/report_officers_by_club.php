@@ -19,9 +19,9 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 	<div class="table-responsive">
 		<table class="table table-hover">
 			<thead>
-				<th>Position</th>
-				<th>Name</th>
-				<th>Status</th>
+				<th><?php echo \F3::get('lang.ExecCommmitteePosition') ?></th>
+				<th><?php echo \F3::get('lang.FullName') ?></th>
+				<th><?php echo \F3::get('lang.RegistrationStatus') ?></th>
 			</thead>
 			<tbody>
 			<?php foreach ($positions as $position): ?>
