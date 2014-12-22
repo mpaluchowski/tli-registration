@@ -2,11 +2,46 @@
 
 <?php echo \View::instance()->render('administration/_navigation.php') ?>
 
+<?php
+$renderer = \helpers\FormRendererFactory::className();
+$positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"];
+?>
+
 <div class="container">
 	<div class="page-header">
 		<h1><?php echo \F3::get('lang.ReportOfficersByClubHeader') ?></h1>
 	</div>
 
+<?php foreach ($data as $divisionName => $areas): ?>
+<?php foreach ($areas as $areaName => $clubs): ?>
+<?php foreach ($clubs as $clubName => $registrations): ?>
+	<h2><?php echo $divisionName . $areaName . ' ' . $clubName ?></h2>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<th>Position</th>
+				<th>Name</th>
+				<th>Status</th>
+			</thead>
+			<tbody>
+			<?php foreach ($positions as $position): ?>
+				<tr>
+					<td><?php echo \F3::get('lang.ExecCommmitteePosition-' . $position) ?></td>
+				<?php if (isset($registrations[$position])): ?>
+					<td><?php echo $renderer::value($registrations[$position], 'full-name') ?></td>
+					<td><span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($registrations[$position]->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $registrations[$position]->getStatus()) ?></span></td>
+				<?php else: ?>
+					<td></td>
+					<td></td>
+				<?php endif; ?>
+				</tr>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+<?php endforeach; // Club ?>
+<?php endforeach; // Area ?>
+<?php endforeach; // Divisions ?>
 </div>
 
 <?php echo \View::instance()->render('footer.php') ?>
