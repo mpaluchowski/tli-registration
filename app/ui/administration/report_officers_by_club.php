@@ -21,7 +21,7 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 <?php foreach ($clubs as $clubName => $registrations): ?>
 	<?php if ($odd): ?><div class="row"><?php endif; ?>
 		<div class="col-sm-6">
-			<h3><?php echo ($divisionName != 'other' ?: '') . ($areaName != 'other' ?: '') . ' ' . $clubName ?></h3>
+			<h3><?php echo ($divisionName != 'other' ? $divisionName : '') . ($areaName != 'other' ? $areaName : '') . ' ' . $clubName ?></h3>
 			<div class="table-responsive">
 				<table class="table table-hover">
 					<thead>
