@@ -281,6 +281,9 @@ return ['lang' => [
 
 	"ReportOfficersByClubHeader" => "Officers by club",
 
+	"DivisionName" => "Division {0}",
+	"DivisionOther" => "Other divisions",
+
 	"AuditLogHeader" => "Audit Log",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Event",

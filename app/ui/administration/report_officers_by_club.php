@@ -13,9 +13,10 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 	</div>
 
 <?php foreach ($data as $divisionName => $areas): ?>
+	<h2><?php echo $divisionName == 'other' ? \F3::get('lang.DivisionOther') : \F3::get('lang.DivisionName', $divisionName) ?></h2>
 <?php foreach ($areas as $areaName => $clubs): ?>
 <?php foreach ($clubs as $clubName => $registrations): ?>
-	<h2><?php echo $divisionName . $areaName . ' ' . $clubName ?></h2>
+	<h3><?php echo $divisionName . $areaName . ' ' . $clubName ?></h3>
 	<div class="table-responsive">
 		<table class="table table-hover">
 			<thead>

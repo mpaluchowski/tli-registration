@@ -281,6 +281,9 @@ return ['lang' => [
 
 	"ReportOfficersByClubHeader" => "Oficerowie wg klubów",
 
+	"DivisionName" => "Okręg {0}",
+	"DivisionOther" => "Inne okręgi",
+
 	"AuditLogHeader" => "Log zdarzeń",
 	"AuditLogAdminName" => "Administrator",
 	"AuditLogEventName" => "Zdarzenie",
