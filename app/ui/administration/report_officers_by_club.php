@@ -33,7 +33,7 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 					</thead>
 					<tbody>
 					<?php foreach ($positions as $position): ?>
-						<tr>
+						<tr class="<?php if (!isset($registrations[$position])): ?>danger<?php elseif ('PAID' != $registrations[$position]->getStatus()): echo \helpers\View::getRegistrationStatusLabel($registrations[$position]->getStatus()); endif; ?>">
 							<td><?php echo \F3::get('lang.ExecCommmitteePositionShort-' . $position) ?></td>
 						<?php if (isset($registrations[$position])): ?>
 							<td><?php echo $renderer::value($registrations[$position], 'full-name') ?></td>
