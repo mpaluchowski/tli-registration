@@ -64,6 +64,17 @@ class RegistrationDao {
 		return $form;
 	}
 
+	/**
+	 * Validates that the registration hash format supplied is correct. Must be
+	 * a string that's 40 characters long.
+	 *
+	 * @param $hash string to check for the hash format
+	 * @return true/false whether the hash validates correctly
+	 */
+	static function validateHash($hash) {
+		return (bool)preg_match('/^[0-9a-f]{40}$/i', $hash);
+	}
+
 	function saveRegistrationForm(&$form) {
 		$dateEntered = time();
 
