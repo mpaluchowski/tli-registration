@@ -5,7 +5,7 @@ namespace controllers;
 class Payment {
 
 	function pay($f3, $args) {
-		if (!is_string($args['registrationHash']) && 40 != strlen($args['registrationHash'] + 0))
+		if (!\models\RegistrationDao::validateHash($args['registrationHash']))
 			$f3->error(404);
 
 		$registrationDao = new \models\RegistrationDao();
@@ -86,7 +86,7 @@ class Payment {
 	}
 
 	function confirmation($f3, $args) {
-		if (!is_string($args['registrationHash']) && 40 != strlen($args['registrationHash'] + 0))
+		if (!\models\RegistrationDao::validateHash($args['registrationHash']))
 			$f3->error(404);
 
 		$transactionDao = new \models\TransactionDao();

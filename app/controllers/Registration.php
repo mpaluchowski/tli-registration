@@ -92,7 +92,7 @@ class Registration {
 	}
 
 	function review($f3, $args) {
-		if (!is_string($args['registrationHash']) && 40 != strlen($args['registrationHash'] + 0))
+		if (!\models\RegistrationDao::validateHash($args['registrationHash']))
 			$f3->error(404);
 
 		$registrationDao = new \models\RegistrationDao();
