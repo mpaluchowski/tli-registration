@@ -64,7 +64,7 @@ class View {
 			case 'PENDING_REVIEW':
 				return $color ? '#777' : 'default';
 			default:
-				throw new Exception('Unknown registration status: ' . $status);
+				throw new \Exception('Unknown registration status: ' . $status);
 		}
 	}
 
