@@ -84,7 +84,10 @@
 		var options = {
 			pieHole : 0.4,
 			colors : [
-				'#f0ad4e', '#000', '#777', '#5cb85c'
+				'<?php echo \helpers\View::getRegistrationStatusLabel('PENDING_PAYMENT', true) ?>',
+				'#000',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('WAITING_LIST', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
 			],
 			height: 150,
 			chartArea: {
@@ -104,7 +107,8 @@
 			]);
 		var options = {
 			colors : [
-				'#f0ad4e', '#5cb85c'
+				'<?php echo \helpers\View::getRegistrationStatusLabel('PENDING_PAYMENT', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
 			],
 			height: 150,
 			chartArea: {
@@ -141,7 +145,7 @@
 		var options = {
 			height: data.getNumberOfRows() * 25,
 			colors : [
-				'#5cb85c'
+				'<?php echo \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
 			],
 			chartArea: {
 				left: 150,
@@ -175,9 +179,9 @@
 			[
 				<?php echo json_encode($club->name) ?>,
 				<?php echo $club->countOfficersPaid ?>,
-				'<?php echo $club->countOfficersPaid < 4 ? '#d9534f' : '#5cb85c' ?>',
+				'<?php echo $club->countOfficersPaid < 4 ? '#d9534f' : \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
 				<?php echo $club->countOfficersUnpaid ?>,
-				'#f0ad4e',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('PENDING_PAYMENT', true) ?>',
 			],
 		<?php endforeach; ?>
 			]);
@@ -205,7 +209,8 @@
 			pieHole : 0.4,
 			pieSliceText : 'value',
 			colors : [
-				'#5cb85c', '#f0ad4e'
+				'<?php echo \helpers\View::toastmastersColor('crimson') ?>',
+				'<?php echo \helpers\View::toastmastersColor('grey') ?>',
 			],
 			height: 150,
 			chartArea: {
@@ -234,7 +239,8 @@
 		var options = {
 			height: data.getNumberOfRows() * 25,
 			colors : [
-				'#5cb85c', '#f0ad4e'
+				'<?php echo \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('PENDING_PAYMENT', true) ?>',
 			],
 			chartArea: {
 				left: 100,
