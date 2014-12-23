@@ -147,10 +147,10 @@ class RegistrationDao {
 	/**
 	 * Updates Registration's status to PAID, including timestamp.
 	 *
-	 * @param registrationId ID of registration.
+	 * @param form RegistrationForm to update status for.
 	 * @param time unix time of when payment was completed.
 	 */
-	function updateRegistrationStatusToPaid($registrationId, $time = null) {
+	function updateRegistrationStatusToPaid(\models\RegistrationForm &$form, $time = null) {
 		if (!$time) $time = time();
 
 		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
@@ -159,8 +159,11 @@ class RegistrationDao {
 				  WHERE id_registration = :registrationId';
 		\F3::get('db')->exec($query, [
 				'datePaid' => $time,
-				'registrationId' => $registrationId,
+				'registrationId' => $form->getId(),
 			]);
+
+		$form->setStatusValue(null);
+		$form->setDatePaid(date('Y-m-d H:i:s', $time));
 	}
 
 	/**

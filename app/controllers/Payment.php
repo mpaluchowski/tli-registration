@@ -166,13 +166,16 @@ class Payment {
 			$f3->error(400);
 		}
 
-		// Update stored transaction with details from processor
-		$transactionDao->updateTransactionPostPayment(
-			$transaction->getSessionId(),
-			$transaction->getOrderId(),
-			$transaction->getMethod(),
-			$transaction->getStatement()
-			);
+		// Idempotence. Only update transaction if not previously paid.
+		if (!$transaction->getDatePaid()) {
+			// Update stored transaction with details from processor
+			$transactionDao->updateTransactionPostPayment(
+				$transaction->getSessionId(),
+				$transaction->getOrderId(),
+				$transaction->getMethod(),
+				$transaction->getStatement()
+				);
+		}
 
 		// Confirm to the processor that the transaction is valid
 		try {
@@ -194,13 +197,14 @@ class Payment {
 
 		$registrationDao = new \models\RegistrationDao();
 
-		// Mark the registration is paid
-		$registrationDao->updateRegistrationStatusToPaid(
-			$transaction->getRegistrationId()
-			);
-
 		// Send email confirming payment received
 		$form = $registrationDao->readRegistrationFormById($transaction->getRegistrationId());
+
+		// Idempotence. Only update registration if not previously paid.
+		if (!$form->getDatePaid()) {
+			// Mark the registration is paid
+			$registrationDao->updateRegistrationStatusToPaid($form);
+		}
 
 		\models\L11nManager::setLanguage($form->getLanguageEntered());
 
