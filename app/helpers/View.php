@@ -68,4 +68,28 @@ class View {
 		}
 	}
 
+	/**
+	 * Fetch a Toastmasters color value.
+	 *
+	 * @param name name of the color from the Toastmasters pallette
+	 * @return hex value of the color
+	 * @throws exception when passed a color that's not in the pallette
+	 */
+	static function toastmastersColor($name) {
+		switch ($name) {
+			case 'blue':
+				return '#004156';
+			case 'yellow':
+				return '#F2DF74';
+			case 'grey':
+				return '#A9B2B1';
+			case 'red':
+				return '#CD202C';
+			case 'crimson':
+				return '#772432';
+			default:
+				throw new \Exception("Color " . $name . " doesn't exist");
+		}
+	}
+
 }
