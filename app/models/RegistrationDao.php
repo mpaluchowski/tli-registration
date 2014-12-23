@@ -173,7 +173,7 @@ class RegistrationDao {
 				  SET status = "processing-payment"
 				  WHERE id_registration = :registrationId';
 		if (!$force)
-			$query .= ' AND date_paid IS NOT NULL';
+			$query .= ' AND date_paid IS NULL';
 		\F3::get('db')->exec($query, [
 				'registrationId' => $registrationId,
 			]);
