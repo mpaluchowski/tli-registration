@@ -313,6 +313,7 @@ return ['lang' => [
 	"AdminNavStatistics" => "Statystyki",
 	"AdminNavReports" => "Raporty",
 	"AdminNavReportsOfficersByClub" => "Oficerowie wg klubów",
+	"AdminNavReportsAccommodationWithToastmasters" => "Zakwaterowanie",
 	"AdminNavAuditLog" => "Log Zdarzeń",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",

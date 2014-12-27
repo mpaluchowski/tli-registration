@@ -313,6 +313,7 @@ return ['lang' => [
 	"AdminNavStatistics" => "Statistics",
 	"AdminNavReports" => "Reports",
 	"AdminNavReportsOfficersByClub" => "Officers by club",
+	"AdminNavReportsAccommodationWithToastmasters" => "Accommodation",
 	"AdminNavAuditLog" => "Audit Log",
 	"LogoutButton" => "Logout",
 	"SignedInAs" => "Signed in as {0}",
