@@ -82,4 +82,47 @@ class ReportsDaoImpl implements \models\ReportsDao {
 		return $data;
 	}
 
+	/**
+	 * Produce data for report on people, who either offered accommodation for
+	 * incoming Toastmasters, or asked to be accommodated with local
+	 * Toastmasters.
+	 *
+	 * @return array indexed by accommodation status, with registrations for
+	 * each of the types chosen.
+	 */
+	function readAccommodationWithToastmasters() {
+		$query = "SELECT r.id_registration,
+						 r.email,
+						 r.`status`,
+						 r.date_paid,
+						 GROUP_CONCAT(IF(rf.name = 'accommodation-with-toastmasters', rf.value, NULL)) AS accommodation,
+						 GROUP_CONCAT(IF(rf.name = 'full-name', rf.value, NULL)) AS full_name,
+						 GROUP_CONCAT(IF(rf.name = 'phone', rf.value, NULL)) AS phone
+				  FROM tli_registrations r
+				  JOIN tli_registration_fields rf
+					ON rf.fk_registration = r.id_registration
+				   AND rf.name IN ('accommodation-with-toastmasters', 'full-name', 'phone')
+				  GROUP BY r.id_registration
+				  HAVING accommodation IN ('\"host\"', '\"stay\"')
+				  ORDER BY accommodation,
+				  		   full_name";
+		$result = \F3::get('db')->exec($query);
+
+		$data = [];
+		foreach ($result as $row) {
+			$form = new \models\RegistrationForm();
+
+			$form->setId($row['id_registration']);
+			$form->setEmail($row['email']);
+			$form->setStatusValue($row['status']);
+			$form->setDatePaid($row['date_paid']);
+			$form->setField('accommodation-with-toastmasters', json_decode($row['accommodation']));
+			$form->setField('full-name', json_decode($row['full_name']));
+			$form->setField('phone', json_decode($row['phone']));
+
+			$data[json_decode($row['accommodation'])][] = $form;
+		}
+		return $data;
+	}
+
 }
