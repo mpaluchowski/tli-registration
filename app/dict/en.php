@@ -291,6 +291,8 @@ return ['lang' => [
 	"ReportOfficersByClubHeader" => "Officers by club",
 	"ReportExecCommitteePositionShort" => "Position",
 
+	"ReportAccommodationWithToastmastersHeader" => "Accommodation with Toastmasters",
+
 	"DivisionName" => "Division {0}",
 	"DivisionOther" => "Other divisions",
 
