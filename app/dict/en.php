@@ -291,6 +291,8 @@ return ['lang' => [
 	"ReportOfficersByClubHeader" => "Officers by club",
 	"ReportExecCommitteePositionShort" => "Position",
 
+	"ReportAccommodationWithToastmastersHeader" => "Accommodation with Toastmasters",
+
 	"DivisionName" => "Division {0}",
 	"DivisionOther" => "Other divisions",
 
@@ -313,6 +315,7 @@ return ['lang' => [
 	"AdminNavStatistics" => "Statistics",
 	"AdminNavReports" => "Reports",
 	"AdminNavReportsOfficersByClub" => "Officers by club",
+	"AdminNavReportsAccommodationWithToastmasters" => "Accommodation",
 	"AdminNavAuditLog" => "Audit Log",
 	"LogoutButton" => "Logout",
 	"SignedInAs" => "Signed in as {0}",

@@ -291,6 +291,8 @@ return ['lang' => [
 	"ReportOfficersByClubHeader" => "Oficerowie wg klubów",
 	"ReportExecCommitteePositionShort" => "Pozycja",
 
+	"ReportAccommodationWithToastmastersHeader" => "Zakwaterowanie u Toastmasterów",
+
 	"DivisionName" => "Okręg {0}",
 	"DivisionOther" => "Inne okręgi",
 
@@ -313,6 +315,7 @@ return ['lang' => [
 	"AdminNavStatistics" => "Statystyki",
 	"AdminNavReports" => "Raporty",
 	"AdminNavReportsOfficersByClub" => "Oficerowie wg klubów",
+	"AdminNavReportsAccommodationWithToastmasters" => "Zakwaterowanie",
 	"AdminNavAuditLog" => "Log Zdarzeń",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",
