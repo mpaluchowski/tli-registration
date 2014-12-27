@@ -12,6 +12,8 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 		<h1><?php echo \F3::get('lang.ReportOfficersByClubHeader') ?></h1>
 	</div>
 
+	<p class="text-center"><?php echo \F3::get('lang.ReportUpdated', \helpers\View::formatUnixDateTime(time())) ?></p>
+
 <?php
 	foreach ($data as $divisionName => $areas):
 	$odd = true;

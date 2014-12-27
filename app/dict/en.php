@@ -286,6 +286,8 @@ return ['lang' => [
 	"StatisticsEventEnrollmentHeader" => "Event enrollments",
 	"StatisticsEventLabel" => "Event",
 
+	"ReportUpdated" => "Updated on {0}",
+
 	"ReportOfficersByClubHeader" => "Officers by club",
 	"ReportExecCommitteePositionShort" => "Position",
 

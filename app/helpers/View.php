@@ -35,7 +35,15 @@ class View {
 	 * @return date and time string formatted according to locale set.
 	 */
 	static function formatDateTime($dateTime) {
-		return strftime(\F3::get('lang.dateTimeFormat'), strtotime($dateTime));
+		return self::formatUnixDateTime(strtotime($dateTime));
+	}
+
+	/**
+	 * @return date and time string formatted according to locale set, from the
+	 * Unix time.
+	 */
+	static function formatUnixDateTime($unixTime) {
+		return strftime(\F3::get('lang.dateTimeFormat'), $unixTime);
 	}
 
 	/**

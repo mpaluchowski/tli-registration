@@ -286,6 +286,8 @@ return ['lang' => [
 	"StatisticsEventEnrollmentHeader" => "Zgłoszenia na wydarzenia",
 	"StatisticsEventLabel" => "Atrakcja",
 
+	"ReportUpdated" => "Wygenerowany {0}",
+
 	"ReportOfficersByClubHeader" => "Oficerowie wg klubów",
 	"ReportExecCommitteePositionShort" => "Pozycja",
 
