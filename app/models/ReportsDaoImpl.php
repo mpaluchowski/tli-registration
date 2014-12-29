@@ -47,7 +47,7 @@ class ReportsDaoImpl implements \models\ReportsDao {
 				   AND rf_club.name = 'home-club'
 				  JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_name
 				    ON r.id_registration = rf_name.fk_registration
-				   AND rf_name.name IN ('full-name', 'exec-position')
+				   AND rf_name.name = 'full-name'
 				  JOIN tli_registration_fields rf_position
 				    ON r.id_registration = rf_position.fk_registration
 				   AND rf_position.name = 'exec-position'
