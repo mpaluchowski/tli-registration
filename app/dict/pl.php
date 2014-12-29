@@ -294,6 +294,11 @@ return ['lang' => [
 	"StatisticsNonOfficersLabel" => "Pozostali",
 	"StatisticsOfficerRatioHeader" => "Rejestracje oficerów",
 
+	"StatisticsAccommodationHeader" => "Zakwaterowanie",
+	"StatisticsAccommodation-stay" => "Potrzebuję",
+	"StatisticsAccommodation-host" => "Przyjmę",
+	"StatisticsAccommodation-independent" => "Niezależnie",
+
 	"StatisticsEventEnrollmentHeader" => "Zgłoszenia na wydarzenia",
 	"StatisticsEventLabel" => "Atrakcja",
 

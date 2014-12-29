@@ -59,6 +59,10 @@
 			<p><small><?php echo \F3::get('lang.StatisticsIncludePaidPendingPaymentInfo') ?></small></p>
 			<div id="pie-officer-ratio"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 
+			<h3><?php echo \F3::get('lang.StatisticsAccommodationHeader') ?></h3>
+			<p><small><?php echo \F3::get('lang.StatisticsIncludePaidPendingPaymentInfo') ?></small></p>
+			<div id="pie-accommodation-ratio"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
+
 			<h3><?php echo \F3::get('lang.StatisticsEventEnrollmentHeader') ?></h3>
 			<p><small><?php echo \F3::get('lang.StatisticsIncludePaidPendingPaymentInfo') ?></small></p>
 			<div id="bar-event-enrollment"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
@@ -77,6 +81,7 @@
 		drawRegistrationsByClubChart();
 		drawOfficersByClubChart();
 		drawOfficerRatioChart();
+		drawAccommodationRatioChart();
 		drawEventEnrollmentChart();
 	}
 
@@ -205,6 +210,30 @@
 		};
 
 		var chart = new google.visualization.BarChart(document.getElementById('bar-officers-by-club'));
+		chart.draw(data, options);
+	}
+
+	function drawAccommodationRatioChart() {
+		var data = google.visualization.arrayToDataTable([
+			['Type', '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
+			['<?php echo \F3::get('lang.StatisticsAccommodation-stay') ?>', <?php echo $stats['accommodation-ratio']->stay ?>],
+			['<?php echo \F3::get('lang.StatisticsAccommodation-host') ?>', <?php echo $stats['accommodation-ratio']->host ?>],
+			['<?php echo \F3::get('lang.StatisticsAccommodation-independent') ?>', <?php echo $stats['accommodation-ratio']->independent ?>],
+			]);
+		var options = {
+			pieHole : 0.4,
+			pieSliceText : 'value',
+			colors : [
+				'<?php echo \helpers\View::toastmastersColor('crimson') ?>',
+				'<?php echo \helpers\View::toastmastersColor('yellow') ?>',
+				'<?php echo \helpers\View::toastmastersColor('grey') ?>',
+			],
+			height: 150,
+			chartArea: {
+				height: "90%",
+			}
+		};
+		var chart = new google.visualization.PieChart(document.getElementById('pie-accommodation-ratio'));
 		chart.draw(data, options);
 	}
 
