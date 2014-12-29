@@ -26,6 +26,9 @@
 		<div class="progress-bar" style="background: <?php echo \helpers\View::getRegistrationStatusLabel('waiting-list', true) ?>; width: <?php echo $stats['registrations-by-status']->waitingList / ($stats['registrations-by-status']->count + $stats['registrations-by-status']->left) * 100 ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsWaitingList', $stats['registrations-by-status']->waitingList) ?>
 		</div>
+		<div class="progress-bar" style="background: <?php echo \helpers\View::getRegistrationStatusLabel('cancelled', true) ?>; width: <?php echo $stats['registrations-by-status']->cancelled / ($stats['registrations-by-status']->count + $stats['registrations-by-status']->left) * 100 ?>%;">
+			<?php echo \F3::get('lang.StatisticsSeatsCancelled', $stats['registrations-by-status']->cancelled) ?>
+		</div>
 	</div>
 <?php endif; ?>
 
@@ -77,17 +80,19 @@
 		var data = google.visualization.arrayToDataTable([
 			[<?php echo json_encode(\F3::get('lang.StatisticsRegistrationStatusLabel')) ?>, '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
 			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-pending-payment')) ?>, <?php echo $stats['registrations-by-status']->pendingPayment ?>],
-			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-pending-review')) ?>, <?php echo $stats['registrations-by-status']->pendingReview ?>],
-			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-waiting-list')) ?>, <?php echo $stats['registrations-by-status']->waitingList ?>],
 			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-paid')) ?>, <?php echo $stats['registrations-by-status']->paid ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-waiting-list')) ?>, <?php echo $stats['registrations-by-status']->waitingList ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-pending-review')) ?>, <?php echo $stats['registrations-by-status']->pendingReview ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-cancelled')) ?>, <?php echo $stats['registrations-by-status']->cancelled ?>],
 			]);
 		var options = {
 			pieHole : 0.4,
 			colors : [
 				'<?php echo \helpers\View::getRegistrationStatusLabel('pending-payment', true) ?>',
-				'<?php echo \helpers\View::getRegistrationStatusLabel('pending-review', true) ?>',
-				'<?php echo \helpers\View::getRegistrationStatusLabel('waiting-list', true) ?>',
 				'<?php echo \helpers\View::getRegistrationStatusLabel('paid', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('waiting-list', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('pending-review', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('cancelled', true) ?>',
 			],
 			height: 150,
 			chartArea: {

@@ -170,6 +170,7 @@ return ['lang' => [
 	"RegistrationStatusInfo-processing-payment" => "Your registration payment is being processed and as soon as we receive a confirmation from the processing authority, we'll update your status to Paid.",
 	"RegistrationStatus-waiting-list" => "Waiting list",
 	"RegistrationStatusInfo-waiting-list" => "Your registration was recorded on <time>{0}</time>, but is <strong>waiting for an available seat</strong> after the initial limit was reached. We'll get back to you when this happens.",
+	"RegistrationStatus-cancelled" => "Cancelled",
 
 	"PaymentBreakdownHeader" => "Payment breakdown",
 	"PaymentBreakdownIntro-pending-payment" => "Based on the options you selected, your total due payment breaks down as follows:",
@@ -268,6 +269,7 @@ return ['lang' => [
 	"StatisticsSeatsWaitingList" => "{0} on waiting list",
 	"StatisticsSeatsPendingReview" => "{0} pending confirmation",
 	"StatisticsSeatsPendingPayment" => "{0} pending payment",
+	"StatisticsSeatsCancelled" => "{0} cancelled",
 	"StatisticsRegistrationsByStatusHeader" => "Registrations by status",
 	"StatisticsRegistrationStatusLabel" => "Status",
 	"StatisticsRegistrationsLabel" => "Registrations",

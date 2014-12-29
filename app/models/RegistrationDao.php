@@ -303,6 +303,7 @@ class RegistrationDao {
 						 SUM(r.status IN ("paid", "pending-payment")) AS registered,
 						 SUM(r.status = "waiting-list") AS waiting_list,
 						 SUM(r.status = "pending-review") AS pending_review,
+						 SUM(r.status = "cancelled") AS cancelled,
 						 SUM(r.status IN ("pending-payment", "processing-payment")) AS pending_payment,
 						 COUNT(r.date_paid) AS paid,
 						 MAX(r.date_entered) AS last
@@ -315,6 +316,7 @@ class RegistrationDao {
 			'registered' => $result[0]['registered'] ? $result[0]['registered'] : 0,
 			'waitingList' => $result[0]['waiting_list'] ? $result[0]['waiting_list'] : 0,
 			'pendingReview' => $result[0]['pending_review'] ? $result[0]['pending_review'] : 0,
+			'cancelled' => $result[0]['cancelled'] ? $result[0]['cancelled'] : 0,
 			'pendingPayment' => $result[0]['pending_payment'] ? $result[0]['pending_payment'] : 0,
 			'paid' => $result[0]['paid'],
 			'left' => $leftCount < 0 ? 0 : $leftCount,

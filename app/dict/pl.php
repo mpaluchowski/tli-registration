@@ -170,6 +170,7 @@ return ['lang' => [
 	"RegistrationStatusInfo-processing-payment" => "Twoja płatność jest aktualnie przetwarzana i oczekujemy potwierdzenia od serwisu obsługującego płatności. Kiedy tylko je dostaniemy, oznaczymy twoją rejestrację jako opłaconą.",
 	"RegistrationStatus-waiting-list" => "Lista rezerwowa",
 	"RegistrationStatusInfo-waiting-list" => "Twoja rejestracja została zapisana <time>{0}</time> i <strong>oczekuje na liście rezerwowej</strong> na zwolnienie się miejsca w ramach limitu, jaki posiadamy. Skontaktujemy sie z tobą kiedy to się stanie.",
+	"RegistrationStatus-cancelled" => "Anulowana",
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
 	"PaymentBreakdownIntro-pending-payment" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
@@ -268,6 +269,7 @@ return ['lang' => [
 	"StatisticsSeatsWaitingList" => "{0} na liście oczekujących",
 	"StatisticsSeatsPendingReview" => "{0} oczekuje potwierdzenia",
 	"StatisticsSeatsPendingPayment" => "{0} oczekuje płatności",
+	"StatisticsSeatsCancelled" => "{0} anulowanych",
 	"StatisticsRegistrationsByStatusHeader" => "Rejestracje wg statusu",
 	"StatisticsRegistrationStatusLabel" => "Status",
 	"StatisticsRegistrationsLabel" => "Rejestracji",
