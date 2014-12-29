@@ -112,6 +112,8 @@ class Administration {
 
 		if ($f3->get('POST.send-email')) {
 			// Email code to the recipient, as requested
+			$priceCalculator = \models\PriceCalculatorFactory::newInstance();
+			$f3->set('pricingItems', $priceCalculator->fetchPricing());
 			$f3->set('code', $code);
 
 			$originalLanguage = \models\L11nManager::language();
