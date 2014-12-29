@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `tli_registrations` (
   `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
   `hash` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `language_entered` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
-  `status` enum('waiting-list','pending-review','pending-payment','processing-payment','paid') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` enum('waiting-list','pending-review','pending-payment','processing-payment','paid','cancelled') COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_entered` datetime NOT NULL,
   `date_paid` datetime DEFAULT NULL,
   PRIMARY KEY (`id_registration`),

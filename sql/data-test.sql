@@ -77,10 +77,11 @@ INSERT INTO `tli_registrations` (`id_registration`, `email`, `hash`, `language_e
 	(4, 'ibrahim@example.com', '0361f888e4fd81b343da82653e0961c8bffac06a', 'en', 'pending-review', '2014-11-16 21:38:30', NULL),
 	(5, 'maria@example.org', '7d8967805b752068007564285fd65fe78121bab6', 'pl', 'pending-payment', '2014-11-23 13:22:27', NULL),
 	(6, 'paid-discounted@example.org', '033544ceac58d1fc52cfb5e0dede228fe1c0a636', 'en', 'paid', '2014-12-21 16:36:52', '2014-12-21 16:46:11'),
-	(7, 'pending-discounted@example.org', '659d350679152fdf998d3ffcc732ee32ca8a879c', 'en', 'pending-payment', '2014-12-21 16:47:25', NULL);
+	(7, 'pending-discounted@example.org', '659d350679152fdf998d3ffcc732ee32ca8a879c', 'en', 'pending-payment', '2014-12-21 16:47:25', NULL),
+	(8, 'cancelled@example.com', '6ae307a3b18338a8d465517bdc159ea5f706ff3b', 'en', 'cancelled', '2014-12-29 16:43:56', NULL);
 /*!40000 ALTER TABLE `tli_registrations` ENABLE KEYS */;
 
--- Dumping data for table tli_registrations.tli_registration_fields: ~82 rows (approximately)
+-- Dumping data for table tli_registrations.tli_registration_fields: ~90 rows (approximately)
 DELETE FROM `tli_registration_fields`;
 /*!40000 ALTER TABLE `tli_registration_fields` DISABLE KEYS */;
 INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUES
@@ -165,7 +166,15 @@ INSERT INTO `tli_registration_fields` (`fk_registration`, `name`, `value`) VALUE
 	(7, 'phone', '"+48 123456789"'),
 	(7, 'saturday-dinner-meal', '"meat"'),
 	(7, 'saturday-dinner-participate', '"on"'),
-	(7, 'saturday-party-participate', '"on"');
+	(7, 'saturday-party-participate', '"on"'),
+	(8, 'accommodation-with-toastmasters', '"independent"'),
+	(8, 'country', '"poland"'),
+	(8, 'exec-position', '"none"'),
+	(8, 'full-name', '"Cancelled Registration"'),
+	(8, 'home-club', '"None"'),
+	(8, 'lunch', '"on"'),
+	(8, 'lunch-days', '["saturday","sunday"]'),
+	(8, 'phone', '"+48 123 456 789"');
 /*!40000 ALTER TABLE `tli_registration_fields` ENABLE KEYS */;
 
 -- Dumping data for table tli_registrations.tli_rel_discount_codes_pricing_items: ~16 rows (approximately)
