@@ -160,7 +160,7 @@ $renderer = \helpers\FormRendererFactory::className();
       <label><input type="checkbox" name="friday-copernicus-attend"<?php if (isset($registration['friday-copernicus-attend']) && $registration['friday-copernicus-attend'] == 'on') echo ' checked'?>><?php echo \F3::get('lang.EventsFridayCopernicusYes')?></label>
 
       <div class="tli-form-group-dependent" data-depends-on="friday-copernicus-attend" data-depends-on-value="on">
-        <div class="form-group<?php if (isset($registration['messages']['lunch-days'])): ?> has-error<?php endif ?>">
+        <div class="form-group<?php if (isset($registration['messages']['friday-copernicus-options'])): ?> has-error<?php endif ?>">
           <div class="checkbox">
             <label>
               <input type="checkbox" name="friday-copernicus-options[]" class="field-price-affecting" value="center"<?php if (isset($registration['friday-copernicus-options']) && in_array('center', $registration['friday-copernicus-options'])) echo ' checked' ?>><?php echo \F3::get('lang.EventsFridayCopernicusAttendCenter') ?>
