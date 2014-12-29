@@ -171,6 +171,7 @@ return ['lang' => [
 	"RegistrationStatus-waiting-list" => "Waiting list",
 	"RegistrationStatusInfo-waiting-list" => "Your registration was recorded on <time>{0}</time>, but is <strong>waiting for an available seat</strong> after the initial limit was reached. We'll get back to you when this happens.",
 	"RegistrationStatus-cancelled" => "Cancelled",
+	"RegistrationStatusInfo-cancelled" => "Your registration was cancelled, hopefully after receiving prior notice from us! If you think that's a mistake, please contact us and we'll sort things out.",
 
 	"PaymentBreakdownHeader" => "Payment breakdown",
 	"PaymentBreakdownIntro-pending-payment" => "Based on the options you selected, your total due payment breaks down as follows:",
@@ -178,6 +179,7 @@ return ['lang' => [
 	"PaymentBreakdownIntro-paid" => "We <strong>received your payment</strong> on {0}. Based on the options you selected, your payment covered the following items:",
 	"PaymentBreakdownIntro-processing-payment" => "We're <strong>processing your payment</strong>, awaiting confirmation from the online payment authority. Here's an overview of what your payment included:",
 	"PaymentBreakdownIntro-waiting-list" => "We'll be able to accept your payment as soon as your registration switches from the waiting list onto the main roster. Hang on!",
+	"PaymentBreakdownIntro-cancelled" => "Based on the options you selected, your total due payment breaks down as follows:",
 
 	"PaymentItemHead" => "Item",
 	"PaymentTypeHead" => "Type",

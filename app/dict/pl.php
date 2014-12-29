@@ -171,6 +171,7 @@ return ['lang' => [
 	"RegistrationStatus-waiting-list" => "Lista rezerwowa",
 	"RegistrationStatusInfo-waiting-list" => "Twoja rejestracja została zapisana <time>{0}</time> i <strong>oczekuje na liście rezerwowej</strong> na zwolnienie się miejsca w ramach limitu, jaki posiadamy. Skontaktujemy sie z tobą kiedy to się stanie.",
 	"RegistrationStatus-cancelled" => "Anulowana",
+	"RegistrationStatusInfo-cancelled" => "Twoja rejestracja została anulowana, co mamy nadzieję zostało uprzednio wyjaśnione. Jeśli uważasz to za błąd, skontaktuj się z nami i rozwiążemy tą kwestię.",
 
 	"PaymentBreakdownHeader" => "Podsumowanie płatności",
 	"PaymentBreakdownIntro-pending-payment" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
@@ -178,6 +179,7 @@ return ['lang' => [
 	"PaymentBreakdownIntro-paid" => "<strong>Otrzymaliśmy twoją płatność</strong> {0}. Na podstawie wybranych przez ciebie opcji, twoja płatność składała się z następujących pozycji:",
 	"PaymentBreakdownIntro-processing-payment" => "<strong>Przetwarzamy twoją płatność</strong> i oczekujemy na potwierdzenie z serwisu obsługującego płatności. Oto opcje, które obejmuje twoja płatność:",
 	"PaymentBreakdownIntro-waiting-list" => "Będziemy mogli przyjąć twoją płatność kiedy tylko twoja rejestracja przejdzie z listy oczekujących na główną listę.",
+	"PaymentBreakdownIntro-cancelled" => "W oparciu o wybrane przez ciebie opcje, opłata przedstawia sie następująco:",
 
 	"PaymentItemHead" => "Pozycja",
 	"PaymentTypeHead" => "Typ",
