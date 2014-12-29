@@ -46,17 +46,21 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<h3><?php echo \F3::get('lang.StatisticsRegistrationsByClubHeader') ?></h3>
+			<p><small><?php echo \F3::get('lang.StatisticsIncludePaidPendingPaymentInfo') ?></small></p>
 			<div id="bar-registrations-by-club"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 		</div>
 		<div class="col-sm-4">
 			<h3><?php echo \F3::get('lang.StatisticsOfficersByClubHeader') ?></h3>
+			<p><small><?php echo \F3::get('lang.StatisticsIncludePaidPendingPaymentInfo') ?></small></p>
 			<div id="bar-officers-by-club"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 		</div>
 		<div class="col-sm-4">
 			<h3><?php echo \F3::get('lang.StatisticsOfficerRatioHeader') ?></h3>
+			<p><small><?php echo \F3::get('lang.StatisticsIncludePaidPendingPaymentInfo') ?></small></p>
 			<div id="pie-officer-ratio"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 
 			<h3><?php echo \F3::get('lang.StatisticsEventEnrollmentHeader') ?></h3>
+			<p><small><?php echo \F3::get('lang.StatisticsIncludePaidPendingPaymentInfo') ?></small></p>
 			<div id="bar-event-enrollment"><span class="chart-loader"><i class="fa fa-spinner fa-spin"></i></span></div>
 		</div>
 	</div>

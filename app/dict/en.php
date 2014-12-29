@@ -281,6 +281,8 @@ return ['lang' => [
 	"StatisticsRegistrationsRegisteredLabel" => "Registered",
 	"StatisticsRegistrationsPaidLabel" => "Paid",
 
+	"StatisticsIncludePaidPendingPaymentInfo" => "Includes only registrations paid or pending payment.",
+
 	"StatisticsRegistrationsByClubHeader" => "Registrations by Club",
 	"StatisticsClubLabel" => "Club",
 	"StatisticsRegistrationsLabel" => "Registrations",

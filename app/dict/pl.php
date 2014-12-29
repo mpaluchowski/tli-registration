@@ -281,6 +281,8 @@ return ['lang' => [
 	"StatisticsRegistrationsRegisteredLabel" => "Zarejestrowanych",
 	"StatisticsRegistrationsPaidLabel" => "Opłaconych",
 
+	"StatisticsIncludePaidPendingPaymentInfo" => "Uwzględnia jedynie rejestracje opłacone lub oczekujące na wpłatę.",
+
 	"StatisticsRegistrationsByClubHeader" => "Rejestracje wg klubów",
 	"StatisticsClubLabel" => "Klub",
 	"StatisticsRegistrationsLabel" => "Rejestracje",

@@ -37,7 +37,10 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		$query = "SELECT rf.value,
 						 COUNT(rf.fk_registration) AS registrations
 				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf
+				  JOIN " . \F3::get('db_table_prefix') . "registrations r
+					ON rf.fk_registration = r.id_registration
 				  WHERE rf.name = 'home-club'
+				    AND r.status IN ('pending-payment', 'processing-payment', 'paid')
 				  GROUP BY rf.value
 				  ORDER BY registrations DESC,
 				  		   rf.value";
@@ -73,6 +76,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 					ON r.id_registration = rf2.fk_registration
 				  WHERE rf1.name = 'home-club'
 				    AND rf1.value <> '\"None\"'
+				    AND r.status IN ('pending-payment', 'processing-payment', 'paid')
 				  GROUP BY rf1.value
 				  ORDER BY rf1.value";
 		$result = \F3::get('db')->exec($query);
@@ -98,7 +102,10 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 		$query = "SELECT SUM(rf.value = '\"none\"') AS non_officers,
 						 SUM(rf.value <> '\"none\"') AS officers
 				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf
-				  WHERE rf.name = 'exec-position'";
+				  JOIN " . \F3::get('db_table_prefix') . "registrations r
+					ON rf.fk_registration = r.id_registration
+				  WHERE rf.name = 'exec-position'
+				    AND r.status IN ('pending-payment', 'processing-payment', 'paid')";
 		$result = \F3::get('db')->exec($query);
 
 		return (object)[
@@ -124,6 +131,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf
 				  JOIN " . \F3::get('db_table_prefix') . "registrations r
 				    ON r.id_registration = rf.fk_registration
+				  WHERE r.status IN ('pending-payment', 'processing-payment', 'paid')
 				  GROUP BY r.date_paid IS NULL
 				  ORDER BY r.date_paid IS NULL";
 		$result = \F3::get('db')->exec($query);
