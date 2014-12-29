@@ -222,6 +222,7 @@ return ['lang' => [
 	"PaymentProcessing-processing-payment" => "Your payment transaction started on {0} and we're waiting for the processing entity to return to us with a confirmation. Hang on! Or, if it takes suspiciously long, let us know and we'll look into it.",
 	"PaymentProcessing-waiting-list" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
 	"PaymentProcessing-pending-review" => "We cannot process your payment until your registration reaches the 'Pending payment' status. Hang on and we'll get back to you as soon as we can.",
+	"PaymentProcessing-cancelled" => "We cannot process your payment because your registration was cancelled.",
 
 	"EmailRegistrationConfirmationSubject" => "Registration confirmation for {0}",
 	"EmailRegistrationConfirmationIntro" => "We received your registration for the e-mail address <strong>{0}</strong>. You can access and review your registration at any time at:",

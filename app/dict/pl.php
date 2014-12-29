@@ -222,6 +222,7 @@ return ['lang' => [
 	"PaymentProcessing-processing-payment" => "Twoja transakcja płatności rozpoczęła się {0} i oczekujemy na odpowiedź serwisu obsługującego płatności. Zazwyczaj przychodzi do nas w ciągu kilku minut, ale jeśli twój status nie zmienia się podejrzanie długo, powiadom nas i sprawdzimy czy nie wystąpił problem.",
 	"PaymentProcessing-waiting-list" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
 	"PaymentProcessing-pending-review" => 'Nie możemy przyjąć płatności dopóki twoja rejestracja nie zmieni statusu na "Oczekuje płatności". Daj nam jeszcze chwilę i zgłosimy się najszybciej jak to możliwe.',
+	"PaymentProcessing-cancelled" => 'Nie możemy przyjąć płatności ponieważ twoja rejestracja została anulowana.',
 
 	"EmailRegistrationConfirmationSubject" => "Potwierdzenie rejestracji dla {0}",
 	"EmailRegistrationConfirmationIntro" => "Przyjęliśmy twoją rejestrację dla adresu e-mail <strong>{0}</strong>. Możesz wrócić do niej w każdej chwili pod adresem:",
