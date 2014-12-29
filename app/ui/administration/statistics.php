@@ -20,10 +20,10 @@
 		<div class="progress-bar progress-bar-warning" style="width: <?php echo $stats['registrations-by-status']->pendingPayment / ($stats['registrations-by-status']->count + $stats['registrations-by-status']->left) * 100 ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsPendingPayment', $stats['registrations-by-status']->pendingPayment) ?>
 		</div>
-		<div class="progress-bar" style="background: #000; width: <?php echo $stats['registrations-by-status']->pendingReview / ($stats['registrations-by-status']->count + $stats['registrations-by-status']->left) * 100 ?>%;">
+		<div class="progress-bar" style="background: <?php echo \helpers\View::getRegistrationStatusLabel('pending-review', true) ?>; width: <?php echo $stats['registrations-by-status']->pendingReview / ($stats['registrations-by-status']->count + $stats['registrations-by-status']->left) * 100 ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsPendingReview', $stats['registrations-by-status']->pendingReview) ?>
 		</div>
-		<div class="progress-bar" style="background: #777; width: <?php echo $stats['registrations-by-status']->waitingList / ($stats['registrations-by-status']->count + $stats['registrations-by-status']->left) * 100 ?>%;">
+		<div class="progress-bar" style="background: <?php echo \helpers\View::getRegistrationStatusLabel('waiting-list', true) ?>; width: <?php echo $stats['registrations-by-status']->waitingList / ($stats['registrations-by-status']->count + $stats['registrations-by-status']->left) * 100 ?>%;">
 			<?php echo \F3::get('lang.StatisticsSeatsWaitingList', $stats['registrations-by-status']->waitingList) ?>
 		</div>
 	</div>
@@ -85,7 +85,7 @@
 			pieHole : 0.4,
 			colors : [
 				'<?php echo \helpers\View::getRegistrationStatusLabel('pending-payment', true) ?>',
-				'#000',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('pending-review', true) ?>',
 				'<?php echo \helpers\View::getRegistrationStatusLabel('waiting-list', true) ?>',
 				'<?php echo \helpers\View::getRegistrationStatusLabel('paid', true) ?>',
 			],

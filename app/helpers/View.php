@@ -69,8 +69,11 @@ class View {
 			case 'paid':
 				return $color ? '#5cb85c' : 'success';
 			case 'waiting-list':
-			case 'pending-review':
 				return $color ? '#777' : 'default';
+			case 'pending-review':
+				return $color ? '#337ab7' : 'primary';
+			case 'cancelled':
+				return $color ? '#000' : 'off';
 			default:
 				throw new \Exception('Unknown registration status: ' . $status);
 		}
