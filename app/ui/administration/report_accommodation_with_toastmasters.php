@@ -28,7 +28,7 @@ $renderer = \helpers\FormRendererFactory::className();
 			</thead>
 			<tbody>
 			<?php foreach ($registrations as $registration): ?>
-				<tr>
+				<tr data-id="<?php echo $registration->getId() ?>">
 					<td><?php echo $renderer::value($registration, 'full-name') ?></td>
 					<td><a href="mailto:<?php echo $registration->getEmail() ?>"><?php echo $registration->getEmail() ?></a></td>
 					<td><a href="callto:<?php echo $registration->getField('phone') ?>"><?php echo $renderer::value($registration, 'phone') ?></a></td>
