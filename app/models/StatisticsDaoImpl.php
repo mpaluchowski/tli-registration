@@ -23,6 +23,7 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 			'registrations-by-club' => $this->readRegistrationsByClub(),
 			'officers-by-club' => $this->readOfficersByClub(),
 			'officer-ratio' => $this->readOfficerRatio(),
+			'accommodation-ratio' => $this->readAccommodationRatio(),
 			'event-enrollment' => $this->readEventEnrollment(),
 		];
 	}
@@ -91,6 +92,30 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 			];
 		}
 		return $stats;
+	}
+
+	/**
+	 * Reads the counts of people registered for various types of accommodation.
+	 *
+	 * @return object with fields for the stay, host and independent
+	 * accommodation counts.
+	 */
+	function readAccommodationRatio() {
+		$query = "SELECT SUM(rf.value = '\"stay\"') AS stay,
+						 SUM(rf.value = '\"host\"') AS host,
+						 SUM(rf.value = '\"independent\"') AS independent
+				  FROM " . \F3::get('db_table_prefix') . "registration_fields rf
+				  JOIN " . \F3::get('db_table_prefix') . "registrations r
+					ON rf.fk_registration = r.id_registration
+				  WHERE rf.name = 'accommodation-with-toastmasters'
+				    AND r.status IN ('pending-payment', 'processing-payment', 'paid')";
+		$result = \F3::get('db')->exec($query);
+
+		return (object)[
+			'stay' => $result[0]['stay'],
+			'host' => $result[0]['host'],
+			'independent' => $result[0]['independent'],
+			];
 	}
 
 	/**

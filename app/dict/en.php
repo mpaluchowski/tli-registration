@@ -294,6 +294,11 @@ return ['lang' => [
 	"StatisticsNonOfficersLabel" => "Non-Officers",
 	"StatisticsOfficerRatioHeader" => "Officer registration ratio",
 
+	"StatisticsAccommodationHeader" => "Accommodation",
+	"StatisticsAccommodation-stay" => "Stay",
+	"StatisticsAccommodation-host" => "Host",
+	"StatisticsAccommodation-independent" => "Independent",
+
 	"StatisticsEventEnrollmentHeader" => "Event enrollments",
 	"StatisticsEventLabel" => "Event",
 
