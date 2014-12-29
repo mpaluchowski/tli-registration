@@ -22,6 +22,18 @@ class FormProcessorImpl implements \helpers\FormProcessor {
 			$form->setStatusValue('pending-review');
 		}
 
+		// Adjust options for accommodation with toastmasters to match original
+		// format, before hosting someone became a sub-option
+		if ($form->hasField('accommodation-with-toastmasters-host')
+				&& 'host' == $form->getField('accommodation-with-toastmasters-host')) {
+			$form->setField('accommodation-with-toastmasters', 'host');
+			$form->clearField('accommodation-with-toastmasters-host');
+		}
+
+		if ('dont-need' == $form->getField('accommodation-with-toastmasters')) {
+			$form->setField('accommodation-with-toastmasters', 'independent');
+		}
+
 		// Check if a custom club name was entered
 		if ($form->hasField('home-club-custom')
 				&& $form->getField('home-club-custom')) {

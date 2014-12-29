@@ -100,8 +100,10 @@ return ['lang' => [
 	'AccommodationWithToastmastersSatSun' => "Saturday/Sunday",
 	'AccommodationWithToastmasters-sat-sun' => "Saturday/Sunday",
 	'AccommodationWithToastmastersHostAnswer' => "I'd like to <strong>host</strong> an attendee",
+	'AccommodationWithToastmastersHostHelp' => "Incoming Toastmasters often rely on the hospitality of locals for accommodation. Would you like to help out?",
 	'AccommodationWithToastmasters-host' => "Host an attendee",
-	'AccommodationWithToastmastersIndependentAnswer' => "I'll <strong>arrange my own</strong> or <strong>don't need</strong> accomodation",
+	'AccommodationWithToastmastersIndependentAnswer' => "I'll <strong>arrange my own</strong> accomodation",
+	'AccommodationWithToastmastersDontNeedAnswer' => "I <strong>don't need</strong> accomodation",
 	'AccommodationWithToastmasters-independent' => "On my own or don't need",
 
 	'EventOptionsHeader' => "Event Options",
