@@ -259,6 +259,7 @@ return ['lang' => [
 	"EmailDiscountCodeSubject" => "Discount code for {0}",
 	"EmailDiscountCodeIntro" => "You just received a discount code for your registration for the TLI. Your code is:",
 	"EmailDiscountCodeInstructions" => "To redeem the code, after filling in the registration form, and just before proceeding to pay online, paste the code in the field right underneath the breakdown of your payment. If you registered previously, but have not paid yet, you can open the registration review with the link that came in your confirmation email, scroll down to the payment breakdown and enter the code there. Once the code is successfully submitted, your prices will automatically and permanently be reduced.",
+	"EmailDiscountCodeItemsHeader" => "Discounted items",
 
 	"StatisticsHeader" => "Statistics",
 	"StatisticsSeatsHeader" => "Seats",
