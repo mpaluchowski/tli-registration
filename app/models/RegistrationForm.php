@@ -20,19 +20,6 @@ class RegistrationForm {
 		$this->id = $id;
 	}
 
-	function getStatus() {
-		if ('processing-payment' == $this->status)
-			return 'PROCESSING_PAYMENT';
-		if ('waiting-list' == $this->status)
-			return 'WAITING_LIST';
-		if ('pending-review' == $this->status)
-			return 'PENDING_REVIEW';
-		if (!$this->datePaid)
-			return 'PENDING_PAYMENT';
-		if ($this->datePaid)
-			return 'PAID';
-	}
-
 	function getEmail() {
 		return $this->email;
 	}
@@ -49,11 +36,11 @@ class RegistrationForm {
 		$this->languageEntered = $languageEntered;
 	}
 
-	function setStatusValue($status) {
+	function setStatus($status) {
 		$this->status = $status;
 	}
 
-	function getStatusValue() {
+	function getStatus() {
 		return $this->status;
 	}
 

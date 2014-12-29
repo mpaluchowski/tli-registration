@@ -71,7 +71,7 @@ class Administration {
 
 		$form = $registrationDao->readRegistrationByEmail($code->getEmail());
 
-		if ($form && 'PAID' == $form->getStatus()) {
+		if ($form && 'paid' == $form->getStatus()) {
 			\models\MessageManager::addMessage(
 				'danger',
 				$f3->get('lang.CodesRegistrationEmailPaidMsg', [

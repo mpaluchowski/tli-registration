@@ -63,13 +63,13 @@ class View {
 	 */
 	static function getRegistrationStatusLabel($status, $color = false) {
 		switch ($status) {
-			case 'PENDING_PAYMENT':
-			case 'PROCESSING_PAYMENT':
+			case 'pending-payment':
+			case 'processing-payment':
 				return $color ? '#f0ad4e' : 'warning';
-			case 'PAID':
+			case 'paid':
 				return $color ? '#5cb85c' : 'success';
-			case 'WAITING_LIST':
-			case 'PENDING_REVIEW':
+			case 'waiting-list':
+			case 'pending-review':
 				return $color ? '#777' : 'default';
 			default:
 				throw new \Exception('Unknown registration status: ' . $status);

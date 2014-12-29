@@ -76,18 +76,18 @@
 	function drawRegistrationsByStatusChart() {
 		var data = google.visualization.arrayToDataTable([
 			[<?php echo json_encode(\F3::get('lang.StatisticsRegistrationStatusLabel')) ?>, '<?php echo \F3::get('lang.StatisticsRegistrationsLabel') ?>'],
-			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-PENDING_PAYMENT')) ?>, <?php echo $stats['registrations-by-status']->pendingPayment ?>],
-			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-PENDING_REVIEW')) ?>, <?php echo $stats['registrations-by-status']->pendingReview ?>],
-			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-WAITING_LIST')) ?>, <?php echo $stats['registrations-by-status']->waitingList ?>],
-			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-PAID')) ?>, <?php echo $stats['registrations-by-status']->paid ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-pending-payment')) ?>, <?php echo $stats['registrations-by-status']->pendingPayment ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-pending-review')) ?>, <?php echo $stats['registrations-by-status']->pendingReview ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-waiting-list')) ?>, <?php echo $stats['registrations-by-status']->waitingList ?>],
+			[<?php echo json_encode(\F3::get('lang.RegistrationStatus-paid')) ?>, <?php echo $stats['registrations-by-status']->paid ?>],
 			]);
 		var options = {
 			pieHole : 0.4,
 			colors : [
-				'<?php echo \helpers\View::getRegistrationStatusLabel('PENDING_PAYMENT', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('pending-payment', true) ?>',
 				'#000',
-				'<?php echo \helpers\View::getRegistrationStatusLabel('WAITING_LIST', true) ?>',
-				'<?php echo \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('waiting-list', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('paid', true) ?>',
 			],
 			height: 150,
 			chartArea: {
@@ -107,8 +107,8 @@
 			]);
 		var options = {
 			colors : [
-				'<?php echo \helpers\View::getRegistrationStatusLabel('PENDING_PAYMENT', true) ?>',
-				'<?php echo \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('pending-payment', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('paid', true) ?>',
 			],
 			height: 150,
 			chartArea: {
@@ -145,7 +145,7 @@
 		var options = {
 			height: data.getNumberOfRows() * 25,
 			colors : [
-				'<?php echo \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('paid', true) ?>',
 			],
 			chartArea: {
 				left: 150,
@@ -179,9 +179,9 @@
 			[
 				<?php echo json_encode($club->name) ?>,
 				<?php echo $club->countOfficersPaid ?>,
-				'<?php echo $club->countOfficersPaid < 4 ? '#d9534f' : \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
+				'<?php echo $club->countOfficersPaid < 4 ? '#d9534f' : \helpers\View::getRegistrationStatusLabel('paid', true) ?>',
 				<?php echo $club->countOfficersUnpaid ?>,
-				'<?php echo \helpers\View::getRegistrationStatusLabel('PENDING_PAYMENT', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('pending-payment', true) ?>',
 			],
 		<?php endforeach; ?>
 			]);
@@ -239,8 +239,8 @@
 		var options = {
 			height: data.getNumberOfRows() * 25,
 			colors : [
-				'<?php echo \helpers\View::getRegistrationStatusLabel('PAID', true) ?>',
-				'<?php echo \helpers\View::getRegistrationStatusLabel('PENDING_PAYMENT', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('paid', true) ?>',
+				'<?php echo \helpers\View::getRegistrationStatusLabel('pending-payment', true) ?>',
 			],
 			chartArea: {
 				left: 100,
