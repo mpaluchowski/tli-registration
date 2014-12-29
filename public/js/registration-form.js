@@ -125,8 +125,7 @@ tliRegister.registrationForm = function() {
 			);
 
 		// Hide dependencies, unless dependent has the right value to display them
-		if (!$(dependency).prop('checked')
-					|| $(dependency).val() !== dependencyFieldValue) {
+		if ($(dependency).filter(':checked').val() !== dependencyFieldValue) {
 			$(dependent).hide();
 		} else {
 			// Add required status for dependent fields that need it

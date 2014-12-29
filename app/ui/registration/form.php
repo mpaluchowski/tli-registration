@@ -124,10 +124,19 @@ $renderer = \helpers\FormRendererFactory::className();
       </div>
 
       <div class="radio">
-        <label><input type="radio" name="accommodation-with-toastmasters" value="host"<?php if (isset($registration['accommodation-with-toastmasters']) && $registration['accommodation-with-toastmasters'] == 'host') echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersHostAnswer') ?></label>
+        <label><input type="radio" name="accommodation-with-toastmasters" value="independent"<?php if (isset($registration['accommodation-with-toastmasters']) && $registration['accommodation-with-toastmasters'] == 'independent') echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersIndependentAnswer') ?></label>
       </div>
       <div class="radio">
-        <label><input type="radio" name="accommodation-with-toastmasters" value="independent"<?php if (isset($registration['accommodation-with-toastmasters']) && $registration['accommodation-with-toastmasters'] == 'independent') echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersIndependentAnswer') ?></label>
+        <label><input type="radio" name="accommodation-with-toastmasters" value="dont-need"<?php if (isset($registration['accommodation-with-toastmasters']) && $registration['accommodation-with-toastmasters'] == 'dont-need') echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersDontNeedAnswer') ?></label>
+      </div>
+
+      <div class="tli-form-group-dependent" data-depends-on="accommodation-with-toastmasters" data-depends-on-value="dont-need">
+        <div class="form-group">
+          <div class="checkbox">
+            <label><input type="checkbox" name="accommodation-with-toastmasters-host" value="host"<?php if (isset($registration['accommodation-with-toastmasters-host']) && $registration['accommodation-with-toastmasters-host'] == 'host') echo ' checked' ?>><?php echo \F3::get('lang.AccommodationWithToastmastersHostAnswer') ?></label>
+            <p class="help-block"><?php echo \F3::get('lang.AccommodationWithToastmastersHostHelp') ?></p>
+          </div>
+        </div>
       </div>
 
       <?php if (isset($registration['messages']['accommodation-with-toastmasters'])): ?><p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $registration['messages']['accommodation-with-toastmasters'] ?></p><?php endif; ?>
