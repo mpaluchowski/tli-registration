@@ -13,7 +13,7 @@ $renderer = \helpers\FormRendererFactory::className();
 
 	<?php echo \View::instance()->render('message-alerts.php') ?>
 
-	<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
+	<?php if ('pending-payment' === $form->getStatus()): ?>
 	<p><?php echo \F3::get('lang.RegistrationReviewIntro') ?></p>
 	<?php endif ?>
 
@@ -166,7 +166,7 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><?php echo $renderer::pricing('admission') ?></td>
 					<td><?php
 					echo $renderer::pricing('admission', $paymentSummary['admission']->variant);
-					if ('PAID' !== $form->getStatus() && !$paymentSummary['admission']->discounted):
+					if ('paid' !== $form->getStatus() && !$paymentSummary['admission']->discounted):
 						?> (<?php echo \F3::get('lang.PriceValidThrough', \helpers\View::formatDate($paymentSummary['admission']->dateValidThrough)) ?>)<?php
 					endif; ?></td>
 				<?php foreach ($paymentSummary['admission']->prices as $currency => $price): ?>
@@ -269,7 +269,7 @@ $renderer = \helpers\FormRendererFactory::className();
 		</table>
 	</div>
 
-<?php if ('PENDING_PAYMENT' === $form->getStatus()): ?>
+<?php if ('pending-payment' === $form->getStatus()): ?>
 	<?php if (!$paymentSummary['discounted']): ?>
 	<form action="<?php echo \F3::get('ALIASES.registration_code_redeem') ?>" method="POST" style="margin-bottom: 3em;">
 		<label for="discount-code" class="sr-only"><?php echo \F3::get('lang.DiscountCode') ?></label>

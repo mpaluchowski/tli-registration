@@ -19,7 +19,7 @@ class FormProcessorImpl implements \helpers\FormProcessor {
 		// for review
 		if ('outside' == $form->getField('country')
 				|| 'None' == $form->getField('home-club')) {
-			$form->setStatusValue('pending-review');
+			$form->setStatus('pending-review');
 		}
 
 		// Adjust options for accommodation with toastmasters to match original

@@ -20,7 +20,7 @@ class Payment {
 			$form->getId()
 			);
 
-		if ('PENDING_PAYMENT' !== $form->getStatus()) {
+		if ('pending-payment' !== $form->getStatus()) {
 			\models\MessageManager::addMessage(
 				$transaction ? 'success' : 'warning',
 				$f3->get(
@@ -119,10 +119,10 @@ class Payment {
 			$registrationDao->updateRegistrationStatusToProcessingPayment(
 				$transaction->getRegistrationId()
 				);
-			$msg = 'lang.PaymentProcessing-PROCESSING_PAYMENT';
+			$msg = 'lang.PaymentProcessing-processing-payment';
 		} else {
 			// Already received confirmation, inform user
-			$msg = 'lang.PaymentProcessing-PAID';
+			$msg = 'lang.PaymentProcessing-paid';
 		}
 		\models\MessageManager::addMessage(
 			'success',

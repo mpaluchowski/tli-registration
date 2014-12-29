@@ -64,7 +64,7 @@ class ReportsDaoImpl implements \models\ReportsDao {
 			$form = new \models\RegistrationForm();
 
 			$form->setId($row['id_registration']);
-			$form->setStatusValue($row['status']);
+			$form->setStatus($row['status']);
 			$form->setDatePaid($row['date_paid']);
 			$form->setField('full-name', json_decode($row['full_name']));
 			$form->setField('exec-position', json_decode($row['exec_position']));
@@ -115,7 +115,7 @@ class ReportsDaoImpl implements \models\ReportsDao {
 
 			$form->setId($row['id_registration']);
 			$form->setEmail($row['email']);
-			$form->setStatusValue($row['status']);
+			$form->setStatus($row['status']);
 			$form->setDatePaid($row['date_paid']);
 			$form->setField('accommodation-with-toastmasters', json_decode($row['accommodation']));
 			$form->setField('accommodation-on', json_decode($row['accommodation_on']));

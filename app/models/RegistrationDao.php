@@ -40,7 +40,7 @@ class RegistrationDao {
 		$form->setId($registration['id_registration']);
 		$form->setEmail($registration['email']);
 		$form->setLanguageEntered($registration['language_entered']);
-		$form->setStatusValue($registration['status']);
+		$form->setStatus($registration['status']);
 		if (array_key_exists('date_entered', $registration))
 			$form->setDateEntered($registration['date_entered']);
 		if (array_key_exists('date_paid', $registration))
@@ -82,9 +82,9 @@ class RegistrationDao {
 
 		try {
 			if ($this->isSeatingLimited()
-					&& !$form->getStatusValue()
+					&& !$form->getStatus()
 					&& $this->readSeatStatistics()->left == 0) {
-				$form->setStatusValue('waiting-list');
+				$form->setStatus('waiting-list');
 			}
 
 			$query = 'INSERT INTO ' . \F3::get('db_table_prefix') . 'registrations (
@@ -105,7 +105,7 @@ class RegistrationDao {
 					'email' => $form->getEmail(),
 					'hash' => $form->getHash(),
 					'languageEntered' => $form->getLanguageEntered(),
-					'status' => $form->getStatusValue(),
+					'status' => $form->getStatus() ?: 'pending-payment',
 					'dateEntered' => $dateEntered,
 				]);
 
@@ -140,6 +140,9 @@ class RegistrationDao {
 
 		$form->setId($registrationId);
 		$form->setDateEntered(date('Y-m-d H:i:s', $dateEntered));
+		if (!$form->getStatus()) {
+			$form->setStatus('pending-payment');
+		}
 
 		return $registrationId;
 	}
@@ -155,14 +158,14 @@ class RegistrationDao {
 
 		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
 				  SET date_paid = FROM_UNIXTIME(:datePaid),
-					  status = NULL
+					  status = "paid"
 				  WHERE id_registration = :registrationId';
 		\F3::get('db')->exec($query, [
 				'datePaid' => $time,
 				'registrationId' => $form->getId(),
 			]);
 
-		$form->setStatusValue(null);
+		$form->setStatus('paid');
 		$form->setDatePaid(date('Y-m-d H:i:s', $time));
 	}
 
@@ -297,10 +300,11 @@ class RegistrationDao {
 
 	function readRegistrationStatistics() {
 		$query = 'SELECT COUNT(r.id_registration) AS counted,
-						 SUM(r.status IS NULL) AS registered,
+						 SUM(r.status IN ("paid", "pending-payment")) AS registered,
 						 SUM(r.status = "waiting-list") AS waiting_list,
 						 SUM(r.status = "pending-review") AS pending_review,
-						 SUM(r.status IS NULL AND r.date_paid IS NULL) AS pending_payment,
+						 SUM(r.status = "cancelled") AS cancelled,
+						 SUM(r.status IN ("pending-payment", "processing-payment")) AS pending_payment,
 						 COUNT(r.date_paid) AS paid,
 						 MAX(r.date_entered) AS last
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
@@ -312,6 +316,7 @@ class RegistrationDao {
 			'registered' => $result[0]['registered'] ? $result[0]['registered'] : 0,
 			'waitingList' => $result[0]['waiting_list'] ? $result[0]['waiting_list'] : 0,
 			'pendingReview' => $result[0]['pending_review'] ? $result[0]['pending_review'] : 0,
+			'cancelled' => $result[0]['cancelled'] ? $result[0]['cancelled'] : 0,
 			'pendingPayment' => $result[0]['pending_payment'] ? $result[0]['pending_payment'] : 0,
 			'paid' => $result[0]['paid'],
 			'left' => $leftCount < 0 ? 0 : $leftCount,
@@ -383,7 +388,7 @@ class RegistrationDao {
 
 		$query = 'SELECT SUM(r.status = "waiting-list") AS waiting_list,
 						 SUM(r.status = "pending-review") AS pending_review,
-						 SUM(r.status IS NULL AND r.date_paid IS NULL) AS pending_payment,
+						 SUM(r.status IN("pending-payment", "processing-payment")) AS pending_payment,
 						 SUM(r.date_paid IS NOT NULL) AS paid
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
 		$result = \F3::get('db')->exec($query);
