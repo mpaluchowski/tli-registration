@@ -96,12 +96,13 @@ class ReportsDaoImpl implements \models\ReportsDao {
 						 r.`status`,
 						 r.date_paid,
 						 GROUP_CONCAT(IF(rf.name = 'accommodation-with-toastmasters', rf.value, NULL)) AS accommodation,
+						 GROUP_CONCAT(IF(rf.name = 'accommodation-on', rf.value, NULL)) AS accommodation_on,
 						 GROUP_CONCAT(IF(rf.name = 'full-name', rf.value, NULL)) AS full_name,
 						 GROUP_CONCAT(IF(rf.name = 'phone', rf.value, NULL)) AS phone
 				  FROM tli_registrations r
 				  JOIN tli_registration_fields rf
 					ON rf.fk_registration = r.id_registration
-				   AND rf.name IN ('accommodation-with-toastmasters', 'full-name', 'phone')
+				   AND rf.name IN ('accommodation-with-toastmasters', 'accommodation-on', 'full-name', 'phone')
 				  GROUP BY r.id_registration
 				  HAVING accommodation IN ('\"host\"', '\"stay\"')
 				  ORDER BY accommodation,
@@ -117,6 +118,7 @@ class ReportsDaoImpl implements \models\ReportsDao {
 			$form->setStatusValue($row['status']);
 			$form->setDatePaid($row['date_paid']);
 			$form->setField('accommodation-with-toastmasters', json_decode($row['accommodation']));
+			$form->setField('accommodation-on', json_decode($row['accommodation_on']));
 			$form->setField('full-name', json_decode($row['full_name']));
 			$form->setField('phone', json_decode($row['phone']));
 
