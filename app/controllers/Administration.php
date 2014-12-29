@@ -71,10 +71,12 @@ class Administration {
 
 		$form = $registrationDao->readRegistrationByEmail($code->getEmail());
 
-		if ($form && 'paid' == $form->getStatus()) {
+		if ($form && ('paid' == $form->getStatus()
+				|| 'cancelled' == $form->getStatus()
+				)) {
 			\models\MessageManager::addMessage(
 				'danger',
-				$f3->get('lang.CodesRegistrationEmailPaidMsg', [
+				$f3->get('lang.CodesRegistrationEmailMsg-' . $form->getStatus(), [
 						$code->getEmail(),
 						\helpers\View::formatDateTime($form->getDatePaid())
 					])

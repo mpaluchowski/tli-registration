@@ -253,7 +253,8 @@ return ['lang' => [
 	"CodesCreatedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany.",
 	"CodesCreatedEmailedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany i wysłany.",
 	"CodesCreatedNotEmailedMsg" => "Kod dla <strong>{0}</strong> został wygenerowany, ale wystąpił problem z jego wysłaniem. Prześlij kod ręcznie.",
-	"CodesRegistrationEmailPaidMsg" => "Istnieje już rejestracja dla adresu {0} i została opłacona {1}. Nie można wygenerować kodu.",
+	"CodesRegistrationEmailMsg-paid" => "Istnieje już rejestracja dla adresu {0} i została <strong>opłacona {1}</strong>. Nie można wygenerować kodu.",
+	"CodesRegistrationEmailMsg-cancelled" => "Istnieje już rejestracja dla adresu {0} i została <strong>anulowana</strong>. Nie można wygenerować kodu.",
 
 	"CodesEmailValidationMsg" => "Podaj poprawny adres email",
 	"CodesPricingItemsValidationMsg" => "Wybierz przynajmniej jedną opcję do przeceny",

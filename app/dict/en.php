@@ -253,7 +253,8 @@ return ['lang' => [
 	"CodesCreatedMsg" => "Code for <strong>{0}</strong> successfully generated.",
 	"CodesCreatedEmailedMsg" => "Code for <strong>{0}</strong> successfully generated and emailed.",
 	"CodesCreatedNotEmailedMsg" => "Code for <strong>{0}</strong> successfully generated but could not be emailed. Please email the code manually.",
-	"CodesRegistrationEmailPaidMsg" => "A registration already exists for {0} and was paid on {1}. A code cannot be generated.",
+	"CodesRegistrationEmailMsg-paid" => "A registration already exists for {0} and was <strong>paid on {1}</strong>. A code cannot be generated.",
+	"CodesRegistrationEmailMsg-cancelled" => "A registration already exists for {0} and was <strong>cancelled</strong>. A code cannot be generated.",
 
 	"CodesEmailValidationMsg" => "Please provide a valid email address",
 	"CodesPricingItemsValidationMsg" => "Please choose at least one pricing item to discount",
