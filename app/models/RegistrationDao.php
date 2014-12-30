@@ -81,9 +81,7 @@ class RegistrationDao {
 		\F3::get('db')->begin();
 
 		try {
-			if ($this->isSeatingLimited()
-					&& !$form->getStatus()
-					&& $this->readSeatStatistics()->left == 0) {
+			if (!$form->getStatus() && !$this->hasSeatsLeft()) {
 				$form->setStatus('waiting-list');
 			}
 
