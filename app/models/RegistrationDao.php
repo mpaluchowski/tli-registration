@@ -81,9 +81,7 @@ class RegistrationDao {
 		\F3::get('db')->begin();
 
 		try {
-			if ($this->isSeatingLimited()
-					&& !$form->getStatus()
-					&& $this->readSeatStatistics()->left == 0) {
+			if (!$form->getStatus() && !$this->hasSeatsLeft()) {
 				$form->setStatus('waiting-list');
 			}
 
@@ -183,6 +181,39 @@ class RegistrationDao {
 		\F3::get('db')->exec($query, [
 				'registrationId' => $registrationId,
 			]);
+	}
+
+	/**
+	 * Updates all Registrations that have the pending-payment status to
+	 * waiting-list status. Makes sure no other transactions can read these
+	 * registrations in between.
+	 *
+	 * @return array with IDs of registrations that were updated, or empty array
+	 * if no results registrations were updated.
+	 */
+	function updatePendingPaymentRegistrationsToWaitingList() {
+		\F3::get('db')->begin();
+
+		$query = "
+			SELECT r.id_registration
+			FROM " . \F3::get('db_table_prefix') . "registrations r
+			WHERE r.status = 'pending-payment'
+			FOR UPDATE
+			";
+		$result = \F3::get('db')->exec($query);
+
+		$query = "
+			UPDATE " . \F3::get('db_table_prefix') . "registrations
+			SET status = 'waiting-list'
+			WHERE status = 'pending-payment'
+		";
+		\F3::get('db')->exec($query);
+
+		\F3::get('db')->commit();
+
+		return array_map(function($item) {
+			return $item['id_registration'];
+		}, $result);
 	}
 
 	function readRegistrationFormByHash($registrationHash) {
@@ -400,6 +431,35 @@ class RegistrationDao {
 			'pendingReview' => $result[0]['pending_review'] ? $result[0]['pending_review'] : 0,
 			'left' => $leftCount < 0 ? 0 : $leftCount,
 		];
+	}
+
+	/**
+	 * Reads how many available seats are left.
+	 *
+	 * @return number of seats available left, or NULL if seating is not
+	 * limited.
+	 */
+	function readSeatsLeft() {
+		if (!self::isSeatingLimited())
+			return null;
+
+		$query = 'SELECT COUNT(r.id_registration) AS paid
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  WHERE r.status = "paid"';
+		$result = \F3::get('db')->exec($query);
+
+		return self::getSeatLimit() - $result[0]['paid'];
+	}
+
+	/**
+	 * Checks if there are any seats left to register for.
+	 *
+	 * @return true if at least 1 seat is left or seating is unlimited,
+	 * false otherwise.
+	 */
+	function hasSeatsLeft() {
+		$left = $this->readSeatsLeft();
+		return $left === null || $left > 0;
 	}
 
 	/**

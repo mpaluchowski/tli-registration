@@ -206,6 +206,7 @@ class Payment {
 			$registrationDao->updateRegistrationStatusToPaid($form);
 		}
 
+		// Notify registrant that the payment was received
 		\models\L11nManager::setLanguage($form->getLanguageEntered());
 
 		$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
@@ -218,6 +219,27 @@ class Payment {
 			$f3->get('lang.EmailRegistrationConfirmationSubject', $form->getEmail()),
 			\View::instance()->render('mail/registration_confirm.php')
 			);
+
+		// Check if any seats are still available, or if we need to switch all
+		// remaining registrations pending-payment to waiting-list
+		if (0 === $registrationDao->readSeatsLeft()) {
+			$registrationIds =
+				$registrationDao->updatePendingPaymentRegistrationsToWaitingList();
+
+			// Email each of the affected registrants
+			foreach ($registrationIds as $registrationId) {
+				$form = $registrationDao->readRegistrationFormById($registrationId);
+				\models\L11nManager::setLanguage($form->getLanguageEntered());
+				$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
+				$f3->set('form', $form);
+
+				$mailer->sendEmail(
+					$form->getEmail(),
+					$f3->get('lang.EmailRegistrationConfirmationSubject', $form->getEmail()),
+					\View::instance()->render('mail/registration_confirm.php')
+					);
+			}
+		}
 	}
 
 }
