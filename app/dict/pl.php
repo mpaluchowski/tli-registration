@@ -311,6 +311,13 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Zakwaterowanie u Toastmasterów",
 
+	"ReportEventEnrollmentsHeader" => "Listy na wydarzenia",
+	"ReportEventEnrollmentsHeader-friday-copernicus-options-center" => "Piątkowe Centrum Nauki Kopernik: Wystawa",
+	"ReportEventEnrollmentsHeader-friday-copernicus-options-planetarium" => "Piątkowe Centrum Nauki Kopernik: Planetarium",
+	"ReportEventEnrollmentsHeader-friday-social-event" => "Piątkowa impreza",
+	"ReportEventEnrollmentsHeader-saturday-dinner-participate" => "Sobotnia kolacja",
+	"ReportEventEnrollmentsHeader-saturday-party-participate" => "Sobotnia impreza",
+
 	"DivisionName" => "Okręg {0}",
 	"DivisionOther" => "Inne okręgi",
 
@@ -334,6 +341,7 @@ return ['lang' => [
 	"AdminNavReports" => "Raporty",
 	"AdminNavReportsOfficersByClub" => "Oficerowie wg klubów",
 	"AdminNavReportsAccommodationWithToastmasters" => "Zakwaterowanie",
+	"AdminNavReportsEventEnrollments" => "Listy na wydarzenia",
 	"AdminNavAuditLog" => "Log Zdarzeń",
 	"LogoutButton" => "Wyloguj",
 	"SignedInAs" => "Zalogowany jako {0}",

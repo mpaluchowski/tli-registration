@@ -127,4 +127,59 @@ class ReportsDaoImpl implements \models\ReportsDao {
 		return $data;
 	}
 
+	/**
+	 * Read lists of people enrolled for all the events we're planning to
+	 * organize.
+	 *
+	 * @return array indexed by event type with basic data on people, who asked
+	 * to be included for specific events.
+	 */
+	function readEventEnrollments() {
+		$query = "
+			SELECT rf_events.name AS event_name,
+				   rf_events.value AS event_value,
+				   r.id_registration,
+				   r.`status`,
+				   r.email,
+				   GROUP_CONCAT(IF(rf_info.name = 'full-name', rf_info.value, NULL)) AS full_name,
+				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone
+			FROM " . \F3::get('db_table_prefix') . "registration_fields rf_events
+			JOIN " . \F3::get('db_table_prefix') . "registrations r
+			  ON rf_events.fk_registration = r.id_registration
+			JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_info
+			  ON rf_events.fk_registration = rf_info.fk_registration
+			 AND rf_info.name IN ('full-name', 'phone')
+			WHERE rf_events.name IN (
+				'friday-copernicus-options',
+				'friday-social-event',
+				'saturday-dinner-participate',
+				'saturday-party-participate'
+				)
+			GROUP BY rf_events.fk_registration,
+					 rf_events.name
+			ORDER BY rf_events.name,
+					 full_name";
+		$result = \F3::get('db')->exec($query);
+
+		$data = [];
+		foreach ($result as $row) {
+			$form = new \models\RegistrationForm();
+
+			$form->setId($row['id_registration']);
+			$form->setEmail($row['email']);
+			$form->setStatus($row['status']);
+			$form->setField('full-name', json_decode($row['full_name']));
+			$form->setField('phone', json_decode($row['phone']));
+
+			if ('friday-copernicus-options' == $row['event_name']) {
+				foreach (json_decode($row['event_value']) as $option) {
+					$data[$row['event_name'] . '-' . $option][] = $form;
+				}
+			} else {
+				$data[$row['event_name']][] = $form;
+			}
+		}
+		return $data;
+	}
+
 }
