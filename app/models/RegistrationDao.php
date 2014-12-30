@@ -403,6 +403,37 @@ class RegistrationDao {
 	}
 
 	/**
+	 * Reads how many available seats are left.
+	 *
+	 * @return number of seats available left, or NULL if seating is not
+	 * limited.
+	 */
+	function readSeatsLeft() {
+		if (!self::isSeatingLimited())
+			return null;
+
+		$query = 'SELECT COUNT(r.id_registration) AS paid
+				  FROM ' . \F3::get('db_table_prefix') . 'registrations r
+				  WHERE r.status = "paid"';
+		$result = \F3::get('db')->exec($query);
+
+		return self::getSeatLimit() - $result[0]['paid'] > 0
+			? self::getSeatLimit() - $result[0]['paid']
+			: 0;
+	}
+
+	/**
+	 * Checks if there are any seats left to register for.
+	 *
+	 * @return true if at least 1 seat is left or seating is unlimited,
+	 * false otherwise.
+	 */
+	function hasSeatsLeft() {
+		$left = $this->readSeatsLeft();
+		return $left === null || $left > 0;
+	}
+
+	/**
 	 * Checks if seating is limited for this event.
 	 *
 	 * @return true if seating is limited. False otherwise.
