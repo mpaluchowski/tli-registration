@@ -15,7 +15,7 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 	<p class="text-center"><?php echo \F3::get('lang.ReportUpdated', \helpers\View::formatUnixDateTime(time())) ?></p>
 
 <?php foreach ($positions as $position): ?>
-	<h2><?php echo \F3::get('lang.ExecCommmitteePositionShort-' . $position) ?></h2>
+	<h2><?php echo \F3::get('lang.ExecCommmitteePosition-' . $position) ?></h2>
 
 	<div class="table-responsive">
 		<table class="table table-hover">
