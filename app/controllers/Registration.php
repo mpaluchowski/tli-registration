@@ -136,6 +136,16 @@ class Registration {
 			$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
 		}
 
+		// Check if registration has teh right status to redeem a code
+		if ('pending-payment' !== $form->getStatus()) {
+			// Registration not in a status meant for payment
+			\models\MessageManager::addMessage(
+				'danger',
+				$f3->get('lang.DiscountCodeInvalidRegistrationStatusMsg')
+				);
+			$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
+		}
+
 		// Try finding the code
 		$discountCodeDao = new \models\DiscountCodeDao();
 

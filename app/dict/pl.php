@@ -204,6 +204,7 @@ return ['lang' => [
 	"DiscountCodeRedeemButton" => "Wykorzystaj kod",
 	"DiscountCodeNotFoundMsg" => "Nie mogliśmy znaleźć kodu {0} w naszym rejestrze. Spróbuj wpisać go ponownie i jeśli uważasz, że to błąd, skontaktuj się z nami i wyjaśnimy sprawę.",
 	"DiscountCodeInvalidMsg" => "Kod \"{0}\" nie wydaje się prawidłowy. Wklej kod <em>dokładnie</em> w takiej formie, w jakiej został ci wysłany - 13-znakowy ciąg liter i cyfr. Jeśli napotykasz problemy, skontaktuj się z nami.",
+	"DiscountCodeInvalidRegistrationStatusMsg" => "Kody zniżkowe można wykorzystać jedynie kiedy rejestracja posiada status \"Oczekuje płatności\".",
 	"DiscountCodeRedeemedMsg" => "Twój kod {0} został pomyślnie wykorzystany i ceny zaktualizowane.",
 
 	"SelectPaymentOptionButton" => "Zapłać teraz online z Przelewy24",
