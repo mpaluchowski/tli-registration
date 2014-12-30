@@ -450,9 +450,7 @@ class RegistrationDao {
 				  WHERE r.status = "paid"';
 		$result = \F3::get('db')->exec($query);
 
-		return self::getSeatLimit() - $result[0]['paid'] > 0
-			? self::getSeatLimit() - $result[0]['paid']
-			: 0;
+		return self::getSeatLimit() - $result[0]['paid'];
 	}
 
 	/**
