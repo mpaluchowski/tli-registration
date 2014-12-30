@@ -115,8 +115,7 @@ class Registration {
 	}
 
 	function code_redeem($f3) {
-		if (!\models\DiscountCodeDao::validateCode($f3->get('POST.discount-code'))
-				|| !is_numeric($f3->get('POST.registrationId')))
+		if(!is_numeric($f3->get('POST.registrationId')))
 			$f3->error(404);
 
 		// See if we can find the Registration
@@ -126,6 +125,16 @@ class Registration {
 
 		if (!$form)
 			$f3->error(404);
+
+		// Validate the discount code's format
+		if (!\models\DiscountCodeDao::validateCode($f3->get('POST.discount-code'))) {
+			// Code invalid, inform user
+			\models\MessageManager::addMessage(
+				'danger',
+				$f3->get('lang.DiscountCodeInvalidMsg', $f3->get('POST.discount-code'))
+				);
+			$f3->reroute('@registration_review(@registrationHash=' . $form->getHash() . ')');
+		}
 
 		// Try finding the code
 		$discountCodeDao = new \models\DiscountCodeDao();
