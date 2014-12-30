@@ -185,6 +185,39 @@ class RegistrationDao {
 			]);
 	}
 
+	/**
+	 * Updates all Registrations that have the pending-payment status to
+	 * waiting-list status. Makes sure no other transactions can read these
+	 * registrations in between.
+	 *
+	 * @return array with IDs of registrations that were updated, or empty array
+	 * if no results registrations were updated.
+	 */
+	function updatePendingPaymentRegistrationsToWaitingList() {
+		\F3::get('db')->begin();
+
+		$query = "
+			SELECT r.id_registration
+			FROM " . \F3::get('db_table_prefix') . "registrations r
+			WHERE r.status = 'pending-payment'
+			FOR UPDATE
+			";
+		$result = \F3::get('db')->exec($query);
+
+		$query = "
+			UPDATE " . \F3::get('db_table_prefix') . "registrations
+			SET status = 'waiting-list'
+			WHERE status = 'pending-payment'
+		";
+		\F3::get('db')->exec($query);
+
+		\F3::get('db')->commit();
+
+		return array_map(function($item) {
+			return $item['id_registration'];
+		}, $result);
+	}
+
 	function readRegistrationFormByHash($registrationHash) {
 		$query = 'SELECT r.id_registration,
 						 r.email,
