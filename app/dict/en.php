@@ -311,6 +311,13 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Accommodation with Toastmasters",
 
+	"ReportEventEnrollmentsHeader" => "Event enrollments",
+	"ReportEventEnrollmentsHeader-friday-copernicus-options-center" => "Friday's Copernicus Science Centre: Exhibition",
+	"ReportEventEnrollmentsHeader-friday-copernicus-options-planetarium" => "Friday's Copernicus Science Centre: Planetarium",
+	"ReportEventEnrollmentsHeader-friday-social-event" => "Friday's party",
+	"ReportEventEnrollmentsHeader-saturday-dinner-participate" => "Saturday's dinner",
+	"ReportEventEnrollmentsHeader-saturday-party-participate" => "Saturday's party",
+
 	"DivisionName" => "Division {0}",
 	"DivisionOther" => "Other divisions",
 
@@ -334,6 +341,7 @@ return ['lang' => [
 	"AdminNavReports" => "Reports",
 	"AdminNavReportsOfficersByClub" => "Officers by club",
 	"AdminNavReportsAccommodationWithToastmasters" => "Accommodation",
+	"AdminNavReportsEventEnrollments" => "Event enrollments",
 	"AdminNavAuditLog" => "Audit Log",
 	"LogoutButton" => "Logout",
 	"SignedInAs" => "Signed in as {0}",
