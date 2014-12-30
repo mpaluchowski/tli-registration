@@ -48,7 +48,7 @@ class ReportsDaoImpl implements \models\ReportsDao {
 				  JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_name
 				    ON r.id_registration = rf_name.fk_registration
 				   AND rf_name.name = 'full-name'
-				  JOIN tli_registration_fields rf_position
+				  JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_position
 				    ON r.id_registration = rf_position.fk_registration
 				   AND rf_position.name = 'exec-position'
 				   AND rf_position.value <> '\"none\"'
@@ -99,8 +99,8 @@ class ReportsDaoImpl implements \models\ReportsDao {
 						 GROUP_CONCAT(IF(rf.name = 'accommodation-on', rf.value, NULL)) AS accommodation_on,
 						 GROUP_CONCAT(IF(rf.name = 'full-name', rf.value, NULL)) AS full_name,
 						 GROUP_CONCAT(IF(rf.name = 'phone', rf.value, NULL)) AS phone
-				  FROM tli_registrations r
-				  JOIN tli_registration_fields rf
+				  FROM " . \F3::get('db_table_prefix') . "registrations r
+				  JOIN " . \F3::get('db_table_prefix') . "registration_fields rf
 					ON rf.fk_registration = r.id_registration
 				   AND rf.name IN ('accommodation-with-toastmasters', 'accommodation-on', 'full-name', 'phone')
 				  GROUP BY r.id_registration
