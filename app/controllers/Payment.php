@@ -206,6 +206,7 @@ class Payment {
 			$registrationDao->updateRegistrationStatusToPaid($form);
 		}
 
+		// Notify registrant that the payment was received
 		\models\L11nManager::setLanguage($form->getLanguageEntered());
 
 		$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
