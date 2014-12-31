@@ -19,6 +19,7 @@ tliRegister.discountCodes = function() {
 
 	openCodeCreatePanel = function() {
 		$('#create-code-panel').slideDown(function() {
+			$('[autofocus]', $(this)).focus();
 			$('#create-code-button').hide();
 		});
 	},
