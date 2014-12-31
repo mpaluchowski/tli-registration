@@ -347,6 +347,7 @@ return ['lang' => [
 	"AdminNavReportsOfficersByClub" => "Officers by club",
 	"AdminNavReportsOfficersByPosition" => "Officers by position",
 	"AdminNavReportsAccommodationWithToastmasters" => "Accommodation",
+	"AdminNavReportsLunchOrders" => "Lunch orders",
 	"AdminNavReportsLatestComments" => "Latest comments",
 	"AdminNavReportsEventEnrollments" => "Event enrollments",
 	"AdminNavAuditLog" => "Audit Log",
