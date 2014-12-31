@@ -22,7 +22,8 @@ $renderer = \helpers\FormRendererFactory::className();
 				<tr>
 					<th><?php echo \F3::get('lang.FullName') ?></th>
 				<?php if ('stay' === $type): ?>
-					<th><?php echo \F3::get('lang.AccommodationWithToastmastersNeededOn') ?></th>
+					<th><?php echo \F3::get('lang.AccommodationWithToastmastersFriSat') ?></th>
+					<th><?php echo \F3::get('lang.AccommodationWithToastmastersSatSun') ?></th>
 				<?php endif; ?>
 					<th><?php echo \F3::get('lang.Email') ?></th>
 					<th><?php echo \F3::get('lang.Phone') ?></th>
@@ -34,7 +35,8 @@ $renderer = \helpers\FormRendererFactory::className();
 				<tr data-id="<?php echo $registration->getId() ?>">
 					<td><?php echo $renderer::value($registration, 'full-name') ?></td>
 				<?php if ('stay' === $type): ?>
-					<td><?php echo $renderer::value($registration, 'accommodation-on') ?></td>
+					<td <?php if (in_array('fri-sat', $registration->getField('accommodation-on'))): ?> class="success"><?php echo \F3::get('lang.Yes'); else: ?>><?php echo \F3::get('lang.No'); endif; ?></td>
+					<td <?php if (in_array('sat-sun', $registration->getField('accommodation-on'))): ?> class="success"><?php echo \F3::get('lang.Yes'); else: ?>><?php echo \F3::get('lang.No'); endif; ?></td>
 				<?php endif; ?>
 					<td><a href="mailto:<?php echo $registration->getEmail() ?>"><?php echo $registration->getEmail() ?></a></td>
 					<td><a href="callto:<?php echo $registration->getField('phone') ?>"><?php echo $renderer::value($registration, 'phone') ?></a></td>
