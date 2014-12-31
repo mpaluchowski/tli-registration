@@ -33,7 +33,7 @@ $renderer = \helpers\FormRendererFactory::className();
 				$positionFirst = true;
 			foreach ($registrations as $registration):
 			?>
-				<tr>
+				<tr data-id="<?php echo $registration->getId() ?>">
 					<?php if ($clubFirst): ?><td rowspan="<?php echo count($positions, COUNT_RECURSIVE) - count($positions) ?>" style="vertical-align: middle;"><?php echo $club ?></td><?php endif; ?>
 					<?php if ($positionFirst): ?><td rowspan="<?php echo count($registrations) ?>" style="vertical-align: middle;"><?php echo \F3::get('lang.ExecCommmitteePositionShort-' . $position) ?></td><?php endif; ?>
 					<td><?php echo $renderer::value($registration, 'full-name') ?></td>
