@@ -312,6 +312,8 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Accommodation with Toastmasters",
 
+	"ReportLunchOrdersHeader" => "Lunch orders",
+
 	"ReportLatestCommentsHeader" => "Latest comments",
 
 	"ReportEventEnrollmentsHeader" => "Event enrollments",
@@ -345,6 +347,7 @@ return ['lang' => [
 	"AdminNavReportsOfficersByClub" => "Officers by club",
 	"AdminNavReportsOfficersByPosition" => "Officers by position",
 	"AdminNavReportsAccommodationWithToastmasters" => "Accommodation",
+	"AdminNavReportsLunchOrders" => "Lunch orders",
 	"AdminNavReportsLatestComments" => "Latest comments",
 	"AdminNavReportsEventEnrollments" => "Event enrollments",
 	"AdminNavAuditLog" => "Audit Log",
