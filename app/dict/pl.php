@@ -312,6 +312,8 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Zakwaterowanie u Toastmasterów",
 
+	"ReportLatestCommentsHeader" => "Najnowsze komentarze",
+
 	"ReportEventEnrollmentsHeader" => "Listy na wydarzenia",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-center" => "Piątkowe Centrum Nauki Kopernik: Wystawa",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-planetarium" => "Piątkowe Centrum Nauki Kopernik: Planetarium",

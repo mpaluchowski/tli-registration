@@ -312,6 +312,8 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Accommodation with Toastmasters",
 
+	"ReportLatestCommentsHeader" => "Latest comments",
+
 	"ReportEventEnrollmentsHeader" => "Event enrollments",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-center" => "Friday's Copernicus Science Centre: Exhibition",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-planetarium" => "Friday's Copernicus Science Centre: Planetarium",
