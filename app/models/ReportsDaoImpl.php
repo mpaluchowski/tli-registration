@@ -316,4 +316,62 @@ class ReportsDaoImpl implements \models\ReportsDao {
 		return $data;
 	}
 
+	/**
+	 * Read people who registered as duplicate officers roles in any club.
+	 *
+	 * @return array, indexed by club and position, with people, who registered
+	 * as duplicate officers.
+	 */
+	function readOfficerDuplicates() {
+		$query = "
+			SELECT rf_club.value AS home_club,
+				   rf_position.value AS exec_position,
+				   r.id_registration,
+				   r.`status`,
+				   r.email,
+				   GROUP_CONCAT(IF(rf_info.name = 'full-name', rf_info.value, NULL)) AS full_name,
+				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone
+			FROM tli_registration_fields rf_club
+			JOIN tli_registration_fields rf_position
+			  ON rf_club.fk_registration = rf_position.fk_registration
+			 AND rf_position.name = 'exec-position'
+			 AND rf_club.name = 'home-club'
+			JOIN tli_registrations r
+			  ON rf_club.fk_registration = r.id_registration
+			JOIN tli_registration_fields rf_info
+			  ON rf_club.fk_registration = rf_info.fk_registration
+			 AND rf_info.name IN ('full-name', 'phone')
+			WHERE (rf_club.value, rf_position.value) IN (
+				SELECT rf_clubs.value AS home_club,
+					   rf_officers.value AS exec_position
+				FROM tli_registration_fields rf_clubs
+				JOIN tli_registration_fields rf_officers
+				  ON rf_clubs.fk_registration = rf_officers.fk_registration
+				 AND rf_officers.name = 'exec-position'
+				 AND rf_officers.value <> '\"none\"'
+				WHERE rf_clubs.name = 'home-club'
+				GROUP BY rf_clubs.value,
+						 rf_officers.value
+				HAVING COUNT(rf_officers.value) > 1
+			)
+			GROUP BY rf_club.fk_registration
+			ORDER BY home_club,
+					 full_name";
+		$result = \F3::get('db')->exec($query);
+
+		$data = [];
+		foreach ($result as $row) {
+			$form = new \models\RegistrationForm();
+
+			$form->setId($row['id_registration']);
+			$form->setEmail($row['email']);
+			$form->setStatus($row['status']);
+			$form->setField('full-name', json_decode($row['full_name']));
+			$form->setField('phone', json_decode($row['phone']));
+
+			$data[json_decode($row['home_club'])][json_decode($row['exec_position'])][] = $form;
+		}
+		return $data;
+	}
+
 }
