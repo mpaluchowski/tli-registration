@@ -316,6 +316,8 @@ return ['lang' => [
 
 	"ReportLatestCommentsHeader" => "Latest comments",
 
+	"ReportOfficerDuplicatesHeader" => "Duplicate officers",
+
 	"ReportEventEnrollmentsHeader" => "Event enrollments",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-center" => "Friday's Copernicus Science Centre: Exhibition",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-planetarium" => "Friday's Copernicus Science Centre: Planetarium",
@@ -349,6 +351,7 @@ return ['lang' => [
 	"AdminNavReportsAccommodationWithToastmasters" => "Accommodation",
 	"AdminNavReportsLunchOrders" => "Lunch orders",
 	"AdminNavReportsLatestComments" => "Latest comments",
+	"AdminNavReportsOfficerDuplicates" => "Officer duplicates",
 	"AdminNavReportsEventEnrollments" => "Event enrollments",
 	"AdminNavAuditLog" => "Audit Log",
 	"LogoutButton" => "Logout",

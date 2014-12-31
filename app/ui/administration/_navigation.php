@@ -23,6 +23,7 @@
 						<li><a href="<?php echo str_replace('@reportName', 'event_enrollments', \F3::hive()['ALIASES']['admin_reports']) ?>"><?php echo \F3::get('lang.AdminNavReportsEventEnrollments') ?></a></li>
 						<li role="presentation" class="divider"></li>
 						<li><a href="<?php echo str_replace('@reportName', 'latest_comments', \F3::hive()['ALIASES']['admin_reports']) ?>"><?php echo \F3::get('lang.AdminNavReportsLatestComments') ?></a></li>
+						<li><a href="<?php echo str_replace('@reportName', 'officer_duplicates', \F3::hive()['ALIASES']['admin_reports']) ?>"><?php echo \F3::get('lang.AdminNavReportsOfficerDuplicates') ?></a></li>
 					</ul>
 				</li>
 				<li<?php if (\F3::get('PATTERN') == \F3::get('ALIASES.admin_audit_log')) echo ' class="active"'?>><a href="<?php echo \F3::get('ALIASES.admin_audit_log') ?>"><?php echo \F3::get('lang.AdminNavAuditLog') ?></a></li>
