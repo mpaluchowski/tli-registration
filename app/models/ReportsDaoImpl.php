@@ -142,10 +142,10 @@ class ReportsDaoImpl implements \models\ReportsDao {
 				   r.email,
 				   GROUP_CONCAT(IF(rf_info.name = 'full-name', rf_info.value, NULL)) AS full_name,
 				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone
-			FROM tli_registration_fields rf_lunch
-			JOIN tli_registrations r
+			FROM " . \F3::get('db_table_prefix') . "registration_fields rf_lunch
+			JOIN " . \F3::get('db_table_prefix') . "registrations r
 			  ON rf_lunch.fk_registration = r.id_registration
-			JOIN tli_registration_fields rf_info
+			JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_info
 			  ON rf_lunch.fk_registration = rf_info.fk_registration
 			 AND rf_info.name IN ('full-name', 'phone')
 			WHERE rf_lunch.name = 'lunch-days'
