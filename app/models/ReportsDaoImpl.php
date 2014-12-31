@@ -128,6 +128,49 @@ class ReportsDaoImpl implements \models\ReportsDao {
 	}
 
 	/**
+	 * Reads the list of people, who applied for lunch on any or all days of the
+	 * conference.
+	 *
+	 * @return array with Registration Form instances of every person, who
+	 * applied for lunch.
+	 */
+	function readLunchOrders() {
+		$query = "
+			SELECT rf_lunch.value AS lunch_days,
+				   r.id_registration,
+				   r.`status`,
+				   r.email,
+				   GROUP_CONCAT(IF(rf_info.name = 'full-name', rf_info.value, NULL)) AS full_name,
+				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone
+			FROM tli_registration_fields rf_lunch
+			JOIN tli_registrations r
+			  ON rf_lunch.fk_registration = r.id_registration
+			JOIN tli_registration_fields rf_info
+			  ON rf_lunch.fk_registration = rf_info.fk_registration
+			 AND rf_info.name IN ('full-name', 'phone')
+			WHERE rf_lunch.name = 'lunch-days'
+			GROUP BY rf_lunch.fk_registration,
+					 rf_lunch.name
+			ORDER BY full_name";
+		$result = \F3::get('db')->exec($query);
+
+		$data = [];
+		foreach ($result as $row) {
+			$form = new \models\RegistrationForm();
+
+			$form->setId($row['id_registration']);
+			$form->setEmail($row['email']);
+			$form->setStatus($row['status']);
+			$form->setField('full-name', json_decode($row['full_name']));
+			$form->setField('phone', json_decode($row['phone']));
+			$form->setField('lunch-days', json_decode($row['lunch_days']));
+
+			$data[] = $form;
+		}
+		return $data;
+	}
+
+	/**
 	 * Read lists of people enrolled for all the events we're planning to
 	 * organize.
 	 *
