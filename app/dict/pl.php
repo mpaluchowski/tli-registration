@@ -316,6 +316,8 @@ return ['lang' => [
 
 	"ReportLatestCommentsHeader" => "Najnowsze komentarze",
 
+	"ReportOfficerDuplicatesHeader" => "Zduplikowani oficerowie",
+
 	"ReportEventEnrollmentsHeader" => "Listy na wydarzenia",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-center" => "Piątkowe Centrum Nauki Kopernik: Wystawa",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-planetarium" => "Piątkowe Centrum Nauki Kopernik: Planetarium",
