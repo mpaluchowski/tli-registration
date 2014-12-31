@@ -331,21 +331,21 @@ class ReportsDaoImpl implements \models\ReportsDao {
 				   r.email,
 				   GROUP_CONCAT(IF(rf_info.name = 'full-name', rf_info.value, NULL)) AS full_name,
 				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone
-			FROM tli_registration_fields rf_club
-			JOIN tli_registration_fields rf_position
+			FROM " . \F3::get('db_table_prefix') . "registration_fields rf_club
+			JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_position
 			  ON rf_club.fk_registration = rf_position.fk_registration
 			 AND rf_position.name = 'exec-position'
 			 AND rf_club.name = 'home-club'
-			JOIN tli_registrations r
+			JOIN " . \F3::get('db_table_prefix') . "registrations r
 			  ON rf_club.fk_registration = r.id_registration
-			JOIN tli_registration_fields rf_info
+			JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_info
 			  ON rf_club.fk_registration = rf_info.fk_registration
 			 AND rf_info.name IN ('full-name', 'phone')
 			WHERE (rf_club.value, rf_position.value) IN (
 				SELECT rf_clubs.value AS home_club,
 					   rf_officers.value AS exec_position
-				FROM tli_registration_fields rf_clubs
-				JOIN tli_registration_fields rf_officers
+				FROM " . \F3::get('db_table_prefix') . "registration_fields rf_clubs
+				JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_officers
 				  ON rf_clubs.fk_registration = rf_officers.fk_registration
 				 AND rf_officers.name = 'exec-position'
 				 AND rf_officers.value <> '\"none\"'
