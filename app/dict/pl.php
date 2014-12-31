@@ -351,6 +351,7 @@ return ['lang' => [
 	"AdminNavReportsAccommodationWithToastmasters" => "Zakwaterowanie",
 	"AdminNavReportsLunchOrders" => "Zamówione lunche",
 	"AdminNavReportsLatestComments" => "Najnowsze komentarze",
+	"AdminNavReportsOfficerDuplicates" => "Zduplikowani oficerowie",
 	"AdminNavReportsEventEnrollments" => "Listy na wydarzenia",
 	"AdminNavAuditLog" => "Log Zdarzeń",
 	"LogoutButton" => "Wyloguj",

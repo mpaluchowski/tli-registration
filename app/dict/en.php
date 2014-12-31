@@ -351,6 +351,7 @@ return ['lang' => [
 	"AdminNavReportsAccommodationWithToastmasters" => "Accommodation",
 	"AdminNavReportsLunchOrders" => "Lunch orders",
 	"AdminNavReportsLatestComments" => "Latest comments",
+	"AdminNavReportsOfficerDuplicates" => "Officer duplicates",
 	"AdminNavReportsEventEnrollments" => "Event enrollments",
 	"AdminNavAuditLog" => "Audit Log",
 	"LogoutButton" => "Logout",
