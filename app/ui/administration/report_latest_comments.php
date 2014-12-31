@@ -34,7 +34,7 @@ $renderer = \helpers\FormRendererFactory::className();
 					<td><span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($registration->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $registration->getStatus()) ?></span></td>
 				</tr>
 				<tr>
-					<td colspan="5">
+					<td colspan="5" style="padding-bottom: 1.4em;">
 						<?php echo $renderer::value($registration, 'comments') ?>
 					</td>
 				</tr>
