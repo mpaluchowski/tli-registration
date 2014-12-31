@@ -312,6 +312,8 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Zakwaterowanie u Toastmasterów",
 
+	"ReportLatestCommentsHeader" => "Najnowsze komentarze",
+
 	"ReportEventEnrollmentsHeader" => "Listy na wydarzenia",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-center" => "Piątkowe Centrum Nauki Kopernik: Wystawa",
 	"ReportEventEnrollmentsHeader-friday-copernicus-options-planetarium" => "Piątkowe Centrum Nauki Kopernik: Planetarium",
@@ -343,6 +345,7 @@ return ['lang' => [
 	"AdminNavReportsOfficersByClub" => "Oficerowie wg klubów",
 	"AdminNavReportsOfficersByPosition" => "Oficerowie wg stanowisk",
 	"AdminNavReportsAccommodationWithToastmasters" => "Zakwaterowanie",
+	"AdminNavReportsLatestComments" => "Najnowsze komentarze",
 	"AdminNavReportsEventEnrollments" => "Listy na wydarzenia",
 	"AdminNavAuditLog" => "Log Zdarzeń",
 	"LogoutButton" => "Wyloguj",

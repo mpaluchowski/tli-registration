@@ -227,4 +227,50 @@ class ReportsDaoImpl implements \models\ReportsDao {
 		return $data;
 	}
 
+	/**
+	 * Reads comments posted during registration, ordered from earliest to
+	 * latest.
+	 *
+	 * @return array of Registration Forms, which entered a comment, together
+	 * with basic data about the person.
+	 */
+	function readLatestComments() {
+		$query = "
+			SELECT rf_comments.value AS comments,
+				   r.id_registration,
+				   r.`status`,
+				   r.email,
+				   GROUP_CONCAT(IF(rf_info.name = 'full-name', rf_info.value, NULL)) AS full_name,
+				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone,
+				   GROUP_CONCAT(IF(rf_info.name = 'home-club', rf_info.value, NULL)) AS home_club
+			FROM " . \F3::get('db_table_prefix') . "registration_fields rf_comments
+			JOIN " . \F3::get('db_table_prefix') . "registrations r
+			  ON rf_comments.fk_registration = r.id_registration
+			JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_info
+			  ON rf_comments.fk_registration = rf_info.fk_registration
+			 AND rf_info.name IN ('full-name', 'phone', 'home-club')
+			WHERE rf_comments.name = 'comments'
+			GROUP BY rf_comments.fk_registration,
+					 rf_comments.name
+			ORDER BY r.id_registration DESC";
+
+		$result = \F3::get('db')->exec($query);
+
+		$data = [];
+		foreach ($result as $row) {
+			$form = new \models\RegistrationForm();
+
+			$form->setId($row['id_registration']);
+			$form->setEmail($row['email']);
+			$form->setStatus($row['status']);
+			$form->setField('full-name', json_decode($row['full_name']));
+			$form->setField('phone', json_decode($row['phone']));
+			$form->setField('home-club', json_decode($row['home_club']));
+			$form->setField('comments', json_decode($row['comments']));
+
+			$data[] = $form;
+		}
+		return $data;
+	}
+
 }
