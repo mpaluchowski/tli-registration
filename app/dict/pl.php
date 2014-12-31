@@ -312,6 +312,8 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Zakwaterowanie u Toastmasterów",
 
+	"ReportLunchOrdersHeader" => "Zamówione lunche",
+
 	"ReportLatestCommentsHeader" => "Najnowsze komentarze",
 
 	"ReportEventEnrollmentsHeader" => "Listy na wydarzenia",
