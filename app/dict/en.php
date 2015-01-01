@@ -312,6 +312,8 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Accommodation with Toastmasters",
 
+	"ReportTranslatorsHeader" => "Translators",
+
 	"ReportLunchOrdersHeader" => "Lunch orders",
 
 	"ReportLatestCommentsHeader" => "Latest comments",
