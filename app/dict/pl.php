@@ -351,6 +351,7 @@ return ['lang' => [
 	"AdminNavReportsOfficersByClub" => "Oficerowie wg klubów",
 	"AdminNavReportsOfficersByPosition" => "Oficerowie wg stanowisk",
 	"AdminNavReportsAccommodationWithToastmasters" => "Zakwaterowanie",
+	"AdminNavReportsTranslators" => "Tłumacze",
 	"AdminNavReportsLunchOrders" => "Zamówione lunche",
 	"AdminNavReportsLatestComments" => "Najnowsze komentarze",
 	"AdminNavReportsOfficerDuplicates" => "Zduplikowani oficerowie",
