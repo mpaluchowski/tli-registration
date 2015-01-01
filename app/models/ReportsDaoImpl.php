@@ -185,13 +185,14 @@ class ReportsDaoImpl implements \models\ReportsDao {
 				   r.`status`,
 				   r.email,
 				   GROUP_CONCAT(IF(rf_info.name = 'full-name', rf_info.value, NULL)) AS full_name,
-				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone
+				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone,
+				   GROUP_CONCAT(IF(rf_info.name = 'saturday-dinner-meal', rf_info.value, NULL)) AS saturday_dinner_meal
 			FROM " . \F3::get('db_table_prefix') . "registration_fields rf_events
 			JOIN " . \F3::get('db_table_prefix') . "registrations r
 			  ON rf_events.fk_registration = r.id_registration
 			JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_info
 			  ON rf_events.fk_registration = rf_info.fk_registration
-			 AND rf_info.name IN ('full-name', 'phone')
+			 AND rf_info.name IN ('full-name', 'phone', 'saturday-dinner-meal')
 			WHERE rf_events.name IN (
 				'friday-copernicus-options',
 				'friday-social-event',
@@ -213,6 +214,7 @@ class ReportsDaoImpl implements \models\ReportsDao {
 			$form->setStatus($row['status']);
 			$form->setField('full-name', json_decode($row['full_name']));
 			$form->setField('phone', json_decode($row['phone']));
+			$form->setField('saturday-dinner-meal', json_decode($row['saturday_dinner_meal']));
 
 			if ('friday-copernicus-options' == $row['event_name']) {
 				foreach (json_decode($row['event_value']) as $option) {

@@ -21,6 +21,9 @@ $renderer = \helpers\FormRendererFactory::className();
 			<thead>
 				<tr>
 					<th><?php echo \F3::get('lang.FullName') ?></th>
+				<?php if ('saturday-dinner-participate' === $event): ?>
+					<th><?php echo \F3::get('lang.EventsSaturdayDinnerMeal') ?></th>
+				<?php endif; ?>
 					<th><?php echo \F3::get('lang.Email') ?></th>
 					<th><?php echo \F3::get('lang.Phone') ?></th>
 					<th><?php echo \F3::get('lang.RegistrationStatus') ?></th>
@@ -30,6 +33,9 @@ $renderer = \helpers\FormRendererFactory::className();
 			<?php foreach ($registrations as $registration): ?>
 				<tr data-id="<?php echo $registration->getId() ?>">
 					<td><?php echo $renderer::value($registration, 'full-name') ?></td>
+				<?php if ('saturday-dinner-participate' === $event): ?>
+					<td><?php echo $renderer::value($registration, 'saturday-dinner-meal') ?></td>
+				<?php endif; ?>
 					<td><a href="mailto:<?php echo $registration->getEmail() ?>"><?php echo $registration->getEmail() ?></a></td>
 					<td><a href="callto:<?php echo $registration->getField('phone') ?>"><?php echo $renderer::value($registration, 'phone') ?></a></td>
 					<td><span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($registration->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $registration->getStatus()) ?></span></td>

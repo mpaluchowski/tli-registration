@@ -131,6 +131,7 @@ return ['lang' => [
 	'EventsLunchDaysValidationMsg' => "Please choose one or both days on which you'd like to have organized lunch.",
 	'EventsSaturdayDinner' => "Saturday's dinner",
 	'EventsSaturdayDinnerYes' => "I will participate in <a href=\"http://tli.toastmasters.org.pl/2015-01/events#event-street\" rel=\"external\"><strong>Saturday's dinner at Street Restaurant</strong></a>",
+	'EventsSaturdayDinnerMeal' => "Meal",
 	'EventsSaturdayDinnerMealValidationMsg' => "Please choose a meal option for the Saturday dinner.",
 	'EventsSaturdayDinnerMeat' => "I'll have a <strong>meat</strong> meal",
 	'EventsSaturdayDinner-meat' => "meat",
