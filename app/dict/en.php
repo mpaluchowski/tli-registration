@@ -312,6 +312,8 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Accommodation with Toastmasters",
 
+	"ReportTranslatorsHeader" => "Translators",
+
 	"ReportLunchOrdersHeader" => "Lunch orders",
 
 	"ReportLatestCommentsHeader" => "Latest comments",
@@ -349,6 +351,7 @@ return ['lang' => [
 	"AdminNavReportsOfficersByClub" => "Officers by club",
 	"AdminNavReportsOfficersByPosition" => "Officers by position",
 	"AdminNavReportsAccommodationWithToastmasters" => "Accommodation",
+	"AdminNavReportsTranslators" => "Translators",
 	"AdminNavReportsLunchOrders" => "Lunch orders",
 	"AdminNavReportsLatestComments" => "Latest comments",
 	"AdminNavReportsOfficerDuplicates" => "Officer duplicates",

@@ -312,6 +312,8 @@ return ['lang' => [
 
 	"ReportAccommodationWithToastmastersHeader" => "Zakwaterowanie u Toastmasterów",
 
+	"ReportTranslatorsHeader" => "Tłumacze",
+
 	"ReportLunchOrdersHeader" => "Zamówione lunche",
 
 	"ReportLatestCommentsHeader" => "Najnowsze komentarze",
@@ -349,6 +351,7 @@ return ['lang' => [
 	"AdminNavReportsOfficersByClub" => "Oficerowie wg klubów",
 	"AdminNavReportsOfficersByPosition" => "Oficerowie wg stanowisk",
 	"AdminNavReportsAccommodationWithToastmasters" => "Zakwaterowanie",
+	"AdminNavReportsTranslators" => "Tłumacze",
 	"AdminNavReportsLunchOrders" => "Zamówione lunche",
 	"AdminNavReportsLatestComments" => "Najnowsze komentarze",
 	"AdminNavReportsOfficerDuplicates" => "Zduplikowani oficerowie",
