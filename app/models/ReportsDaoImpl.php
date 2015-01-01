@@ -226,6 +226,47 @@ class ReportsDaoImpl implements \models\ReportsDao {
 	}
 
 	/**
+	 * Reads list of people who volunteered to help out with translations.
+	 *
+	 * @return array of RegistrationForm instances with each translation
+	 * volunteer's data.
+	 */
+	function readTranslators() {
+		$query = "
+			SELECT r.id_registration,
+				   r.`status`,
+				   r.email,
+				   GROUP_CONCAT(IF(rf_info.name = 'full-name', rf_info.value, NULL)) AS full_name,
+				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone
+			FROM " . \F3::get('db_table_prefix') . "registration_fields rf_translation
+			JOIN " . \F3::get('db_table_prefix') . "registrations r
+			  ON rf_translation.fk_registration = r.id_registration
+			JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_info
+			  ON rf_translation.fk_registration = rf_info.fk_registration
+			 AND rf_info.name IN ('full-name', 'phone')
+			WHERE rf_translation.name = 'translator'
+			  AND rf_translation.value = '\"on\"'
+			GROUP BY rf_translation.fk_registration,
+					 rf_translation.name
+			ORDER BY full_name";
+		$result = \F3::get('db')->exec($query);
+
+		$data = [];
+		foreach ($result as $row) {
+			$form = new \models\RegistrationForm();
+
+			$form->setId($row['id_registration']);
+			$form->setEmail($row['email']);
+			$form->setStatus($row['status']);
+			$form->setField('full-name', json_decode($row['full_name']));
+			$form->setField('phone', json_decode($row['phone']));
+
+			$data[] = $form;
+		}
+		return $data;
+	}
+
+	/**
 	 * Reads all registered officers, organized by position.
 	 *
 	 * @return array indexed by executive committee position with basic data on
