@@ -67,6 +67,7 @@ return ['lang' => [
 	'ExecCommmitteePosition' => "Executive Committee position",
 	'ExecCommmitteePositionValidationMsg' => "You selected you're not a member of Toastmasters, and yet selected an Executive Committee position. This can't be right.",
 	'ExecCommmitteePosition-none' => "I hold no position",
+	'ExecCommmitteePositionShort-none' => "None",
 	'ExecCommmitteePosition-president' => "President",
 	'ExecCommmitteePositionShort-president' => "President",
 	'ExecCommmitteePosition-vpe' => "Vice President Education",
@@ -318,6 +319,8 @@ return ['lang' => [
 	"ReportLunchOrdersHeader" => "Lunch orders",
 
 	"ReportLatestCommentsHeader" => "Latest comments",
+
+	"ReportWaitingListHeader" => "Waiting list",
 
 	"ReportOfficerDuplicatesHeader" => "Duplicate officers",
 

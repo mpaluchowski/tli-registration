@@ -67,6 +67,7 @@ return ['lang' => [
 	'ExecCommmitteePosition' => "Pozycja w Zarządzie klubu",
 	'ExecCommmitteePositionValidationMsg' => "Twój wcześniejszy wybór wskazuje, że nie należysz do Toastmasters, więc nie możesz zajmować pozycji w Zarządzie klubu.",
 	'ExecCommmitteePosition-none' => "Nie jestem członkiem zarządu",
+	'ExecCommmitteePositionShort-none' => "Brak",
 	'ExecCommmitteePosition-president' => "Prezes",
 	'ExecCommmitteePositionShort-president' => "Prezes",
 	'ExecCommmitteePosition-vpe' => "Wiceprezes ds. Edukacji",
@@ -318,6 +319,8 @@ return ['lang' => [
 	"ReportLunchOrdersHeader" => "Zamówione lunche",
 
 	"ReportLatestCommentsHeader" => "Najnowsze komentarze",
+
+	"ReportWaitingListHeader" => "Lista oczekujących",
 
 	"ReportOfficerDuplicatesHeader" => "Zduplikowani oficerowie",
 
