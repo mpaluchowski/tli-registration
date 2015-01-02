@@ -360,6 +360,53 @@ class ReportsDaoImpl implements \models\ReportsDao {
 	}
 
 	/**
+	 * Reads the list of people on the waiting list, ordered by date of
+	 * registration and including info on their club and executive committee
+	 * position.
+	 *
+	 * @return array with ordered registrations and basic info on each person.
+	 */
+	function readWaitingList() {
+		$query = "
+			SELECT r.id_registration,
+				   r.email,
+				   r.date_entered,
+				   GROUP_CONCAT(IF(rf_info.name = 'full-name', rf_info.value, NULL)) AS full_name,
+				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone,
+				   GROUP_CONCAT(IF(rf_info.name = 'home-club', rf_info.value, NULL)) AS home_club,
+				   GROUP_CONCAT(IF(rf_info.name = 'exec-position', rf_info.value, NULL)) AS exec_position
+			FROM tli_registrations r
+			JOIN tli_registration_fields rf_info
+			  ON r.id_registration = rf_info.fk_registration
+			 AND rf_info.name IN (
+			 	'full-name',
+			 	'phone',
+			 	'home-club',
+			 	'exec-position'
+			 	)
+			WHERE r.`status` = 'waiting-list'
+			GROUP BY r.id_registration
+			ORDER BY r.id_registration";
+		$result = \F3::get('db')->exec($query);
+
+		$data = [];
+		foreach ($result as $row) {
+			$form = new \models\RegistrationForm();
+
+			$form->setId($row['id_registration']);
+			$form->setEmail($row['email']);
+			$form->setDateEntered($row['date_entered']);
+			$form->setField('full-name', json_decode($row['full_name']));
+			$form->setField('phone', json_decode($row['phone']));
+			$form->setField('home-club', json_decode($row['home_club']));
+			$form->setField('exec-position', json_decode($row['exec_position']));
+
+			$data[] = $form;
+		}
+		return $data;
+	}
+
+	/**
 	 * Read people who registered as duplicate officers roles in any club.
 	 *
 	 * @return array, indexed by club and position, with people, who registered
