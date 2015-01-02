@@ -358,6 +358,7 @@ return ['lang' => [
 	"AdminNavReportsTranslators" => "Tłumacze",
 	"AdminNavReportsLunchOrders" => "Zamówione lunche",
 	"AdminNavReportsLatestComments" => "Najnowsze komentarze",
+	"AdminNavReportsWaitingList" => "Lista oczekujących",
 	"AdminNavReportsOfficerDuplicates" => "Zduplikowani oficerowie",
 	"AdminNavReportsEventEnrollments" => "Listy na wydarzenia",
 	"AdminNavAuditLog" => "Log Zdarzeń",

@@ -358,6 +358,7 @@ return ['lang' => [
 	"AdminNavReportsTranslators" => "Translators",
 	"AdminNavReportsLunchOrders" => "Lunch orders",
 	"AdminNavReportsLatestComments" => "Latest comments",
+	"AdminNavReportsWaitingList" => "Waiting list",
 	"AdminNavReportsOfficerDuplicates" => "Officer duplicates",
 	"AdminNavReportsEventEnrollments" => "Event enrollments",
 	"AdminNavAuditLog" => "Audit Log",
