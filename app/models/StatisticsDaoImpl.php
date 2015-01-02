@@ -185,10 +185,14 @@ class StatisticsDaoImpl implements \models\StatisticsDao {
 	 * @return array with paid/unpaid counts for the given event
 	 */
 	private function parseEventEnrollment($result, $key) {
-		return [
-			'paid' => $result[0][$key],
-			'unpaid' => $result[1][$key],
-			];
+		$counts = [
+			'paid' => 0,
+			'unpaid' => 0,
+		];
+		foreach ($result as $row) {
+			$counts[$row['is_paid'] ? 'paid' : 'unpaid'] = $row[$key];
+		}
+		return $counts;
 	}
 
 }
