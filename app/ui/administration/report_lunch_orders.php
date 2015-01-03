@@ -17,6 +17,7 @@ $renderer = \helpers\FormRendererFactory::className();
 		<table class="table table-hover">
 			<thead>
 				<tr>
+					<th></th>
 					<th><?php echo \F3::get('lang.FullName') ?></th>
 					<th><?php echo \F3::get('lang.EventsLunch-saturday') ?></th>
 					<th><?php echo \F3::get('lang.EventsLunch-sunday') ?></th>
@@ -26,8 +27,12 @@ $renderer = \helpers\FormRendererFactory::className();
 				</tr>
 			</thead>
 			<tbody>
-<?php foreach ($data as $registration): ?>
+<?php
+$counter = 1;
+foreach ($data as $registration):
+?>
 				<tr data-id="<?php echo $registration->getId() ?>">
+					<td><?php echo $counter++ ?></td>
 					<td><?php echo $renderer::value($registration, 'full-name') ?></td>
 					<td <?php if (in_array('saturday', $registration->getField('lunch-days'))): ?> class="success"><?php echo \F3::get('lang.Yes'); else: ?>><?php echo \F3::get('lang.No'); endif; ?></td>
 					<td <?php if (in_array('sunday', $registration->getField('lunch-days'))): ?> class="success"><?php echo \F3::get('lang.Yes'); else: ?>><?php echo \F3::get('lang.No'); endif; ?></td>

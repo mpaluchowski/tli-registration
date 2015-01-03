@@ -17,6 +17,7 @@ $renderer = \helpers\FormRendererFactory::className();
 		<table class="table table-hover">
 			<thead>
 				<tr>
+					<th></th>
 					<th><?php echo \F3::get('lang.FullName') ?></th>
 					<th><?php echo \F3::get('lang.HomeClub') ?></th>
 					<th><?php echo \F3::get('lang.ReportExecCommitteePositionShort') ?></th>
@@ -26,8 +27,12 @@ $renderer = \helpers\FormRendererFactory::className();
 				</tr>
 			</thead>
 			<tbody>
-			<?php foreach ($data as $registration): ?>
+			<?php
+			$counter = 1;
+			foreach ($data as $registration):
+			?>
 				<tr data-id="<?php echo $registration->getId() ?>">
+					<td><?php echo $counter++ ?></td>
 					<td><?php echo $renderer::value($registration, 'full-name') ?></td>
 					<td<?php if ("None" !== $registration->getField('home-club')): ?> class="success"<?php endif; ?>><?php echo $renderer::value($registration, 'home-club') ?></td>
 					<td<?php if ("none" !== $registration->getField('exec-position')): ?> class="success"<?php endif; ?>><?php echo \F3::get('lang.ExecCommmitteePositionShort-' . $registration->getField('exec-position')) ?></td>

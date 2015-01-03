@@ -17,6 +17,7 @@ $renderer = \helpers\FormRendererFactory::className();
 		<table class="table table-hover">
 			<thead>
 				<tr>
+					<th></th>
 					<th><?php echo \F3::get('lang.FullName') ?></th>
 					<th><?php echo \F3::get('lang.Email') ?></th>
 					<th><?php echo \F3::get('lang.Phone') ?></th>
@@ -24,8 +25,12 @@ $renderer = \helpers\FormRendererFactory::className();
 				</tr>
 			</thead>
 			<tbody>
-			<?php foreach ($data as $registration): ?>
+			<?php
+			$counter = 1;
+			foreach ($data as $registration):
+			?>
 				<tr data-id="<?php echo $registration->getId() ?>">
+					<td><?php echo $counter++ ?></td>
 					<td><?php echo $renderer::value($registration, 'full-name') ?></td>
 					<td><a href="mailto:<?php echo $registration->getEmail() ?>"><?php echo $registration->getEmail() ?></a></td>
 					<td><a href="callto:<?php echo $registration->getField('phone') ?>"><?php echo $renderer::value($registration, 'phone') ?></a></td>

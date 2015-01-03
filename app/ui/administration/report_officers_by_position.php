@@ -21,6 +21,7 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 		<table class="table table-hover">
 			<thead>
 				<tr>
+					<th></th>
 					<th><?php echo \F3::get('lang.FullName') ?></th>
 					<th><?php echo \F3::get('lang.HomeClub') ?></th>
 					<th><?php echo \F3::get('lang.Email') ?></th>
@@ -31,9 +32,11 @@ $positions = ["president", "vpe", "vpm", "vppr", "secretary", "treasurer", "saa"
 			<tbody>
 			<?php
 			if (isset($data[$position])):
+			$counter = 1;
 			foreach ($data[$position] as $registration):
 			?>
 				<tr data-id="<?php echo $registration->getId() ?>">
+					<td><?php echo $counter++ ?></td>
 					<td><?php echo $renderer::value($registration, 'full-name') ?></td>
 					<td><?php echo $renderer::value($registration, 'home-club') ?></td>
 					<td><a href="mailto:<?php echo $registration->getEmail() ?>"><?php echo $registration->getEmail() ?></a></td>
