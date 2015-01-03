@@ -375,8 +375,8 @@ class ReportsDaoImpl implements \models\ReportsDao {
 				   GROUP_CONCAT(IF(rf_info.name = 'phone', rf_info.value, NULL)) AS phone,
 				   GROUP_CONCAT(IF(rf_info.name = 'home-club', rf_info.value, NULL)) AS home_club,
 				   GROUP_CONCAT(IF(rf_info.name = 'exec-position', rf_info.value, NULL)) AS exec_position
-			FROM tli_registrations r
-			JOIN tli_registration_fields rf_info
+			FROM " . \F3::get('db_table_prefix') . "registrations r
+			JOIN " . \F3::get('db_table_prefix') . "registration_fields rf_info
 			  ON r.id_registration = rf_info.fk_registration
 			 AND rf_info.name IN (
 			 	'full-name',
