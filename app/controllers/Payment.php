@@ -113,26 +113,24 @@ class Payment {
 		if (!$transaction)
 			$f3->reroute('@registration_review');
 
-		// Check if transaction already confirmed with payment processor
-		if (!$transaction->getDatePaid()) {
-			// Mark the registration as payment being processed
-			$registrationDao->updateRegistrationStatusToProcessingPayment(
-				$transaction->getRegistrationId()
-				);
-			$msg = 'lang.PaymentProcessing-processing-payment';
-		} else {
-			// Already received confirmation, inform user
+		// Check if transaction already confirmed with payment processor,
+		// otherwise no message because we can't distinguish the reason why a
+		// person's been redirected back. Might've just cancelled transaction.
+		if ($transaction->getDatePaid()) {
 			$msg = 'lang.PaymentProcessing-paid';
+		} else {
+			$msg = 'lang.PaymentProcessing-processing-payment';
 		}
+
 		\models\MessageManager::addMessage(
 			'success',
 			$f3->get(
-					$msg,
-					[
-						\helpers\View::formatDateTime($transaction->getDateStarted()),
-						\helpers\View::formatDateTime($transaction->getDatePaid()),
-					]
-				)
+				$msg,
+				[
+					\helpers\View::formatDateTime($transaction->getDateStarted()),
+					\helpers\View::formatDateTime($transaction->getDatePaid()),
+				]
+			)
 		);
 
 		$f3->reroute('@registration_review');
