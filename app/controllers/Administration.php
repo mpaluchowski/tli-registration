@@ -52,7 +52,7 @@ class Administration {
 
 		$registrationDao = new \models\RegistrationDao();
 
-		$form = $registrationDao->readRegistrationById($f3->get('POST.id'));
+		$form = $registrationDao->readRegistrationFormById($f3->get('POST.id'));
 
 		if (null === $form)
 			$f3->error(404);
@@ -84,9 +84,32 @@ class Administration {
 				$form->getId()
 				);
 
+			$msg = 'StatusChangedSuccessMsg';
+
+			if ('on' === $f3->get('POST.email')) {
+				// Send notification e-mail
+				$mailer = new \models\Mailer();
+
+				$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
+				$f3->set('form', $form);
+
+				$originalLanguage = \models\L11nManager::language();
+				\models\L11nManager::setLanguage($form->getLanguageEntered());
+
+				$mailer->sendEmail(
+					$form->getEmail(),
+					$f3->get('lang.EmailRegistrationConfirmationSubject', $form->getEmail()),
+					\View::instance()->render('mail/registration_confirm.php')
+					);
+
+				\models\L11nManager::setLanguage($originalLanguage);
+
+				$msg = 'StatusChangedEmailedSuccessMsg';
+			}
+
 			\models\MessageManager::addMessage(
 				'success',
-				$f3->get('lang.StatusChangedSuccessMsg', [
+				$f3->get('lang.' . $msg, [
 						$f3->get('lang.RegistrationStatus-' . $form->getStatus()),
 					])
 				);

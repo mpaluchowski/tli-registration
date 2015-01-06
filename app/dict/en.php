@@ -242,10 +242,12 @@ return ['lang' => [
 	"RegistrationsListIntro" => "We currently have {0} registrations on file, {1} registered, {4} of which are paid, {2} on waiting list and {3} pending review. Last registration was on {5}.",
 	"RegistrationsDownloadCsv" => "Download CSV",
 
+	"StatusChangeSendEmail" => "Send notification to attendee",
 	"StatusChangeButton" => "Change status",
 	"CancelButton" => "Cancel",
 	"StatusChangedAlreadySetMsg" => "Registration already has the status of '{0}'. No change was made.",
 	"StatusChangedSuccessMsg" => "Registration status successfully changed to '{0}'.",
+	"StatusChangedEmailedSuccessMsg" => "Registration status successfully changed to '{0}' and an email sent to the attendee.",
 
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",

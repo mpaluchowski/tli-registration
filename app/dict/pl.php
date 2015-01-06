@@ -242,10 +242,12 @@ return ['lang' => [
 	"RegistrationsListIntro" => "Mamy aktualnie {0} rejestracji, {1} na liście głównej, z których {4} jest opłaconych, {2} na rezerwowej, {3} oczekuje na potwierdzenie. Ostatnia rejestracja zapisana {5}.",
 	"RegistrationsDownloadCsv" => "Ściągnij CSV",
 
+	"StatusChangeSendEmail" => "Wyślij uczestnikowi powiadomienie",
 	"StatusChangeButton" => "Zmień status",
 	"CancelButton" => "Anuluj",
 	"StatusChangedAlreadySetMsg" => "Rejestracja posiada już status \"{0}\". Nie wprowadzono żadnej zmiany.",
 	"StatusChangedSuccessMsg" => "Status rejestracji został zmieniony na \"{0}\".",
+	"StatusChangedEmailedSuccessMsg" => "Status rejestracji został zmieniony na \"{0}\" i powiadomienie wysłane do uczestnika.",
 
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
