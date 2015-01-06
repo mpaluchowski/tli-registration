@@ -44,6 +44,91 @@ class Administration {
 		echo \View::instance()->render('administration/_registration-details.php');
 	}
 
+	function status_change($f3) {
+		if (!$f3->get('POST.id')
+			|| !is_numeric($f3->get('POST.id'))) {
+			$f3->error(404);
+		}
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationFormById($f3->get('POST.id'));
+
+		if (null === $form)
+			$f3->error(404);
+
+		if ($f3->get('POST.status') === $form->getStatus()) {
+			// Check if registration not already in chosen status
+			\models\MessageManager::addMessage(
+				'warning',
+				$f3->get('lang.StatusChangedAlreadySetMsg', [
+						$f3->get('lang.RegistrationStatus-' . $form->getStatus()),
+					])
+				);
+		} else {
+			$oldStatus = $form->getStatus();
+
+			// Update status to desired value
+			$registrationDao->updateRegistrationStatus($form, $f3->get('POST.status'));
+
+			// Save Audit Log event
+			$eventDao = new \models\EventDao();
+			$eventDao->saveEvent(
+				"RegistrationStatusChange",
+				$f3->get('user')->id,
+				[
+					"old" => $oldStatus,
+					"new" => $form->getStatus(),
+				],
+				'Registration',
+				$form->getId()
+				);
+
+			$msg = 'StatusChangedSuccessMsg';
+
+			if ('on' === $f3->get('POST.email')) {
+				// Send notification e-mail
+				$mailer = new \models\Mailer();
+
+				$f3->set('registrationReviewUrl', \helpers\View::getBaseUrl() . '/registration/review/' . $form->getHash());
+				$f3->set('form', $form);
+
+				$originalLanguage = \models\L11nManager::language();
+				\models\L11nManager::setLanguage($form->getLanguageEntered());
+
+				$mailer->sendEmail(
+					$form->getEmail(),
+					$f3->get('lang.EmailRegistrationConfirmationSubject', $form->getEmail()),
+					\View::instance()->render('mail/registration_confirm.php')
+					);
+
+				\models\L11nManager::setLanguage($originalLanguage);
+
+				$msg = 'StatusChangedEmailedSuccessMsg';
+			}
+
+			\models\MessageManager::addMessage(
+				'success',
+				$f3->get('lang.' . $msg, [
+						$f3->get('lang.RegistrationStatus-' . $form->getStatus()),
+					])
+				);
+		}
+
+		if ($f3->get('AJAX')) {
+			echo json_encode([
+				'status' => $form->getStatus(),
+				'msg' => \View::instance()->render('message-alerts.php'),
+				'label' => [
+					'class' => \helpers\View::getRegistrationStatusLabel($form->getStatus()),
+					'text' => \F3::get('lang.RegistrationStatus-' . $form->getStatus()),
+				]
+				]);
+		} else {
+			$f3->reroute('@admin_registrations_list');
+		}
+	}
+
 	function codes($f3) {
 		if (\models\FlashScope::has('discountCode')) {
 			// Comin in with validation errors

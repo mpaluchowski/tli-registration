@@ -11,6 +11,8 @@ $renderer = \helpers\FormRendererFactory::className();
 		<h1><?php echo \F3::get('lang.RegistrationsListHeader') ?></h1>
 	</div>
 
+	<?php echo \View::instance()->render('message-alerts.php') ?>
+
 	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->registered, $stats->waitingList, $stats->pendingReview, $stats->paid, \helpers\View::formatDateTime($stats->last)]) ?></p>
 
 	<a href="<?php echo \F3::get('ALIASES.admin_registrations_export_csv') ?>" class="btn btn-default">Download CSV</a>
@@ -38,12 +40,33 @@ $renderer = \helpers\FormRendererFactory::className();
 				<td><a href="callto:<?php echo $registration->getField('phone') ?>"><?php echo $renderer::value($registration, 'phone') ?></a></td>
 				<td><?php echo \helpers\View::formatDateTime($registration->getDateEntered()) ?></td>
 				<td><?php echo $registration->getDatePaid() ? \helpers\View::formatDateTime($registration->getDatePaid()) : "&mdash;" ?></td>
-				<td><span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($registration->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $registration->getStatus()) ?></span></td>
+				<td><span data-value="<?php echo $registration->getStatus() ?>" class="tli-status-changer label label-<?php echo \helpers\View::getRegistrationStatusLabel($registration->getStatus()) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $registration->getStatus()) ?></span></td>
 			</tr>
 	<?php endforeach; ?>
 		</tbody>
 	</table>
 </div>
+</div>
+
+<div id="tli-status-menu">
+	<form action="<?php echo \F3::get('ALIASES.admin_registration_change_status') ?>" method="POST">
+		<div class="form-group">
+		<?php foreach (['waiting-list', 'pending-review', 'pending-payment', 'paid', 'cancelled'] as $status): ?>
+			<div class="radio">
+				<label><input type="radio" name="status" value="<?php echo $status ?>" data-select-away-msg="<?php echo \F3::get('lang.StatusChangeAwayMsg-' . $status) ?>" required> <span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($status) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $status) ?></span></label>
+			</div>
+		<?php endforeach; ?>
+		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label><input type="checkbox" name="email" checked> <?php echo \F3::get('lang.StatusChangeSendEmail') ?></label>
+			</div>
+		</div>
+		<input type="hidden" name="id" value="">
+		<div class="alert alert-warning" style="display: none;"></div>
+		<button type="submit" class="btn btn-success"><?php echo \F3::get('lang.StatusChangeButton') ?></button>
+		<button type="reset" class="btn btn-default btn-sm"><?php echo \F3::get('lang.CancelButton') ?></button>
+	</form>
 </div>
 
 <script src="/js/registrations-list.js"></script>
