@@ -45,6 +45,7 @@ tliRegister.registrationsList = function() {
 		var label = $(this),
 			menu = $('#tli-status-menu').clone().removeAttr('id');
 		$('input[value=' + label.attr('data-value') + ']', menu).prop('checked', true);
+		$('input[name=id]', menu).val($(label).closest('tr').attr('data-id'));
 		$('button[type=reset]', menu).click(function() {
 			$(menu).fadeOut(100, function() {
 				$(menu).remove();

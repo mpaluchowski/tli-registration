@@ -55,6 +55,7 @@ $renderer = \helpers\FormRendererFactory::className();
 			</div>
 		<?php endforeach; ?>
 		</div>
+		<input type="hidden" name="id" value="">
 		<button type="submit" class="btn btn-success"><?php echo \F3::get('lang.StatusChangeButton') ?></button>
 		<button type="reset" class="btn btn-default btn-sm"><?php echo \F3::get('lang.CancelButton') ?></button>
 	</form>
