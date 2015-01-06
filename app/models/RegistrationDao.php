@@ -186,28 +186,6 @@ class RegistrationDao {
 	}
 
 	/**
-	 * Updates Registration's status to PAID, including timestamp.
-	 *
-	 * @param form RegistrationForm to update status for.
-	 * @param time unix time of when payment was completed.
-	 */
-	function updateRegistrationStatusToPaid(\models\RegistrationForm &$form, $time = null) {
-		if (!$time) $time = time();
-
-		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
-				  SET date_paid = FROM_UNIXTIME(:datePaid),
-					  status = "paid"
-				  WHERE id_registration = :registrationId';
-		\F3::get('db')->exec($query, [
-				'datePaid' => $time,
-				'registrationId' => $form->getId(),
-			]);
-
-		$form->setStatus('paid');
-		$form->setDatePaid(date('Y-m-d H:i:s', $time));
-	}
-
-	/**
 	 * Updates all Registrations that have the pending-payment status to
 	 * waiting-list status. Makes sure no other transactions can read these
 	 * registrations in between.

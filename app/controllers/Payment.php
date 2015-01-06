@@ -201,7 +201,7 @@ class Payment {
 		// Idempotence. Only update registration if not previously paid.
 		if (!$form->getDatePaid()) {
 			// Mark the registration is paid
-			$registrationDao->updateRegistrationStatusToPaid($form);
+			$registrationDao->updateRegistrationStatus($form, 'paid');
 		}
 
 		// Notify registrant that the payment was received
