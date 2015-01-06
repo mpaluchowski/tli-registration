@@ -164,24 +164,25 @@ class RegistrationDao {
 		if ($status === $form->getStatus())
 			return;
 
-		if (!$time) $time = time();
+		// Set time for 'paid' changes, unset it otherwise
+		$time = 'paid' === $status && !$time
+			? time()
+			: null;
 
 		$query = '
 			UPDATE ' . \F3::get('db_table_prefix') . 'registrations
-			SET status = :status
-			' . ('paid' === $status ? ', date_paid = FROM_UNIXTIME(:datePaid)' : '') . '
+			SET status = :status,
+				date_paid = FROM_UNIXTIME(:datePaid)
 			WHERE id_registration = :registrationId
 			  AND status <> :status';
 		\F3::get('db')->exec($query, [
 				'status' => $status,
 				'registrationId' => $form->getId(),
-			] + (
-				'paid' === $status
-				? ['datePaid' => $time]
-				: []
-				));
+				'datePaid' => $time,
+			]);
 
 		$form->setStatus($status);
+		$form->setDatePaid($time ? date('Y-m-d H:i:s', $time) : null);
 	}
 
 	/**
