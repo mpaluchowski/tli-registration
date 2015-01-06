@@ -116,7 +116,13 @@ class Administration {
 		}
 
 		if ($f3->get('AJAX')) {
-			echo \View::instance()->render('message-alerts.php');
+			echo json_encode([
+				'msg' => \View::instance()->render('message-alerts.php'),
+				'label' => [
+					'class' => \helpers\View::getRegistrationStatusLabel($form->getStatus()),
+					'text' => \F3::get('lang.RegistrationStatus-' . $form->getStatus()),
+				]
+				]);
 		} else {
 			$f3->reroute('@admin_registrations_list');
 		}

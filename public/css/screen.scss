@@ -270,6 +270,15 @@ table {
 	}
 }
 
+#tli-message-hover {
+	margin: 0 auto;
+	max-width: 1170px;
+	position: fixed;
+	top: 60px;
+	width: 96%;
+	z-index: 1001;
+}
+
 .tli-status-changer {
 	cursor: pointer;
 }
