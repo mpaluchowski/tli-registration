@@ -84,6 +84,10 @@ tliRegister.registrationsList = function() {
 						.attr('data-value', data.status)
 						.html(data.label.text);
 					displayHoveringMessage(data.msg);
+
+					$(menu).fadeOut(100, function() {
+						$(menu).remove();
+					})
 				},
 				'json'
 				);
