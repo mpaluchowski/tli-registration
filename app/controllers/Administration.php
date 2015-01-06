@@ -66,8 +66,23 @@ class Administration {
 					])
 				);
 		} else {
+			$oldStatus = $form->getStatus();
+
 			// Update status to desired value
 			$registrationDao->updateRegistrationStatus($form, $f3->get('POST.status'));
+
+			// Save Audit Log event
+			$eventDao = new \models\EventDao();
+			$eventDao->saveEvent(
+				"RegistrationStatusChange",
+				$f3->get('user')->id,
+				[
+					"old" => $oldStatus,
+					"new" => $form->getStatus(),
+				],
+				'Registration',
+				$form->getId()
+				);
 
 			\models\MessageManager::addMessage(
 				'success',
