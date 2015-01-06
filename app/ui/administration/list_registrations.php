@@ -53,7 +53,7 @@ $renderer = \helpers\FormRendererFactory::className();
 		<div class="form-group">
 		<?php foreach (['waiting-list', 'pending-review', 'pending-payment', 'paid', 'cancelled'] as $status): ?>
 			<div class="radio">
-				<label><input type="radio" name="status" value="<?php echo $status ?>" required> <span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($status) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $status) ?></span></label>
+				<label><input type="radio" name="status" value="<?php echo $status ?>" data-select-away-msg="<?php echo \F3::get('lang.StatusChangeAwayMsg-' . $status) ?>" required> <span class="label label-<?php echo \helpers\View::getRegistrationStatusLabel($status) ?>"><?php echo \F3::get('lang.RegistrationStatus-' . $status) ?></span></label>
 			</div>
 		<?php endforeach; ?>
 		</div>
@@ -63,6 +63,7 @@ $renderer = \helpers\FormRendererFactory::className();
 			</div>
 		</div>
 		<input type="hidden" name="id" value="">
+		<div class="alert alert-warning" style="display: none;"></div>
 		<button type="submit" class="btn btn-success"><?php echo \F3::get('lang.StatusChangeButton') ?></button>
 		<button type="reset" class="btn btn-default btn-sm"><?php echo \F3::get('lang.CancelButton') ?></button>
 	</form>

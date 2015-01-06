@@ -43,8 +43,10 @@ tliRegister.registrationsList = function() {
 
 	openStatusChangeMenu = function() {
 		var label = $(this),
-			menu = $('#tli-status-menu').clone().removeAttr('id');
-		$('input[value=' + label.attr('data-value') + ']', menu).prop('checked', true);
+			menu = $('#tli-status-menu').clone().removeAttr('id'),
+			original = $('input[value=' + label.attr('data-value') + ']', menu),
+			alert = $('.alert', menu);
+		original.prop('checked', true);
 		$('input[name=id]', menu).val($(label).closest('tr').attr('data-id'));
 		$('button[type=reset]', menu).click(function() {
 			$(menu).fadeOut(100, function() {
@@ -52,6 +54,17 @@ tliRegister.registrationsList = function() {
 			})
 		});
 		label.after(menu);
+
+		$('input[name=status]', menu).change(function() {
+			if (original.attr('data-select-away-msg')
+				&& $(this).val() !== original.val()) {
+				// Show warning
+				alert.html(original.attr('data-select-away-msg')).slideDown();
+			} else {
+				// Hide warning
+				alert.slideUp();
+			}
+		});
 	}
 
 	return {

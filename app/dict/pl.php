@@ -248,6 +248,7 @@ return ['lang' => [
 	"StatusChangedAlreadySetMsg" => "Rejestracja posiada już status \"{0}\". Nie wprowadzono żadnej zmiany.",
 	"StatusChangedSuccessMsg" => "Status rejestracji został zmieniony na \"{0}\".",
 	"StatusChangedEmailedSuccessMsg" => "Status rejestracji został zmieniony na \"{0}\" i powiadomienie wysłane do uczestnika.",
+	"StatusChangeAwayMsg-paid" => "Zmiana statusu już Opłaconej rejestracji jest zazwyczaj potrzebna tylko jeśli uczestnik <strong>anuluje swoje uczestnictwo</strong>. Upewnij się, że wprowadzasz zmianę poprawnie.",
 
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
