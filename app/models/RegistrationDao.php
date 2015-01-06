@@ -208,22 +208,6 @@ class RegistrationDao {
 	}
 
 	/**
-	 * Updates Registration's status to PROCESSING_PAYMENT.
-	 *
-	 * @param registrationId ID of the Registration
-	 */
-	function updateRegistrationStatusToProcessingPayment($registrationId, $force = false) {
-		$query = 'UPDATE ' . \F3::get('db_table_prefix') . 'registrations
-				  SET status = "processing-payment"
-				  WHERE id_registration = :registrationId';
-		if (!$force)
-			$query .= ' AND date_paid IS NULL';
-		\F3::get('db')->exec($query, [
-				'registrationId' => $registrationId,
-			]);
-	}
-
-	/**
 	 * Updates all Registrations that have the pending-payment status to
 	 * waiting-list status. Makes sure no other transactions can read these
 	 * registrations in between.
