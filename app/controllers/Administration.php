@@ -44,6 +44,9 @@ class Administration {
 		echo \View::instance()->render('administration/_registration-details.php');
 	}
 
+	function status_change($f3) {
+	}
+
 	function codes($f3) {
 		if (\models\FlashScope::has('discountCode')) {
 			// Comin in with validation errors

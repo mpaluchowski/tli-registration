@@ -47,7 +47,7 @@ $renderer = \helpers\FormRendererFactory::className();
 </div>
 
 <div id="tli-status-menu">
-	<form action="" method="POST">
+	<form action="<?php echo \F3::get('ALIASES.admin_registration_change_status') ?>" method="POST">
 		<div class="form-group">
 		<?php foreach (['waiting-list', 'pending-review', 'pending-payment', 'paid', 'cancelled'] as $status): ?>
 			<div class="radio">
