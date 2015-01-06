@@ -244,6 +244,8 @@ return ['lang' => [
 
 	"StatusChangeButton" => "Zmień status",
 	"CancelButton" => "Anuluj",
+	"StatusChangedAlreadySetMsg" => "Rejestracja posiada już status \"{0}\". Nie wprowadzono żadnej zmiany.",
+	"StatusChangedSuccessMsg" => "Status rejestracji został zmieniony na \"{0}\".",
 
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",

@@ -146,6 +146,45 @@ class RegistrationDao {
 	}
 
 	/**
+	 * Changes a Registration's status to given value, providing it doesn't
+	 * already have that value set.
+	 *
+	 * Will also update the date_paid field when status is changed to 'paid'.
+	 *
+	 * @param $form instance of RegistrationForm
+	 * @param $status the status to set the Registration to
+	 * @param $time optional time the status change was set to, useful only
+	 * for 'paid' status changes
+	 */
+	function updateRegistrationStatus(
+			\models\RegistrationForm &$form,
+			$status,
+			$time = null
+			) {
+		if ($status === $form->getStatus())
+			return;
+
+		if (!$time) $time = time();
+
+		$query = '
+			UPDATE ' . \F3::get('db_table_prefix') . 'registrations
+			SET status = :status
+			' . ('paid' === $status ? ', date_paid = FROM_UNIXTIME(:datePaid)' : '') . '
+			WHERE id_registration = :registrationId
+			  AND status <> :status';
+		\F3::get('db')->exec($query, [
+				'status' => $status,
+				'registrationId' => $form->getId(),
+			] + (
+				'paid' === $status
+				? ['datePaid' => $time]
+				: []
+				));
+
+		$form->setStatus($status);
+	}
+
+	/**
 	 * Updates Registration's status to PAID, including timestamp.
 	 *
 	 * @param form RegistrationForm to update status for.

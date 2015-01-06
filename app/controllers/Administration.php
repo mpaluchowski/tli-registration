@@ -45,6 +45,43 @@ class Administration {
 	}
 
 	function status_change($f3) {
+		if (!$f3->get('POST.id')
+			|| !is_numeric($f3->get('POST.id'))) {
+			$f3->error(404);
+		}
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationById($f3->get('POST.id'));
+
+		if (null === $form)
+			$f3->error(404);
+
+		if ($f3->get('POST.status') === $form->getStatus()) {
+			// Check if registration not already in chosen status
+			\models\MessageManager::addMessage(
+				'warning',
+				$f3->get('lang.StatusChangedAlreadySetMsg', [
+						$f3->get('lang.RegistrationStatus-' . $form->getStatus()),
+					])
+				);
+		} else {
+			// Update status to desired value
+			$registrationDao->updateRegistrationStatus($form, $f3->get('POST.status'));
+
+			\models\MessageManager::addMessage(
+				'success',
+				$f3->get('lang.StatusChangedSuccessMsg', [
+						$f3->get('lang.RegistrationStatus-' . $form->getStatus()),
+					])
+				);
+		}
+
+		if ($f3->get('AJAX')) {
+			echo \View::instance()->render('message-alerts.php');
+		} else {
+			$f3->reroute('@admin_registrations_list');
+		}
 	}
 
 	function codes($f3) {

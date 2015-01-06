@@ -11,6 +11,8 @@ $renderer = \helpers\FormRendererFactory::className();
 		<h1><?php echo \F3::get('lang.RegistrationsListHeader') ?></h1>
 	</div>
 
+	<?php echo \View::instance()->render('message-alerts.php') ?>
+
 	<p><?php echo \F3::get('lang.RegistrationsListIntro', [$stats->count, $stats->registered, $stats->waitingList, $stats->pendingReview, $stats->paid, \helpers\View::formatDateTime($stats->last)]) ?></p>
 
 	<a href="<?php echo \F3::get('ALIASES.admin_registrations_export_csv') ?>" class="btn btn-default">Download CSV</a>
