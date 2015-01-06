@@ -79,8 +79,8 @@ class MessageManager {
 	 * it's an array. If not, sets it up to an empty array.
 	 */
 	private static function initStore() {
-		if (null == \F3::get('SESSION.messages')
-				||!is_array(\F3::get('SESSION.messages'))) {
+		if (null === \F3::get('SESSION.messages')
+				|| !is_array(\F3::get('SESSION.messages'))) {
 			\F3::set('SESSION.messages', []);
 		}
 	}
