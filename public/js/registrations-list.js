@@ -80,7 +80,8 @@ tliRegister.registrationsList = function() {
 				form.serialize(),
 				function(data) {
 					label
-						.attr('class', 'label label-' + data.label.class)
+						.attr('class', 'tli-status-changer label label-' + data.label.class)
+						.attr('data-value', data.status)
 						.html(data.label.text);
 					displayHoveringMessage(data.msg);
 				},

@@ -117,6 +117,7 @@ class Administration {
 
 		if ($f3->get('AJAX')) {
 			echo json_encode([
+				'status' => $form->getStatus(),
 				'msg' => \View::instance()->render('message-alerts.php'),
 				'label' => [
 					'class' => \helpers\View::getRegistrationStatusLabel($form->getStatus()),
