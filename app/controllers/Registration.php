@@ -108,7 +108,7 @@ class Registration {
 		$f3->set('paymentSummary', $priceCalculator->calculateSummary(
 			$form,
 			true,
-			$form->getDatePaid()
+			strtotime($form->getDatePaid())
 			));
 
 		echo \View::instance()->render('registration/review.php');
