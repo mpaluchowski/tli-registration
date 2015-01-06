@@ -242,6 +242,9 @@ return ['lang' => [
 	"RegistrationsListIntro" => "Mamy aktualnie {0} rejestracji, {1} na liście głównej, z których {4} jest opłaconych, {2} na rezerwowej, {3} oczekuje na potwierdzenie. Ostatnia rejestracja zapisana {5}.",
 	"RegistrationsDownloadCsv" => "Ściągnij CSV",
 
+	"StatusChangeButton" => "Zmień status",
+	"CancelButton" => "Anuluj",
+
 	"DateEntered" => "Data wpisania",
 	"DatePaid" => "Data opłacenia",
 

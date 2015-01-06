@@ -242,6 +242,9 @@ return ['lang' => [
 	"RegistrationsListIntro" => "We currently have {0} registrations on file, {1} registered, {4} of which are paid, {2} on waiting list and {3} pending review. Last registration was on {5}.",
 	"RegistrationsDownloadCsv" => "Download CSV",
 
+	"StatusChangeButton" => "Change status",
+	"CancelButton" => "Cancel",
+
 	"DateEntered" => "Date entered",
 	"DatePaid" => "Date paid",
 

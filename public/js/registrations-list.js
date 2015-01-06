@@ -4,6 +4,7 @@ tliRegister.registrationsList = function() {
 
 	var init = function() {
 		initRegistrationDetailsExpander();
+		initStatusChanger();
 	},
 
 	initRegistrationDetailsExpander = function() {
@@ -34,6 +35,22 @@ tliRegister.registrationsList = function() {
 			});
 		}
 		$('.fa', this).toggleClass('fa-plus-square').toggleClass('fa-minus-square');
+	},
+
+	initStatusChanger = function() {
+		$('.tli-status-changer').click(openStatusChangeMenu);
+	},
+
+	openStatusChangeMenu = function() {
+		var label = $(this),
+			menu = $('#tli-status-menu').clone().removeAttr('id');
+		$('input[value=' + label.attr('data-value') + ']', menu).prop('checked', true);
+		$('button[type=reset]', menu).click(function() {
+			$(menu).fadeOut(100, function() {
+				$(menu).remove();
+			})
+		});
+		label.after(menu);
 	}
 
 	return {

@@ -270,6 +270,14 @@ table {
 	}
 }
 
+.tli-status-changer {
+	cursor: pointer;
+}
+
+#tli-status-menu {
+	display: none;
+}
+
 .chart-loader {
 	display: block;
 	font-size: 28px;
