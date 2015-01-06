@@ -2,7 +2,9 @@ var tliRegister = tliRegister || {};
 
 tliRegister.registrationsList = function() {
 
-	var init = function() {
+	var _msgTimeout,
+
+	init = function() {
 		initRegistrationDetailsExpander();
 		initStatusChanger();
 	},
@@ -103,7 +105,8 @@ tliRegister.registrationsList = function() {
 
 		container.html(message).show();
 
-		setTimeout(function () {
+		clearTimeout(_msgTimeout);
+		_msgTimeout = setTimeout(function () {
 			container.fadeOut();
 		}, 5000);
 	}
