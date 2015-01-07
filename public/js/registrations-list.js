@@ -40,7 +40,9 @@ tliRegister.registrationsList = function() {
 	},
 
 	initStatusChanger = function() {
-		$('.tli-status-changer').click(openStatusChangeMenu);
+		$('.tli-status-changer')
+			.click(openStatusChangeMenu)
+			.append($('<span class="caret"></span>'));
 	},
 
 	openStatusChangeMenu = function() {
