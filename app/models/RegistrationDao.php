@@ -338,7 +338,7 @@ class RegistrationDao {
 						 SUM(r.status = "pending-review") AS pending_review,
 						 SUM(r.status = "cancelled") AS cancelled,
 						 SUM(r.status IN ("pending-payment", "processing-payment")) AS pending_payment,
-						 COUNT(r.date_paid) AS paid,
+						 SUM(r.status = "paid") AS paid,
 						 MAX(r.date_entered) AS last
 				  FROM ' . \F3::get('db_table_prefix') . 'registrations r';
 		$result = \F3::get('db')->exec($query);
