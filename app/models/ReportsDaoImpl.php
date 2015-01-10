@@ -109,7 +109,7 @@ class ReportsDaoImpl implements \models\ReportsDao {
 			ORDER BY full_name";
 		$result = \F3::get('db')->exec($query);
 
-		$data = [];
+		$data = ['speaker' => [], 'organizer' => []];
 		foreach ($result as $row) {
 			$form = new \models\RegistrationForm();
 
