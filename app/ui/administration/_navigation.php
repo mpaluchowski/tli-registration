@@ -17,6 +17,7 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="<?php echo str_replace('@reportName', 'officers_by_club', \F3::hive()['ALIASES']['admin_reports']) ?>"><?php echo \F3::get('lang.AdminNavReportsOfficersByClub') ?></a></li>
 						<li><a href="<?php echo str_replace('@reportName', 'officers_by_position', \F3::hive()['ALIASES']['admin_reports']) ?>"><?php echo \F3::get('lang.AdminNavReportsOfficersByPosition') ?></a></li>
+						<li><a href="<?php echo str_replace('@reportName', 'organizers_speakers', \F3::hive()['ALIASES']['admin_reports']) ?>"><?php echo \F3::get('lang.AdminNavReportsOrganizersSpeakers') ?></a></li>
 						<li role="presentation" class="divider"></li>
 						<li><a href="<?php echo str_replace('@reportName', 'accommodation_with_toastmasters', \F3::hive()['ALIASES']['admin_reports']) ?>"><?php echo \F3::get('lang.AdminNavReportsAccommodationWithToastmasters') ?></a></li>
 						<li><a href="<?php echo str_replace('@reportName', 'translators', \F3::hive()['ALIASES']['admin_reports']) ?>"><?php echo \F3::get('lang.AdminNavReportsTranslators') ?></a></li>

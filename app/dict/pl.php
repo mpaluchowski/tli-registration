@@ -320,6 +320,10 @@ return ['lang' => [
 	"ReportOfficersByPositionHeader" => "Oficerowie wg stanowisk",
 	"ReportExecCommitteePositionShort" => "Pozycja",
 
+	"ReportOrganizersSpeakersHeader" => "Organizatorzy i mówcy",
+	"TliFunction-organizers" => "Organizatorzy",
+	"TliFunction-speakers" => "Mówcy",
+
 	"ReportAccommodationWithToastmastersHeader" => "Zakwaterowanie u Toastmasterów",
 
 	"ReportTranslatorsHeader" => "Tłumacze",
@@ -362,6 +366,7 @@ return ['lang' => [
 	"AdminNavReports" => "Raporty",
 	"AdminNavReportsOfficersByClub" => "Oficerowie wg klubów",
 	"AdminNavReportsOfficersByPosition" => "Oficerowie wg stanowisk",
+	"AdminNavReportsOrganizersSpeakers" => "Organizatorzy i mówcy",
 	"AdminNavReportsAccommodationWithToastmasters" => "Zakwaterowanie",
 	"AdminNavReportsTranslators" => "Tłumacze",
 	"AdminNavReportsLunchOrders" => "Zamówione lunche",
