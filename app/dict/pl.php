@@ -320,6 +320,10 @@ return ['lang' => [
 	"ReportOfficersByPositionHeader" => "Oficerowie wg stanowisk",
 	"ReportExecCommitteePositionShort" => "Pozycja",
 
+	"ReportOrganizersSpeakersHeader" => "Organizatorzy i mówcy",
+	"TliFunction-organizers" => "Organizatorzy",
+	"TliFunction-speakers" => "Mówcy",
+
 	"ReportAccommodationWithToastmastersHeader" => "Zakwaterowanie u Toastmasterów",
 
 	"ReportTranslatorsHeader" => "Tłumacze",
