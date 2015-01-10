@@ -14,7 +14,7 @@ $renderer = \helpers\FormRendererFactory::className();
 	<p class="text-center"><?php echo \F3::get('lang.ReportUpdated', \helpers\View::formatUnixDateTime(time())) ?></p>
 
 <?php foreach ($data as $function => $registrations): ?>
-	<h2><?php echo \F3::get('lang.TliFunction--' . $function) ?></h2>
+	<h2><?php echo \F3::get('lang.TliFunction-' . $function) ?></h2>
 
 	<div class="table-responsive">
 		<table class="table table-hover">

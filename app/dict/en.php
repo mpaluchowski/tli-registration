@@ -321,8 +321,8 @@ return ['lang' => [
 	"ReportExecCommitteePositionShort" => "Position",
 
 	"ReportOrganizersSpeakersHeader" => "Organizers and speakers",
-	"TliFunction-organizers" => "Organizers",
-	"TliFunction-speakers" => "Speakers",
+	"TliFunction-organizer" => "Organizers",
+	"TliFunction-speaker" => "Speakers",
 
 	"ReportAccommodationWithToastmastersHeader" => "Accommodation with Toastmasters",
 
