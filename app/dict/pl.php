@@ -366,6 +366,7 @@ return ['lang' => [
 	"AdminNavReports" => "Raporty",
 	"AdminNavReportsOfficersByClub" => "Oficerowie wg klubów",
 	"AdminNavReportsOfficersByPosition" => "Oficerowie wg stanowisk",
+	"AdminNavReportsOrganizersSpeakers" => "Organizatorzy i mówcy",
 	"AdminNavReportsAccommodationWithToastmasters" => "Zakwaterowanie",
 	"AdminNavReportsTranslators" => "Tłumacze",
 	"AdminNavReportsLunchOrders" => "Zamówione lunche",
