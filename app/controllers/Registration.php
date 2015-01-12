@@ -194,6 +194,19 @@ class Registration {
 	}
 
 	function info_retrieve($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationByEmail($args['email']);
+
+		if (null === $form)
+			$f3->error(404);
+
+		$f3->set("email", $args['email']);
+
+		echo \View::instance()->render('registration/info_retrieve.php');
 	}
 
 	function check_email_exists($f3, $args) {

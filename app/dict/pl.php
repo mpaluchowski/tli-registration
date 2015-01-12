@@ -221,6 +221,11 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Wyślij e-mail ponownie",
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
 
+	"HowRetrieveRegistration" => "Jak mogę odzyskać moją rejestrację?",
+	"HowRetrieveRegistrationInfo" => "Mamy już zapisaną rejestrację dla adresu e-mail <strong>{0}</strong>. Aby umożliwić ci do niej dostęp, musimy najpierw upewnić się, że podany adres e-mail należy do ciebie. Zaraz po wypełnieniu formularza wysłaliśmy ci e-mail z odnośnikiem, który pozwala otworzyć szczegóły rejestracji. Aby odzyskać rejestrację:",
+	"HowRetrieveRegistrationStep1" => "Znajdź email z potwierdzeniem rejestracji,",
+	"HowRetrieveRegistrationStep2" => "Znajdź odnośnik do swojej rejestracji, znajdujący się na początku wiadomości.",
+
 	"PaymentTestModeActiveAlert" => "Obsługa płatności działa w <strong>trybie testowym</strong>. <strong>Żadna płatność nie zostanie wykonana</strong> - system automatycznie potwierdzi transakcję i twoja rejestracja zostanie oznaczona jako opłacona.",
 	"PaymentProcessingErrorMsg" => "Wystąpił błąd w komunikacji z systemem obsługi płatności online. Spróbuj przejść do płatności jeszcze raz (opłata <em>nie</em> zostanie naliczona podwójnie) i jeśli problem się powtórzy, skontaktuj się z nami.",
 	"PaymentProcessing-paid" => "Otrzymaliśmy twoją płatność {1} i twoja rejestracja jest zakończona.",

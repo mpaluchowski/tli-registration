@@ -221,6 +221,11 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Re-send e-mail",
 	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
 
+	"HowRetrieveRegistration" => "How can I retrieve my registration?",
+	"HowRetrieveRegistrationInfo" => "We have an existing registration for the e-mail address <strong>{0}</strong>. To let you retrieve it, we need to make sure it's really you, who owns the said e-mail address. Right after filling in your registration form, you received a message with a unique link that lets you access details of your registration. To proceed now, please:",
+	"HowRetrieveRegistrationStep1" => "Find the email,",
+	"HowRetrieveRegistrationStep2" => "Find the link to the registration review located near the top of the email.",
+
 	"PaymentTestModeActiveAlert" => "Payment processing is working in <strong>test mode</strong>. <strong>No actual transaction will be performed</strong> - the payment processor will merely confirm that a payment was made and your registration will automatically be confirmed.",
 	"PaymentProcessingErrorMsg" => "There was an error in communication with the payment processing authority. Please try proceeding to payment again (you will <em>not</em> be charged twice), and if the problem reappears, contact us to report it.",
 	"PaymentProcessing-paid" => "We received your payment on {1} and your registration is complete.",
