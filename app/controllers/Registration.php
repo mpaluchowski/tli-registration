@@ -56,7 +56,7 @@ class Registration {
 		$formCheck = $registrationDao->readRegistrationByEmail($form->getEmail());
 
 		if (null !== $formCheck
-				&& null === $formCheck->getDatePaid()) {
+				&& 'pending-payment' == $formCheck->getStatus()) {
 			$f3->reroute('@registration_payment_info(@email=' . $form->getEmail() . ')');
 			die;
 		}
@@ -199,7 +199,7 @@ class Registration {
 
 		if (null === $form)
 			echo json_encode([]);
-		else if (null === $form->getDatePaid()) {
+		else if ('pending-payment' == $form->getStatus()) {
 			echo json_encode([
 				"message" => $f3->get(
 					'lang.EmailAlertRegisteredNoPayment',
