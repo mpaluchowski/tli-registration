@@ -39,7 +39,7 @@ tliRegister.discountCodes = function() {
 			.prop('required', $(chekbox).prop('checked'))
 			.each(function() {
 				if (!$(chekbox).prop('checked')) {
-					$(this).val($(this).attr('data-value-original'));
+					$(this).val('');
 					$('.has-error', row).each(function() {
 						$(this).children('.help-block').slideUp(function() {
 							$(this).remove();
