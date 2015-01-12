@@ -48,6 +48,7 @@ return ['lang' => [
 	'EmailPlaceholder' => 'john@example.com',
 	'EmailValidationMsg' => "Please provide your email address.",
 	'EmailAlertRegisteredNoPayment' => "We seem to already have your e-mail address on file, probably because you filled in this registration form earlier. Would you like to <a href=\"{0}\">proceed to payment</a> now?",
+	'EmailAlertRegistered' => "We seem to already have your e-mail address on file, probably because you filled in this registration form earlier. Would you like to <a href=\"{0}\">retrieve your registration details</a> now?",
 	'Phone' => 'Phone',
 	'PhonePlaceholder' => '+48 555 123 456',
 	'PhoneValidationMsg' => "Please provide a phone number, including the operator code and optionally, the country code. You may use dashes and spaces.",
@@ -219,6 +220,11 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo1" => "If you didn't receive the email with the link, please <strong>check your Spam folder</strong> first. If you still cannot find it there, we'll be happy to re-send it to you. Just click the button below and the e-mail should arrive within minutes.",
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Re-send e-mail",
 	"HowProceedToPaymentHavingTroubleInfo2" => "If nothing helps, you have no e-mail, the link doesn't work, or anything else is wrong, please contact the person responsible for registration.",
+
+	"HowRetrieveRegistration" => "How can I retrieve my registration?",
+	"HowRetrieveRegistrationInfo" => "We have an existing registration for the e-mail address <strong>{0}</strong>. To let you retrieve it, we need to make sure it's really you, who owns the said e-mail address. Right after filling in your registration form, you received a message with a unique link that lets you access details of your registration. To proceed now, please:",
+	"HowRetrieveRegistrationStep1" => "Find the email,",
+	"HowRetrieveRegistrationStep2" => "Find the link to the registration review located near the top of the email.",
 
 	"PaymentTestModeActiveAlert" => "Payment processing is working in <strong>test mode</strong>. <strong>No actual transaction will be performed</strong> - the payment processor will merely confirm that a payment was made and your registration will automatically be confirmed.",
 	"PaymentProcessingErrorMsg" => "There was an error in communication with the payment processing authority. Please try proceeding to payment again (you will <em>not</em> be charged twice), and if the problem reappears, contact us to report it.",

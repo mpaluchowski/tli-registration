@@ -55,10 +55,14 @@ class Registration {
 		// Check if e-mail already registered
 		$formCheck = $registrationDao->readRegistrationByEmail($form->getEmail());
 
-		if (null !== $formCheck
-				&& null === $formCheck->getDatePaid()) {
-			$f3->reroute('@registration_payment_info(@email=' . $form->getEmail() . ')');
-			die;
+		if (null !== $formCheck) {
+			if ('pending-payment' == $formCheck->getStatus()) {
+				// Instruct how to proceed to payment
+				$f3->reroute('@registration_payment_info(@email=' . $form->getEmail() . ')');
+			} else {
+				// Instruct how to retrieve registration
+				$f3->reroute('@registration_retrieve_info(@email=' . $form->getEmail() . ')');
+			}
 		}
 
 		if ($f3->get("form_processor")) {
@@ -189,6 +193,22 @@ class Registration {
 		echo \View::instance()->render('registration/info_proceed_to_payment.php');
 	}
 
+	function info_retrieve($f3, $args) {
+		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+			$f3->error(404);
+
+		$registrationDao = new \models\RegistrationDao();
+
+		$form = $registrationDao->readRegistrationByEmail($args['email']);
+
+		if (null === $form)
+			$f3->error(404);
+
+		$f3->set("email", $args['email']);
+
+		echo \View::instance()->render('registration/info_retrieve.php');
+	}
+
 	function check_email_exists($f3, $args) {
 		if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
 			$f3->error(404);
@@ -199,11 +219,18 @@ class Registration {
 
 		if (null === $form)
 			echo json_encode([]);
-		else if (null === $form->getDatePaid()) {
+		else if ('pending-payment' == $form->getStatus()) {
 			echo json_encode([
 				"message" => $f3->get(
 					'lang.EmailAlertRegisteredNoPayment',
 					'/registration/info_proceed_to_payment/' . $args['email']
+					)
+				]);
+		} else {
+			echo json_encode([
+				"message" => $f3->get(
+					'lang.EmailAlertRegistered',
+					'/registration/info_retrieve/' . $args['email']
 					)
 				]);
 		}

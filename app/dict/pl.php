@@ -48,6 +48,7 @@ return ['lang' => [
 	'EmailPlaceholder' => 'jan@example.com',
 	'EmailValidationMsg' => "Podaj swój adres email.",
 	'EmailAlertRegisteredNoPayment' => "Wygląda na to, że mamy już zapisany twój adres e-mail, prawdopodobnie z wcześniej wypełnionej rejestracji. Czy chcesz <a href=\"{0}\">przejść teraz do płatności</a>?",
+	'EmailAlertRegistered' => "Wygląda na to, że mamy już zapisany twój adres e-mail, prawdopodobnie z wcześniej wypełnionej rejestracji. Czy chcesz <a href=\"{0}\">odzyskać dostęp do swojej rejestracji</a>?",
 	'Phone' => 'Telefon',
 	'PhonePlaceholder' => '+48 555 123 456',
 	'PhoneValidationMsg' => "Podaj swój numer telefonu, włącznie z kodem operatora i opcjonalnie poprzedzony kodem kraju. Możesz podzielić numer spacjami lub myślnikami.",
@@ -219,6 +220,11 @@ return ['lang' => [
 	"HowProceedToPaymentHavingTroubleInfo1" => "Jeśli e-mail z odnośnikiem w ogóle do ciebie nie dotarł, najpierw <strong>sprawdź swój folder ze Spamem</strong>. Jeśli tam też go nie ma, chętnie prześlemy ci go ponownie. Kliknij przycisk poniżej, a e-mail powinien dotrzeć w ciągu kilku minut.",
 	"HowProceedToPaymentHavingTroubleResendEmail" => "Wyślij e-mail ponownie",
 	"HowProceedToPaymentHavingTroubleInfo2" => "Jeśli nic nie pomaga, nie dostajesz wiadomości, odnośnik nie działa lub cokolwiek innego sprawia ci problemy, skontaktuj się z osobą odpowiedzialną za rejestrację.",
+
+	"HowRetrieveRegistration" => "Jak mogę odzyskać moją rejestrację?",
+	"HowRetrieveRegistrationInfo" => "Mamy już zapisaną rejestrację dla adresu e-mail <strong>{0}</strong>. Aby umożliwić ci do niej dostęp, musimy najpierw upewnić się, że podany adres e-mail należy do ciebie. Zaraz po wypełnieniu formularza wysłaliśmy ci e-mail z odnośnikiem, który pozwala otworzyć szczegóły rejestracji. Aby odzyskać rejestrację:",
+	"HowRetrieveRegistrationStep1" => "Znajdź email z potwierdzeniem rejestracji,",
+	"HowRetrieveRegistrationStep2" => "Znajdź odnośnik do swojej rejestracji, znajdujący się na początku wiadomości.",
 
 	"PaymentTestModeActiveAlert" => "Obsługa płatności działa w <strong>trybie testowym</strong>. <strong>Żadna płatność nie zostanie wykonana</strong> - system automatycznie potwierdzi transakcję i twoja rejestracja zostanie oznaczona jako opłacona.",
 	"PaymentProcessingErrorMsg" => "Wystąpił błąd w komunikacji z systemem obsługi płatności online. Spróbuj przejść do płatności jeszcze raz (opłata <em>nie</em> zostanie naliczona podwójnie) i jeśli problem się powtórzy, skontaktuj się z nami.",
