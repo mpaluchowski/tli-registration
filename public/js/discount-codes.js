@@ -36,6 +36,7 @@ tliRegister.discountCodes = function() {
 
 		$('input[type=number]', row)
 			.prop('disabled', !$(chekbox).prop('checked'))
+			.prop('required', $(chekbox).prop('checked'))
 			.each(function() {
 				if (!$(chekbox).prop('checked')) {
 					$(this).val($(this).attr('data-value-original'));
