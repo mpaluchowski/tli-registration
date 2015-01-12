@@ -48,6 +48,7 @@ return ['lang' => [
 	'EmailPlaceholder' => 'john@example.com',
 	'EmailValidationMsg' => "Please provide your email address.",
 	'EmailAlertRegisteredNoPayment' => "We seem to already have your e-mail address on file, probably because you filled in this registration form earlier. Would you like to <a href=\"{0}\">proceed to payment</a> now?",
+	'EmailAlertRegistered' => "We seem to already have your e-mail address on file, probably because you filled in this registration form earlier. Would you like to <a href=\"{0}\">retrieve your registration details</a> now?",
 	'Phone' => 'Phone',
 	'PhonePlaceholder' => '+48 555 123 456',
 	'PhoneValidationMsg' => "Please provide a phone number, including the operator code and optionally, the country code. You may use dashes and spaces.",

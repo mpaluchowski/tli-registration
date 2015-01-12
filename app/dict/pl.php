@@ -48,6 +48,7 @@ return ['lang' => [
 	'EmailPlaceholder' => 'jan@example.com',
 	'EmailValidationMsg' => "Podaj swój adres email.",
 	'EmailAlertRegisteredNoPayment' => "Wygląda na to, że mamy już zapisany twój adres e-mail, prawdopodobnie z wcześniej wypełnionej rejestracji. Czy chcesz <a href=\"{0}\">przejść teraz do płatności</a>?",
+	'EmailAlertRegistered' => "Wygląda na to, że mamy już zapisany twój adres e-mail, prawdopodobnie z wcześniej wypełnionej rejestracji. Czy chcesz <a href=\"{0}\">odzyskać dostęp do swojej rejestracji</a>?",
 	'Phone' => 'Telefon',
 	'PhonePlaceholder' => '+48 555 123 456',
 	'PhoneValidationMsg' => "Podaj swój numer telefonu, włącznie z kodem operatora i opcjonalnie poprzedzony kodem kraju. Możesz podzielić numer spacjami lub myślnikami.",
