@@ -290,6 +290,7 @@ class Administration {
 			. strftime('%Y%m%d') . '-' . strftime('%H%M') . '.csv"');
 
 		$output = fopen('php://output', 'w');
+		fwrite($output, "\xEF\xBB\xBF");
 
 		$headings = array_merge([
 			'id_registration',
