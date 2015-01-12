@@ -58,7 +58,7 @@ $renderer = \helpers\FormRendererFactory::className();
 						<td>
 							<div class="form-group<?php if (isset($messages[$name][$currency])): ?> has-error<?php endif ?>">
 							<div class="input-group">
-								<input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php echo isset($code) && $code->hasPricingItem($name) ? $code->getPricingItem($name, $currency) : $price ?>" data-value-original="<?php echo $price ?>" min="0" max="<?php echo $price ?>" class="form-control" autocomplete="off" disabled>
+								<input type="number" name="price[<?php echo $item->id ?>][<?php echo $currency ?>]" value="<?php if (isset($code) && $code->hasPricingItem($name)) echo $code->getPricingItem($name, $currency) ?>" min="0" max="<?php echo $price ?>" class="form-control" autocomplete="off" disabled>
 								<span class="input-group-addon"><?php echo $price ?></span>
 							</div>
 							</div>

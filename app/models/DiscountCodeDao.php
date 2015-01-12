@@ -80,7 +80,8 @@ class DiscountCodeDao {
 		// No set price can be lower than 0 or higher than original value
 		foreach ($code->getPricingItems() as $name => $item) {
 			foreach ($item['prices'] as $currency => $price) {
-				if ($pricingItems[$name]->prices[$currency] < $price
+				if (!is_numeric($price)
+						|| $pricingItems[$name]->prices[$currency] < $price
 						|| $price < 0) {
 					$messages[$name][$currency] = \F3::get(
 						'lang.CodesPricingItemValueValidationMsg',
