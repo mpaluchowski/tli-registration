@@ -66,9 +66,15 @@ class EventDao {
 	/**
 	 * Read all events from the database.
 	 *
+	 * @param $page page to return, 0-indexed
+	 * @param $limit records to return per page
 	 * @return Array of objects with event data.
 	 */
-	function readEvents() {
+	function readEvents($page = 0, $limit = null) {
+		if (!$limit) $limit = \F3::get('paged_records_number');
+
+		$offset = $page * $limit;
+
 		$query = 'SELECT e.id_event,
 						 e.object_name,
 						 e.object_id,
@@ -82,8 +88,12 @@ class EventDao {
 				  FROM ' . \F3::get('db_table_prefix') . 'events e
 				  LEFT JOIN ' . \F3::get('db_table_prefix') . 'administrators a
 				    ON e.fk_administrator = a.id_administrator
-				  ORDER BY e.date_occurred DESC';
-		$result = \F3::get('db')->exec($query);
+				  ORDER BY e.date_occurred DESC
+				  LIMIT :offset, :limit';
+		$result = \F3::get('db')->exec($query, [
+				'offset' => $offset,
+				'limit' => $limit,
+			]);
 
 		$events = [];
 		foreach ($result as $row) {
