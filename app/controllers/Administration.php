@@ -271,6 +271,17 @@ class Administration {
 		echo \View::instance()->render('administration/audit_log.php');
 	}
 
+	function audit_log_load_page($f3) {
+		if (!is_numeric($f3->get('GET.page')))
+			$f3->error(400);
+
+		$eventDao = new \models\EventDao();
+
+		$f3->set('events', $eventDao->readEvents($f3->get('GET.page')));
+
+		echo \View::instance()->render('administration/_audit_log_entries.php');
+	}
+
 	function list_export_csv($f3) {
 		$registrationDao = new \models\RegistrationDao();
 
