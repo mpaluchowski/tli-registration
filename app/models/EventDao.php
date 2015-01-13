@@ -88,7 +88,7 @@ class EventDao {
 				  FROM ' . \F3::get('db_table_prefix') . 'events e
 				  LEFT JOIN ' . \F3::get('db_table_prefix') . 'administrators a
 				    ON e.fk_administrator = a.id_administrator
-				  ORDER BY e.date_occurred DESC
+				  ORDER BY e.id_event DESC
 				  LIMIT :offset, :limit';
 		$result = \F3::get('db')->exec($query, [
 				'offset' => $offset,
