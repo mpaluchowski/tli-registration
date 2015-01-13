@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="table-responsive">
-	<table class="table table-hover tli-table-gravatar">
+	<table id="audit-log-table" class="table table-hover tli-table-gravatar" data-paging-url="<?php echo \F3::get('ALIASES.admin_audit_log_load_page') ?>">
 		<thead>
 			<th><?php echo \F3::get('lang.AuditLogAdminName') ?></th>
 			<th><?php echo \F3::get('lang.AuditLogEventName') ?></th>
@@ -22,6 +22,15 @@
 	</table>
 	</div>
 
+	<a id="audit-log-load-btn" href="#" class="btn btn-default"><?php echo \F3::get('lang.AuditLogLoadOlder') ?></a>
+
 </div>
+
+<script src="/js/audit-log.js"></script>
+<script>
+  (function() {
+    tliRegister.auditLog.init();
+  })();
+</script>
 
 <?php echo \View::instance()->render('footer.php') ?>

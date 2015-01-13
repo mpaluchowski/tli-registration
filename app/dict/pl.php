@@ -358,6 +358,7 @@ return ['lang' => [
 	"AuditLogEventObject" => "Obiekt",
 	"AuditLogEventData" => "Dane",
 	"AuditLogEventDate" => "Data",
+	"AuditLogLoadOlder" => "Załaduj starsze...",
 
 	"Password" => "Hasło",
 	"SignInButton" => "Zaloguj",
