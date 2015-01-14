@@ -157,20 +157,20 @@ $renderer = \helpers\FormRendererFactory::className();
     </div>
 
     <div class="checkbox form-group">
-      <label><input type="checkbox" name="friday-copernicus-attend"<?php if (isset($registration['friday-copernicus-attend']) && $registration['friday-copernicus-attend'] == 'on') echo ' checked'?>><?php echo \F3::get('lang.EventsFridayCopernicusYes')?></label>
+      <label><input type="checkbox" name="friday-copernicus-attend"<?php if (isset($registration['friday-copernicus-attend']) && $registration['friday-copernicus-attend'] == 'on') echo ' checked'?> disabled><s><?php echo \F3::get('lang.EventsFridayCopernicusYes')?></s></label>
 
       <div class="tli-form-group-dependent" data-depends-on="friday-copernicus-attend" data-depends-on-value="on">
         <div class="form-group<?php if (isset($registration['messages']['friday-copernicus-options'])): ?> has-error<?php endif ?>">
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="friday-copernicus-options[]" class="field-price-affecting" value="center"<?php if (isset($registration['friday-copernicus-options']) && in_array('center', $registration['friday-copernicus-options'])) echo ' checked' ?>><?php echo \F3::get('lang.EventsFridayCopernicusAttendCenter') ?>
-              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['friday-copernicus-attend-center']->prices), ' / ') ?></span>
+              <input type="checkbox" name="friday-copernicus-options[]" class="field-price-affecting" value="center"<?php if (isset($registration['friday-copernicus-options']) && in_array('center', $registration['friday-copernicus-options'])) echo ' checked' ?> disabled><s><?php echo \F3::get('lang.EventsFridayCopernicusAttendCenter') ?>
+              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['friday-copernicus-attend-center']->prices), ' / ') ?></span></s>
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="friday-copernicus-options[]" class="field-price-affecting" value="planetarium" data-exclusive-with="contest-attend" data-exclusive-with-value="on" <?php if (isset($registration['friday-copernicus-options']) && in_array('planetarium', $registration['friday-copernicus-options'])) echo ' checked' ?>><?php echo \F3::get('lang.EventsFridayCopernicusAttendPlanetarium') ?>
-              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['friday-copernicus-attend-planetarium']->prices), ' / ') ?></span>
+              <input type="checkbox" name="friday-copernicus-options[]" class="field-price-affecting" value="planetarium" data-exclusive-with="contest-attend" data-exclusive-with-value="on" <?php if (isset($registration['friday-copernicus-options']) && in_array('planetarium', $registration['friday-copernicus-options'])) echo ' checked' ?> disabled><s><?php echo \F3::get('lang.EventsFridayCopernicusAttendPlanetarium') ?>
+              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['friday-copernicus-attend-planetarium']->prices), ' / ') ?></span></s>
             </label>
             <p class="help-block hidden tli-exclusive-msg"><?php echo \F3::get('lang.FieldDisabledExclusiveMsg', \F3::get('lang.EventsContest')) ?></p>
           </div>
@@ -181,7 +181,7 @@ $renderer = \helpers\FormRendererFactory::className();
     </div>
 
     <div class="checkbox form-group">
-      <label><input type="checkbox" name="friday-social-event"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsFridaySocialYes') ?></label>
+      <label><input type="checkbox" name="friday-social-event"<?php if (isset($registration['friday-social-event']) && $registration['friday-social-event'] == 'on') echo ' checked' ?> disabled><s><?php echo \F3::get('lang.EventsFridaySocialYes') ?></s></label>
     </div>
 
     <div class="checkbox form-group">
@@ -209,20 +209,20 @@ $renderer = \helpers\FormRendererFactory::className();
 
     <div class="checkbox form-group">
       <label>
-        <input type="checkbox" name="saturday-dinner-participate" class="field-price-affecting"<?php if (isset($registration['saturday-dinner-participate']) && $registration['saturday-dinner-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerYes') ?>
-        <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['saturday-dinner-participate']->prices), ' / ') ?></span>
+        <input type="checkbox" name="saturday-dinner-participate" class="field-price-affecting"<?php if (isset($registration['saturday-dinner-participate']) && $registration['saturday-dinner-participate'] == 'on') echo ' checked' ?> disabled><s><?php echo \F3::get('lang.EventsSaturdayDinnerYes') ?>
+        <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['saturday-dinner-participate']->prices), ' / ') ?></span></s>
       </label>
 
       <div class="tli-form-group-dependent" data-depends-on="saturday-dinner-participate" data-depends-on-value="on">
         <div class="form-group<?php if (isset($registration['messages']['saturday-dinner-meal'])): ?> has-error<?php endif ?>">
           <div class="radio">
             <label>
-              <input type="radio" name="saturday-dinner-meal" value="meat" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'meat') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerMeat') ?>
+              <input type="radio" name="saturday-dinner-meal" value="meat" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'meat') echo ' checked' ?> disabled><?php echo \F3::get('lang.EventsSaturdayDinnerMeat') ?>
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="saturday-dinner-meal" value="vegetarian" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'vegetarian') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayDinnerVegetarian') ?>
+              <input type="radio" name="saturday-dinner-meal" value="vegetarian" data-required="required"<?php if (isset($registration['saturday-dinner-meal']) && $registration['saturday-dinner-meal'] == 'vegetarian') echo ' checked' ?> disabled><?php echo \F3::get('lang.EventsSaturdayDinnerVegetarian') ?>
             </label>
           </div>
 
@@ -233,8 +233,8 @@ $renderer = \helpers\FormRendererFactory::className();
 
     <div class="checkbox form-group">
       <label>
-        <input type="checkbox" name="saturday-party-participate" class="field-price-affecting"<?php if (isset($registration['saturday-party-participate']) && $registration['saturday-party-participate'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsSaturdayPartyYes') ?>
-        <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['saturday-party-participate']->prices), ' / ') ?></span>
+        <input type="checkbox" name="saturday-party-participate" class="field-price-affecting"<?php if (isset($registration['saturday-party-participate']) && $registration['saturday-party-participate'] == 'on') echo ' checked' ?> disabled><s><?php echo \F3::get('lang.EventsSaturdayPartyYes') ?>
+        <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['saturday-party-participate']->prices), ' / ') ?></span></s>
       </label>
     </div>
 
