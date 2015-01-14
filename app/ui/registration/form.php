@@ -157,6 +157,8 @@ $renderer = \helpers\FormRendererFactory::className();
     </div>
 
     <div class="checkbox form-group">
+      <p class="help-block"><i class="fa fa-exclamation-triangle"></i> <?php echo \F3::get('lang.EventsUnavailableDeadlinePassedInfo') ?></p>
+
       <label><input type="checkbox" name="friday-copernicus-attend"<?php if (isset($registration['friday-copernicus-attend']) && $registration['friday-copernicus-attend'] == 'on') echo ' checked'?> disabled><s><?php echo \F3::get('lang.EventsFridayCopernicusYes')?></s></label>
 
       <div class="tli-form-group-dependent" data-depends-on="friday-copernicus-attend" data-depends-on-value="on">

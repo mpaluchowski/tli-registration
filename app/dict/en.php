@@ -109,6 +109,7 @@ return ['lang' => [
 	'AccommodationWithToastmasters-independent' => "On my own or don't need",
 
 	'EventOptionsHeader' => "Event Options",
+	'EventsUnavailableDeadlinePassedInfo' => "Some options are not available for registrations placed after January 14, 2015.",
 	'EventsTranslator' => "Translator",
 	'EventsTranslatorYes' => "I can act as an English-Polish-English <strong>translator</strong>",
 	'EventTranslatorHelp' => "We'll give you a special badge and may ask you to help out translating some sessions for those, who don't speak their language.",
