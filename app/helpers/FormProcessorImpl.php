@@ -51,6 +51,24 @@ class FormProcessorImpl implements \helpers\FormProcessor {
 		if ($form->hasField('data-collection-consent')) {
 			$form->clearField('data-collection-consent');
 		}
+
+		// Remove any events, which are not available anymore
+		if ($form->hasField('friday-copernicus-attend'))
+			$form->clearField('friday-copernicus-attend');
+		if ($form->hasField('friday-copernicus-options'))
+			$form->clearField('friday-copernicus-options');
+		if ($form->hasField('friday-social-event'))
+			$form->clearField('friday-social-event');
+		if ($form->hasField('saturday-dinner-participate'))
+			$form->clearField('saturday-dinner-participate');
+		if ($form->hasField('saturday-dinner-meal'))
+			$form->clearField('saturday-dinner-meal');
+		if ($form->hasField('saturday-party-participate'))
+			$form->clearField('saturday-party-participate');
+		if ($form->hasField('lunch'))
+			$form->clearField('lunch');
+		if ($form->hasField('lunch-days'))
+			$form->clearField('lunch-days');
 	}
 
 	/**
