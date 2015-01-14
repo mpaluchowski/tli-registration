@@ -187,20 +187,20 @@ $renderer = \helpers\FormRendererFactory::className();
     </div>
 
     <div class="checkbox form-group">
-      <label><input type="checkbox" name="lunch"<?php if (isset($registration['lunch']) && $registration['lunch'] == 'on') echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchYes') ?></label>
+      <label><input type="checkbox" name="lunch"<?php if (isset($registration['lunch']) && $registration['lunch'] == 'on') echo ' checked' ?> disabled><s><?php echo \F3::get('lang.EventsLunchYes') ?></s></label>
 
       <div class="tli-form-group-dependent" data-depends-on="lunch" data-depends-on-value="on">
         <div class="form-group<?php if (isset($registration['messages']['lunch-days'])): ?> has-error<?php endif ?>">
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="lunch-days[]" class="field-price-affecting" value="saturday"<?php if (isset($registration['lunch-days']) && in_array('saturday', $registration['lunch-days'])) echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchSaturday') ?>
-              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['lunch']->prices), ' / ') ?></span>
+              <input type="checkbox" name="lunch-days[]" class="field-price-affecting" value="saturday"<?php if (isset($registration['lunch-days']) && in_array('saturday', $registration['lunch-days'])) echo ' checked' ?> disabled><s><?php echo \F3::get('lang.EventsLunchSaturday') ?>
+              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['lunch']->prices), ' / ') ?></span></s>
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="lunch-days[]" class="field-price-affecting" value="sunday"<?php if (isset($registration['lunch-days']) && in_array('sunday', $registration['lunch-days'])) echo ' checked' ?>><?php echo \F3::get('lang.EventsLunchSunday') ?>
-              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['lunch']->prices), ' / ') ?></span>
+              <input type="checkbox" name="lunch-days[]" class="field-price-affecting" value="sunday"<?php if (isset($registration['lunch-days']) && in_array('sunday', $registration['lunch-days'])) echo ' checked' ?> disabled><s><?php echo \F3::get('lang.EventsLunchSunday') ?>
+              <span class="label label-default"><?php echo implode(\helpers\CurrencyFormatter::moneyFormatArray($pricing['lunch']->prices), ' / ') ?></span></s>
             </label>
           </div>
 
